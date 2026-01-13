@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: abap-artifacts-mcp
+Version: 0.1.0
+Summary: Read-only MCP server for fetching ABAP artifacts (uses local env/keychain credentials)
+Requires-Python: >=3.10

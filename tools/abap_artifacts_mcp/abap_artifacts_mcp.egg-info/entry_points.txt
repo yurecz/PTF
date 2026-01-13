@@ -1,0 +1,2 @@
+[console_scripts]
+abap-artifacts-mcp = abap_artifacts_mcp.__main__:main

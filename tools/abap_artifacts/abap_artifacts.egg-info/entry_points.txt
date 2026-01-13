@@ -1,0 +1,2 @@
+[console_scripts]
+abap-artifacts = abap_artifacts.__main__:main

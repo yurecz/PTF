@@ -1,0 +1,34 @@
+# Agent Notes (LLM/Codex)
+
+This repository is an **abapGit** export of the ABAP package **PTF** (Process Test Framework) and subpackages, originally extracted from **ERX/815**. Most work happens by changing objects in an ABAP system and letting abapGit serialize them into `src/`.
+
+## What to edit (and what not to)
+- Prefer editing `src/**/*.abap` (class/program sources) and let abapGit manage the adjacent `*.xml` metadata.
+- Avoid hand-editing generated `*.xml` unless you know the object format and the change is intentional.
+- Some objects are serialized with GUID-like filenames (e.g. `*.avas.xml`). Treat these as generated exports; change them in ABAP and re-serialize when possible.
+
+## Repo structure quick map
+- `README.md`: high-level purpose and abapGit usage.
+- `.abapgit.xml`: abapGit repo settings (starting folder, folder logic, original system).
+- `src/`: abapGit-serialized ABAP objects.
+- `src/core/`, `src/util/`, `src/rfc/`, `src/rap/`: package-oriented subfolders.
+- `docs/DEVELOPMENT_GOALS.md`: current development goals and acceptance criteria.
+
+## Working style
+- Keep patches small and scoped to the requested change.
+- Do not reformat unrelated ABAP code.
+- When searching, prefer `rg` (ripgrep) and include the ABAP object name in the query when possible.
+
+## Default environment assumptions
+- The developer machine is Windows.
+- Work happens in VSCode with the Codex extension.
+- VSCode and the Codex extension run in WSL (Ubuntu) for this repo.
+- When troubleshooting Codex/MCP, check the latest WSL log at `~/.vscode-server/data/logs/<timestamp>/exthost*/openai.chatgpt/Codex.log`.
+- Do not run `sudo` commands; provide exact instructions for the user to run with their password when root access is needed.
+- MCP is configured in `.vscode/settings.json` to launch `python3 -m abap_artifacts_mcp` directly (no wrapper script).
+- Use `tools/sync_mcp_config.sh` to sync repo MCP settings into the global WSL MCP config (`~/.vscode-server/data/User/mcp.json`).
+
+## Useful searches
+- Find a class: `rg -n \"^CLASS\\s+cl_\" src`
+- Find references: `rg -n \"cl_ptf_\" src`
+- Find a message ID: `rg -n \"\\.msag\\.xml\" src`
