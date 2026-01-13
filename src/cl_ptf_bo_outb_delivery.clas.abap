@@ -1,383 +1,383 @@
-class cl_ptf_bo_outb_delivery definition
+class CL_PTF_BO_OUTB_DELIVERY definition
   public
-  inheriting from cl_ptf_bo
+  inheriting from CL_PTF_BO
   final
   create public .
 
-  public section.
+public section.
 
-    types:
-      likp_check_tab type standard table of sdbil_tst_likp_check with default key .
-    types:
-      likp_tab       type standard table of likp with default key .
-    types:
-      lips_check_tab type standard table of sdbil_tst_lips_check with default key .
-    types:
+  types:
+    likp_check_tab type standard table of sdbil_tst_likp_check with default key .
+  types:
+    likp_tab       type standard table of likp with default key .
+  types:
+    lips_check_tab type standard table of sdbil_tst_lips_check with default key .
+  types:
 * Structure for Check of Deliverys
-      lips_tab       type standard table of lips with default key .
-    types:
-      prot_tab  type standard table of prott with non-unique key vbeln posnr .
-    types:
-      begin of ty_gs_ptf_batch_split_itm_td,
+    lips_tab       type standard table of lips with default key .
+  types:
+    prot_tab  type standard table of prott with non-unique key vbeln posnr .
+  types:
+    begin of ty_gs_ptf_batch_split_itm_td,
         delivery_item          type posnr,
         higher_level_item      type posnr,
         batch                  type charg_d,
         delivery_quantity      type lfimg,
         delivery_quantity_unit type vrkme,
       end of   ty_gs_ptf_batch_split_itm_td .
-    types:
+  types:
 * Structure for Creation/Update of Deliveries
-      begin of ty_gs_ptf_del_create_td,
+    begin of ty_gs_ptf_del_create_td,
         no_pick_and_pgi type abap_bool,
       end of ty_gs_ptf_del_create_td .
-    types:
-      begin of ty_gs_ptf_del_item_update_td,
+  types:
+    begin of ty_gs_ptf_del_item_update_td,
         delivery_item          type posnr,
         delivery_quantity      type lfimg,
         delivery_quantity_unit type vrkme,
       end of ty_gs_ptf_del_item_update_td .
-    types:
-      begin of ty_gs_ptf_dl_check_td,
+  types:
+    begin of ty_gs_ptf_dl_check_td,
         likp       type likp_tab,
         lips       type lips_tab,
         likp_check type likp_check_tab,
         lips_check type lips_check_tab,
       end of ty_gs_ptf_dl_check_td .
-    types:
-      begin of ty_gs_ptf_dl_cr_partitial_td,
+  types:
+    begin of ty_gs_ptf_dl_cr_partitial_td,
         shipping_point         type vstel,
         item_to_be_delivered   type posnr,
         delivery_quantity      type lfimg,
         delivery_quantity_unit type vrkme,
       end of ty_gs_ptf_dl_cr_partitial_td .
-    types:
-      begin of ty_gs_ptf_dl_goods_issue_td,
+  types:
+    begin of ty_gs_ptf_dl_goods_issue_td,
         delta_act_gi_date type int2,
       end of ty_gs_ptf_dl_goods_issue_td .
-    types:
-      begin of ty_gs_ptf_foreign_trade_fields,
+  types:
+    begin of ty_gs_ptf_foreign_trade_fields,
         spe_herkl type herkl,
         spe_herkr type herkr,
         itm_comco type /sapsll/comco,
       end of ty_gs_ptf_foreign_trade_fields .
-    types:
-      ty_gt_ptf_batch_split_itm_td type standard table of ty_gs_ptf_batch_split_itm_td with empty key .
-    types:
-      ty_gt_ptf_del_item_update_td type standard table of ty_gs_ptf_del_item_update_td with default key .
-    types:
-      ty_gt_ptf_dl_cr_partitial_td type standard table of ty_gs_ptf_dl_cr_partitial_td with default key .
+  types:
+    ty_gt_ptf_batch_split_itm_td type standard table of ty_gs_ptf_batch_split_itm_td with empty key .
+  types:
+    ty_gt_ptf_del_item_update_td type standard table of ty_gs_ptf_del_item_update_td with default key .
+  types:
+    ty_gt_ptf_dl_cr_partitial_td type standard table of ty_gs_ptf_dl_cr_partitial_td with default key .
 
-    methods task_finished
-      importing
-        !p_task type clike .
-    class-methods keeping_lock_task
-      importing
-        !p_task type char32 .
+  methods TASK_FINISHED
+    importing
+      !P_TASK type CLIKE .
+  class-methods KEEPING_LOCK_TASK
+    importing
+      !P_TASK type CHAR32 .
 
-    methods change
-        redefinition .
-    methods check
-        redefinition .
-    methods check_existence
-        redefinition .
-    methods create
-        redefinition .
-    methods delete
-        redefinition .
-    methods execute_action
-        redefinition .
-    methods execute_check
-        redefinition .
+  methods CHANGE
+    redefinition .
+  methods CHECK
+    redefinition .
+  methods CHECK_EXISTENCE
+    redefinition .
+  methods CREATE
+    redefinition .
+  methods DELETE
+    redefinition .
+  methods EXECUTE_ACTION
+    redefinition .
+  methods EXECUTE_CHECK
+    redefinition .
   protected section.
-  private section.
+private section.
 
-    types:
-      gty_created_items type standard table of bapidlvitemcreated with default key .
+  types:
+    gty_created_items type standard table of bapidlvitemcreated with default key .
 
-    data mv_numberofcalls type i .
-    constants c_set_foreign_trade_fields type string value 'SET_FOREIGN_TRADE_FIELDS' ##NO_TEXT.
-    constants c_check_compare_dlv type string value 'CHECK_COMPARE_DLV' ##NO_TEXT.
-    constants c_check_compare_salesdoc type string value 'CHECK_COMPARE_SALESDOC' ##NO_TEXT.
-    constants c_create_without_picking type string value 'CREATE_WITHOUT_PICKING' ##NO_TEXT.
-    constants c_create_with_partitial_items type string value 'CREATE_WITH_PARTITIAL_ITEMS' ##NO_TEXT.
-    constants c_create_with_ref_items type string value 'CREATE_WITH_REF_ITEMS' ##NO_TEXT.
-    constants c_reverse_goods_movement type string value 'REVERSE_GOODS_MOVEMENT' ##NO_TEXT.
-    constants c_add_serial_numbers type string value 'ADD_SERIAL_NUMBERS' ##NO_TEXT.
-    constants c_create_simple type string value 'CREATE_SIMPLE' ##NO_TEXT.
-    constants c_create_from_sto type string value 'CREATE_FROM_STO' ##NO_TEXT.
-    constants c_pick_and_pgi type string value 'PICK_AND_PGI' ##NO_TEXT.
-    constants c_create_with_serial_numbers type string value 'CREATE_WITH_SERIAL_NUMBERS' ##NO_TEXT.
-    constants c_confirm_all_items type string value 'CONFIRM_ALL_ITEMS' ##NO_TEXT.
-    constants c_pick_all_items type string value 'PICK_ALL_ITEMS' ##NO_TEXT.
-    constants c_pgi type string value 'PGI' ##NO_TEXT.
-    constants c_log_status type string value 'LOG_STATUS' ##NO_TEXT.
-    class-data mv_unlocked_async type char1 .
-    class-data mv_locked_async type char1 .
-    constants c_pick_and_pgi_cs type string value 'PICK_AND_PGI_CS' ##NO_TEXT.
-    constants c_update_items type string value 'UPDATE_ITEM' ##NO_TEXT.
-    constants c_update_multiple_items type string value 'UPDATE_ITEMS' ##NO_TEXT.
-    constants c_delete type string value 'DELETE' ##NO_TEXT.
-    constants c_add_batch_split_items type string value 'ADD_BATCH_SPLIT_ITEMS' ##NO_TEXT.
-    constants c_change_shipto_party_address type string value 'CHANGE_SHIPTO_PARTY_ADDRESS' ##NO_TEXT.
-    constants c_delete_batch_split_items type string value 'DELETE_BATCH_SPLIT_ITEMS' ##NO_TEXT.
-    constants c_create_batch_split_items type string value 'CREATE_BATCH_SPLIT_ITEMS' ##NO_TEXT.
+  data MV_NUMBEROFCALLS type I .
+  constants C_SET_FOREIGN_TRADE_FIELDS type STRING value 'SET_FOREIGN_TRADE_FIELDS' ##NO_TEXT.
+  constants C_CHECK_COMPARE_DLV type STRING value 'CHECK_COMPARE_DLV' ##NO_TEXT.
+  constants C_CHECK_COMPARE_SALESDOC type STRING value 'CHECK_COMPARE_SALESDOC' ##NO_TEXT.
+  constants C_CREATE_WITHOUT_PICKING type STRING value 'CREATE_WITHOUT_PICKING' ##NO_TEXT.
+  constants C_CREATE_WITH_PARTITIAL_ITEMS type STRING value 'CREATE_WITH_PARTITIAL_ITEMS' ##NO_TEXT.
+  constants C_CREATE_WITH_REF_ITEMS type STRING value 'CREATE_WITH_REF_ITEMS' ##NO_TEXT.
+  constants C_REVERSE_GOODS_MOVEMENT type STRING value 'REVERSE_GOODS_MOVEMENT' ##NO_TEXT.
+  constants C_ADD_SERIAL_NUMBERS type STRING value 'ADD_SERIAL_NUMBERS' ##NO_TEXT.
+  constants C_CREATE_SIMPLE type STRING value 'CREATE_SIMPLE' ##NO_TEXT.
+  constants C_CREATE_FROM_STO type STRING value 'CREATE_FROM_STO' ##NO_TEXT.
+  constants C_PICK_AND_PGI type STRING value 'PICK_AND_PGI' ##NO_TEXT.
+  constants C_CREATE_WITH_SERIAL_NUMBERS type STRING value 'CREATE_WITH_SERIAL_NUMBERS' ##NO_TEXT.
+  constants C_CONFIRM_ALL_ITEMS type STRING value 'CONFIRM_ALL_ITEMS' ##NO_TEXT.
+  constants C_PICK_ALL_ITEMS type STRING value 'PICK_ALL_ITEMS' ##NO_TEXT.
+  constants C_PGI type STRING value 'PGI' ##NO_TEXT.
+  constants C_LOG_STATUS type STRING value 'LOG_STATUS' ##NO_TEXT.
+  class-data MV_UNLOCKED_ASYNC type CHAR1 .
+  class-data MV_LOCKED_ASYNC type CHAR1 .
+  constants C_PICK_AND_PGI_CS type STRING value 'PICK_AND_PGI_CS' ##NO_TEXT.
+  constants C_UPDATE_ITEMS type STRING value 'UPDATE_ITEM' ##NO_TEXT.
+  constants C_UPDATE_MULTIPLE_ITEMS type STRING value 'UPDATE_ITEMS' ##NO_TEXT.
+  constants C_DELETE type STRING value 'DELETE' ##NO_TEXT.
+  constants C_ADD_BATCH_SPLIT_ITEMS type STRING value 'ADD_BATCH_SPLIT_ITEMS' ##NO_TEXT.
+  constants C_CHANGE_SHIPTO_PARTY_ADDRESS type STRING value 'CHANGE_SHIPTO_PARTY_ADDRESS' ##NO_TEXT.
+  constants C_DELETE_BATCH_SPLIT_ITEMS type STRING value 'DELETE_BATCH_SPLIT_ITEMS' ##NO_TEXT.
+  constants C_CREATE_BATCH_SPLIT_ITEMS type STRING value 'CREATE_BATCH_SPLIT_ITEMS' ##NO_TEXT.
 
-    methods pgi
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods set_foreign_trade_fields
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods pick_all_items
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods confirm_all_items
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods create_with_serial_numbers
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods create_simple
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods pick_and_pgi
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods pick_and_pgi_cs
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods dlv
-      importing
-        !iv_with_picking     type abap_bool
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods dlv_partitial
-      importing
-        !iv_test_data        type ty_gs_ptf_dl_cr_partitial_td
-        !iv_with_picking     type abap_bool
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods pgi_picking
-      importing
-        !it_created_items        type gty_created_items
-        !iv_with_picking         type abap_bool
-        !iv_step_number          type i
-      exporting
-        !ev_document_id          type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status     type abap_bool
-        !ev_check_status         type abap_bool
-      returning
-        value(rt_delivery_items) type tt_vbpok .
-    methods check_compare_dlv
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods add_serial_numbers
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods reverse_goods_movement
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step                                            "Parameter for better performance
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods unlock
-      importing
-        !is_d_step           type cl_ptf_util=>gt_ptf_step
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods lock
-      importing
-        !is_d_step           type cl_ptf_util=>gt_ptf_step
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods log_status
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods delete_delivery_document
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods update_delivery_item
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods create_with_reference_items
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods create_from_sto
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods update_delivery_items
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods add_batch_split_items
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods delete_batch_split_items
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods create_batch_split_items
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods remove_batch_split_items
-      importing
-        !iv_delivery_number type vbeln
-        !it_testdata        type ty_gt_ptf_batch_split_itm_td
-        !it_lips            type tab_lipsvb .
-    methods handle_transfer_of_control
-      importing
-        !is_delivery_header type likp
-      changing
-        !cs_header_data     type vbkok .
-    methods reserve_action_1
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods reserve_action_2
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods reserve_action_3
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods change_shipto_party_address
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods check_compare_salesdoc
-      importing
-        !step_data           type cl_ptf_util=>gt_ptf_step
-        !iv_step_number      type i
-      exporting
-        !ev_document_id      type cl_ptf_util=>ty_vbeln_tab
-        !ev_execution_status type abap_bool
-        !ev_check_status     type abap_bool .
-    methods print_items_vbap_lips
-      importing
-        !iv_sls_id type vbeln
-        !iv_dlv_id type vbeln .
+  methods PGI
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods SET_FOREIGN_TRADE_FIELDS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods PICK_ALL_ITEMS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods CONFIRM_ALL_ITEMS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods CREATE_WITH_SERIAL_NUMBERS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods CREATE_SIMPLE
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods PICK_AND_PGI
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods PICK_AND_PGI_CS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods DLV
+    importing
+      !IV_WITH_PICKING type ABAP_BOOL
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods DLV_PARTITIAL
+    importing
+      !IV_TEST_DATA type TY_GS_PTF_DL_CR_PARTITIAL_TD
+      !IV_WITH_PICKING type ABAP_BOOL
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods PGI_PICKING
+    importing
+      !IT_CREATED_ITEMS type GTY_CREATED_ITEMS
+      !IV_WITH_PICKING type ABAP_BOOL
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL
+    returning
+      value(RT_DELIVERY_ITEMS) type TT_VBPOK .
+  methods CHECK_COMPARE_DLV
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods ADD_SERIAL_NUMBERS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods REVERSE_GOODS_MOVEMENT
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP                                                        "Parameter for better performance
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods UNLOCK
+    importing
+      !IS_D_STEP type CL_PTF_UTIL=>GT_PTF_STEP
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods LOCK
+    importing
+      !IS_D_STEP type CL_PTF_UTIL=>GT_PTF_STEP
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods LOG_STATUS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods DELETE_DELIVERY_DOCUMENT
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods UPDATE_DELIVERY_ITEM
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods CREATE_WITH_REFERENCE_ITEMS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods CREATE_FROM_STO
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods UPDATE_DELIVERY_ITEMS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods ADD_BATCH_SPLIT_ITEMS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods DELETE_BATCH_SPLIT_ITEMS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods CREATE_BATCH_SPLIT_ITEMS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods REMOVE_BATCH_SPLIT_ITEMS
+    importing
+      !IV_DELIVERY_NUMBER type VBELN
+      !IT_TESTDATA type TY_GT_PTF_BATCH_SPLIT_ITM_TD
+      !IT_LIPS type TAB_LIPSVB .
+  methods HANDLE_TRANSFER_OF_CONTROL
+    importing
+      !IS_DELIVERY_HEADER type LIKP
+    changing
+      !CS_HEADER_DATA type VBKOK .
+  methods RESERVE_ACTION_1
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods RESERVE_ACTION_2
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods RESERVE_ACTION_3
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods CHANGE_SHIPTO_PARTY_ADDRESS
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods CHECK_COMPARE_SALESDOC
+    importing
+      !STEP_DATA type CL_PTF_UTIL=>GT_PTF_STEP
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
+  methods PRINT_ITEMS_VBAP_LIPS
+    importing
+      !IV_SLS_ID type VBELN
+      !IV_DLV_ID type VBELN .
 ENDCLASS.
 
 
