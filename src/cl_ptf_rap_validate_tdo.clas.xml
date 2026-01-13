@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_RAP_VALIDATE_TDO</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>RAP Metadata Functions</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_DATA_INSTANCE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check data for one instance</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IGNORE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check property &quot;ignore&quot;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IS_EXISTING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check property flag &quot;isExisting&quot;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_OPERATOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check property &quot;operator&quot;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_SOURCE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Read property &quot;source&quot;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_PTF_RAP_METADATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>RAP Metadata Functions</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_RUN_ENVIRONMENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Represents a PTF variant run</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>RECURSIVE_CHECK_PARAMS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if parameters are valid</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA_CHILD_ENTITIES</CMPNAME>
+     <SCONAME>IT_OPERATIONS_READ</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Dynamic READ: Bundle of Operation with Instances</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA_CHILD_ENTITIES</CMPNAME>
+     <SCONAME>IV_ENTITY_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entity Name for ABAP Behavior</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA_ENTITY</CMPNAME>
+     <SCONAME>IS_OPERATION_READ</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Dynamic READ: Bundle of Operation with Instances</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA_ENTITY</CMPNAME>
+     <SCONAME>IT_OPERATIONS_READ</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Dynamic READ: Bundle of Operation with Instances</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA_ENTITY</CMPNAME>
+     <SCONAME>IV_ENTITY_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entity Name for ABAP Behavior</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA_INSTANCE</CMPNAME>
+     <SCONAME>IT_OPERATIONS_READ</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Dynamic READ: Bundle of Operation with Instances</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA_INSTANCE</CMPNAME>
+     <SCONAME>IV_ENTITY_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entity Name for ABAP Behavior</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA_INSTANCE</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_OPERATOR</CMPNAME>
+     <SCONAME>IV_OPERATOR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>General Field with Length 2, for Function Modules</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>IO_RUN_ENVIRONMENT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Represents a PTF variant run</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>DYNAMIC_CHECK</CMPNAME>
+     <SCONAME>IV_OPERATOR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>General Field with Length 2, for Function Modules</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>LOG_CHECK_DATA_MESSAGES</CMPNAME>
+     <SCONAME>IV_ENTITY_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entity Name for ABAP Behavior</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RECURSIVE_CHECK_PARAMS</CMPNAME>
+     <SCONAME>IV_COMPONENT_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Field Name</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RECURSIVE_CHECK_PARAMS</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

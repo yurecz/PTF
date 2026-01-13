@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_PARA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <TPARA>
+    <PARAMID>SD_PTF_AUNIT</PARAMID>
+   </TPARA>
+   <TPARAT>
+    <PARAMID>SD_PTF_AUNIT</PARAMID>
+    <SPRACHE>E</SPRACHE>
+    <PARTEXT>Switch to activate PTF execution in AUnit tests</PARTEXT>
+   </TPARAT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

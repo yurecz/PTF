@@ -1,0 +1,1532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>New Intercompany Sales - Sales Order Like</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_MOCK_OL_IC_CLOUD</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-SLS</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>FIELD_DELTA_GENERIC</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Defines deviating fields of existing records. All tables.</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGES_PER_RECORD" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+           <element name="MOCKED_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="FIELDNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NAME_FELD=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIELDVALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CHANGES_PER_RECORD empty="true">
+           <item>
+            <KEY_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </KEY_FIELDS>
+            <MOCKED_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </MOCKED_FIELDS>
+           </item>
+          </CHANGES_PER_RECORD>
+         </item>
+        </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_SDSLS_DOC_VCM</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records, Table specific (SDSLS_DOC_VCM)</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS_DOC_VCM_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_DOC_VCM_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS_DOC_VCM_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_DOC_VCM_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_DOC_VCM_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_SDSLS_DOC_VCM_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_DOC_VCM_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_DOC_VCM_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_SDSLS_DOC_VCM_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="SDSLS_DOC_VCM" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="SDSLS_DOC_VCM">
+          <annotation>
+           <documentation>I==O==C=S=K==D=SDSLS_DOC_VCM=A=u=L=000000=doc=Assign Sales D</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AUART" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=AUART=A=C=L=000004=doc=Sales Document Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PSTYV" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=PSTYV=A=C=L=000004=doc=Sales Document Item Ca</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VALUE_CHAIN_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VCM_VALUE_CHAIN_TYPE=A=C=L=000030=doc=Value C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROCESS_ENABLED" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDSLS_VCM_PROC_ENABLED=A=C=L=000001=doc=Proces</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_DOC_VCM_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <AUART/>
+            <PSTYV/>
+            <VALUE_CHAIN_TYPE/>
+            <PROCESS_ENABLED/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_DOC_VCM_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_TVKWZ</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Plant assignment</PDESC>
+       <PINDEX>0005</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TVK</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0003</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TVKWZ_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TVKWZ_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TVKWZ_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TVKWZ_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TVKWZ_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_TVKWZ_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TVKWZ_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TVKWZ_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_TVKWZ_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="TVKWZ" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="TVKWZ">
+          <annotation>
+           <documentation>I==O==C=S=K==D=TVKWZ=A=u=L=000000=doc=Org.Unit: Allowed Plan</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VKORG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VKORG=A=C=L=000004=doc=Sales Organization</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VTWEG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VTWKU=A=C=L=000002=doc=Reference distrib.chan</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WERKS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=WERKS_EXT=A=C=L=000004=doc=Plant (Own or Exte</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TVKWZ_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <VKORG/>
+            <VTWEG/>
+            <WERKS/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TVKWZ_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_SDSLS_SFSVSITDET</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records, Table specific (SDSLS_SFSVSITDET)</PDESC>
+       <PINDEX>0003</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0004</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS_SFSVSITDET_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SFSVSITDET_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS_SFSVSITDET_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_SFSVSITDET_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_SFSVSITDET_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_SDSLS_SFSVSITDET_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_SFSVSITDET_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_SFSVSITDET_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_SDSLS_SFSVSITDET_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="SDSLS_SFSVSITDET" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="SDSLS_SFSVSITDET">
+          <annotation>
+           <documentation>I==O==C=S=K==D=SDSLS_SFSVSITDET=A=u=L=000000=doc=Determinati</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PSTYV" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=PSTYV=A=C=L=000004=doc=Sales Document Item Ca</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VKORG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VKORG=A=C=L=000004=doc=Sales Organization</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WERKS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=WERKS_EXT=A=C=L=000004=doc=Plant (Own or Exte</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCO1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=INCO1=A=C=L=000003=doc=Incoterms (Part 1)</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RELEV_SFS_VSIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDSLS_RELEV_SFS_VSIT=A=C=L=000001=doc=Relevanc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SFSVSITDET_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <PSTYV/>
+            <VKORG/>
+            <WERKS/>
+            <INCO1/>
+            <RELEV_SFS_VSIT/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SFSVSITDET_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_SDSLS_SW_OVRRDE</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records, Table specific (SDSLS_SW_OVRRDE)</PDESC>
+       <PINDEX>0004</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0005</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS_SW_OVRRDE_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SW_OVRRDE_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_MOCK_SDSLS_SW_OVRRDE_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_SW_OVRRDE_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_SW_OVRRDE_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_SDSLS_SW_OVRRDE_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_SW_OVRRDE_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_SDSLS_SW_OVRRDE_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_SDSLS_SW_OVRRDE_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="SDSLS_SW_OVRRDE" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="SDSLS_SW_OVRRDE">
+          <annotation>
+           <documentation>I==O==C=S=K==D=SDSLS_SW_OVRRDE=A=u=L=000000=doc=CAUTION: Avo</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SWITCH_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=SFW_SWITCHID=A=C=L=000030=doc=ID of Switch in</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SWITCH_POSITION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SFW_SWITCHPOS=A=C=L=000001=doc=Switch Position</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SW_OVRRDE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <SWITCH_ID/>
+            <SWITCH_POSITION/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SW_OVRRDE_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>SDSLS_DOC_VCM_DISALBED</VAR_NAME>
+       <VAR_DESC>Disable OR/TAN for IC and VSIT</VAR_DESC>
+       <VINDEX>0003</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SDSLS_DOC_VCM</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>AUART</FIELDNAME>
+                <FIELDVALUE>TA</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>PSTYV</FIELDNAME>
+                <FIELDVALUE>TAN</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VALUE_CHAIN_TYPE</FIELDNAME>
+                <FIELDVALUE>IC_SALES</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>PROCESS_ENABLED</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>AUART</FIELDNAME>
+                <FIELDVALUE>TA</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>PSTYV</FIELDNAME>
+                <FIELDVALUE>TAN</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VALUE_CHAIN_TYPE</FIELDNAME>
+                <FIELDVALUE>SFS_W_VSIT</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>PROCESS_ENABLED</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_DOC_VCM_DISALBED_02</VAR_NAME>
+       <VAR_DESC>Disable OR/TAN for IC and VSIT(new content)</VAR_DESC>
+       <VINDEX>0004</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>TABLE_SDSLS_DOC_VCM</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_DOC_VCM_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SDSLS_DOC_VCM</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <AUART>Z1</AUART>
+              <PSTYV>Z1</PSTYV>
+              <VALUE_CHAIN_TYPE>IC_SALES</VALUE_CHAIN_TYPE>
+              <PROCESS_ENABLED>X</PROCESS_ENABLED>
+             </item>
+             <item>
+              <AUART>Z1</AUART>
+              <PSTYV>Z2</PSTYV>
+              <VALUE_CHAIN_TYPE>SFS_W_VSIT</VALUE_CHAIN_TYPE>
+              <PROCESS_ENABLED>X</PROCESS_ENABLED>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_DOC_VCM_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_SFSVSITDET_01</VAR_NAME>
+       <VAR_DESC>Enable SFS VSIT for new Incoterms</VAR_DESC>
+       <VINDEX>0014</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>TABLE_SDSLS_SFSVSITDET</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SFSVSITDET_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SDSLS_SFSVSITDET</DBTABLE>
+            <MOCK_MODE>I</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PSTYV>TAN</PSTYV>
+              <VKORG>1710</VKORG>
+              <WERKS>1710</WERKS>
+              <INCO1>FCA</INCO1>
+              <RELEV_SFS_VSIT>A</RELEV_SFS_VSIT>
+             </item>
+             <item>
+              <PSTYV>TAN</PSTYV>
+              <VKORG>1710</VKORG>
+              <WERKS>1710</WERKS>
+              <INCO1>UN</INCO1>
+              <RELEV_SFS_VSIT>A</RELEV_SFS_VSIT>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SFSVSITDET_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_IC_PICK_CONFIRM_DISABLED</VAR_NAME>
+       <VAR_DESC>Disable Pick Confirmation</VAR_DESC>
+       <VINDEX>0011</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVST</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>VSTEL</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>KOQUI</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_IC_MVKE</VAR_NAME>
+       <VAR_DESC>Disable MVKE for SO4 Creation</VAR_DESC>
+       <VINDEX>0006</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>MVKE</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>MATNR</FIELDNAME>
+                <FIELDVALUE>SD01</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VTWEG</FIELDNAME>
+                <FIELDVALUE>10</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>VAVME</FIELDNAME>
+                <FIELDVALUE>X</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_IC_ATP_NO_STOCK</VAR_NAME>
+       <VAR_DESC>Delete MARD Stock</VAR_DESC>
+       <VINDEX>0005</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>MARD</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>MATNR</FIELDNAME>
+                <FIELDVALUE>SD08</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>WERKS</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>LGORT</FIELDNAME>
+                <FIELDVALUE>101A</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>LABST</FIELDNAME>
+                <FIELDVALUE>0</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_SFSVSITDET</VAR_NAME>
+       <VAR_DESC>Enable SFS VSIT for Incoterms</VAR_DESC>
+       <VINDEX>0013</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>TABLE_SDSLS_SFSVSITDET</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SFSVSITDET_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SDSLS_SFSVSITDET</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PSTYV>TAN</PSTYV>
+              <VKORG>1710</VKORG>
+              <WERKS>1710</WERKS>
+              <INCO1>DDP</INCO1>
+              <RELEV_SFS_VSIT>A</RELEV_SFS_VSIT>
+             </item>
+             <item>
+              <PSTYV>TAN</PSTYV>
+              <VKORG>1710</VKORG>
+              <WERKS>1710</WERKS>
+              <INCO1>DAP</INCO1>
+              <RELEV_SFS_VSIT>A</RELEV_SFS_VSIT>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SFSVSITDET_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_DOC_VCM_ABGRU_58</VAR_NAME>
+       <VAR_DESC>Configuration RejCode 58</VAR_DESC>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SDSLS_DOC_VCM</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>AUART</FIELDNAME>
+                <FIELDVALUE>CBIC</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>PSTYV</FIELDNAME>
+               </item>
+               <item>
+                <FIELDNAME>VALUE_CHAIN_TYPE</FIELDNAME>
+                <FIELDVALUE>IC_SALES</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>ABGRU</FIELDNAME>
+                <FIELDVALUE>58</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_OLD_ICO_3_4_BOM</VAR_NAME>
+       <VAR_DESC>3rd/4th BOM allowed in old ICO process</VAR_DESC>
+       <VINDEX>0012</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVKO</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_TVKWZ</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0005</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TVKWZ_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVKWZ</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <VKORG>1010</VKORG>
+              <VTWEG>10</VTWEG>
+              <WERKS>1710</WERKS>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TVKWZ_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_SDSLS_SW_OVRRDE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0004</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SW_OVRRDE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SDSLS_SW_OVRRDE</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <SWITCH_ID>SDSLS_INTERCOMPANY_3RD_4TH_BOM</SWITCH_ID>
+              <SWITCH_POSITION>T</SWITCH_POSITION>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_SDSLS_SW_OVRRDE_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_IC_NEW_VN_1A</VAR_NAME>
+       <VAR_DESC>Vendor Number Determination</VAR_DESC>
+       <VINDEX>0007</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVKO</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+           <item>
+            <DBTABLE>KNA1</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>LIFNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_IC_NEW_VN_2A</VAR_NAME>
+       <VAR_DESC>Vendor Number Determination</VAR_DESC>
+       <VINDEX>0008</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVKO</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+           <item>
+            <DBTABLE>KNA1</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>LIFNR</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+           <item>
+            <DBTABLE>KNVV</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0017411710</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VTWEG</FIELDNAME>
+                <FIELDVALUE>10</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>SPART</FIELDNAME>
+                <FIELDVALUE>00</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>EIKTO</FIELDNAME>
+                <FIELDVALUE>NEWFEATURE</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_IC_NEW_VN_3A</VAR_NAME>
+       <VAR_DESC>Vendor Number Determination</VAR_DESC>
+       <VINDEX>0009</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVKO</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+           <item>
+            <DBTABLE>KNA1</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>LIFNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+           <item>
+            <DBTABLE>KNVV</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0017411710</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VTWEG</FIELDNAME>
+                <FIELDVALUE>10</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>SPART</FIELDNAME>
+                <FIELDVALUE>00</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>EIKTO</FIELDNAME>
+                <FIELDVALUE>NEWFEATURE</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SDSLS_IC_NEW_VN_4A</VAR_NAME>
+       <VAR_DESC>Vendor Number Determination</VAR_DESC>
+       <VINDEX>0010</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVKO</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+           <item>
+            <DBTABLE>KNA1</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>LIFNR</FIELDNAME>
+                <FIELDVALUE>0010401010</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+           <item>
+            <DBTABLE>KNVV</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>KUNNR</FIELDNAME>
+                <FIELDVALUE>0017411710</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VKORG</FIELDNAME>
+                <FIELDVALUE>1010</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>VTWEG</FIELDNAME>
+                <FIELDVALUE>10</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>SPART</FIELDNAME>
+                <FIELDVALUE>00</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>EIKTO</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

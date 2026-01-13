@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SUSH" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <HEAD>
+    <NAME>PTF_INVOKE_ACTION</NAME>
+    <TYPE>RF</TYPE>
+    <DISPLAY_NAME>PTF_INVOKE_ACTION</DISPLAY_NAME>
+    <STEXT>Invoke PTF action</STEXT>
+   </HEAD>
+   <USOBX>
+    <USOBX>
+     <NAME>PTF_INVOKE_ACTION</NAME>
+     <TYPE>RF</TYPE>
+     <OBJECT>S_RFC</OBJECT>
+     <OKFLAG>X</OKFLAG>
+    </USOBX>
+   </USOBX>
+   <USOBX_EXT>
+    <item>
+     <OBJECT>S_RFC</OBJECT>
+     <TTEXT>Authorization Check for RFC Access</TTEXT>
+     <OCLSS>AAAB</OCLSS>
+     <OKFLAG>X</OKFLAG>
+     <PS_POSID>BC-MID-RFC</PS_POSID>
+     <CI_TEXT>Check</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>No</PR_TEXT>
+     <EXCEP>3</EXCEP>
+     <EXCEP_TX>Okay</EXCEP_TX>
+     <EXCEP_ICON>@08@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>/SCMB/LOCB</OBJECT>
+     <TTEXT>Location: Access based on Authorization Group</TTEXT>
+     <OCLSS>SCMB</OCLSS>
+     <PS_POSID>SCM-BAS-MD-LO</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>B_BUPA_GRP</OBJECT>
+     <TTEXT>Business Partner: Authorization Groups</TTEXT>
+     <OCLSS>AAAB</OCLSS>
+     <PS_POSID>BC-SRV-BP</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>B_BUPA_RLT</OBJECT>
+     <TTEXT>Business Partner: BP Roles</TTEXT>
+     <OCLSS>AAAB</OCLSS>
+     <PS_POSID>BC-SRV-BP</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>C_APO_LOC</OBJECT>
+     <TTEXT>APO Authorization Object: Master Data, Locations</TTEXT>
+     <OCLSS>APO</OCLSS>
+     <PS_POSID>SCM-BAS-MD</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>F_KNA1_BED</OBJECT>
+     <TTEXT>Customer: Account Authorization</TTEXT>
+     <OCLSS>FI</OCLSS>
+     <PS_POSID>FI-AR-AR</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>F_KNA1_GEN</OBJECT>
+     <TTEXT>Customer: Central Data</TTEXT>
+     <OCLSS>FI</OCLSS>
+     <PS_POSID>FI-AR-AR</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>F_KNA1_GRP</OBJECT>
+     <TTEXT>Customer: Account Group Authorization</TTEXT>
+     <OCLSS>FI</OCLSS>
+     <PS_POSID>FI-AR-AR</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>I_TCODE</OBJECT>
+     <TTEXT>PM: Transaction Code</TTEXT>
+     <OCLSS>PM</OCLSS>
+     <PS_POSID>PM</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>JIT_INB_CO</OBJECT>
+     <TTEXT>JIT Supply to Customer: Process inbound calls</TTEXT>
+     <OCLSS>LE_J</OCLSS>
+     <PS_POSID>LE-JIT-S2C</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>LMD_PRF</OBJECT>
+     <TTEXT>Last Mile Distribution Process Framework</TTEXT>
+     <OCLSS>LMD</OCLSS>
+     <PS_POSID>LE-LMD</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>LMD_RT</OBJECT>
+     <TTEXT>Last Mile Distribution: Route Data Maintenance and Execution</TTEXT>
+     <OCLSS>LMD</OCLSS>
+     <PS_POSID>LE-LMD</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>LMD_VLS</OBJECT>
+     <TTEXT>Last Mile Distribution: Visit List Schedule</TTEXT>
+     <OCLSS>LMD</OCLSS>
+     <PS_POSID>LE-LMD-VLS</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>M_MSEG_BWA</OBJECT>
+     <TTEXT>Goods Movements: Movement Type</TTEXT>
+     <OCLSS>MM_B</OCLSS>
+     <PS_POSID>MM-IM</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>M_MSEG_WWA</OBJECT>
+     <TTEXT>Goods Movements: Plant</TTEXT>
+     <OCLSS>MM_B</OCLSS>
+     <PS_POSID>MM-IM</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>V_KNA1_BRG</OBJECT>
+     <TTEXT>Customer: Account Authorization for Sales Areas</TTEXT>
+     <OCLSS>SD</OCLSS>
+     <PS_POSID>LO-MD-BP-CM</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>V_KNA1_VKO</OBJECT>
+     <TTEXT>Customer: Authorization for Sales Organizations</TTEXT>
+     <OCLSS>SD</OCLSS>
+     <PS_POSID>LO-MD-BP-CM</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>V_LIKP_VST</OBJECT>
+     <TTEXT>Delivery: Authorization for Shipping Points</TTEXT>
+     <OCLSS>LE_V</OCLSS>
+     <PS_POSID>LE-SHP-GF</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>V_VBAK_AAT</OBJECT>
+     <TTEXT>Sales Document: Authorization for Sales Document Types</TTEXT>
+     <OCLSS>SD</OCLSS>
+     <PS_POSID>SD-SLS</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>V_VBAK_CCD</OBJECT>
+     <TTEXT>Sales Document: Payment Cards</TTEXT>
+     <OCLSS>SD</OCLSS>
+     <PS_POSID>SD-BIL-IV-PC</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+    <item>
+     <OBJECT>V_VBAK_VKO</OBJECT>
+     <TTEXT>Sales Document: Authorization for Sales Areas</TTEXT>
+     <OCLSS>SD</OCLSS>
+     <PS_POSID>SD-SLS</PS_POSID>
+     <CI_TEXT>Not Maintained</CI_TEXT>
+     <CH_TEXT>Check</CH_TEXT>
+     <PR_TEXT>New/Not Maintained</PR_TEXT>
+     <EXCEP>1</EXCEP>
+     <EXCEP_TX>Error</EXCEP_TX>
+     <EXCEP_ICON>@0A@</EXCEP_ICON>
+    </item>
+   </USOBX_EXT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

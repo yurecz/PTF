@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+ <asx:values>
+  <DATA>
+   <NAME>Process Test Framework</NAME>
+   <MASTER_LANGUAGE>E</MASTER_LANGUAGE>
+   <STARTING_FOLDER>/src/</STARTING_FOLDER>
+   <FOLDER_LOGIC>PREFIX</FOLDER_LOGIC>
+   <REQUIREMENTS>
+    <item>
+     <COMPONENT>S4COREOP</COMPONENT>
+     <MIN_RELEASE>110</MIN_RELEASE>
+    </item>
+   </REQUIREMENTS>
+   <ORIGINAL_SYSTEM>ERX</ORIGINAL_SYSTEM>
+  </DATA>
+ </asx:values>
+</asx:abap>

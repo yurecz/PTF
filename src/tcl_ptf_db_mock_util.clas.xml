@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>TCL_PTF_DB_MOCK_UTIL</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Util class for DB mocking in PTF</DESCRIPT>
+    <CATEGORY>05</CATEGORY>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ENVIRONMENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Test environment interface for any DB artifact redirection</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_TDC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TDC Name</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_TDCV</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TDC Variant Name</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_KEY_FIELDS_OF_DBTABLE</CMPNAME>
+     <SCONAME>IV_TABLE_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table name, 16 characters</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_KEY_FIELDS_OF_DBTABLE</CMPNAME>
+     <SCONAME>RT_KEYFIELD</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of Field Names</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

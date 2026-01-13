@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_EBDR</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>External Billing Document Request Test Object</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>Reading data from SO:</ENTRY>
+     <LENGTH>42</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>Calling BDR create from data</ENTRY>
+     <LENGTH>56</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>003</KEY>
+     <ENTRY>Error during material conversion</ENTRY>
+     <LENGTH>64</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>004</KEY>
+     <ENTRY>Reference document number was empty</ENTRY>
+     <LENGTH>70</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>005</KEY>
+     <ENTRY>Event handling failed</ENTRY>
+     <LENGTH>62</LENGTH>
+    </item>
+   </TPOOL>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_COMPARE_BDR_DB</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare 2 created BDRs on DB level</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EBDR_ITEM_PPRCTR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Partner Profit Center of BDR Items</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EXPECTED_DOC_QUANTITY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check number of created documents</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_NEW_PROJECT_BILLING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check specific fields used in new project billing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_PROFITABI_SEGMENT_VALUES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check VBRP-PAOBJNR including ext. fields from market Segment</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_EBDR_ICO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create Intercompany Billing Request</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_PBDR_W_REF</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create ProjectBDR via so_service and project billing request</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_PDPR_W_REF</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create ProjectDownPaymentRequest via so_service</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_SBDR_WITH_ODATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create Subscription BDR</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>KEEPING_LOCK_TASK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Catch the separate locking task</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>LOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Lock the instance in a sep. task</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_EVENT_LINKAGES_CREATED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Single-Character Flag</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_LOCKED_ASYNC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Single-Character Flag</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_UNLOCKED_ASYNC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Single-Character Flag</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TY_GS_PTF_PAYMENTCARD_CHECK_TD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Proxy Table Type (generated)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>UNLOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Unlock the instance in the catched sep. task</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_EBDR_FACADE</CMPNAME>
+     <SCONAME>ET_BDR_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Billing Document Numbers</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_EBDR_FACADE</CMPNAME>
+     <SCONAME>IT_EBDR_REQUEST</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>External Billing Document Request - Request</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_EBDR_FACADE</CMPNAME>
+     <SCONAME>IT_EBDR_REQUEST_COND</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>External Billing Document Request - Request - Condition</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_COMPARE_BDR_DB</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_CONDITIONS_EXIST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_TEXT_EXISTED</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_TEXT_NONEXIST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_ORDER_NUMBER</CMPNAME>
+     <SCONAME>ET_ORDER_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Preceding document numbers</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>KEEPING_LOCK_TASK</CMPNAME>
+     <SCONAME>P_TASK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Character Field with Length 10</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MAP_ORDER_DATA</CMPNAME>
+     <SCONAME>ET_EBDR_REQUEST</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>External Billing Document Request - Request</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MAP_ORDER_DATA</CMPNAME>
+     <SCONAME>ET_EBDR_REQUEST_COND</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>External Billing Document Request - Request - Condition</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MAP_ORDER_DATA</CMPNAME>
+     <SCONAME>IT_ORDER_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Reference Document Numbers</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ODATA_FUNCTION_IMPORT</CMPNAME>
+     <SCONAME>ET_FUNCTION_RETURN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Messages from function import</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RESERVE_ACTION_1</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RESERVE_ACTION_2</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RESERVE_ACTION_3</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

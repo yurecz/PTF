@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>SD Sales Order EPPM Mocking of RAKey tables</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_MOCK_SD_SLS_EPPM</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-SLS</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>FIELD_DELTA_GENERIC</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Defines deviating fields of existing records. All tables.</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGES_PER_RECORD" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+           <element name="MOCKED_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="FIELDNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NAME_FELD=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIELDVALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CHANGES_PER_RECORD empty="true">
+           <item>
+            <KEY_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </KEY_FIELDS>
+            <MOCKED_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </MOCKED_FIELDS>
+           </item>
+          </CHANGES_PER_RECORD>
+         </item>
+        </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_FINS_TRR_DRAKEY</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>RAKey for Project</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SO=&gt;TY_GT_MOCK_FINS_</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SO=&gt;TY_GT_MOCK_FINS_TRR_DRAKEY_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRAKEY_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_MOCK_FINS_TRR_DRAKEY_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_FINS_TRR_DRAKEY_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_FINS_TRR_DRAKEY_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_FINS_TRR_DRAKEY_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_FINS_TRR_DRAKEY_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_FINS_TRR_DRAKEY_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_FINS_TRR_DRAKEY_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="FINS_TRR_DRAKEY" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="FINS_TRR_DRAKEY">
+          <annotation>
+           <documentation>I==O==C=S=K==D=FINS_TRR_DRAKEY=A=u=L=000000=doc=Derivation o</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BUKRS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=BUKRS=A=C=L=000004=doc=Company Code</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CTYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=PSTYV=A=C=L=000004=doc=Sales Document Item Ca</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATNR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MATNR=A=C=L=000040=doc=Material Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ABGSL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABGR_SCHL_CUST_TBRR=A=C=L=000006=doc=Recogniti</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BUNDLING" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FINS_TRR_BUNDLING_INDICATOR=A=C=L=000001=doc=B</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRAKEY_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <BUKRS/>
+            <CTYPE/>
+            <MATNR/>
+            <ABGSL/>
+            <BUNDLING/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRAKEY_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_FINS_TRR_DRK_SFS</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>RAKey for SFS</PDESC>
+       <PINDEX>0003</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SO=&gt;TY_GT_MOCK_FINS_</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0003</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SO=&gt;TY_GT_MOCK_FINS_TRR_DRK_SFS_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRK_SFS_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_MOCK_FINS_TRR_DRK_SFS_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_FINS_TRR_DRK_SFS_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_FINS_TRR_DRK_SFS_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_FINS_TRR_DRK_SFS_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_FINS_TRR_DRK_SFS_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_MOCK_FINS_TRR_DRK_SFS_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GS_MOCK_FINS_TRR_DRK_SFS_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="FINS_TRR_DRK_SFS" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="FINS_TRR_DRK_SFS">
+          <annotation>
+           <documentation>I==O==C=S=K==D=FINS_TRR_DRK_SFS=A=u=L=000000=doc=Derive Reco</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BUKRS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=BUKRS=A=C=L=000004=doc=Company Code</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CTYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=PSTYV=A=C=L=000004=doc=Sales Document Item Ca</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VCM_CHAIN_CATEGORY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=FINS_TRR_VCM_CHAIN_CATEGORY=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATNR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MATNR=A=C=L=000040=doc=Material Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ABGSL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABGR_SCHL_CUST_TBRR=A=C=L=000006=doc=Recogniti</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BUNDLING" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FINS_TRR_BUNDLING_INDICATOR=A=C=L=000001=doc=B</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRK_SFS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <BUKRS/>
+            <CTYPE/>
+            <VCM_CHAIN_CATEGORY/>
+            <MATNR/>
+            <ABGSL/>
+            <BUNDLING/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRK_SFS_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>SD_SLS_EPPM_1</VAR_NAME>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>TABLE_FINS_TRR_DRAKEY</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRAKEY_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>FINS_TRR_DRAKEY</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TAN</CTYPE>
+              <MATNR>TG0014</MATNR>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>CTAX</CTYPE>
+              <MATNR>*</MATNR>
+              <ABGSL>EPMFC</ABGSL>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>CBAO</CTYPE>
+              <MATNR>*</MATNR>
+              <ABGSL>EPMFC</ABGSL>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>CBAO</CTYPE>
+              <MATNR>TG0012</MATNR>
+              <ABGSL>EPMFC</ABGSL>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TAN</CTYPE>
+              <MATNR>TG0011</MATNR>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TAN</CTYPE>
+              <MATNR>TG0012</MATNR>
+              <ABGSL>EPMCC</ABGSL>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TAN</CTYPE>
+              <MATNR>*</MATNR>
+              <ABGSL>EPMFC</ABGSL>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRAKEY_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_FINS_TRR_DRK_SFS</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRK_SFS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>FINS_TRR_DRK_SFS</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>CBAO</CTYPE>
+              <MATNR>*</MATNR>
+              <ABGSL>SFSN</ABGSL>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TAN</CTYPE>
+              <MATNR>*</MATNR>
+              <ABGSL>SFSN</ABGSL>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TANN</CTYPE>
+              <MATNR>TG12</MATNR>
+              <ABGSL>SFS</ABGSL>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TAN</CTYPE>
+              <MATNR>TG11</MATNR>
+              <ABGSL>SFS</ABGSL>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TAN</CTYPE>
+              <MATNR>TG12</MATNR>
+              <ABGSL>SFSN</ABGSL>
+              <BUNDLING>X</BUNDLING>
+             </item>
+             <item>
+              <BUKRS>1010</BUKRS>
+              <CTYPE>TANN</CTYPE>
+              <MATNR>TG11</MATNR>
+              <ABGSL>SFS</ABGSL>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_MOCK_FINS_TRR_DRK_SFS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

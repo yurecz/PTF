@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_WRAPPER</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Wrapper to call PTF from eCATT</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>Unable to submit report.</ENTRY>
+     <LENGTH>46</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>Please specify a variant.</ENTRY>
+     <LENGTH>56</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>003</KEY>
+     <ENTRY>No class or program specified.</ENTRY>
+     <LENGTH>58</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>004</KEY>
+     <ENTRY>At least one unit test failed.</ENTRY>
+     <LENGTH>58</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>005</KEY>
+     <ENTRY>All unit tests ran successfully.</ENTRY>
+     <LENGTH>62</LENGTH>
+    </item>
+   </TPOOL>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>EXECUTE_PTF_AS_AUNIT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>obsolete</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>EXECUTE_REPORT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Main method for ECA integration into test systems</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>EXECUTE_VIA_UNIT_TEST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>obsolete</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_VARIANT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>get PTF Variant name</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GV_VARIANT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Variant Name in PTF</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>set PTF variant name</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_PTF_AS_AUNIT</CMPNAME>
+     <SCONAME>EV_FAILED_BO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Business Object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_PTF_AS_AUNIT</CMPNAME>
+     <SCONAME>EV_FAILED_BO_ACTION</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Action</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_PTF_AS_AUNIT</CMPNAME>
+     <SCONAME>IV_VARIANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Variant Name in PTF</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_REPORT</CMPNAME>
+     <SCONAME>EV_FAILED_BO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Business Object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_REPORT</CMPNAME>
+     <SCONAME>EV_FAILED_BO_ACTION</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Action</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_REPORT</CMPNAME>
+     <SCONAME>EV_LAST_CREATED_DOC</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>PTF BO key</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_REPORT</CMPNAME>
+     <SCONAME>EV_LAST_CREATED_VBELN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>PTF BO key (temp)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_REPORT</CMPNAME>
+     <SCONAME>IV_SELECTION_VARIANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Variant Name in PTF</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_VIA_UNIT_TEST</CMPNAME>
+     <SCONAME>EV_RCODE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return Code</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_VIA_UNIT_TEST</CMPNAME>
+     <SCONAME>IV_SELECTION_VARIANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Variant Name in PTF</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_VARIANT</CMPNAME>
+     <SCONAME>EV_VARIANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Variant Name in PTF</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_VARIANT</CMPNAME>
+     <SCONAME>IV_VARIANT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Variant Name in PTF</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

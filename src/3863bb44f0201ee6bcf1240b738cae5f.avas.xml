@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_AVAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AVAS>
+    <HEADER>
+     <GUID>3863BB44F0201EE6BCF1240B738CAE5F</GUID>
+     <ATTRIBUTE>ACCESSIBLE_ALTERNATIVE_OBJECT</ATTRIBUTE>
+     <OBJECT>
+      <TROBJTYPE>PROG</TROBJTYPE>
+      <SOBJ_NAME>SDBIL_TST_API_GNINVCR_EXT_STD</SOBJ_NAME>
+     </OBJECT>
+    </HEADER>
+   </AVAS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

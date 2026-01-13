@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>IF_PTF_RAP_VALIDATE_TDO</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>RAP Validate TDO Functions</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ACTION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if action is valid</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ASSOCIATION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if association is valid</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_DATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check data</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ENTITY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if entity is valid</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ENTITY_HAS_DRAFT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if entity has draft</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_FIELDS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if fields are valid</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_KEY_EMPTY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check empty key</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_KEY_FULLY_FILLED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check key is fully filled</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_OPERATION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if operation is valid</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_PARAMS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if parameters are valid</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MOVE_TEST_DATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Move test data</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_CONTROL_FLAG</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Set control flag</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ACTION</CMPNAME>
+     <SCONAME>IV_ACTION</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Action Name for ABAP Behavior</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ACTION</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ASSOCIATION</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ASSOCIATION</CMPNAME>
+     <SCONAME>IV_OP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Operation in Behavior Implementation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ASSOCIATION</CMPNAME>
+     <SCONAME>IV_P_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA</CMPNAME>
+     <SCONAME>IT_OPERATIONS_READ</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Dynamic READ: Bundle of Operation with Instances</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DATA</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ENTITY</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ENTITY</CMPNAME>
+     <SCONAME>IV_ROOT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ENTITY_HAS_DRAFT</CMPNAME>
+     <SCONAME>EV_DRAFT_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of draft table</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ENTITY_HAS_DRAFT</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_FIELDS</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_OPERATION</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_OPERATION</CMPNAME>
+     <SCONAME>IV_OP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Operation in Behavior Implementation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_PARAMS</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>MOVE_TEST_DATA</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_CONTROL_FLAG</CMPNAME>
+     <SCONAME>EV_FLAG_CONTROL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Flag in Change Operation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_CONTROL_FLAG</CMPNAME>
+     <SCONAME>IV_OP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Operation in Behavior Implementation</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

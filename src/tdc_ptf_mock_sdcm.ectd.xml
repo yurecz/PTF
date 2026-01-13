@@ -1,0 +1,3850 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>Table mock data for SDCM in PTF</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_MOCK_SDCM</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-BF-CM</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE>X</API_MODE>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H>X</TWB_USE_H>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>FIELD_DELTA_GENERIC</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Defines deviating fields of existing records. All tables.</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGES_PER_RECORD" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+           <element name="MOCKED_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="FIELDNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NAME_FELD=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIELDVALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CHANGES_PER_RECORD empty="true">
+           <item>
+            <KEY_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </KEY_FIELDS>
+            <MOCKED_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </MOCKED_FIELDS>
+           </item>
+          </CHANGES_PER_RECORD>
+         </item>
+        </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_T691F</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Assign automatic credit control</PDESC>
+       <PINDEX>0008</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_T69</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_T691F_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_T691F_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_T691F_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_T691F_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_T691F_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_T691F_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_T691F_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_T691F_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="T691F" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="T691F">
+          <annotation>
+           <documentation>I==O==C=S=K==D=T691F=A=u=L=000000=doc=Control of Automatic C</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KKBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=KKBER=A=C=L=000004=doc=Credit control area</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CTLPC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CTLPC_CM=A=C=L=000003=doc=Credit Management:</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CRMGR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CRMGR_CM=A=C=L=000002=doc=Document credit gro</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CRDBI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CRDBI_CM=A=C=L=000001=doc=Credit check of supp</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CRPRC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CRPRC_CM=A=N=L=000003=doc=Credit check: Deviat</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CRCRE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CRCRE_CM=A=C=L=000001=doc=Credit check: Accept</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DKLIM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DKLIM_CM=A=P=L=000015=doc=Credit limit (defaul</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SEAAF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SEAAF_CM=A=N=L=000003=doc=Seasonal factor in %</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TAGEF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAGEF_CM=A=N=L=000003=doc=Credit check: Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAA_CM=A=C=L=000001=doc=Credit check: Static</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STVAW" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STVAW_CM=A=C=L=000001=doc=Credit check: Taking</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STVLW" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STVLW_CM=A=C=L=000001=doc=Credit check: Take i</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAB_CM=A=C=L=000001=doc=Credit check: dynami</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WOVLW" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STVLW_CM=A=C=L=000001=doc=Credit check: Take i</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WSWIN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WSWIN_CM=A=N=L=000003=doc=Dynamic credit check</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WSREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WLSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAC_CM=A=C=L=000001=doc=Credit check against</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MAVAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MAVAL_CM=A=P=L=000015=doc=Maximum document val</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MAREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MASET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAD_CM=A=C=L=000001=doc=Credit check against</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FSREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FSSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAE_CM=A=C=L=000001=doc=Credit check against</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RVTOL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RVTOL_CM=A=N=L=000003=doc=Number of days that</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RSREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RESET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAF_CM=A=C=L=000001=doc=Credit check against</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PDMAX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PDMAX_CM=A=N=L=000003=doc=Maximum percentage o</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PDTOL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PDTOL_CM=A=N=L=000003=doc=Number of days for c</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PDREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PDSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAG_CM=A=C=L=000001=doc=Credit check against</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OITOL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=OITOL_CM=A=N=L=000003=doc=Number of days the o</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OIREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OISET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAH_CM=A=C=L=000001=doc=Credit check against</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DUNNG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DUNNG_CM=A=N=L=000001=doc=Highest dunning leve</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DNREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DNSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAI_CM=A=C=L=000001=doc=Credit check against</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SPVAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SPVAL_CM=A=P=L=000015=doc=Allowed value for sp</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SPREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SPSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAJ" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAJ_CM=A=C=L=000001=doc=Credit check of rese</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PJREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PJSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAK_CM=A=C=L=000001=doc=Credit check of rese</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PKREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PKSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAL_CM=A=C=L=000001=doc=Credit check of rese</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USRPR0" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPA0_CM=A=C=L=000001=doc=Credit check for cus</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USR0REA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USR0SET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USRPR1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPA1_CM=A=C=L=000001=doc=Credit check for cus</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USR1REA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USR1SET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USRPR2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPA2_CM=A=C=L=000001=doc=Credit check for cus</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USR2REA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USR2SET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMPAM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMPAM_CM=A=C=L=000001=doc=Credit Check SAP Cre</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PMREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STREA_CM=A=C=L=000001=doc=Credit check: System</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PMSET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STSET_CM=A=C=L=000001=doc=Credit check: Set cr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CECKI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CECKI_CM=A=C=L=000001=doc=Credit checks during</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REGUL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=REGUL_CM=A=C=L=000001=doc=FI checks only again</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GRPNO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GRPNO=A=N=L=000003=doc=Number of the Routine U</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DVSEA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DVSEA=A=D=L=000008=doc=Beginning of validity p</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DBSEA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DBSEA=A=D=L=000008=doc=End of validity period</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ERLTA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERLTA=A=N=L=000002=doc=Permitted Ageing in Day</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ERLST" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERLST=A=N=L=000002=doc=Permitted Ageing in Hou</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SEAAFPM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SEAAFPM_CM=A=C=L=000001=doc=Minus sign for % r</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <KKBER/>
+            <CTLPC/>
+            <CRMGR/>
+            <CRDBI/>
+            <CRPRC/>
+            <CRCRE/>
+            <DKLIM/>
+            <SEAAF/>
+            <TAGEF/>
+            <CMPAA/>
+            <STVAW/>
+            <STVLW/>
+            <STREA/>
+            <STSET/>
+            <CMPAB/>
+            <WOVLW/>
+            <WSWIN/>
+            <WSREA/>
+            <WLSET/>
+            <CMPAC/>
+            <MAVAL/>
+            <MAREA/>
+            <MASET/>
+            <CMPAD/>
+            <FSREA/>
+            <FSSET/>
+            <CMPAE/>
+            <RVTOL/>
+            <RSREA/>
+            <RESET/>
+            <CMPAF/>
+            <PDMAX/>
+            <PDTOL/>
+            <PDREA/>
+            <PDSET/>
+            <CMPAG/>
+            <OITOL/>
+            <OIREA/>
+            <OISET/>
+            <CMPAH/>
+            <DUNNG/>
+            <DNREA/>
+            <DNSET/>
+            <CMPAI/>
+            <SPVAL/>
+            <SPREA/>
+            <SPSET/>
+            <CMPAJ/>
+            <PJREA/>
+            <PJSET/>
+            <CMPAK/>
+            <PKREA/>
+            <PKSET/>
+            <CMPAL/>
+            <PLREA/>
+            <PLSET/>
+            <USRPR0/>
+            <USR0REA/>
+            <USR0SET/>
+            <USRPR1/>
+            <USR1REA/>
+            <USR1SET/>
+            <USRPR2/>
+            <USR2REA/>
+            <USR2SET/>
+            <CMPAM/>
+            <PMREA/>
+            <PMSET/>
+            <CECKI/>
+            <REGUL/>
+            <GRPNO/>
+            <DVSEA/>
+            <DBSEA/>
+            <ERLTA/>
+            <ERLST/>
+            <SEAAFPM/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_UKM_IS_ACTIVE</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (UKM_IS_ACTIVE)</PDESC>
+       <PINDEX>0011</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_UKM</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0003</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_UKM_IS_ACTIVE_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_UKM_IS_ACTIVE_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_UKM_IS_ACTIVE_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_UKM_IS_ACTIVE_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_UKM_IS_ACTIVE_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_UKM_IS_ACTIVE_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_UKM_IS_ACTIVE_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_UKM_IS_ACTIVE_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="UKM_IS_ACTIVE" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="UKM_IS_ACTIVE">
+          <annotation>
+           <documentation>I==O==C=S=K==D=UKM_IS_ACTIVE=A=u=L=000000=doc=Activation or</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UKM_IS_INACTIVE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UKM_IS_INACTIVE=A=C=L=000001=doc=Deactivation</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <UKM_IS_INACTIVE/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_TPAER</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Parameter Determination</PDESC>
+       <PINDEX>0009</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TPA</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0004</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TPAER</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TPAER">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TPAER=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TPAER" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TPAER">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_TPAER=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TPAER_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TPAER_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_TPAER-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="TPAER" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="TPAER">
+          <annotation>
+           <documentation>I==O==C=S=K==D=TPAER=A=u=L=000000=doc=Business Partner: Func</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARGR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=PARGR=A=C=L=000004=doc=Partner Determination</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARVW" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=PARVW=A=C=L=000002=doc=Partner Function</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PAPFL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PAPFL=A=C=L=000001=doc=Partner is mandatory</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AENDB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AENDB=A=C=L=000001=doc=After entry,partner can</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PAREI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PAREI=A=C=L=000001=doc=Partner must be unique</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARVW_HERK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARVW_HERK=A=C=L=000002=doc=Source partner fun</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SORTF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SORT_TPAER=A=N=L=000002=doc=Sequence in which</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HERTAB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=HERTAB=A=C=L=000001=doc=Origin table</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PDTEN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PDTEN=A=C=L=000001=doc=Partner determination w</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HIGHL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=HIGHL=A=C=L=000001=doc=Partner determination:</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALE=A=C=L=000001=doc=Maintain appointments in</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRINT_REL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRINT_REL=A=C=L=000001=doc=Indicates that the</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRINT_LABEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRINT_LABEL=A=C=L=000020=doc=Label used to ide</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TIMESTAMP=A=P=L=000015=doc=UTC Time Stamp in S</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="0"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDR_OPERATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_TPAER_OPERATION=A=C=L=000006=doc=Address De</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ALL_ADDR_ALLOWED" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_TPAER_ALL_ADDR=A=C=L=000001=doc=All Address</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TPAER xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <PARGR/>
+            <PARVW/>
+            <PAPFL/>
+            <AENDB/>
+            <PAREI/>
+            <PARVW_HERK/>
+            <SORTF/>
+            <HERTAB/>
+            <PDTEN/>
+            <HIGHL/>
+            <KALE/>
+            <PRINT_REL/>
+            <PRINT_LABEL/>
+            <CHANGED_AT/>
+            <ADDR_OPERATION/>
+            <ALL_ADDR_ALLOWED/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TPAER>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_TVFK</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific. (TVFK)</PDESC>
+       <PINDEX>0010</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TVF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0005</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TVFK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TVFK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_TVFK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TVFK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TVFK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_TVFK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TVFK_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_TVFK_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_TVFK_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="TVFK" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="TVFK">
+          <annotation>
+           <documentation>I==O==C=S=K==D=TVFK=A=u=L=000000=doc=Billing: Document Types</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FKART" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=FKART=A=C=L=000004=doc=Billing Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KOPGR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KOPGR=A=C=L=000004=doc=Screen sequence group i</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NUMKI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NUMKI=A=C=L=000002=doc=Number Range of Interna</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NUMKE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NUMKE=A=C=L=000002=doc=Number Range of Externa</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCPO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCPO=A=N=L=000006=doc=Item Number Increment o</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KUNN0" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BOFKT=A=C=L=000001=doc=Billing type for rebate</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UEVOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UEVOR_VF=A=C=L=000004=doc=F-code default for o</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UMFNG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMFNG=A=C=L=000020=doc=Display Range</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RFBFK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RFBFK=A=C=L=000001=doc=Blocked for transfer to</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TRVOG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TRVOG=A=C=L=000001=doc=Transaction Group</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TXN08" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TXN08=A=C=L=000008=doc=Number of the Standard</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VBTYP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBTYPL=A=C=L=000004=doc=SD Document Category</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ERNAM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERNAM=A=C=L=000012=doc=Name of Person Who Crea</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARGK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARGK=A=C=L=000004=doc=Partner determination p</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARGP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARGP=A=C=L=000004=doc=Partner determination p</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALSMC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALSMC=A=C=L=000006=doc=Account Determination</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FKARTS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKARTS=A=C=L=000004=doc=Billing Type for Cance</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TXTGR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TXTGR=A=C=L=000002=doc=Text Determination Proc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KAPPL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NA_KAPPL=A=C=L=000002=doc=Application for outp</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALSM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALSMB=A=C=L=000006=doc=Output determination p</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KSCHL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NA_KSCHL=A=C=L=000004=doc=Output Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STAFO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STAFO=A=C=L=000006=doc=Update Group for statis</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KVSLV" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KVSLV=A=C=L=000003=doc=Account key for cash al</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALVG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALVG=A=C=L=000002=doc=Document Classification</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TXTGR_P" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TXTGR_P=A=C=L=000002=doc=Text determination pr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STATI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STATI=A=C=L=000001=doc=Update statistics</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALSMBP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALSMBP=A=C=L=000006=doc=Procedure for item ou</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BORVF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BORVF=A=C=L=000001=doc=Billing Document is Rel</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FKART_RL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKART_RL=A=C=L=000004=doc=Invoice List Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RELEP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RELEP=A=C=L=000001=doc=Forward invoice lists w</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TXTLF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TXTLF=A=C=L=000001=doc=Copy texts from deliver</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HITYP_PR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=HITYP_PR=A=C=L=000001=doc=Hierarchy type for p</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FKART_AB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKART_AB=A=C=L=000004=doc=Accrual Billing Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GRBED_S" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GRBED=A=N=L=000003=doc=Copying Requirements</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDNR_FI_S" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ORDNR_FI=A=C=L=000001=doc=Assignment number FI</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="XBLNR_FI_S" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XBLNR_FI=A=C=L=000001=doc=FI reference number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="J_1BNFREL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=J_1BNFREL=A=C=L=000001=doc=Nota Fiscal Relevan</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="J_1BMAINPA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=J_1BMAINPA=A=C=L=000002=doc=Main partner funct</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="J_1BTDIDH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=J_1BTDIDH=A=C=L=000004=doc=Text Id. Nota Fisca</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="J_1BTDCOH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=J_1BTDCOH=A=N=L=000001=doc=Number of text line</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="J_1BTDIDL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=J_1BTDIDL=A=C=L=000004=doc=Text Id Nota Fiscal</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="J_1BTDCOL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=J_1BTDCOL=A=N=L=000001=doc=Counter Number of t</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FKTYP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKTYP_2=A=C=L=000001=doc=Billing Category</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="XNEGP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XNEGP_VF=A=C=L=000001=doc=Negative posting</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BLART" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BLART=A=C=L=000002=doc=Document Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="XFILKD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XFILKD_VF=A=C=L=000001=doc=Branch/head office</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="XVALGS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XVALGS=A=C=L=000001=doc=Correction Document wi</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALSMCA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALSMCA=A=C=L=000006=doc=Pricing procedure for</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALSMCB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALSMCB=A=C=L=000006=doc=Pricing procedure for</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALSMCC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALSMCC=A=C=L=000006=doc=Pricing procedure for</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KALSMCD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALSMCD=A=C=L=000006=doc=Pricing procedure for</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="XKOIV" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XKOIV=A=C=L=000001=doc=Account assignment offs</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="J_1AINVREF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=J_1AINVREF=A=C=L=000001=doc=Invoice reference</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="J_1ACPDEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=J_1ACPDEL=A=C=L=000001=doc=Indicator: Copy bra</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UVEIB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UVEIB=A=C=L=000003=doc=Doc. pricing procedure</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FKART_MEV_RESET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKART_MEV_RESET=A=C=L=000004=doc=Billing Docum</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VBTYP_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDD_VBTYP_EXT_OBSOLETE=A=C=L=000004=doc=Extens</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FLEXNUM_ROUTINE_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDBIL_FLEXNUM_ROUTINE_NO=A=N=L=000007=doc=Rout</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FLEXCANC_ROUTINE_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDBIL_FLEXCANC_ROUTINE_NO=A=N=L=000007=doc=Rou</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TVFK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <FKART/>
+            <KOPGR/>
+            <NUMKI/>
+            <NUMKE/>
+            <INCPO/>
+            <KUNN0/>
+            <UEVOR/>
+            <UMFNG/>
+            <RFBFK/>
+            <TRVOG/>
+            <TXN08/>
+            <VBTYP/>
+            <ERNAM/>
+            <PARGK/>
+            <PARGP/>
+            <KALSMC/>
+            <FKARTS/>
+            <TXTGR/>
+            <KAPPL/>
+            <KALSM/>
+            <KSCHL/>
+            <STAFO/>
+            <KVSLV/>
+            <KALVG/>
+            <TXTGR_P/>
+            <STATI/>
+            <KALSMBP/>
+            <BORVF/>
+            <FKART_RL/>
+            <RELEP/>
+            <TXTLF/>
+            <HITYP_PR/>
+            <FKART_AB/>
+            <GRBED_S/>
+            <ORDNR_FI_S/>
+            <XBLNR_FI_S/>
+            <J_1BNFREL/>
+            <J_1BMAINPA/>
+            <J_1BTDIDH/>
+            <J_1BTDCOH/>
+            <J_1BTDIDL/>
+            <J_1BTDCOL/>
+            <FKTYP/>
+            <XNEGP/>
+            <BLART/>
+            <XFILKD/>
+            <XVALGS/>
+            <KALSMCA/>
+            <KALSMCB/>
+            <KALSMCC/>
+            <KALSMCD/>
+            <XKOIV/>
+            <J_1AINVREF/>
+            <J_1ACPDEL/>
+            <UVEIB/>
+            <FKART_MEV_RESET/>
+            <VBTYP_EXT/>
+            <FLEXNUM_ROUTINE_NO/>
+            <FLEXCANC_ROUTINE_NO/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_TVFK_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_FORMULAPAR</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_formulapar)</PDESC>
+       <PINDEX>0005</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0006</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULAPAR_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULAPAR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULAPAR_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULAPAR_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULAPAR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULAPAR_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULAPAR_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULAPAR_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_FORMULAPAR" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_FORMULAPAR">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_FORMULAPAR=A=u=L=000000=doc=CPF Formula</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARAMETER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_PARAMETER_NAME=A=C=L=000030=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBPARAMETER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_SUBPARAMETER=A=C=L=000020=doc=Subparamete</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SCALE_ENABLED" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_SCALE_ENABLED=A=C=L=000001=doc=CPF Scale E</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="IS_RESULT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_IS_RESULT=A=C=L=000001=doc=Result Paramete</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <PARAMETER_NAME/>
+            <SUBPARAMETER/>
+            <SCALE_ENABLED/>
+            <IS_RESULT/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_FORMULA</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_formula)</PDESC>
+       <PINDEX>0004</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0007</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULA_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULA_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULA_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULA_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULA_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULA_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULA_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULA_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_FORMULA" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_FORMULA">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_FORMULA=A=u=L=000000=doc=CPF Formula</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ACTIVE_FORMULA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_IS_FORMULA_ACTIVE=A=C=L=000001=doc=Indicat</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <ACTIVE_FORMULA/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_DECT_ROWS</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_dect_rows)</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0008</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_DECT_ROWS_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_DECT_ROWS_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_ROWS_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_ROWS_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_DECT_ROWS_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_ROWS_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_ROWS_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_DECT_ROWS_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_DECT_ROWS" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_DECT_ROWS">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_DECT_ROWS=A=u=L=000000=doc=CPF determina</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE_TASK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE_TASK=A=C=L=000020=doc=Usage Task</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROW_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_DT_ROWNUMBER=A=N=L=000010=doc=CPF Decisio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARAMETER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_PARAMETER_NAME=A=C=L=000030=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBPARAMETER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_SUBPARAMETER=A=C=L=000020=doc=Subparamete</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OPERATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_DECT_OPERATOR=A=C=L=000002=doc=Operator fo</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VALUE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_PARAMETER_VALUE=A=C=L=000050=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="50"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_UNIT=A=C=L=000005=doc=UoM</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <CPF_USAGE_TASK/>
+            <ROW_NUMBER/>
+            <PARAMETER_NAME/>
+            <SUBPARAMETER/>
+            <OPERATOR/>
+            <VALUE/>
+            <UNIT/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_VOFM_RTN_ASSG</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (vofmc_rtn_assg)</PDESC>
+       <PINDEX>0012</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0009</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOFM_RTN_ASSG_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOFM_RTN_ASSG_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_ASSG_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_ASSG_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_VOFM_RTN_ASSG_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_ASSG_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_ASSG_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_VOFM_RTN_ASSG_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="VOFMC_RTN_ASSG" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="VOFMC_RTN_ASSG">
+          <annotation>
+           <documentation>I==O==C=S=K==D=VOFMC_RTN_ASSG=A=u=L=000000=doc=Mapping Table</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROCESS_ENHANCEMENT_OPTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_PROC_ENH_OPTION=A=C=L=000030=doc=Process</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROUTINE_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_ROUTINE_NUMBER=A=N=L=000007=doc=Routine</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROCESS_ENHANCEMENT_TASK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_PROC_ENH_OPTION_TASK=A=C=L=000030=doc=Pr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="IMPLEMENTATION_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_IMPL_TYPE=A=C=L=000001=doc=Implementatio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENHANCEMENT_SEQUENCE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_ENH_SEQUENCE=A=N=L=000007=doc=Processing</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENHANCEMENT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOFM_ENH_ID=A=C=L=000030=doc=Enhancement Ident</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <PROCESS_ENHANCEMENT_OPTION/>
+            <ROUTINE_NUMBER/>
+            <PROCESS_ENHANCEMENT_TASK/>
+            <IMPLEMENTATION_TYPE/>
+            <ENHANCEMENT_SEQUENCE/>
+            <ENHANCEMENT_ID/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_DECT_SETUP</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_dect_setup)</PDESC>
+       <PINDEX>0003</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0010</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_DECT_SETUP_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_DECT_SETUP_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_SETUP_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_SETUP_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_DECT_SETUP_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_SETUP_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_SETUP_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_DECT_SETUP_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_DECT_SETUP" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_DECT_SETUP">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_DECT_SETUP=A=u=L=000000=doc=CPF Setup fo</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE_TASK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE_TASK=A=C=L=000020=doc=Usage Task</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARAMETER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_PARAMETER_NAME=A=C=L=000030=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBPARAMETER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_SUBPARAMETER=A=C=L=000020=doc=Subparamete</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRIORITY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_DT_PRIORITY=A=N=L=000002=doc=CPF Decision</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MANDATORY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_IS_MANDATORY=A=C=L=000001=doc=Specifies wh</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <CPF_USAGE_TASK/>
+            <PARAMETER_NAME/>
+            <SUBPARAMETER/>
+            <PRIORITY/>
+            <MANDATORY/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_PARAMCAT</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_paramcat)</PDESC>
+       <PINDEX>0007</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0011</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_PARAMCAT_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_PARAMCAT_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_PARAMCAT_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_PARAMCAT_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_PARAMCAT_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_PARAMCAT_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_PARAMCAT_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_PARAMCAT_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_PARAMCAT" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_PARAMCAT">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_PARAMCAT=A=u=L=000000=doc=CPF Parameter</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARAMETER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_PARAMETER_NAME=A=C=L=000030=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DATA_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_REF_DATA_TYPE_P=A=C=L=000030=doc=Reference</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DATA_CATEGORY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_DATA_CATEGORY=A=C=L=000001=doc=Data Type C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_DS_ROUTINE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_DS_ROUTINE=A=N=L=000007=doc=Data Source Ro</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <PARAMETER_NAME/>
+            <REF_DATA_TYPE/>
+            <DATA_CATEGORY/>
+            <CPF_DS_ROUTINE/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_FORMULATASK</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_formulatask)</PDESC>
+       <PINDEX>0006</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0012</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULATASK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULATASK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULATASK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULATASK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULATASK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULATASK_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULATASK_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULATASK_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_FORMULATASK" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_FORMULATASK">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_FORMULATASK=A=u=L=000000=doc=CPF Usage T</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE_TASK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE_TASK=A=C=L=000020=doc=Usage Task</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_ROUTINE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_ROUTINE=A=N=L=000007=doc=CPF Routine</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BRFPLUS_FUNCTION_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_BRFPLUS_FUNCTION_ID=A=C=L=000032=doc=BRFpl</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <CPF_USAGE_TASK/>
+            <CPF_ROUTINE/>
+            <BRFPLUS_FUNCTION_ID/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>SD_CM_CHECK_DELIVERY_C</VAR_NAME>
+       <VAR_DESC>Credit Management Check enable on Delivery,RISK CLASS C/D</VAR_DESC>
+       <VINDEX>0004</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVLK</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>LFART</FIELDNAME>
+                <FIELDVALUE>LF</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>CMGRW</FIELDNAME>
+                <FIELDVALUE>03</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>CMGRL</FIELDNAME>
+                <FIELDVALUE>02</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_T691F</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0008</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>T691F</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>D</CTLPC>
+              <CRMGR>02</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>C</CTLPC>
+              <CRMGR>02</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>D</CTLPC>
+              <CRMGR>03</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>D</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>C</CTLPC>
+              <CRMGR>03</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>D</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_UKM_IS_ACTIVE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>UKM_IS_ACTIVE</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SD_CM_CHECK_ORDER_C</VAR_NAME>
+       <VAR_DESC>Credit Management Check enable on Order,RISK CLASS C/D</VAR_DESC>
+       <VINDEX>0005</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVAK</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>AUART</FIELDNAME>
+                <FIELDVALUE>TA</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>KLIMP</FIELDNAME>
+                <FIELDVALUE>D</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>CMGRA</FIELDNAME>
+                <FIELDVALUE>01</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_T691F</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0008</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>T691F</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>A</CTLPC>
+              <CRMGR>01</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>B</CTLPC>
+              <CRMGR>01</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>C</CTLPC>
+              <CRMGR>01</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>D</CTLPC>
+              <CRMGR>05</CRMGR>
+              <CRPRC>300</CRPRC>
+              <TAGEF>10</TAGEF>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>E</CTLPC>
+              <CRMGR>05</CRMGR>
+              <CRPRC>300</CRPRC>
+              <TAGEF>10</TAGEF>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_UKM_IS_ACTIVE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>UKM_IS_ACTIVE</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>CREDIT_MGT_ON</VAR_NAME>
+       <VAR_DESC>Activate UKM/CreditMgt</VAR_DESC>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>TABLE_UKM_IS_ACTIVE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>UKM_IS_ACTIVE</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>CREDIT_MGT_OFF</VAR_NAME>
+       <VAR_DESC>Deactivate UKM/CreditMgt</VAR_DESC>
+       <VINDEX>0001</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>TABLE_UKM_IS_ACTIVE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>UKM_IS_ACTIVE</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <UKM_IS_INACTIVE>X</UKM_IS_INACTIVE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SD_NOT_RELEVANT_OR</VAR_NAME>
+       <VAR_DESC>Credit Management Check not enable on Order,RISK CLASS C/D</VAR_DESC>
+       <VINDEX>0006</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVAK</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>AUART</FIELDNAME>
+                <FIELDVALUE>TA</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>CMGRA</FIELDNAME>
+               </item>
+               <item>
+                <FIELDNAME>KLIMP</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+           <item>
+            <DBTABLE>TVLK</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>LFART</FIELDNAME>
+                <FIELDVALUE>LF</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>CMGRW</FIELDNAME>
+                <FIELDVALUE>03</FIELDVALUE>
+               </item>
+               <item>
+                <FIELDNAME>CMGRL</FIELDNAME>
+                <FIELDVALUE>02</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_T691F</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0008</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>T691F</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>A</CTLPC>
+              <CRMGR>01</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>B</CTLPC>
+              <CRMGR>01</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>C</CTLPC>
+              <CRMGR>01</CRMGR>
+              <CRPRC>300</CRPRC>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>D</CTLPC>
+              <CRMGR>01</CRMGR>
+              <CRPRC>300</CRPRC>
+              <TAGEF>10</TAGEF>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+             <item>
+              <KKBER>1000</KKBER>
+              <CTLPC>E</CTLPC>
+              <CRMGR>01</CRMGR>
+              <CRPRC>300</CRPRC>
+              <TAGEF>10</TAGEF>
+              <CMPAM>X</CMPAM>
+              <PMREA>A</PMREA>
+              <PMSET>X</PMSET>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_T691F_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_UKM_IS_ACTIVE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>UKM_IS_ACTIVE</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_UKM_IS_ACTIVE_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

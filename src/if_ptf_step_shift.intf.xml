@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>IF_PTF_STEP_SHIFT</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>PTF Step Shift</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>SHIFT_STEP_IDS_IN_SCRIPT</CMPNAME>
+     <SCONAME>IV_ROW_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>4 Byte Signed Integer</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SHIFT_STEP_IDS_IN_TABLE</CMPNAME>
+     <SCONAME>IV_E_UCOMM</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP System Field: PAI-Triggering Function Code</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SHIFT_STEP_IDS_IN_TABLE</CMPNAME>
+     <SCONAME>IV_ROW_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>4 Byte Signed Integer</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

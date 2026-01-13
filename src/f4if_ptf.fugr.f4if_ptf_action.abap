@@ -1,0 +1,129 @@
+FUNCTION f4if_ptf_action.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"  TABLES
+*"      SHLP_TAB TYPE  SHLP_DESCT
+*"      RECORD_TAB STRUCTURE  SEAHLPRES
+*"  CHANGING
+*"     VALUE(SHLP) TYPE  SHLP_DESCR
+*"     VALUE(CALLCONTROL) LIKE  DDSHF4CTRL STRUCTURE  DDSHF4CTRL
+*"----------------------------------------------------------------------
+* EXIT immediately, if you do not want to handle this step
+  IF callcontrol-step <> 'SELONE' AND
+     callcontrol-step <> 'SELECT' AND
+     " AND SO ON
+     callcontrol-step <> 'DISP'.
+    EXIT.
+  ENDIF.
+
+*"----------------------------------------------------------------------
+* STEP SELONE  (Select one of the elementary searchhelps)
+*"----------------------------------------------------------------------
+* This step is only called for collective searchhelps. It may be used
+* to reduce the amount of elementary searchhelps given in SHLP_TAB.
+* The compound searchhelp is given in SHLP.
+* If you do not change CALLCONTROL-STEP, the next step is the
+* dialog, to select one of the elementary searchhelps.
+* If you want to skip this dialog, you have to return the selected
+* elementary searchhelp in SHLP and to change CALLCONTROL-STEP to
+* either to 'PRESEL' or to 'SELECT'.
+  IF callcontrol-step = 'SELONE'.
+    IF line_exists( shlp-interface[ shlpfield = 'PTF_BO' ] ).
+      IF shlp-interface[ shlpfield = 'PTF_BO' ]-value IS NOT INITIAL.
+        DATA(lo_ptf_rap_metadata) = NEW cl_ptf_rap_metadata( ).
+        DATA(lv_is_rap_bo) = lo_ptf_rap_metadata->check_rap_bo( iv_bus_obj = CONV #( shlp-interface[ shlpfield = 'PTF_BO' ]-value ) ).
+        CASE lv_is_rap_bo.
+          WHEN abap_off.
+            DELETE shlp_tab[] WHERE shlpname = 'SHPTF_RAP_ACT'.
+
+          WHEN abap_on.
+            DELETE shlp_tab[] WHERE shlpname = 'SHPTF_EXECUTE_ACT'.
+            DELETE shlp_tab[] WHERE shlpname = 'SHPTF_CHECK_ACT'.
+
+        ENDCASE.
+
+      ENDIF.
+
+    ENDIF.
+
+*   PERFORM SELONE .........
+    EXIT.
+  ENDIF.
+
+*"----------------------------------------------------------------------
+* STEP PRESEL  (Enter selection conditions)
+*"----------------------------------------------------------------------
+* This step allows you, to influence the selection conditions either
+* before they are displayed or in order to skip the dialog completely.
+* If you want to skip the dialog, you should change CALLCONTROL-STEP
+* to 'SELECT'.
+* Normaly only SHLP-SELOPT should be changed in this step.
+  IF callcontrol-step = 'PRESEL'.
+*   PERFORM PRESEL ..........
+    EXIT.
+  ENDIF.
+*"----------------------------------------------------------------------
+* STEP SELECT    (Select values)
+*"----------------------------------------------------------------------
+* This step may be used to overtake the data selection completely.
+* To skip the standard seletion, you should return 'DISP' as following
+* step in CALLCONTROL-STEP.
+* Normally RECORD_TAB should be filled after this step.
+* Standard function module F4UT_RESULTS_MAP may be very helpfull in this
+* step.
+  IF callcontrol-step = 'SELECT'.
+*    SELECT * FROM ptfboa into CORRESPONDING FIELDS OF lt_ptfboa where ptf_bo = lv_ptf_bo.
+*   PERFORM STEP_SELECT TABLES RECORD_TAB SHLP_TAB
+*                       CHANGING SHLP CALLCONTROL.
+*   IF RC = 0.
+*     CALLCONTROL-STEP = 'DISP'.
+*   ELSE.
+*     CALLCONTROL-STEP = 'EXIT'.
+*   ENDIF.
+    EXIT. "Don't process STEP DISP additionally in this call.
+  ENDIF.
+
+* CALL FUNCTION 'F4UT_RESULTS_MAP'
+**   EXPORTING
+**     source_structure   =     " DDIC structure that SOURCE_TAB describes
+**     apply_restrictions = ' '    " Take only entries that fulfill the selection requirements
+*   TABLES
+*     shlp_tab           =    shlp_tab " Table of Elementary Search Helps
+*     record_tab         =    record_tab " Hit list
+**     source_tab         =    source_tab " Contents to be transmitted
+*   CHANGING
+*     shlp               =    shlp " Single (Current) Search Help
+*     callcontrol        =    callcontrol " Control of the F4 process
+**   EXCEPTIONS
+**     illegal_structure  = 1
+**     others             = 2
+*   .
+* IF SY-SUBRC <> 0.
+**  MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+**             WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+* ENDIF.
+*"----------------------------------------------------------------------
+* STEP DISP     (Display values)
+*"----------------------------------------------------------------------
+* This step is called, before the selected data is displayed.
+* You can e.g. modify or reduce the data in RECORD_TAB
+* according to the users authority.
+* If you want to get the standard display dialog afterwards, you
+* should not change CALLCONTROL-STEP.
+* If you want to overtake the dialog on you own, you must return
+* the following values in CALLCONTROL-STEP:
+* - "RETURN" if one line was selected. The selected line must be
+*   the only record left in RECORD_TAB. The corresponding fields of
+*   this line are entered into the screen.
+* - "EXIT" if the values request should be aborted
+* - "PRESEL" if you want to return to the selection dialog
+* Standard function modules F4UT_PARAMETER_VALUE_GET and
+* F4UT_PARAMETER_RESULTS_PUT may be very helpfull in this step.
+  IF callcontrol-step = 'DISP'.
+*   PERFORM AUTHORITY_CHECK TABLES RECORD_TAB SHLP_TAB
+*                           CHANGING SHLP CALLCONTROL.
+
+
+    EXIT.
+  ENDIF.
+ENDFUNCTION.

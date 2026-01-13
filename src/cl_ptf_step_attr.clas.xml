@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_STEP_ATTR</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Certain attributes of a PTF Step. Singleton.</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>MT_ACTUAL_MESSAGES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>List of T100 messages</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_DATA_OBJECT_JSON</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>TDO as JSON string</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_IS_PID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>PreliminaryID indicator</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_STOP_RUN_AFTER_STEP</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>(needed in 2 sessions)   obsolete?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_TDC_PROBLEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>(within one session)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SV_AU_SESSION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>instance is in AU session (for debugging)</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_INSTANCE</CMPNAME>
+     <SCONAME>RO_INSTANCE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Certain attributes of a PTF Step</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

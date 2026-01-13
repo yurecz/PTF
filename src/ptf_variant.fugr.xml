@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>PTF variant related functions</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LPTF_VARIANTTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLPTF_VARIANT</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>EXECUTE_PTF_VARIANT</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Executes a PTF variant</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>VARIANT</PARAMETER>
+       <TYP>PTF_VARNAME</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>EXECUTION_RESULT</PARAMETER>
+       <TYP>I_PTF_EXECUTION_RESULT</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>VARIANT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Variant Name in PTF</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EXECUTION_RESULT</PARAMETER>
+       <KIND>P</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>PTF_EXECUTE_SCRIPT</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Executes a PTF script</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_NAME</PARAMETER>
+       <TYP>PTF_VARNAME</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>ET_LOG</PARAMETER>
+       <TYP>PTF_STRING_TAB</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>EV_RCODE</PARAMETER>
+       <TYP>SYSUBRC</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_NAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>PTF Script Name</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_LOG</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>String Table</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EV_RCODE</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Return Code (0:ok ; 1:failed)</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+    <item>
+     <FUNCNAME>PTF_READ_SCRIPT</FUNCNAME>
+     <REMOTE_CALL>R</REMOTE_CALL>
+     <SHORT_TEXT>Read a PTF script</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>IV_NAME</PARAMETER>
+       <TYP>PTF_VARNAME</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>ET_VARCON</PARAMETER>
+       <TYP>PTF_VARCON_T</TYP>
+      </RSEXP>
+      <RSEXP>
+       <PARAMETER>EV_CLIENT</PARAMETER>
+       <TYP>PTF_CLIENT</TYP>
+      </RSEXP>
+     </EXPORT>
+     <TABLES>
+      <RSTBL>
+       <PARAMETER>ET_VARID</PARAMETER>
+       <DBSTRUCT>PTF_VARID</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>ET_VARREF</PARAMETER>
+       <DBSTRUCT>PTF_VARREF</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>ET_VARID_T</PARAMETER>
+       <DBSTRUCT>PTF_VARID_T</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>ET_VAREXPMESS</PARAMETER>
+       <DBSTRUCT>PTF_VAREXPMESS</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>ET_VARCAT</PARAMETER>
+       <DBSTRUCT>PTF_VARCAT</DBSTRUCT>
+      </RSTBL>
+      <RSTBL>
+       <PARAMETER>ET_VAR_TAG_MAP</PARAMETER>
+       <DBSTRUCT>PTF_VAR_TAG_MAP</DBSTRUCT>
+      </RSTBL>
+     </TABLES>
+     <EXCEPTION>
+      <RSEXC>
+       <EXCEPTION>NOT_FOUND</EXCEPTION>
+      </RSEXC>
+      <RSEXC>
+       <EXCEPTION>NOT_AUTHORIZED</EXCEPTION>
+      </RSEXC>
+     </EXCEPTION>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>IV_NAME</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Variant Name in PTF</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_VARCON</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Variant Content for PTF</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>EV_CLIENT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>System and client</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_VARID</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Variant ID for PTF</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_VARREF</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Reference Steps for PTF</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_VARID_T</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Text Table for PTF Variants</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_VAREXPMESS</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>PTF Expected Messages</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_VARCAT</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>PTF Variant Catalog</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>ET_VAR_TAG_MAP</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Mapping Table between PTF Variant and PTF Tag</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NOT_FOUND</PARAMETER>
+       <KIND>X</KIND>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>NOT_AUTHORIZED</PARAMETER>
+       <KIND>X</KIND>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

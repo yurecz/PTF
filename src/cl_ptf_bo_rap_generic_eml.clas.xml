@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_RAP_GENERIC_EML</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>BO RAP Generic EML Interface</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <RSTAT>P</RSTAT>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_PTF_RAP_METADATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>RAP Metadata Functions</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>RECURSIVE_DEL_ASSOCS</CMPNAME>
+     <SCONAME>IV_ENTITY_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entity Name for ABAP Behavior</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

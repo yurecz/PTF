@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DOMA" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD01V>
+    <DOMNAME>PTF_SCOPE_ITEM</DOMNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DATATYPE>CHAR</DATATYPE>
+    <LENG>000004</LENG>
+    <OUTPUTLEN>000004</OUTPUTLEN>
+    <VALEXI>X</VALEXI>
+    <DDTEXT>Scope item</DDTEXT>
+   </DD01V>
+   <DD07V_TAB>
+    <DD07V>
+     <VALPOS>0001</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DDTEXT>&lt;undefined&gt;</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0002</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BD9</DOMVALUE_L>
+     <DDTEXT>Sell From Stock</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0003</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BDQ</DOMVALUE_L>
+     <DDTEXT>Invoice Correction Process with Debit Memo</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0004</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1Z1</DOMVALUE_L>
+     <DDTEXT>Digital Payments - Sales</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0005</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>J14</DOMVALUE_L>
+     <DDTEXT>Sales Order Processing - Project-Based Services</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0006</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1Z6</DOMVALUE_L>
+     <DDTEXT>External Billing</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0007</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BKP</DOMVALUE_L>
+     <DDTEXT>Accelerated Customer Returns</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0008</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>‏1Z3</DOMVALUE_L>
+     <DDTEXT>Accelerated Third-Party Returns</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0009</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>3QD</DOMVALUE_L>
+     <DDTEXT>Accelerated Third-Party Returns from Seller to Supplier</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0010</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BKZ</DOMVALUE_L>
+     <DDTEXT>Sales Order Processing with Invoice List and Collective Bill</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0011</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>2QS</DOMVALUE_L>
+     <DDTEXT>Analytics for Sales - Central Stock with Returns</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0012</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>4A1</DOMVALUE_L>
+     <DDTEXT>Automation of Order-to-Invoice with Ariba Network</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0013</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>3ZB</DOMVALUE_L>
+     <DDTEXT>Billing of Costs Between Affiliated Companies</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0014</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1MC</DOMVALUE_L>
+     <DDTEXT>Convergent Billing</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0015</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1EZ</DOMVALUE_L>
+     <DDTEXT>Credit Memo Processing</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0016</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1IU</DOMVALUE_L>
+     <DDTEXT>Customer Consignment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0017</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BDD</DOMVALUE_L>
+     <DDTEXT>Customer Returns</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0018</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1F1</DOMVALUE_L>
+     <DDTEXT>Debit Memo Processing</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0019</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1MI‏</DOMVALUE_L>
+     <DDTEXT>Delivery Processing without Order Reference</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0020</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>‏1WO</DOMVALUE_L>
+     <DDTEXT>Extended Intercompany Processes for Sales</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0021</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BDA‏</DOMVALUE_L>
+     <DDTEXT>Free of Charge Delivery</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0022</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>2F4</DOMVALUE_L>
+     <DDTEXT>Intercompany Process for Customer Returns</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0023</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>3TD</DOMVALUE_L>
+     <DDTEXT>Internal Commissions Settlement with SAP Sales Cloud</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0024</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BKL</DOMVALUE_L>
+     <DDTEXT>Invoice Correction Process with Credit Memo</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0025</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>3TE</DOMVALUE_L>
+     <DDTEXT>Return Order Processing for Non-Stock Material</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0026</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BDW</DOMVALUE_L>
+     <DDTEXT>Returnables Processing</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0027</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>2TT</DOMVALUE_L>
+     <DDTEXT>Sales Commissions - External Sales Representative</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0028</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BDN</DOMVALUE_L>
+     <DDTEXT>Sales of Non-Stock Item with Order-Specific Procurement</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0029</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>31Q</DOMVALUE_L>
+     <DDTEXT>Sales Order Processing for Sales Kits</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0030</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BKJ</DOMVALUE_L>
+     <DDTEXT>Sales Order Processing with Customer Down Payment</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0031</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BD3</DOMVALUE_L>
+     <DDTEXT>Sales Processing using Third-Party with Shipping Not.</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0032</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>BDK</DOMVALUE_L>
+     <DDTEXT>Sales Processing using Third-Party without Shipping Not.</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0033</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1B6</DOMVALUE_L>
+     <DDTEXT>Sales Rebate Processing</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0034</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>3NR</DOMVALUE_L>
+     <DDTEXT>Sales Scheduling Agreements</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0035</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1IL</DOMVALUE_L>
+     <DDTEXT>Event-Based Revenue Recognition - Project-Based Services</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0036</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>J11</DOMVALUE_L>
+     <DDTEXT>Customer Project Management - Project-Based Services</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0037</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>16T</DOMVALUE_L>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0038</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>1A8</DOMVALUE_L>
+     <DDTEXT>Internal Project Management - Project-Based Services</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0039</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>3TQ</DOMVALUE_L>
+     <DDTEXT>Project-Based Service Procurement in Headquarter-Subsidiary</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0040</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>‏J14</DOMVALUE_L>
+     <DDTEXT>Sales Order Processing - Project-Based Services</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0041</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>J13</DOMVALUE_L>
+     <DDTEXT>Service and Material Procurement - Project-Based Services</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0042</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>4AN</DOMVALUE_L>
+     <DDTEXT>Intercompany Billing for Cross-Company Cost Accounting Post.</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0043</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>5D2</DOMVALUE_L>
+     <DDTEXT>Advanced Intercompany Sales</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0044</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>5HP</DOMVALUE_L>
+     <DDTEXT>Advanced Intercompany Stock Transfer</DDTEXT>
+    </DD07V>
+    <DD07V>
+     <VALPOS>0045</VALPOS>
+     <DDLANGUAGE>E</DDLANGUAGE>
+     <DOMVALUE_L>5MQ</DOMVALUE_L>
+     <DDTEXT>Sell from Stock with Valuated Stock in Transit</DDTEXT>
+    </DD07V>
+   </DD07V_TAB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

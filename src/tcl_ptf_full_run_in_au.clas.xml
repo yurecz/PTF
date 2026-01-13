@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>TCL_PTF_FULL_RUN_IN_AU</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Test class to start a PTF run</DESCRIPT>
+    <CATEGORY>05</CATEGORY>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <DURATION_TYPE>36</DURATION_TYPE>
+    <RISK_LEVEL>22</RISK_LEVEL>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>CLASS_CONSTRUCTOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>CLASS_CONSTRUCTOR</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>EXECUTE_PTF_RUN</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Obsolete</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>EXECUTE_PTF_RUN_V2__IN_1_METH</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>OBSOLTEgen.tstMeth.that starts a PTF run(1 TCL meth),canMock</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>EXECUTE_PTF_RUN_V3__LOOP_PART</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Gn.test mth. strtng a PTF run,contrllr part,calls cl_ptf_run</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>NOTE_STEP_DATA_ISSUE__INTERNAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>temp method, do not use</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>NOTE_STEP_DATA_ISSUE__INTERNAL</CMPNAME>
+     <SCONAME>IV_RUN_UUID</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>16 byte UUID in 26 chars (usually Base 32 encoded)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>NOTE_STEP_DATA_ISSUE__INTERNAL</CMPNAME>
+     <SCONAME>IV_STEP_NO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Numc3, internal use</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

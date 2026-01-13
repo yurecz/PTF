@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_OUTPUT_COMPARE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Compares output with TDCV</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_COMPARISON</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compares output with TDCV</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_STRUCDESC_ENTITY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Runtime Type Services</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MS_TDCV</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Output  Invocation</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MT_COMPONENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of strings</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MT_TDCV_METADATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of strings</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_TDCV_METADATA_TABIX</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table of strings</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CREATE_OBJECT</CMPNAME>
+     <SCONAME>IS_TDCV</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Output  Invocation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CSTRING2XSTRING</CMPNAME>
+     <SCONAME>IV_CSTRING</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>String data type for ODATA entity</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE</CMPNAME>
+     <SCONAME>IS_TDCV</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Output  Invocation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_FIELD</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Field in parameter</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_LOG_MSG_NO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Application log: Internal message serial number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_LOG_NO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Application log: log number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_MESSAGE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Text</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_MESSAGE_V1</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_MESSAGE_V2</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_MESSAGE_V3</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_MESSAGE_V4</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_PARAMETER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Parameter Name</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_ROW</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Lines in parameter</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>WRITE_LOG</CMPNAME>
+     <SCONAME>IV_SYSTEM</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Logical system from which message originates</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

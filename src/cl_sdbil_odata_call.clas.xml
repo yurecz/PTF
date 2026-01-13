@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_SDBIL_ODATA_CALL</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>OData Caller for service tests</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_INSTANCE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>OData Caller for service tests</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_SERVICE</CMPNAME>
+     <SCONAME>EV_STATUS_CODE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Whole Number with +/- Sign (-2.147.483.648 .. 2.147.483.647)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_SERVICE</CMPNAME>
+     <SCONAME>IT_PARAMETERS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name/Value Pair - Table</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_SERVICE</CMPNAME>
+     <SCONAME>IV_ETAG</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ETag value</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_SERVICE</CMPNAME>
+     <SCONAME>IV_FILTER_ONLY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Use filter only</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_SERVICE</CMPNAME>
+     <SCONAME>IV_FUNCTION_IMPORT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Is it a function import</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_SERVICE</CMPNAME>
+     <SCONAME>IV_PAYLOAD</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Payload for the request</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_SERVICE_BATCH</CMPNAME>
+     <SCONAME>EV_STATUS_CODE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Whole Number with +/- Sign (-2.147.483.648 .. 2.147.483.647)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_INSTANCE</CMPNAME>
+     <SCONAME>RO_INSTANCE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>OData Caller for service tests</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

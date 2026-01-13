@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_RAP_PERMISSIONS</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>RAP Permissions</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_PTF_RAP_METADATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>RAP Metadata Functions</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_PTF_RAP_VALIDATE_TDO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>RAP Validate TDO Functions</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_RUN_ENVIRONMENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Represents a PTF variant run</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>BUILD_PERMISSIONS_INSTANCE</CMPNAME>
+     <SCONAME>IS_STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>BUILD_PERMISSIONS_INSTANCE</CMPNAME>
+     <SCONAME>IV_OP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Operation in Behavior Implementation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>IO_RUN_ENVIRONMENT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Represents a PTF variant run</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>FILL_CHILD_PERMISSIONS</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name eines ABAP Dictionary-Objekts</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>FILL_CHILD_PERMISSIONS</CMPNAME>
+     <SCONAME>IV_OP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Operation in Behavior Implementation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RECURSIVE_FILL_PERMISSIONS</CMPNAME>
+     <SCONAME>IS_STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RECURSIVE_FILL_PERMISSIONS</CMPNAME>
+     <SCONAME>IV_OP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Operation in Behavior Implementation</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

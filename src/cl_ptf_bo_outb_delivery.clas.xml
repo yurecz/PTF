@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_OUTB_DELIVERY</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>PTF BO for Outbound Delivery</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_BATCH_SPLIT_ITEMS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add batch-split items to a given batch related item</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHANGE_SHIPTO_PARTY_ADDRESS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create or change a document address for shipTo partner</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_COMPARE_DLV</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare 2 persisted deliveries</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_COMPARE_SALESDOC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare persisted DLV with persisted SalesDocument</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>KEEPING_LOCK_TASK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Catch the separate locking task</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>LOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Lock the instance in a sep. task</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_LOCKED_ASYNC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Single-Character Flag</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_UNLOCKED_ASYNC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Single-Character Flag</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>PGI_PICKING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Post Goods Issue and Picking</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>REMOVE_BATCH_SPLIT_ITEMS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Remove batch-split items</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>UNLOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Unlock the instance in the catched sep. task</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>ADD_BATCH_SPLIT_ITEMS</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>KEEPING_LOCK_TASK</CMPNAME>
+     <SCONAME>P_TASK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Character field, length 32</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PGI_PICKING</CMPNAME>
+     <SCONAME>RT_DELIVERY_ITEMS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Delivery Items</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PRINT_ITEMS_VBAP_LIPS</CMPNAME>
+     <SCONAME>IV_DLV_ID</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sales and Distribution Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PRINT_ITEMS_VBAP_LIPS</CMPNAME>
+     <SCONAME>IV_SLS_ID</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sales and Distribution Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>REMOVE_BATCH_SPLIT_ITEMS</CMPNAME>
+     <SCONAME>IT_LIPS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table Type for SD Document: Ref. Structure for XLIPS/YLIPS</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>REMOVE_BATCH_SPLIT_ITEMS</CMPNAME>
+     <SCONAME>IV_DELIVERY_NUMBER</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sales and Distribution Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_PREBILLING_DOC</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Prelim. Billing Document Request Test Object</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_ITEMS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add reference documents to PBD</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_MANUAL_ITEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add item without a reference</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_MESSAGE_TEXT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Search message texts</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>RAISE_APPROVAL_ACTION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Raise an approval action</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>RELEASE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Release PBD by approving and closing Approval Workflow</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>WITHDRAW_FROM_APPROVAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Set the Approval Status to: &quot;To Be Reworked&quot;</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_MESSAGE_TEXT</CMPNAME>
+     <SCONAME>IT_MESSAGE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table Type Of Error Messages</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>Activity Allocation</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_ACT_ALLOC</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-BIL</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>I_PTF_ACT_ALLOC_CR</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Create Activity Allocation</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_ACT_ALLOC=&gt;TY_GS_PTF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_ACT_ALLOC=&gt;TY_GS_PTF_ACT_ALLOC_CR_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_PTF_ACT_ALLOC_CR_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_ACT_ALLOC=&gt;TY_GS_PTF_ACT_ALLOC_CR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="HEADER" minOccurs="0" type="BAPIDOCHDRP"/>
+           <element name="ITEMS" minOccurs="0" type="CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GT_ACT_ALLOC_ITEMS"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIDOCHDRP">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIDOCHDRP=A=u=L=000000=doc=Document header:</documentation>
+          </annotation>
+          <sequence>
+           <element name="CO_AREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KOKRS=A=C=L=000004=doc=Controlling Area</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOCDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_BLDAT=A=D=L=000008=doc=Document Date</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="POSTGDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_BUDAT=A=D=L=000008=doc=Posting Date</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VERSION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VERSN=A=C=L=000003=doc=Version</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOC_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_BELNR=A=C=L=000010=doc=Document Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VARIANT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_VARNR=A=C=L=000005=doc=CO actual postings f</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOC_HDR_TX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_BLTXT=A=C=L=000050=doc=Document Header Text</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="50"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USERNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=USNAM=A=C=L=000012=doc=User Name</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OBJ_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AWKEY=A=C=L=000020=doc=Reference Key</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OBJ_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AWTYP=A=C=L=000005=doc=Reference procedure</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OBJ_SYS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AWSYS=A=C=L=000010=doc=Logical system of sourc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VAL_PERIOD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_PERIO=A=N=L=000003=doc=Period</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VAL_FISYEAR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GJAHR=A=N=L=000004=doc=Fiscal Year</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOC_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BLART=A=C=L=000002=doc=Document Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VALUEDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_WSDAT=A=D=L=000008=doc=Value Date for Curre</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GT_ACT_ALLOC_ITEMS">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_ACT_ALLOC=&gt;TY_GT_ACT_ALLOC_ITEMS=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_ACT_ALLOC_ITEMS" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_ACT_ALLOC_ITEMS">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_ACT_ALLOC=&gt;TY_GS_ACT_ALLOC_ITEMS=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="SEND_CCTR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SKOST=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ACTTYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LSTAR=A=C=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ACTVTY_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LSTXX=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ACTIVITYUN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_MEINH_L=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRICE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BAPITAG=A=P=L=000023=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="23"/>
+              <fractionDigits value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CURRENCY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WAERS=A=C=L=000005=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REC_WBS_EL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=E_PS_POSID=A=C=L=000024=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="24"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_PTF_ACT_ALLOC_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <HEADER>
+          <CO_AREA/>
+          <DOCDATE/>
+          <POSTGDATE/>
+          <VERSION/>
+          <DOC_NO/>
+          <VARIANT/>
+          <DOC_HDR_TX/>
+          <USERNAME/>
+          <OBJ_KEY/>
+          <OBJ_TYPE/>
+          <OBJ_SYS/>
+          <VAL_PERIOD/>
+          <VAL_FISYEAR/>
+          <DOC_TYPE/>
+          <VALUEDATE/>
+         </HEADER>
+         <ITEMS empty="true">
+          <item>
+           <SEND_CCTR/>
+           <ACTTYPE/>
+           <ACTVTY_QTY/>
+           <ACTIVITYUN/>
+           <PRICE/>
+           <CURRENCY/>
+           <REC_WBS_EL/>
+          </item>
+         </ITEMS>
+        </ddic:CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_PTF_ACT_ALLOC_CR_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>T001_2H_WBS</VAR_NAME>
+       <VAR_DESC>Junior Consultant 2H w wbs elmnt</VAR_DESC>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_ACT_ALLOC_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_PTF_ACT_ALLOC_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <ITEMS>
+            <item>
+             <SEND_CCTR>0010101902</SEND_CCTR>
+             <ACTTYPE>T001</ACTTYPE>
+             <ACTVTY_QTY>2</ACTVTY_QTY>
+             <ACTIVITYUN>H</ACTIVITYUN>
+             <REC_WBS_EL>1</REC_WBS_EL>
+            </item>
+           </ITEMS>
+          </ddic:CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_PTF_ACT_ALLOC_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>T002_1H_WBS</VAR_NAME>
+       <VAR_DESC>Senior Consultant 1H w wbs elmnt</VAR_DESC>
+       <VINDEX>0003</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_ACT_ALLOC_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_PTF_ACT_ALLOC_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <ITEMS>
+            <item>
+             <SEND_CCTR>0010101902</SEND_CCTR>
+             <ACTTYPE>T002</ACTTYPE>
+             <ACTVTY_QTY>1</ACTVTY_QTY>
+             <ACTIVITYUN>H</ACTIVITYUN>
+             <REC_WBS_EL>1</REC_WBS_EL>
+            </item>
+           </ITEMS>
+          </ddic:CL_PTF_BO_ACT_ALLOC_--3D_--3ETY_GS_PTF_ACT_ALLOC_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

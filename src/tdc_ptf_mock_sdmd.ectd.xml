@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>Table mock data for SDMD in PTF</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_MOCK_SDMD</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-MD-MM</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H>X</TWB_USE_H>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>FIELD_DELTA_GENERIC</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Defines deviating fields of existing records. All tables.</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGES_PER_RECORD" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+           <element name="MOCKED_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="FIELDNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NAME_FELD=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIELDVALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CHANGES_PER_RECORD empty="true">
+           <item>
+            <KEY_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </KEY_FIELDS>
+            <MOCKED_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </MOCKED_FIELDS>
+           </item>
+          </CHANGES_PER_RECORD>
+         </item>
+        </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>TPAR_AG_ADDR_OPERATION_BBP007</VAR_NAME>
+       <VAR_DESC>Delta. mock field addr_operation BBP007</VAR_DESC>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TPAR</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>PARVW</FIELDNAME>
+                <FIELDVALUE>AG</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>ADDR_OPERATION</FIELDNAME>
+                <FIELDVALUE>BBP007</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>TPAR_AG_ADDR_OPERATION_EMPTY</VAR_NAME>
+       <VAR_DESC>Delta. mock field addr_operation EMPTY</VAR_DESC>
+       <VINDEX>0003</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TPAR</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>PARVW</FIELDNAME>
+                <FIELDVALUE>AG</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>ADDR_OPERATION</FIELDNAME>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

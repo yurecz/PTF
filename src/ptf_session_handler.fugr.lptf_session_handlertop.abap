@@ -1,0 +1,3 @@
+FUNCTION-POOL PTF_SESSION_HANDLER.          "MESSAGE-ID ..
+
+*INCLUDE call_methods.

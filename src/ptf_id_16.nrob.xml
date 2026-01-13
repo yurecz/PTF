@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_NROB" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <ATTRIBUTES>
+    <OBJECT>PTF_ID_16</OBJECT>
+    <DOMLEN>PTF_NUMBER_16_DIGITS</DOMLEN>
+    <PERCENTAGE>5.0</PERCENTAGE>
+    <BUFFER>X</BUFFER>
+    <NOIVBUFFER>00000003</NOIVBUFFER>
+    <UNAME>HAUSERB</UNAME>
+    <UDATE>2023-12-15</UDATE>
+    <UTIME>16:14:42</UTIME>
+   </ATTRIBUTES>
+   <TEXT>
+    <LANGU>E</LANGU>
+    <OBJECT>PTF_ID_16</OBJECT>
+    <TXT>IDs needed in PTF tests</TXT>
+    <TXTSHORT>IDs neededInPTFtests</TXTSHORT>
+   </TEXT>
+  </asx:values>
+ </asx:abap>
+</abapGit>

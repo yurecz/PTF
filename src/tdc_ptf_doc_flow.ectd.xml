@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>SD Document Flow</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_DOC_FLOW</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-BIL</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>I_VBFA_CHECK</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Filters and expectations for VBFA</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_DOC_FLOW=&gt;TY_GT_VBFA</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_DOC_FLOW=&gt;TY_GT_VBFA_DOCS_TD</PREF_NAME2>
+       <VALUE>&lt;VALUE&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_DOC_FLOW=&gt;TY_GT_VBFA_DOCS_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GS_VBFA_DOCS_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GS_VBFA_DOCS_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_DOC_FLOW=&gt;TY_GS_VBFA_DOCS_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="VBTYP_N_RANGE" minOccurs="0" type="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBTYP_N"/>
+           <element name="VBTYP_V_RANGE" minOccurs="0" type="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBTYP_V"/>
+           <element name="STUFE_RANGE" minOccurs="0" type="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_STUFE"/>
+           <element name="EXPECTED_NO_OF_DOCS" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBTYP_N">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_DOC_FLOW=&gt;TY_GT_VBTYP_N=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GS_RANGE_VBTYP_N" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBTYP_V">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_DOC_FLOW=&gt;TY_GT_VBTYP_V=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GS_RANGE_VBTYP_V" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_STUFE">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_DOC_FLOW=&gt;TY_GT_STUFE=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GS_RANGE_STUFE" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GS_RANGE_VBTYP_N">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_DOC_FLOW=&gt;TY_GS_RANGE_VBTYP_N=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="SIGN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DDSIGN=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OPTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DDOPTION=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOW" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBTYP_N=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HIGH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBTYP_N=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GS_RANGE_VBTYP_V">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_DOC_FLOW=&gt;TY_GS_RANGE_VBTYP_V=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="SIGN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DDSIGN=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OPTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DDOPTION=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOW" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBTYP_V=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HIGH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBTYP_V=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GS_RANGE_STUFE">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_DOC_FLOW=&gt;TY_GS_RANGE_STUFE=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="SIGN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DDSIGN=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OPTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DDOPTION=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOW" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STUFE_VBFA=A=N=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HIGH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STUFE_VBFA=A=N=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <VBTYP_N_RANGE empty="true">
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+          </VBTYP_N_RANGE>
+          <VBTYP_V_RANGE>
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+          </VBTYP_V_RANGE>
+          <STUFE_RANGE>
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+           <item>
+            <SIGN/>
+            <OPTION/>
+            <LOW/>
+            <HIGH/>
+           </item>
+          </STUFE_RANGE>
+          <EXPECTED_NO_OF_DOCS/>
+         </item>
+        </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>1_RETURN_F_ORDER</VAR_NAME>
+       <VAR_DESC>check for 1 ReturnForOrder</VAR_DESC>
+       <VINDEX>0004</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>T</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <EXPECTED_NO_OF_DOCS>1</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>1_DLV</VAR_NAME>
+       <VAR_DESC>check for 1 succeeding delivery</VAR_DESC>
+       <VINDEX>0001</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>J</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <EXPECTED_NO_OF_DOCS>1</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>1_INV</VAR_NAME>
+       <VAR_DESC>check for 1 succeeding invoice</VAR_DESC>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>M</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <EXPECTED_NO_OF_DOCS>1</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>NO_SUCCESSOR</VAR_NAME>
+       <VAR_DESC>green if there is no successor at all</VAR_DESC>
+       <VINDEX>0012</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <EXPECTED_NO_OF_DOCS>0</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>NO_LEVEL2_SUCCESSOR</VAR_NAME>
+       <VAR_DESC>check that there is no lev2 successor</VAR_DESC>
+       <VINDEX>0011</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <STUFE_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>2</LOW>
+             </item>
+            </STUFE_RANGE>
+            <EXPECTED_NO_OF_DOCS>0</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>DO_NOT_CHECK</VAR_NAME>
+       <VAR_DESC>just returns all DocIDs of all ref steps</VAR_DESC>
+       <VINDEX>0007</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic"/>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>4__INV_DLV</VAR_NAME>
+       <VAR_DESC>check for overall 4 succeeding invoices+dlvs</VAR_DESC>
+       <VINDEX>0005</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>M</LOW>
+             </item>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>J</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <EXPECTED_NO_OF_DOCS>4</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>5_CM__64_INV_DLV</VAR_NAME>
+       <VAR_DESC>check for  64 invoice+dlvs  and 5 CMs</VAR_DESC>
+       <VINDEX>0006</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>M</LOW>
+             </item>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>J</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <EXPECTED_NO_OF_DOCS>64</EXPECTED_NO_OF_DOCS>
+           </item>
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>O</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <EXPECTED_NO_OF_DOCS>5</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>INTERNAL_PTF</VAR_NAME>
+       <VAR_DESC>check handling of empty lines</VAR_DESC>
+       <VINDEX>0010</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>J</LOW>
+             </item>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>O</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>1_RETURN</VAR_NAME>
+       <VAR_DESC>check for 1 Return</VAR_DESC>
+       <VINDEX>0003</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>H</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <EXPECTED_NO_OF_DOCS>1</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>GOODS_MVMNT_C_J</VAR_NAME>
+       <VAR_DESC>1 GoodsMovement after C; 1 after J</VAR_DESC>
+       <VINDEX>0009</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_VBFA_CHECK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>R</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <VBTYP_V_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>C</LOW>
+             </item>
+            </VBTYP_V_RANGE>
+            <STUFE_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>1</LOW>
+             </item>
+            </STUFE_RANGE>
+            <EXPECTED_NO_OF_DOCS>1</EXPECTED_NO_OF_DOCS>
+           </item>
+           <item>
+            <VBTYP_N_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>R</LOW>
+             </item>
+            </VBTYP_N_RANGE>
+            <VBTYP_V_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>J</LOW>
+             </item>
+            </VBTYP_V_RANGE>
+            <STUFE_RANGE>
+             <item>
+              <SIGN>I</SIGN>
+              <OPTION>EQ</OPTION>
+              <LOW>0</LOW>
+             </item>
+            </STUFE_RANGE>
+            <EXPECTED_NO_OF_DOCS>1</EXPECTED_NO_OF_DOCS>
+           </item>
+          </ddic:CL_PTF_BO_DOC_FLOW_--3D_--3ETY_GT_VBFA_DOCS_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

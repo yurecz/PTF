@@ -1,0 +1,2581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>Goods Movement</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_GDSMVMT_BIL</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>LE-SHP</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H>X</TWB_USE_H>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Create Goods Movement (BAPI)</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_LE_SHP_GDSMVMNT=&gt;TY_</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_LE_SHP_GDSMVMNT=&gt;TY_GS_I_PTF_LE_GDMVMT_CR_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_LE_SHP_GDSMVMNT=&gt;TY_GS_I_PTF_LE_GDMVMT_CR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="GOODSMVT_HEADER" minOccurs="0" type="BAPI2017_GM_HEAD_01"/>
+           <element name="GOODSMVT_CODE" minOccurs="0" type="BAPI2017_GM_CODE"/>
+           <element name="GOODSMVT_ITEM" minOccurs="0" type="BAPI2017_GM_ITEM_CREATE_T"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPI2017_GM_HEAD_01">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPI2017_GM_HEAD_01=A=u=L=000000=doc=BAPI Com</documentation>
+          </annotation>
+          <sequence>
+           <element name="PSTNG_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BUDAT=A=D=L=000008=doc=Posting Date in the Doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOC_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BLDAT=A=D=L=000008=doc=Document Date in Docume</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DOC_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XBLNR=A=C=L=000016=doc=Reference Document Numb</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BILL_OF_LADING" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FRBNR=A=C=L=000016=doc=Number of bill of ladin</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GR_GI_SLIP_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XABLN=A=C=L=000010=doc=Goods Receipt/Issue Sli</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PR_UNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UNAME=A=C=L=000012=doc=User Name</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HEADER_TXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BKTXT=A=C=L=000025=doc=Document Header Text</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VER_GR_GI_SLIP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WEVER=A=C=L=000001=doc=Version for Printing GR</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VER_GR_GI_SLIPX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BAPIUPDATE=A=C=L=000001=doc=Updated informatio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXT_WMS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BFWMS=A=C=L=000001=doc=Control posting for ext</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DOC_NO_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XBLNR_LONG=A=C=L=000035=doc=Reference Document</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BILL_OF_LADING_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FRBNR_LONG=A=C=L=000035=doc=Bill of Lading Num</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BAR_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SAEBARCODE=A=C=L=000040=doc=Bar code entry</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPI2017_GM_CODE">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPI2017_GM_CODE=A=u=L=000000=doc=MMIM: New K</documentation>
+          </annotation>
+          <sequence>
+           <element name="GM_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GM_CODE=A=C=L=000002=doc=Assign code to transa</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPI2017_GM_ITEM_CREATE_T">
+          <annotation>
+           <documentation>I==O==C=T=K==D=BAPI2017_GM_ITEM_CREATE_T=A=h=L=000000=doc=BA</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPI2017_GM_ITEM_CREATE" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPI2017_GM_ITEM_CREATE">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPI2017_GM_ITEM_CREATE=A=u=L=000000=doc=BAPI</documentation>
+          </annotation>
+          <sequence>
+           <element name="MATERIAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATNR18=A=C=L=000018=doc=Material Number (18 C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WERKS_D=A=C=L=000004=doc=Plant</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STGE_LOC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LGORT_D=A=C=L=000004=doc=Storage Location</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BATCH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CHARG_D=A=C=L=000010=doc=Batch Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BWART=A=C=L=000003=doc=Goods Movement Type (In</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STCK_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MB_INSMK=A=C=L=000001=doc=Stock Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SPEC_STOCK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SOBKZ=A=C=L=000001=doc=Special Stock Indicator</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VENDOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ELIFN=A=C=L=000010=doc=Vendor&apos;s account number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EKUNN=A=C=L=000010=doc=Account number of custo</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_ORD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDAUF=A=C=L=000010=doc=Sales Order Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="S_ORD_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDPOS=A=N=L=000006=doc=Item number in Sales Or</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SCHED_LINE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDEIN=A=N=L=000004=doc=Delivery schedule for s</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VAL_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BWTAR_D=A=C=L=000010=doc=Valuation type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENTRY_QNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERFMG=A=P=L=000013=doc=Quantity in unit of ent</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENTRY_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERFME=A=C=L=000003=doc=Unit of entry</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENTRY_UOM_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ISOCD_UNIT=A=C=L=000003=doc=ISO Code for Unit</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_PR_QNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BPMNG=A=P=L=000013=doc=Quantity in Purchase Or</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDERPR_UN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BBPRM=A=C=L=000003=doc=Order Price Unit (Purch</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDERPR_UN_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ISOCD_UNIT=A=C=L=000003=doc=ISO Code for Unit</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTNR=A=C=L=000010=doc=Purchase Order Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EBELP=A=N=L=000005=doc=Item Number of Purchasi</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIPPING" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EVERS=A=C=L=000002=doc=Shipping Instructions</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COMP_SHIP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EVERE=A=C=L=000002=doc=Compliance with Shippin</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NO_MORE_GR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ELIKZ=A=C=L=000001=doc=&quot;Delivery Completed&quot; In</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITEM_TEXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGTXT=A=C=L=000050=doc=Item Text</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="50"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GR_RCPT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WEMPF=A=C=L=000012=doc=Goods Recipient</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNLOAD_PT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABLAD=A=C=L=000025=doc=Unloading Point</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COSTCENTER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KOSTL=A=C=L=000010=doc=Cost Center</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDERID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AUFNR=A=C=L=000012=doc=Order Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDER_ITNO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_POSNR=A=N=L=000004=doc=Order item number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CALC_MOTIVE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BEMOT=A=C=L=000002=doc=Accounting Indicator</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ASSET_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ANLN1=A=C=L=000012=doc=Main Asset Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUB_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ANLN2=A=C=L=000004=doc=Asset Subnumber</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RESERV_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RSNUM=A=N=L=000010=doc=Number of reservation/d</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RES_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RSPOS=A=N=L=000004=doc=Item Number of Reservat</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RES_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RSART=A=C=L=000001=doc=Record type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WITHDRAWN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZEAR=A=C=L=000001=doc=Final Issue for Reserva</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_MAT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMMAT18=A=C=L=000018=doc=Receiving/Issuing Mat</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_PLANT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMWRK=A=C=L=000004=doc=Receiving plant/issuing</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_STLOC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMLGO=A=C=L=000004=doc=Receiving/issuing stora</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_BATCH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMCHA=A=C=L=000010=doc=Receiving/Issuing Batch</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_VAL_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMBAR=A=C=L=000010=doc=Valuation Type of Trans</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MVT_IND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZBEW=A=C=L=000001=doc=Movement Indicator</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_REAS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MB_GRBEW=A=N=L=000004=doc=Reason for Movement</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RL_EST_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=IMKEY=A=C=L=000008=doc=Internal Key for Real E</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DABRBEZ=A=D=L=000008=doc=Reference date for se</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COST_OBJ" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KSTRG=A=C=L=000012=doc=Cost Object</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROFIT_SEGM_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RKEOBJNR=A=N=L=000010=doc=Profitability Segmen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROFIT_CTR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRCTR=A=C=L=000010=doc=Profit Center</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WBS_ELEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PS_POSID=A=C=L=000024=doc=Work Breakdown Struc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="24"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NETWORK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NPLNR=A=C=L=000012=doc=Network Number for Acco</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ACTIVITY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VORNR=A=C=L=000004=doc=Operation/Activity Numb</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PART_ACCT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=JV_PART=A=C=L=000010=doc=Partner account numbe</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AMOUNT_LC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BAPI_EXBWR=A=P=L=000023=doc=Externally entered</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="23"/>
+              <fractionDigits value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AMOUNT_SV" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BAPI_EXVKW=A=P=L=000023=doc=Externally entered</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="23"/>
+              <fractionDigits value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DOC_YR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LFBJA=A=N=L=000004=doc=Fiscal Year of a Refere</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DOC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LFBNR=A=C=L=000010=doc=Document No. of a Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DOC_IT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LFPOS=A=N=L=000004=doc=Item of a Reference Doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXPIRYDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VFDAT=A=D=L=000008=doc=Shelf Life Expiration o</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROD_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=HSDAT=A=D=L=000008=doc=Date of Manufacture</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FUND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BP_GEBER=A=C=L=000010=doc=Fund</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FUNDS_CTR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FISTL=A=C=L=000016=doc=Funds Center</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMMT_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FIPOS=A=C=L=000014=doc=Commitment Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="14"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VAL_SALES_ORD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MAT_KDAUF=A=C=L=000010=doc=Sales order number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VAL_S_ORD_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MAT_KDPOS=A=N=L=000006=doc=Sales Order Item of</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VAL_WBS_ELEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PS_POSID=A=C=L=000024=doc=Work Breakdown Struc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="24"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GL_ACCOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SAKNR=A=C=L=000010=doc=G/L Account Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="IND_PROPOSE_QUANX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XMEVO=A=C=L=000001=doc=Propose quantities</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="XSTOB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XSTOB=A=C=L=000001=doc=Use Reversal Movement T</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EAN_UPC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EAN11=A=C=L=000018=doc=International Article N</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_NUMB_TO_SEARCH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_ITEM_TO_SEARCH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR_VL=A=N=L=000006=doc=Delivery Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SERIALNO_AUTO_NUMBERASSIGNMENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XSAUT=A=C=L=000001=doc=Create serial number au</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VENDRBATCH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LICHN=A=C=L=000015=doc=Supplier Batch Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="15"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STGE_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LGTYP=A=C=L=000003=doc=Storage Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STGE_BIN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LGPLA=A=C=L=000010=doc=Storage Bin</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SU_PL_STCK_1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_ANZLE=A=P=L=000003=doc=Number of Storage U</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="3"/>
+              <fractionDigits value="0"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ST_UN_QTYY_1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_LEMEN=A=P=L=000013=doc=Quantity per Storag</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ST_UN_QTYY_1_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ISOCD_UNIT=A=C=L=000003=doc=ISO Code for Unit</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNITTYPE_1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_LETYP=A=C=L=000003=doc=Storage Unit Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SU_PL_STCK_2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_ANZLE=A=P=L=000003=doc=Number of Storage U</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="3"/>
+              <fractionDigits value="0"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ST_UN_QTYY_2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_LEMEN=A=P=L=000013=doc=Quantity per Storag</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ST_UN_QTYY_2_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ISOCD_UNIT=A=C=L=000003=doc=ISO Code for Unit</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNITTYPE_2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_LETYP=A=C=L=000003=doc=Storage Unit Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STGE_TYPE_PC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UBTYP=A=C=L=000003=doc=Storage type for transf</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STGE_BIN_PC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UBPLA=A=C=L=000010=doc=Storage bin for transfe</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NO_PST_CHGNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_KZKUB=A=C=L=000001=doc=Indicator: Do not c</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GR_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_WENUM=A=C=L=000010=doc=Goods Receipt Numbe</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STGE_TYPE_ST" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMLGT=A=C=L=000003=doc=Storage type for stock</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STGE_BIN_ST" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMLGP=A=C=L=000010=doc=Storage bin for stock t</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATDOC_TR_CANCEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_TBBEL=A=C=L=000010=doc=Material doc. no. o</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATITEM_TR_CANCEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_TBBPO=A=N=L=000004=doc=Material doc. item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATYEAR_TR_CANCEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_TBBJR=A=N=L=000004=doc=Material doc. year</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NO_TRANSFER_REQ" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_TBFKZ=A=C=L=000001=doc=Indicator: No Trans</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CO_BUSPROC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CO_PRZNR=A=C=L=000012=doc=Business Process</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ACTTYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LSTAR=A=C=L=000006=doc=Activity Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUPPL_VEND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LLIEF=A=C=L=000010=doc=Goods Supplier</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_EXTERNAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MATERIAL_EXTERNAL=A=C=L=000040=doc=Long Ma</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_GUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MATERIAL_GUID=A=C=L=000032=doc=External GU</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_VERSION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MATERIAL_VERSION=A=C=L=000010=doc=Version</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_MAT_EXTERNAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MOVE_MAT_EXTERNAL=A=C=L=000040=doc=Long Ma</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_MAT_GUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MOVE_MAT_GUID=A=C=L=000032=doc=External GU</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_MAT_VERSION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MOVE_MAT_VERSION=A=C=L=000010=doc=Version</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FUNC_AREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKBER_SHORT=A=C=L=000004=doc=Functional Area</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TR_PART_BA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARGB=A=C=L=000004=doc=Trading partner&apos;s busin</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PAR_COMPCO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARBU=A=C=L=000004=doc=Clearing company code</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR_VL=A=N=L=000006=doc=Delivery Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NB_SLIPS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WEANZ=A=N=L=000003=doc=Number of GR/GI Slips t</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NB_SLIPSX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BAPIUPDATE=A=C=L=000001=doc=Updated informatio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GR_RCPTX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BAPIUPDATE=A=C=L=000001=doc=Updated informatio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNLOAD_PTX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BAPIUPDATE=A=C=L=000001=doc=Updated informatio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SPEC_MVMT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LVS_BSSKZ=A=C=L=000001=doc=Special movement in</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GRANT_NBR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GM_GRANT_NBR=A=C=L=000020=doc=Grant</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CMMT_ITEM_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FM_FIPEX=A=C=L=000024=doc=Commitment Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="24"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FUNC_AREA_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKBER=A=C=L=000016=doc=Functional Area</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LINE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MB_LINE_ID=A=N=L=000006=doc=Unique identificat</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARENT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MB_PARENT_ID=A=N=L=000006=doc=Identifier of im</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LINE_DEPTH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MB_LINE_DEPTH=A=N=L=000002=doc=Hierarchy level</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="QUANTITY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MENGE_D=A=P=L=000013=doc=Quantity</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BASE_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MEINS=A=C=L=000003=doc=Base Unit of Measure</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LONGNUM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/SAPPSPRO/LONGNUM=A=C=L=000040=doc=Smart Numbe</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BUDGET_PERIOD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FM_BUDGET_PERIOD=A=C=L=000010=doc=Budget Perio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EARMARKED_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KBLNR=A=C=L=000010=doc=Document Number for Ear</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EARMARKED_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KBLPOS=A=N=L=000003=doc=Earmarked Funds: Docum</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STK_SEGMENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGT_SCAT16=A=C=L=000016=doc=Stock Segment</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_SEGMENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGT_UMSCAT16=A=C=L=000016=doc=Receiving/Issuin</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATNR40=A=C=L=000040=doc=Material Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_MAT_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMMAT40=A=C=L=000040=doc=Receiving/Issuing Mat</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STK_SEG_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGT_SCAT40=A=C=L=000040=doc=Stock Segment</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOV_SEG_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGT_UMSCAT40=A=C=L=000040=doc=Receiving/Issuin</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATE_DELIVERY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XDELIV=A=C=L=000001=doc=Create Delivery (Shipp</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WAREHOUSE_EWM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/SCWM/LGNUM=A=C=L=000004=doc=Warehouse Number/</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STGE_BIN_EWM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/SCWM/LGPLA=A=C=L=000018=doc=Storage Bin</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EWM_DIFF_ANA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/SCWM/DE_GM_DIFF_ANA=A=C=L=000001=doc=Post Goo</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SERVICE_DOC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FCO_SRVDOC_ID=A=C=L=000010=doc=Service Documen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SERVICE_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FCO_SRVDOC_ITEM_ID=A=N=L=000006=doc=Service Do</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SERVICE_DOC_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FCO_SRVDOC_TYPE=A=C=L=000004=doc=Service Docum</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUPPLYAREA" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRVBE=A=C=L=000010=doc=Production Supply Area</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EWM_INSPUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/SCWM/DE_EWM_INSP_GUID=A=C=L=000032=doc=Inspec</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="XSTOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZSTO=A=C=L=000001=doc=Reversal, return delive</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <GOODSMVT_HEADER>
+          <PSTNG_DATE/>
+          <DOC_DATE/>
+          <REF_DOC_NO/>
+          <BILL_OF_LADING/>
+          <GR_GI_SLIP_NO/>
+          <PR_UNAME/>
+          <HEADER_TXT/>
+          <VER_GR_GI_SLIP/>
+          <VER_GR_GI_SLIPX/>
+          <EXT_WMS/>
+          <REF_DOC_NO_LONG/>
+          <BILL_OF_LADING_LONG/>
+          <BAR_CODE/>
+         </GOODSMVT_HEADER>
+         <GOODSMVT_CODE>
+          <GM_CODE/>
+         </GOODSMVT_CODE>
+         <GOODSMVT_ITEM empty="true">
+          <item>
+           <MATERIAL/>
+           <PLANT/>
+           <STGE_LOC/>
+           <BATCH/>
+           <MOVE_TYPE/>
+           <STCK_TYPE/>
+           <SPEC_STOCK/>
+           <VENDOR/>
+           <CUSTOMER/>
+           <SALES_ORD/>
+           <S_ORD_ITEM/>
+           <SCHED_LINE/>
+           <VAL_TYPE/>
+           <ENTRY_QNT/>
+           <ENTRY_UOM/>
+           <ENTRY_UOM_ISO/>
+           <PO_PR_QNT/>
+           <ORDERPR_UN/>
+           <ORDERPR_UN_ISO/>
+           <PO_NUMBER/>
+           <PO_ITEM/>
+           <SHIPPING/>
+           <COMP_SHIP/>
+           <NO_MORE_GR/>
+           <ITEM_TEXT/>
+           <GR_RCPT/>
+           <UNLOAD_PT/>
+           <COSTCENTER/>
+           <ORDERID/>
+           <ORDER_ITNO/>
+           <CALC_MOTIVE/>
+           <ASSET_NO/>
+           <SUB_NUMBER/>
+           <RESERV_NO/>
+           <RES_ITEM/>
+           <RES_TYPE/>
+           <WITHDRAWN/>
+           <MOVE_MAT/>
+           <MOVE_PLANT/>
+           <MOVE_STLOC/>
+           <MOVE_BATCH/>
+           <MOVE_VAL_TYPE/>
+           <MVT_IND/>
+           <MOVE_REAS/>
+           <RL_EST_KEY/>
+           <REF_DATE/>
+           <COST_OBJ/>
+           <PROFIT_SEGM_NO/>
+           <PROFIT_CTR/>
+           <WBS_ELEM/>
+           <NETWORK/>
+           <ACTIVITY/>
+           <PART_ACCT/>
+           <AMOUNT_LC/>
+           <AMOUNT_SV/>
+           <REF_DOC_YR/>
+           <REF_DOC/>
+           <REF_DOC_IT/>
+           <EXPIRYDATE/>
+           <PROD_DATE/>
+           <FUND/>
+           <FUNDS_CTR/>
+           <CMMT_ITEM/>
+           <VAL_SALES_ORD/>
+           <VAL_S_ORD_ITEM/>
+           <VAL_WBS_ELEM/>
+           <GL_ACCOUNT/>
+           <IND_PROPOSE_QUANX/>
+           <XSTOB/>
+           <EAN_UPC/>
+           <DELIV_NUMB_TO_SEARCH/>
+           <DELIV_ITEM_TO_SEARCH/>
+           <SERIALNO_AUTO_NUMBERASSIGNMENT/>
+           <VENDRBATCH/>
+           <STGE_TYPE/>
+           <STGE_BIN/>
+           <SU_PL_STCK_1/>
+           <ST_UN_QTYY_1/>
+           <ST_UN_QTYY_1_ISO/>
+           <UNITTYPE_1/>
+           <SU_PL_STCK_2/>
+           <ST_UN_QTYY_2/>
+           <ST_UN_QTYY_2_ISO/>
+           <UNITTYPE_2/>
+           <STGE_TYPE_PC/>
+           <STGE_BIN_PC/>
+           <NO_PST_CHGNT/>
+           <GR_NUMBER/>
+           <STGE_TYPE_ST/>
+           <STGE_BIN_ST/>
+           <MATDOC_TR_CANCEL/>
+           <MATITEM_TR_CANCEL/>
+           <MATYEAR_TR_CANCEL/>
+           <NO_TRANSFER_REQ/>
+           <CO_BUSPROC/>
+           <ACTTYPE/>
+           <SUPPL_VEND/>
+           <MATERIAL_EXTERNAL/>
+           <MATERIAL_GUID/>
+           <MATERIAL_VERSION/>
+           <MOVE_MAT_EXTERNAL/>
+           <MOVE_MAT_GUID/>
+           <MOVE_MAT_VERSION/>
+           <FUNC_AREA/>
+           <TR_PART_BA/>
+           <PAR_COMPCO/>
+           <DELIV_NUMB/>
+           <DELIV_ITEM/>
+           <NB_SLIPS/>
+           <NB_SLIPSX/>
+           <GR_RCPTX/>
+           <UNLOAD_PTX/>
+           <SPEC_MVMT/>
+           <GRANT_NBR/>
+           <CMMT_ITEM_LONG/>
+           <FUNC_AREA_LONG/>
+           <LINE_ID/>
+           <PARENT_ID/>
+           <LINE_DEPTH/>
+           <QUANTITY/>
+           <BASE_UOM/>
+           <LONGNUM/>
+           <BUDGET_PERIOD/>
+           <EARMARKED_NUMBER/>
+           <EARMARKED_ITEM/>
+           <STK_SEGMENT/>
+           <MOVE_SEGMENT/>
+           <MATERIAL_LONG/>
+           <MOVE_MAT_LONG/>
+           <STK_SEG_LONG/>
+           <MOV_SEG_LONG/>
+           <CREATE_DELIVERY/>
+           <WAREHOUSE_EWM/>
+           <STGE_BIN_EWM/>
+           <EWM_DIFF_ANA/>
+           <SERVICE_DOC/>
+           <SERVICE_ITEM/>
+           <SERVICE_DOC_TYPE/>
+           <SUPPLYAREA/>
+           <EWM_INSPUUID/>
+           <XSTOR/>
+          </item>
+         </GOODSMVT_ITEM>
+        </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>I_PTF_GDSMVMT_CX</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Cancel Goods Movement (BAPI)</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_LE_SHP_GDSMVMNT=&gt;TY_</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_LE_SHP_GDSMVMNT=&gt;TY_GS_I_PTF_LE_GDMVMT_CX_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CX_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_LE_SHP_GDSMVMNT=&gt;TY_GS_I_PTF_LE_GDMVMT_CX_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="MVMT_CH" minOccurs="0" type="BAPI2017_GM_HEAD_02"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPI2017_GM_HEAD_02">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPI2017_GM_HEAD_02=A=u=L=000000=doc=BAPI Com</documentation>
+          </annotation>
+          <sequence>
+           <element name="MAT_DOC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MBLNR=A=C=L=000010=doc=Number of Material Docu</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOC_YEAR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MJAHR=A=N=L=000004=doc=Material Document Year</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TR_EV_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VGART=A=C=L=000002=doc=Transaction/Event Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOC_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BLDAT=A=D=L=000008=doc=Document Date in Docume</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PSTNG_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BUDAT=A=D=L=000008=doc=Posting Date in the Doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENTRY_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPUDT=A=D=L=000008=doc=Day On Which Accounting</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENTRY_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPUTM=A=T=L=000006=doc=Time of Entry</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="..:..:.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USERNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=USNAM=A=C=L=000012=doc=User Name</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VER_GR_GI_SLIP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WEVER=A=C=L=000001=doc=Version for Printing GR</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXPIMP_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EXNUM=A=C=L=000010=doc=Number of foreign trade</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DOC_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XBLNR=A=C=L=000016=doc=Reference Document Numb</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HEADER_TXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BKTXT=A=C=L=000025=doc=Document Header Text</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DOC_NO_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XBLNR_LONG=A=C=L=000035=doc=Reference Document</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CX_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <MVMT_CH>
+          <MAT_DOC/>
+          <DOC_YEAR/>
+          <TR_EV_TYPE/>
+          <DOC_DATE/>
+          <PSTNG_DATE/>
+          <ENTRY_DATE/>
+          <ENTRY_TIME/>
+          <USERNAME/>
+          <VER_GR_GI_SLIP/>
+          <EXPIMP_NO/>
+          <REF_DOC_NO/>
+          <HEADER_TXT/>
+          <REF_DOC_NO_LONG/>
+         </MVMT_CH>
+        </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CX_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>LE_SHP_CLEAN_101B</VAR_NAME>
+       <VAR_DESC>Clean Up available qty from Sloc 101B</VAR_DESC>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>04</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG12</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101B</STGE_LOC>
+             <MOVE_TYPE>311</MOVE_TYPE>
+             <ENTRY_QNT>1</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <MOVE_MAT>TG12</MOVE_MAT>
+             <MOVE_PLANT>1010</MOVE_PLANT>
+             <MOVE_STLOC>101A</MOVE_STLOC>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_SLOC_T_SLOC</VAR_NAME>
+       <VAR_DESC>SLoc to SLoc (311) Qty 10</VAR_DESC>
+       <VINDEX>0013</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>04</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG12</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A</STGE_LOC>
+             <MOVE_TYPE>311</MOVE_TYPE>
+             <ENTRY_QNT>10</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <MOVE_MAT>TG12</MOVE_MAT>
+             <MOVE_PLANT>1010</MOVE_PLANT>
+             <MOVE_STLOC>101B</MOVE_STLOC>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_SLOC_T_SLOC_5</VAR_NAME>
+       <VAR_DESC>SLoc to SLoc (311) Qty 5</VAR_DESC>
+       <VINDEX>0014</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>04</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG12</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A</STGE_LOC>
+             <MOVE_TYPE>311</MOVE_TYPE>
+             <ENTRY_QNT>5</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <MOVE_MAT>TG12</MOVE_MAT>
+             <MOVE_PLANT>1010</MOVE_PLANT>
+             <MOVE_STLOC>101B</MOVE_STLOC>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_TG22_BTCH</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG22 Batch Qty. 10</VAR_DESC>
+       <VINDEX>0012</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG22</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A</STGE_LOC>
+             <BATCH>0000000100</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>10</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <PROD_DATE>TODAY</PROD_DATE>
+             <VENDRBATCH>0000000100</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_TG21_BTCH</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG21 Batch Qty. 10</VAR_DESC>
+       <VINDEX>0011</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG11</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A</STGE_LOC>
+             <BATCH>0000000001</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>10</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <VENDRBATCH>0000000001</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR1_TG22_BTCH</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG22 Batch Qty. 1</VAR_DESC>
+       <VINDEX>0003</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG22</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A</STGE_LOC>
+             <BATCH>0000000100</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>1</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <PROD_DATE>TODAY</PROD_DATE>
+             <VENDRBATCH>0000000100</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_TG11_BDD</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG11 BDD Qty. 100</VAR_DESC>
+       <VINDEX>0007</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG11</MATERIAL>
+             <PLANT>1710</PLANT>
+             <STGE_LOC>171R</STGE_LOC>
+             <MOVE_TYPE>561</MOVE_TYPE>
+             <ENTRY_QNT>100</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_TG21_BD9_BTCH</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG11 BDD Qty. 100</VAR_DESC>
+       <VINDEX>0010</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG21</MATERIAL>
+             <PLANT>1710</PLANT>
+             <STGE_LOC>171R</STGE_LOC>
+             <BATCH>0000000001</BATCH>
+             <MOVE_TYPE>561</MOVE_TYPE>
+             <ENTRY_QNT>100</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <VENDRBATCH>0000000001</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_BTCH_KP</VAR_NAME>
+       <VAR_DESC>Goods Receipt of Batches for Material KP_BATCH_MAT</VAR_DESC>
+       <VINDEX>0004</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>KP_BATCH_MAT</MATERIAL>
+             <PLANT>0001</PLANT>
+             <STGE_LOC>0001</STGE_LOC>
+             <BATCH>BATCH_3</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>1</ENTRY_QNT>
+             <ENTRY_UOM_ISO>EA</ENTRY_UOM_ISO>
+             <PROD_DATE>TODAY</PROD_DATE>
+             <VENDRBATCH>0000000100</VENDRBATCH>
+            </item>
+            <item>
+             <MATERIAL>KP_BATCH_MAT</MATERIAL>
+             <PLANT>0001</PLANT>
+             <STGE_LOC>0001</STGE_LOC>
+             <BATCH>BATCH_4</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>1</ENTRY_QNT>
+             <ENTRY_UOM_ISO>EA</ENTRY_UOM_ISO>
+             <PROD_DATE>TODAY</PROD_DATE>
+             <VENDRBATCH>0000000100</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_TG21_2BTCH</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG21 Qty. 5, 2 Batches</VAR_DESC>
+       <VINDEX>0008</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG21</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A</STGE_LOC>
+             <BATCH>SDBIL00001</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>3</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <VENDRBATCH>0000000001</VENDRBATCH>
+            </item>
+            <item>
+             <MATERIAL>TG21</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A</STGE_LOC>
+             <BATCH>SDBIL00002</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>2</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <VENDRBATCH>0000000001</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_BTCH_TG21</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG21 Batch Qty. 300</VAR_DESC>
+       <VINDEX>0005</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG21</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A
+</STGE_LOC>
+             <BATCH>AAAA</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>200</ENTRY_QNT>
+             <PROD_DATE>TODAY</PROD_DATE>
+             <VENDRBATCH>0000000100</VENDRBATCH>
+            </item>
+            <item>
+             <MATERIAL>TG21</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A</STGE_LOC>
+             <BATCH>BBBB</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>100</ENTRY_QNT>
+             <PROD_DATE>TODAY</PROD_DATE>
+             <VENDRBATCH>0000000100</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_TG11_1010</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG11 in plant 1010</VAR_DESC>
+       <VINDEX>0006</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG11</MATERIAL>
+             <PLANT>1010</PLANT>
+             <STGE_LOC>101A
+</STGE_LOC>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>100</ENTRY_QNT>
+             <PROD_DATE>TODAY</PROD_DATE>
+             <VENDRBATCH>0000000100</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>LE_SHP_GR_TG21_2BTCH_1710</VAR_NAME>
+       <VAR_DESC>Goods Receipt TG21 Qty. 5, 2 Batches, Plant 1710</VAR_DESC>
+       <VINDEX>0009</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_GDSMVMT_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <GOODSMVT_CODE>
+            <GM_CODE>05</GM_CODE>
+           </GOODSMVT_CODE>
+           <GOODSMVT_ITEM>
+            <item>
+             <MATERIAL>TG21</MATERIAL>
+             <PLANT>1710</PLANT>
+             <STGE_LOC>171A</STGE_LOC>
+             <BATCH>SDBIL00001</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>3</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <VENDRBATCH>0000000001</VENDRBATCH>
+            </item>
+            <item>
+             <MATERIAL>TG21</MATERIAL>
+             <PLANT>1710</PLANT>
+             <STGE_LOC>171A</STGE_LOC>
+             <BATCH>SDBIL00002</BATCH>
+             <MOVE_TYPE>501</MOVE_TYPE>
+             <ENTRY_QNT>2</ENTRY_QNT>
+             <ENTRY_UOM>PC</ENTRY_UOM>
+             <VENDRBATCH>0000000001</VENDRBATCH>
+            </item>
+           </GOODSMVT_ITEM>
+          </ddic:CL_PTF_BO_LE_SHP_GDSMVMNT_--3D_--3ETY_GS_I_PTF_LE_GDMVMT_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

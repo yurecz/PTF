@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_DMR</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>DMR Class for Process Test Framework</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_COMPARE_DMR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Activate snapshot</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATEFROMPROJECT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Workaround to test Add Item PBD(uses CL_SDBIL_SCEN_STEPS)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_FROM_PS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>DMR created from PS for Professional Services</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>KEEPING_LOCK_TASK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Catch the separate locking task</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>LOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Lock the instance in a sep. task</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_LOCKED_ASYNC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Single-Character Flag</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_UNLOCKED_ASYNC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Single-Character Flag</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>UNLOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Unlock the instance in the catched sep. task</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>KEEPING_LOCK_TASK</CMPNAME>
+     <SCONAME>P_TASK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Character field, length 32</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LS_ORDER_HEADER_IN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields: Sales and Distribution Document Header</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_ORDER_ITEMS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields: Sales and Distribution Document Item</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_ORDER_PARTNERS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communications Fields: SD Document Partner: WWW</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_SALES_TEXT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication fields: SD texts</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_SCHEDULES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields for Maintaining SD Doc. Schedule Lines</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

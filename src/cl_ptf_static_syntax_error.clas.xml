@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_STATIC_SYNTAX_ERROR</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Error in a PTF script</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_TEXT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get message text</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MSGNO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Number</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MSGTY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MSGV1</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MSGV2</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MSGV3</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MSGV4</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_COLUMN_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ALV control: Field name of internal table field</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_ROW_INDEX</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ALV row number</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>RAISE_MESSAGE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Raise message to UI</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>COLUMN_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ALV control: Field name of internal table field</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>MSGNO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>MSGTY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Type</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>MSGV1</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>MSGV2</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>MSGV3</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>MSGV4</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Variable</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>ROW_INDEX</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ALV row number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_ALV_CELL</CMPNAME>
+     <SCONAME>RT_CELL</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ALV control: Table with cell descriptions</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RAISE_MESSAGE</CMPNAME>
+     <SCONAME>DISPLAY_TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Message Type</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

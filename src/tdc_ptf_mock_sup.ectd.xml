@@ -1,0 +1,1562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>Table mock data for Supply Protection Object in PTF</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_MOCK_SUP</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>CA-ATP-SUP</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>FIELD_DELTA_GENERIC</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Defines deviating fields of existing records. All tables.</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGES_PER_RECORD" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+           <element name="MOCKED_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="FIELDNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NAME_FELD=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIELDVALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CHANGES_PER_RECORD empty="true">
+           <item>
+            <KEY_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </KEY_FIELDS>
+            <MOCKED_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </MOCKED_FIELDS>
+           </item>
+          </CHANGES_PER_RECORD>
+         </item>
+        </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_SUP_OBJECT</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (SUP_OBJECT)</PDESC>
+       <PINDEX>0003</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SUPPLY_PROTECTION=&gt;T</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GT_MOCK_SUP_OBJECT_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_OBJECT_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GT_MOCK_SUP_OBJECT_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_OBJECT_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_OBJECT_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GS_MOCK_SUP_OBJECT_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_OBJECT_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_OBJECT_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GS_MOCK_SUP_OBJECT_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="SUP_OBJECT" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="SUP_OBJECT">
+          <annotation>
+           <documentation>I==O==C=S=K==D=SUP_OBJECT=A=v=L=000000=doc=SUP Object</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=SUP_OBJECT_UUID=A=X=L=000016=doc=UUID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATNR=A=C=L=000040=doc=Material Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WERKS_D=A=C=L=000004=doc=Plant</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_OBJECT_STATUS=A=C=L=000002=doc=Status</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANNINGPERIODTYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PLANNING_PERIOD_TYPE=A=C=L=000001=doc=Plan</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANNINGPERIODSTART" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PLANNING_PERIOD_START_DATE=A=D=L=000008=do</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANNINGPERIODEND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PLANNING_PERIOD_END_DATE=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CORECHARC01CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CORECHARC01CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CORECHARC01VALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CORECHARC02CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CORECHARC02CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CORECHARC02VALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_OBJECT_NAME=A=C=L=000060=doc=Name</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="60"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CATALOGTYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_TYPE=A=C=L=000002=doc=Charac</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANNINGCONTEXTSO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PLANNING_CONTEXT_SO=A=C=L=000001=doc=Plann</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANNINGCONTEXTSTO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PLANNING_CONTEXT_STO=A=C=L=000001=doc=Plan</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATIONDATETIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CREATION_DATE_TIME=A=P=L=000021=doc=Create</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATEDBYUSER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VDM_CREATEDBYUSERID=A=C=L=000012=doc=Created B</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LASTCHANGEDATETIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_LAST_CHANGE_DATE_TIME=A=P=L=000021=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LASTCHANGEDBYUSER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VDM_LASTCHANGEDBYUSERID=A=C=L=000012=doc=Last</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARCVALAUTHZNGROUP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARCVALAUTHZNGRP=A=C=L=000040=doc=Supply</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BLOCKED" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_BLOCK=A=C=L=000001=doc=Supply protection o</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TIMESTAMPL=A=P=L=000021=doc=UTC Time Stamp in</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AUTOACTIVATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_AUTO_ACTIVATION=A=C=L=000001=doc=Automatic</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AUTOACTIVATIONDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_AUTO_ACTIVATION_DATE=A=D=L=000008=doc=Date</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ACTIVATIONDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_ACTIVATION_DATE=A=D=L=000008=doc=Activatio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONSUMPTIONDATETYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CONSUMPTION_DATE_TYPE=A=C=L=000002=doc=Ref</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SELFRESTRICTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_SELF_RESTRICTION_TYPE=A=C=L=000002=doc=Res</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STORAGELOCATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LGORT_D=A=C=L=000004=doc=Storage Location</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="POOLSEGMENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGT_ATP_CHK_SEG=A=C=L=000040=doc=Pool Segment</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BATCH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CHARG_D=A=C=L=000010=doc=Batch Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANNINGLEVEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PLANNING_LEVEL=A=C=L=000002=doc=Planning L</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUP_OBJECT_INCL_EEW_PS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_DUMMY=A=C=L=000001=doc=Custom Fields: Dumm</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUPPROTEXTENSIONRULEUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RFM_SUP_EXTN_RULE_UUID=A=X=L=000016=doc=Supply</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_OBJECT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <UUID/>
+            <MATERIAL/>
+            <PLANT/>
+            <STATUS/>
+            <PLANNINGPERIODTYPE/>
+            <PLANNINGPERIODSTART/>
+            <PLANNINGPERIODEND/>
+            <CORECHARC01CATALOGPATHUUID/>
+            <CORECHARC01CATALOGPATHID/>
+            <CORECHARC01VALUE/>
+            <CORECHARC02CATALOGPATHUUID/>
+            <CORECHARC02CATALOGPATHID/>
+            <CORECHARC02VALUE/>
+            <NAME/>
+            <CATALOGTYPE/>
+            <PLANNINGCONTEXTSO/>
+            <PLANNINGCONTEXTSTO/>
+            <CREATIONDATETIME/>
+            <CREATEDBYUSER/>
+            <LASTCHANGEDATETIME/>
+            <LASTCHANGEDBYUSER/>
+            <CHARCVALAUTHZNGROUP/>
+            <BLOCKED/>
+            <LAST_CHANGED_AT/>
+            <AUTOACTIVATION/>
+            <AUTOACTIVATIONDATE/>
+            <ACTIVATIONDATE/>
+            <CONSUMPTIONDATETYPE/>
+            <SELFRESTRICTION/>
+            <STORAGELOCATION/>
+            <POOLSEGMENT/>
+            <BATCH/>
+            <PLANNINGLEVEL/>
+            <SUP_OBJECT_INCL_EEW_PS/>
+            <SUPPROTEXTENSIONRULEUUID/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_OBJECT_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_SUP_CVC</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (SUP_CVC)</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SUPPLY_PROTECTION=&gt;T</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0003</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GT_MOCK_SUP_CVC_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_CVC_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GT_MOCK_SUP_CVC_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_CVC_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_CVC_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GS_MOCK_SUP_CVC_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_CVC_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_CVC_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GS_MOCK_SUP_CVC_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="SUP_CVC" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="SUP_CVC">
+          <annotation>
+           <documentation>I==O==C=S=K==D=SUP_CVC=A=v=L=000000=doc=SUP Protection Group</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=SUP_CVC_UUID=A=X=L=000016=doc=Characteristic</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUPOBJECTUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_OBJECT_UUID=A=X=L=000016=doc=UUID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC01CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC01CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC01" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC02CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC02CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC02" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC03CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC03CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC03" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC04CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC04CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC04" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC05CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC05CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC05" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC06CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC06CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC06" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC07CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC07CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC07" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC08CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC08CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC08" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC09CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC09CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC09" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CHARC10CATALOGPATHUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_UUID=A=X=L=000016=doc=C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARC10CATALOGPATHID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_CATALOG_PATH_ID=A=X=L=000020=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARACTERISTIC10" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARC_VALUE=A=g=L=000040=doc=Characteristi</documentation>
+            </annotation>
+           </element>
+           <element name="CVCPRIORITY" minOccurs="0" type="int">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CVC_PRIORITY=A=I=L=000010=doc=Priority</documentation>
+            </annotation>
+           </element>
+           <element name="CREATIONDATETIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CREATION_DATE_TIME=A=P=L=000021=doc=Create</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATEDBYUSER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VDM_CREATEDBYUSERID=A=C=L=000012=doc=Created B</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LASTCHANGEDATETIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_LAST_CHANGE_DATE_TIME=A=P=L=000021=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LASTCHANGEDBYUSER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VDM_LASTCHANGEDBYUSERID=A=C=L=000012=doc=Last</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHARCVALAUTHZNGROUP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CHARCVALAUTHZNGRP=A=C=L=000040=doc=Supply</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BLOCKED" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CVC_BLOCK=A=C=L=000001=doc=Supply protecti</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_CVC_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <UUID/>
+            <SUPOBJECTUUID/>
+            <CHARC01CATALOGPATHUUID/>
+            <CHARC01CATALOGPATHID/>
+            <CHARACTERISTIC01/>
+            <CHARC02CATALOGPATHUUID/>
+            <CHARC02CATALOGPATHID/>
+            <CHARACTERISTIC02/>
+            <CHARC03CATALOGPATHUUID/>
+            <CHARC03CATALOGPATHID/>
+            <CHARACTERISTIC03/>
+            <CHARC04CATALOGPATHUUID/>
+            <CHARC04CATALOGPATHID/>
+            <CHARACTERISTIC04/>
+            <CHARC05CATALOGPATHUUID/>
+            <CHARC05CATALOGPATHID/>
+            <CHARACTERISTIC05/>
+            <CHARC06CATALOGPATHUUID/>
+            <CHARC06CATALOGPATHID/>
+            <CHARACTERISTIC06/>
+            <CHARC07CATALOGPATHUUID/>
+            <CHARC07CATALOGPATHID/>
+            <CHARACTERISTIC07/>
+            <CHARC08CATALOGPATHUUID/>
+            <CHARC08CATALOGPATHID/>
+            <CHARACTERISTIC08/>
+            <CHARC09CATALOGPATHUUID/>
+            <CHARC09CATALOGPATHID/>
+            <CHARACTERISTIC09/>
+            <CHARC10CATALOGPATHUUID/>
+            <CHARC10CATALOGPATHID/>
+            <CHARACTERISTIC10/>
+            <CVCPRIORITY/>
+            <CREATIONDATETIME/>
+            <CREATEDBYUSER/>
+            <LASTCHANGEDATETIME/>
+            <LASTCHANGEDBYUSER/>
+            <CHARCVALAUTHZNGROUP/>
+            <BLOCKED/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_CVC_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_SUP_TIMEBUCKET</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (SUP_TIMEBUCKET)</PDESC>
+       <PINDEX>0004</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SUPPLY_PROTECTION=&gt;T</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0004</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GT_MOCK_SUP_TIMEBUCKET_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_TIMEBUCKET_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GT_MOCK_SUP_TIMEBUCKET_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_TIMEBUCKET_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_TIMEBUCKET_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GS_MOCK_SUP_TIMEBUCKET_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_TIMEBUCKET_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GS_MOCK_SUP_TIMEBUCKET_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SUPPLY_PROTECTION=&gt;TY_GS_MOCK_SUP_TIMEBUCKET_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="SUP_TIMEBUCKET" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="SUP_TIMEBUCKET">
+          <annotation>
+           <documentation>I==O==C=S=K==D=SUP_TIMEBUCKET=A=u=L=000000=doc=SUP Time Buck</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=SUP_TIMEBUCKET_UUID=A=X=L=000016=doc=Time Buc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUPCVCUUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CVC_UUID=A=X=L=000016=doc=Characteristic V</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STARTUTCDATETIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PERIOD_START_UTC=A=P=L=000021=doc=Period S</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENDUTCDATETIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PERIOD_END_UTC=A=P=L=000021=doc=Period End</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROTECTEDQUANTITY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PROTECTED_QUANTITY=A=P=L=000015=doc=Protec</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROTECTEDQUANTITYUNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_PROTECTED_QUANTITY_UNIT=A=C=L=000003=doc=U</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATIONDATETIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_CREATION_DATE_TIME=A=P=L=000021=doc=Create</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATEDBYUSER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VDM_CREATEDBYUSERID=A=C=L=000012=doc=Created B</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LASTCHANGEDATETIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUP_LAST_CHANGE_DATE_TIME=A=P=L=000021=doc=Cha</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LASTCHANGEDBYUSER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VDM_LASTCHANGEDBYUSERID=A=C=L=000012=doc=Last</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_TIMEBUCKET_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <UUID/>
+            <SUPCVCUUID/>
+            <STARTUTCDATETIME/>
+            <ENDUTCDATETIME/>
+            <PROTECTEDQUANTITY/>
+            <PROTECTEDQUANTITYUNIT/>
+            <CREATIONDATETIME/>
+            <CREATEDBYUSER/>
+            <LASTCHANGEDATETIME/>
+            <LASTCHANGEDBYUSER/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_TIMEBUCKET_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>OLY_SUP_RACR1</VAR_NAME>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>TABLE_SUP_OBJECT</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_OBJECT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SUP_OBJECT</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <UUID>0000000000000001</UUID>
+              <MATERIAL>OLY_SUP_RACR1</MATERIAL>
+              <PLANT>0001</PLANT>
+              <STATUS>02</STATUS>
+              <PLANNINGPERIODTYPE>O</PLANNINGPERIODTYPE>
+              <PLANNINGPERIODSTART>20241001</PLANNINGPERIODSTART>
+              <PLANNINGPERIODEND>21241031</PLANNINGPERIODEND>
+              <CORECHARC01CATALOGPATHID>kXcijZR_2YDfCf74a_roVVIFQzo=</CORECHARC01CATALOGPATHID>
+              <CORECHARC01VALUE>01</CORECHARC01VALUE>
+              <NAME>OLY_SUP_RACR1</NAME>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_OBJECT_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_SUP_CVC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_CVC_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SUP_CVC</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <UUID>0000000000000001</UUID>
+              <SUPOBJECTUUID>0000000000000001</SUPOBJECTUUID>
+              <CHARC01CATALOGPATHID>kXcijZR_2YDfCf74a_roVVIFQzo=</CHARC01CATALOGPATHID>
+              <CHARACTERISTIC01>01</CHARACTERISTIC01>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_CVC_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_SUP_TIMEBUCKET</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0004</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_TIMEBUCKET_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SUP_TIMEBUCKET</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <UUID>0000000000000001</UUID>
+              <SUPCVCUUID>0000000000000001</SUPCVCUUID>
+              <STARTUTCDATETIME>2024-10-01T00:00:00Z</STARTUTCDATETIME>
+              <ENDUTCDATETIME>2124-10-31T23:59:59Z</ENDUTCDATETIME>
+              <PROTECTEDQUANTITY>10</PROTECTEDQUANTITY>
+              <PROTECTEDQUANTITYUNIT>EA</PROTECTEDQUANTITYUNIT>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_TIMEBUCKET_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>OLY_SUP_RACR2</VAR_NAME>
+       <VINDEX>0003</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>TABLE_SUP_OBJECT</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_OBJECT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SUP_OBJECT</DBTABLE>
+            <MOCK_MODE>I</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <UUID>0000000000000002</UUID>
+              <MATERIAL>OLY_SUP_RACR1</MATERIAL>
+              <PLANT>0001</PLANT>
+              <STATUS>02</STATUS>
+              <PLANNINGPERIODTYPE>O</PLANNINGPERIODTYPE>
+              <PLANNINGPERIODSTART>20241001</PLANNINGPERIODSTART>
+              <PLANNINGPERIODEND>21241031</PLANNINGPERIODEND>
+              <NAME>OLY_SUP_RACR2</NAME>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_OBJECT_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_SUP_CVC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_CVC_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SUP_CVC</DBTABLE>
+            <MOCK_MODE>I</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <UUID>0000000000000002</UUID>
+              <SUPOBJECTUUID>0000000000000002</SUPOBJECTUUID>
+              <CHARC01CATALOGPATHID>kXcijZR_2YDfCf74a_roVVIFQzo=</CHARC01CATALOGPATHID>
+              <CHARACTERISTIC01>01</CHARACTERISTIC01>
+             </item>
+             <item>
+              <UUID>0000000000000003</UUID>
+              <SUPOBJECTUUID>0000000000000002</SUPOBJECTUUID>
+              <CHARC01CATALOGPATHID>kXcijZR_2YDfCf74a_roVVIFQzo=</CHARC01CATALOGPATHID>
+              <CHARACTERISTIC01>00</CHARACTERISTIC01>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_CVC_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_SUP_TIMEBUCKET</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0004</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_TIMEBUCKET_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>SUP_TIMEBUCKET</DBTABLE>
+            <MOCK_MODE>I</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <UUID>0000000000000002</UUID>
+              <SUPCVCUUID>0000000000000002</SUPCVCUUID>
+              <STARTUTCDATETIME>2024-10-01T00:00:00Z</STARTUTCDATETIME>
+              <ENDUTCDATETIME>2124-10-31T23:59:59Z</ENDUTCDATETIME>
+              <PROTECTEDQUANTITY>10</PROTECTEDQUANTITY>
+              <PROTECTEDQUANTITYUNIT>EA</PROTECTEDQUANTITYUNIT>
+             </item>
+             <item>
+              <UUID>0000000000000003</UUID>
+              <SUPCVCUUID>0000000000000003</SUPCVCUUID>
+              <STARTUTCDATETIME>2024-10-01T00:00:00Z</STARTUTCDATETIME>
+              <ENDUTCDATETIME>2124-10-31T23:59:59Z</ENDUTCDATETIME>
+              <PROTECTEDQUANTITY>10</PROTECTEDQUANTITY>
+              <PROTECTEDQUANTITYUNIT>EA</PROTECTEDQUANTITYUNIT>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_BO_SUPPLY_PROTECTION_--3D_--3ETY_GT_MOCK_SUP_TIMEBUCKET_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

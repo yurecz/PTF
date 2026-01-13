@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_TME</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>HCM Time Sheet BO</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>Time entry is not created.</ENTRY>
+     <LENGTH>52</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>Time Sheet Created succesfully</ENTRY>
+     <LENGTH>60</LENGTH>
+    </item>
+   </TPOOL>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_PERNR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns pernr when employee is passed</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TRANSFER_TO_CO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Transfer Successful Time Entry to Controlling Object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TRANSFER_TO_SES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Transfer Successful Time Entry to Service Entry Sheet</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_PERNR</CMPNAME>
+     <SCONAME>EV_PERNR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Personnel Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_PERNR</CMPNAME>
+     <SCONAME>IV_EMPLOYEE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Identification Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>TRANSFER_TO_CO</CMPNAME>
+     <SCONAME>IV_PERNR</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Personnel Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>TRANSFER_TO_SES</CMPNAME>
+     <SCONAME>IT_TIMEENTRY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table Type : Timesheet - Entity - Time Entry</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

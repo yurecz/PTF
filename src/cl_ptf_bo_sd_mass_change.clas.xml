@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_SD_MASS_CHANGE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Stage and Execute Mass change</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_PARTNER_ZM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add partner funtion employee responsible to SO</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>BUFFER_PRICE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Buffer price</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_JOB_COMPLETION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if the job is completed successfully</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_PARTNER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Partner</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_PRICE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Price</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ZM_REMOVED_HD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if the employee responsible  is removed from header</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ZM_REMOVED_ITEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if the employee responsible  is removed from item</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>COMPARE_DOCUMENTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare sales documents</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_ITEMS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get Sales Document Items</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>STAGE_AND_EXECUTE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Stage and execute mass change</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_ITEMS</CMPNAME>
+     <SCONAME>ET_DOCUMENT_ITEMS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table type sales document: Item data</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_ITEMS</CMPNAME>
+     <SCONAME>IT_SALES_DOCUMENT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table type sales document: Item data</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

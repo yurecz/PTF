@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>IF_PTF_STEP_ATTR</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>PTF step attributes</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_ACTUAL_MESSAGES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Handover returned productive messages to PTF step</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>HAS_TO_STOP_RUN_AFTER_STEP</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>obsolete?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_STOP_RUN_AFTER_STEP</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>obsolete?</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>ADD_ACTUAL_MESSAGES</CMPNAME>
+     <SCONAME>IT_MESSAGES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>List of T100 messages</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_PID_INDICATOR</CMPNAME>
+     <SCONAME>IV_IS_PID</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ResultID(s) is/are PID</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

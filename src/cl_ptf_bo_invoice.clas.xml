@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_INVOICE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Process test framework invoice class</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ACTIVATE_SNAPSHOT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Activate snapshot</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHANGE_INVOICE_HEADER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Change invoice header fields</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ANA_FIELDS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checking _ana_ Fields</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ASSIGNED_BP</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if VBPA-ASSIGNED_BP is filled</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_BATCH_SPLIT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check different variants of batch split</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_BD_ITEM_PPRCTR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Partner Profit Center of BD Items</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_BD_PRICES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check prices via SOAP API</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_BD_SIMUL_WO_EXTT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check BD simulation without using external tax</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_BD_SIMUL_WO_PC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check BD simulation without using payment card</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_BD_ZUONR_XBLNR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check update of zuonr and xblnr of a billing document</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_BUPLA__DO_NOT_USE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Business Place - w/o call fr. execute_check-do not use</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_COMPLETE_PROFORMA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check completion of proforma invoice</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_DP_SETTLMENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Down Payment Settlement Item exist + relations</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checking output data of EDI message InvoiceRequest_Out</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT_EXT_ASSC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Chck outpt of InvoiceRequest_Out,withCustomFieldTypdAs Assoc</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT_HEADER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checking sales area and company code of InvoiceRequest_Out</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT_HILVLITM_BTCH</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check InvoiceRequest_out with HigherLeveItem of batch item</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT_ITEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checking item description of InvoiceRequest_Out</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT_PARTY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checking output party of EDI message InvoiceRequest_Out</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT_PRICING_ELEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checking pricing elements of InvoiceRequest_Out</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EDI_SPLIT_ARIBA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check invoice split for Ariba order items</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EVENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check events for Billing Document</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_FLEX_BBI_CM_DM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check followup documents of invoice for flex. batch billing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_HXF</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Historic Exchange Rate Factors</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ICO_SCENARIO_SPLIT_INV</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare VBRK-ICO_SCENARIO &amp; determine the scenario Adv/Ms/Cl</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_LINE_ITEMS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Credit Management Line Items</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_MSICO_VCM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check in VCM if all required material documents are created</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_MULTI_CDM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check multiple CDM from invoices</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_NET_VALUE_VKDFS_ADVICO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check net value in billing due list for adv. ICO process</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_NEW_PROJBILL_DP_SETTL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check downpayment settlements in new project billing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_NEW_PROJBILL_NO_DP_SETTL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check no downpayment settlements in new project billing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_NEW_PROJBILL_W_DOWNPAY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check downpayment specific field in new project billing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_NEW_PROJECT_BILLING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check specific fields used in new project billing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_PROFITAB_SEGMENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>compare VBRP-PAOBJNR to VBAP</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_SHIPTO_PARTY_AGAINST_SO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check ship-to party is equal compared to sales order</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_TEXT_PBD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Comparison that both docs. have the same texts</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_VBRP_LAND_REGION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare VBRP lnd &amp; regio w.r.t master data of Goods supplier</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_VBRP_WITH_TVAP</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare two table values w.r.t Item category</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_VCM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check in VCM if all required material documents are created</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_WAVWR_ADV_ICO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check VBRP-WAVWR is correctly filled in advanced ICO process</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_WAVWR_MS_ICO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check VBRP-WAVWR is correctly filled in MSICO process</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_XBLNR_PREDEC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare VBRK-XBLNR against vbeln of DIRECT predecessor</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ZUONR_CURRNT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare VBRK-ZUONR against vbeln of current invoice</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ZUONR_PREDEC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare VBRK-ZUONR against vbeln of DIRECT predecessor</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>COMPLETE_PROFORMA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Complete Proforma invoice</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_CDM_WITH_WEB_SERVICE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Method to create a debit/credit memo via SOAP web service</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_FOR_ITEM_WITH_PPRCTR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>GN_INVOICE_CREATE for item with Partner Profit Center</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_PARTIALLY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Method for Partial Billing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_SBI_INVOICE_BY_SOAP</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Method for creation of self-billing invoice</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_SNAPSHOT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create snapshot</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_SOAP_API_BD_W_REF</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create BDs with reference to SD document via SOAP API</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_WITH_PPRCTR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>GN_INVOICE_CREATE with Partner Profit Center</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_WITH_VKORG</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create invoice using VKORG</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DERIVE_STEP_TYPE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get the appropriate step type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_EDI_OUTPUT_INVOICE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get EDI output invoice before check</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GV_STATIC_TXT_FLD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Temporary - Text (10 Characters)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ODATA_GET_BD_LIST_ITEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>BillingDueListItem</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ODATA_GET_SUBSQNT_BILLDOC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>test self billing specific read OData</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>RELEASE_DUP_TO_ACCOUNTING</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Duplicate reference and release to accounting</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SIMULATE_PRICING_WEB_SERVICE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Simulate Pricing via SOAP API</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SUBMIT_AND_RETURN_TEST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>do not use</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SUBMIT_TEST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>do not use</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>UPDATE_BD_ZUONR_XBLNR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>update zuonr and xblnr of a billing document via web service</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>UPDATE_TASK_TEST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>do not use</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>WAIT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>wait for documents to be automatically processed in VCM</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CHANGE_INVOICE_HEADER</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT_ITEM</CMPNAME>
+     <SCONAME>IS_STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[şţŗűċţűŗē!∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_EDI_OUTPUT_PRICING_ELEM</CMPNAME>
+     <SCONAME>IS_STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[şţŗűċţűŗē!∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_MSICO_VCM</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_NET_VALUE_VKDFS_ADVICO</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_PROFITAB_SEGMENT</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_VCM</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_WAVWR_ADV_ICO</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_WAVWR_MS_ICO</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>DERIVE_STEP_TYPE</CMPNAME>
+     <SCONAME>CX_SD_BILLING</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Exception for Omnichannel Convergent Billing</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>DERIVE_STEP_TYPE</CMPNAME>
+     <SCONAME>IV_VBTYP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>SD Document Category</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>DERIVE_STEP_TYPE</CMPNAME>
+     <SCONAME>IV_VCM_CHAIN_CATEGORY</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Value Chain Category</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>DERIVE_STEP_TYPE</CMPNAME>
+     <SCONAME>IV_VCM_CHAIN_ELEMENT_ID</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Block Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>DERIVE_STEP_TYPE</CMPNAME>
+     <SCONAME>RV_STEP_TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Process Step ID</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_EDI_OUTPUT_INVOICE</CMPNAME>
+     <SCONAME>IS_STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_EDI_OUTPUT_INVOICE</CMPNAME>
+     <SCONAME>RS_INVOICE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>IDT - Customer Invoice</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SUBMIT_AND_RETURN_TEST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SUBMIT_TEST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>UPDATE_TASK_TEST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

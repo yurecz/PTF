@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_FILE</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>PTF Script file handling</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>DESERIALIZE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Deserialize Script File</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GC_NO_SCRIPT_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Variant Name in PTF</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SERIALIZE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Serialize Script File</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>DESERIALIZE</CMPNAME>
+     <SCONAME>CX_PTF_JSON</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>JSON Parser Exceptions</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>DESERIALIZE</CMPNAME>
+     <SCONAME>ES_ATTRIBUTES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Selection attributes for PTF</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

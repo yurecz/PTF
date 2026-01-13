@@ -1,0 +1,3103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>Table mock data for SD SLS in PTF</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_MOCK_SD_SLS_CPF</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-SLS</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE>X</API_MODE>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H>X</TWB_USE_H>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>FIELD_DELTA_GENERIC</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Defines deviating fields of existing records. All tables.</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_GEN_DELTA_MOCK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_GEN_DELTA_MOCK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PTF_MOCK_MODE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGES_PER_RECORD" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_RECORD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_RECORD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_RECORD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+           <element name="MOCKED_FIELDS" minOccurs="0" type="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GT_FIELD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_UTIL=&gt;TY_GT_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_UTIL_--3D_--3ETY_GS_FIELD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_UTIL=&gt;TY_GS_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="FIELDNAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NAME_FELD=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIELDVALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CHANGES_PER_RECORD empty="true">
+           <item>
+            <KEY_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </KEY_FIELDS>
+            <MOCKED_FIELDS empty="true">
+             <item>
+              <FIELDNAME/>
+              <FIELDVALUE/>
+             </item>
+            </MOCKED_FIELDS>
+           </item>
+          </CHANGES_PER_RECORD>
+         </item>
+        </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_VOFM_RTN_NMBR</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (vofmc_rtn_nmbr)</PDESC>
+       <PINDEX>0011</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOFM_RTN_NMBR_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOFM_RTN_NMBR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_NMBR_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_NMBR_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_VOFM_RTN_NMBR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_NMBR_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_NMBR_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_VOFM_RTN_NMBR_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="VOFMC_RTN_NMBR" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="VOFMC_RTN_NMBR">
+          <annotation>
+           <documentation>I==O==C=S=K==D=VOFMC_RTN_NMBR=A=u=L=000000=doc=Registration</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROCESS_ENHANCEMENT_OPTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_PROC_ENH_OPTION=A=C=L=000030=doc=Process</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROUTINE_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_ROUTINE_NUMBER=A=N=L=000007=doc=Routine</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <PROCESS_ENHANCEMENT_OPTION/>
+            <ROUTINE_NUMBER/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_SDNRRANGEPREFIX</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (SDNRRANGEPREFIX)</PDESC>
+       <PINDEX>0009</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_SDN</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0003</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_SDNRRANGEPREFIX_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_SDNRRANGEPREFIX_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_SDNRRANGEPREFIX_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_SDNRRANGEPREFIX_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_SDNRRANGEPREFIX_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_SDNRRANGEPREFIX_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_SDNRRANGEPREFIX_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_SDNRRANGEPREFIX_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_SDNRRANGEPREFIX_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="SDNRRANGEPREFIX" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="SDNRRANGEPREFIX">
+          <annotation>
+           <documentation>I==O==C=S=K==D=SDNRRANGEPREFIX=A=u=L=000000=doc=Billing Docu</documentation>
+          </annotation>
+          <sequence>
+           <element name="MANDT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NRRANGE_PREFIX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=SD_NRRANGE_PREFIX=A=C=L=000005=doc=Number Ran</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_SDNRRANGEPREFIX_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <MANDT/>
+            <NRRANGE_PREFIX/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_SDNRRANGEPREFIX_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_FORMULAPAR</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_formulapar)</PDESC>
+       <PINDEX>0005</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0004</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULAPAR_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULAPAR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULAPAR_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULAPAR_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULAPAR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULAPAR_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULAPAR_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULAPAR_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_FORMULAPAR" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_FORMULAPAR">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_FORMULAPAR=A=u=L=000000=doc=CPF Formula</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARAMETER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_PARAMETER_NAME=A=C=L=000030=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBPARAMETER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_SUBPARAMETER=A=C=L=000020=doc=Subparamete</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SCALE_ENABLED" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_SCALE_ENABLED=A=C=L=000001=doc=CPF Scale E</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="IS_RESULT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_IS_RESULT=A=C=L=000001=doc=Result Paramete</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <PARAMETER_NAME/>
+            <SUBPARAMETER/>
+            <SCALE_ENABLED/>
+            <IS_RESULT/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_FORMULA</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_formula)</PDESC>
+       <PINDEX>0004</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0005</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULA_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULA_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULA_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULA_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULA_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULA_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULA_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULA_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_FORMULA" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_FORMULA">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_FORMULA=A=u=L=000000=doc=CPF Formula</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_DECT_ROWS</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_dect_rows)</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0006</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_DECT_ROWS_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_DECT_ROWS_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_ROWS_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_ROWS_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_DECT_ROWS_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_ROWS_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_ROWS_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_DECT_ROWS_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_DECT_ROWS" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_DECT_ROWS">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_DECT_ROWS=A=u=L=000000=doc=CPF determina</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE_TASK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE_TASK=A=C=L=000020=doc=Usage Task</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROW_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_DT_ROWNUMBER=A=N=L=000006=doc=CPF Decisio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARAMETER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_PARAMETER_NAME=A=C=L=000030=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBPARAMETER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_SUBPARAMETER=A=C=L=000020=doc=Subparamete</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OPERATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_DECT_OPERATOR=A=C=L=000002=doc=Operator fo</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VALUE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_PARAMETER_VALUE=A=C=L=000050=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="50"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_UNIT=A=C=L=000005=doc=UoM</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <CPF_USAGE_TASK/>
+            <ROW_NUMBER/>
+            <PARAMETER_NAME/>
+            <SUBPARAMETER/>
+            <OPERATOR/>
+            <VALUE/>
+            <UNIT/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_VOFM_RTN_ASSG</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (vofmc_rtn_assg)</PDESC>
+       <PINDEX>0010</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0007</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOFM_RTN_ASSG_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_VOFM_RTN_ASSG_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_ASSG_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_ASSG_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_VOFM_RTN_ASSG_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_ASSG_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_VOFM_RTN_ASSG_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_VOFM_RTN_ASSG_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="VOFMC_RTN_ASSG" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="VOFMC_RTN_ASSG">
+          <annotation>
+           <documentation>I==O==C=S=K==D=VOFMC_RTN_ASSG=A=u=L=000000=doc=Mapping Table</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROCESS_ENHANCEMENT_OPTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_PROC_ENH_OPTION=A=C=L=000030=doc=Process</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROUTINE_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_ROUTINE_NUMBER=A=N=L=000007=doc=Routine</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROCESS_ENHANCEMENT_TASK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_PROC_ENH_OPTION_TASK=A=C=L=000030=doc=Pr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="IMPLEMENTATION_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_IMPL_TYPE=A=C=L=000001=doc=Implementatio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENHANCEMENT_SEQUENCE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=VOFM_ENH_SEQUENCE=A=N=L=000007=doc=Processing</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENHANCEMENT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOFM_ENH_ID=A=C=L=000030=doc=Enhancement Ident</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <PROCESS_ENHANCEMENT_OPTION/>
+            <ROUTINE_NUMBER/>
+            <PROCESS_ENHANCEMENT_TASK/>
+            <IMPLEMENTATION_TYPE/>
+            <ENHANCEMENT_SEQUENCE/>
+            <ENHANCEMENT_ID/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_DECT_SETUP</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_dect_setup)</PDESC>
+       <PINDEX>0003</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0008</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_DECT_SETUP_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_DECT_SETUP_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_SETUP_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_SETUP_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_DECT_SETUP_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_SETUP_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_DECT_SETUP_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_DECT_SETUP_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_DECT_SETUP" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_DECT_SETUP">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_DECT_SETUP=A=u=L=000000=doc=CPF Setup fo</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE_TASK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE_TASK=A=C=L=000020=doc=Usage Task</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARAMETER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_PARAMETER_NAME=A=C=L=000030=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBPARAMETER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_SUBPARAMETER=A=C=L=000020=doc=Subparamete</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRIORITY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_DT_PRIORITY=A=N=L=000002=doc=CPF Determina</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MANDATORY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_IS_MANDATORY=A=C=L=000001=doc=Is a mandato</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <CPF_USAGE_TASK/>
+            <PARAMETER_NAME/>
+            <SUBPARAMETER/>
+            <PRIORITY/>
+            <MANDATORY/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_NRIV</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (nriv)</PDESC>
+       <PINDEX>0008</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_NRI</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0009</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_NRIV_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_NRIV_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_NRIV_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_NRIV_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_NRIV_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_NRIV_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_NRIV_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_NRIV_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_NRIV_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="NRIV" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="NRIV">
+          <annotation>
+           <documentation>I==O==C=S=K==D=NRIV=A=u=L=000000=doc=Number Range Intervals</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OBJECT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=NROBJ=A=C=L=000010=doc=Number Range Object</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBOBJECT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=NRSOBJ=A=C=L=000006=doc=Number range object s</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NRRANGENR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=NRNR=A=C=L=000002=doc=Number range number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOYEAR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=NRYEAR=A=N=L=000004=doc=To fiscal year</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FROMNUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NRFROM=A=C=L=000020=doc=From number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TONUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NRTO=A=C=L=000020=doc=To number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NRLEVEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NRLEVEL=A=N=L=000020=doc=Number range status</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXTERNIND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NRIND=A=C=L=000001=doc=Internal (&apos; &apos;) or exter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_NRIV_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <OBJECT/>
+            <SUBOBJECT/>
+            <NRRANGENR/>
+            <TOYEAR/>
+            <FROMNUMBER/>
+            <TONUMBER/>
+            <NRLEVEL/>
+            <EXTERNIND/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_NRIV_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_PARAMCAT</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_paramcat)</PDESC>
+       <PINDEX>0007</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0010</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_PARAMCAT_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_PARAMCAT_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_PARAMCAT_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_PARAMCAT_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_PARAMCAT_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_PARAMCAT_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_PARAMCAT_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_PARAMCAT_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_PARAMCAT" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_PARAMCAT">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_PARAMCAT=A=u=L=000000=doc=CPF Parameter</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARAMETER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_PARAMETER_NAME=A=C=L=000030=doc=Parameter</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DATA_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_REF_DATA_TYPE_P=A=C=L=000030=doc=Reference</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DATA_CATEGORY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_DATA_CATEGORY=A=C=L=000001=doc=Data Type C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_DS_ROUTINE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_DS_ROUTINE=A=N=L=000007=doc=Data Source Ro</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <PARAMETER_NAME/>
+            <REF_DATA_TYPE/>
+            <DATA_CATEGORY/>
+            <CPF_DS_ROUTINE/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>TABLE_CPF_FORMULATASK</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Full records. Table specific (cpfc_formulatask)</PDESC>
+       <PINDEX>0006</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0011</SORT_LNR>
+       <PREF_NAME2>CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULATASK_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GT_MOCK_CPF_FORMULATASK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULATASK_TD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULATASK_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULATASK_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DBTABLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME16=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOCK_MODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTENT" minOccurs="0" type="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULATASK_TD_--2DCONTENT"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_SD_UTIL_--3D_--3ETY_GS_MOCK_CPF_FORMULATASK_TD_--2DCONTENT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_SD_UTIL=&gt;TY_GS_MOCK_CPF_FORMULATASK_TD-CONTENT=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CPFC_FORMULATASK" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CPFC_FORMULATASK">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CPFC_FORMULATASK=A=u=L=000000=doc=CPF Usage T</documentation>
+          </annotation>
+          <sequence>
+           <element name="CLIENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=MANDT=A=C=L=000003=doc=Client</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE=A=C=L=000003=doc=Usage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMULA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_FORMULA_ID=A=C=L=000030=doc=CPF Formula I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_USAGE_TASK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K=X=D=CPF_USAGE_TASK=A=C=L=000020=doc=Usage Task</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CPF_ROUTINE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_ROUTINE=A=N=L=000007=doc=CPF Routine</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BRFPLUS_FUNCTION_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CPF_BRFPLUS_FUNCTION_ID=A=C=L=000032=doc=BRFpl</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <DBTABLE/>
+          <MOCK_MODE/>
+          <CONTENT empty="true">
+           <item>
+            <CLIENT/>
+            <CPF_USAGE/>
+            <FORMULA_ID/>
+            <CPF_USAGE_TASK/>
+            <CPF_ROUTINE/>
+            <BRFPLUS_FUNCTION_ID/>
+           </item>
+          </CONTENT>
+         </item>
+        </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>FLEX_DOC_NUM_BIL_TYPE_F2</VAR_NAME>
+       <VAR_DESC>Flexible Document Numbering for F2</VAR_DESC>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVFK</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>F2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_VOFM_RTN_NMBR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>VOFMC_RTN_NMBR</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PROCESS_ENHANCEMENT_OPTION>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_OPTION>
+              <ROUTINE_NUMBER>3004444</ROUTINE_NUMBER>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULAPAR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0005</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULAPAR</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>BILLINGDOCUMENTTYPE</PARAMETER_NAME>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>TAXDEPARTURECOUNTRY</PARAMETER_NAME>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <IS_RESULT>X</IS_RESULT>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULA</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0004</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULA</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_DECT_ROWS</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_DECT_ROWS</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>BILLINGDOCUMENTTYPE</PARAMETER_NAME>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>F2</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>TAXDEPARTURECOUNTRY</PARAMETER_NAME>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>DE</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEINTERVAL</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>01</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEPREFIX</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>PTF</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>BILLINGDOCUMENTTYPE</PARAMETER_NAME>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>F2</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>TAXDEPARTURECOUNTRY</PARAMETER_NAME>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEINTERVAL</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>19</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEPREFIX</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_VOFM_RTN_ASSG</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0010</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>VOFMC_RTN_ASSG</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PROCESS_ENHANCEMENT_OPTION>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_OPTION>
+              <ROUTINE_NUMBER>3004444</ROUTINE_NUMBER>
+              <PROCESS_ENHANCEMENT_TASK>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_TASK>
+              <IMPLEMENTATION_TYPE>B</IMPLEMENTATION_TYPE>
+              <ENHANCEMENT_SEQUENCE>0000001</ENHANCEMENT_SEQUENCE>
+              <ENHANCEMENT_ID>PTF_FLEX_DOC_NUMBERING</ENHANCEMENT_ID>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_DECT_SETUP</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_DECT_SETUP</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <PARAMETER_NAME>BILLINGDOCUMENTTYPE</PARAMETER_NAME>
+              <PRIORITY>1</PRIORITY>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <PARAMETER_NAME>TAXDEPARTURECOUNTRY</PARAMETER_NAME>
+              <PRIORITY>2</PRIORITY>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_PARAMCAT</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0007</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_PARAMCAT</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>ACCOUNTINGDOCUMENTTYPE</PARAMETER_NAME>
+              <REF_DATA_TYPE>BLART</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>BILLINGDOCUMENTTYPE</PARAMETER_NAME>
+              <REF_DATA_TYPE>FKART</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+              <REF_DATA_TYPE>BUKRS</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>SALESORGANIZATION</PARAMETER_NAME>
+              <REF_DATA_TYPE>VKORG</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>SDDOCUMENTCATEGORY</PARAMETER_NAME>
+              <REF_DATA_TYPE>VBTYPL</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>TAXDEPARTURECOUNTRY</PARAMETER_NAME>
+              <REF_DATA_TYPE>LANDTX</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULATASK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0006</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULATASK</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <CPF_ROUTINE>1</CPF_ROUTINE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>FLEX_DOC_NUM_BUKRS_DE</VAR_NAME>
+       <VAR_DESC>Flexible Document Numbering for F2 S1 S2 G2 L2 &amp; BUKRS 1010</VAR_DESC>
+       <VINDEX>0003</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVFK</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>F2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>G2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>L2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>S2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>S1</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_VOFM_RTN_NMBR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>VOFMC_RTN_NMBR</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PROCESS_ENHANCEMENT_OPTION>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_OPTION>
+              <ROUTINE_NUMBER>3004444</ROUTINE_NUMBER>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULAPAR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0005</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULAPAR</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <IS_RESULT>X</IS_RESULT>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULA</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0004</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULA</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_DECT_ROWS</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_DECT_ROWS</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>1010</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEINTERVAL</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>01</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEPREFIX</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>PTF</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEINTERVAL</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>19</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEPREFIX</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_VOFM_RTN_ASSG</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0010</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>VOFMC_RTN_ASSG</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PROCESS_ENHANCEMENT_OPTION>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_OPTION>
+              <ROUTINE_NUMBER>3004444</ROUTINE_NUMBER>
+              <PROCESS_ENHANCEMENT_TASK>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_TASK>
+              <IMPLEMENTATION_TYPE>B</IMPLEMENTATION_TYPE>
+              <ENHANCEMENT_SEQUENCE>0000001</ENHANCEMENT_SEQUENCE>
+              <ENHANCEMENT_ID>PTF_FLEX_DOC_NUMBERING</ENHANCEMENT_ID>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_DECT_SETUP</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_DECT_SETUP</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+              <PRIORITY>1</PRIORITY>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_PARAMCAT</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0007</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_PARAMCAT</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>ACCOUNTINGDOCUMENTTYPE</PARAMETER_NAME>
+              <REF_DATA_TYPE>BLART</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>BILLINGDOCUMENTTYPE</PARAMETER_NAME>
+              <REF_DATA_TYPE>FKART</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+              <REF_DATA_TYPE>BUKRS</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>SALESORGANIZATION</PARAMETER_NAME>
+              <REF_DATA_TYPE>VKORG</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>SDDOCUMENTCATEGORY</PARAMETER_NAME>
+              <REF_DATA_TYPE>VBTYPL</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>TAXDEPARTURECOUNTRY</PARAMETER_NAME>
+              <REF_DATA_TYPE>LANDTX</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULATASK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0006</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULATASK</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <CPF_ROUTINE>1</CPF_ROUTINE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>FLEX_DOC_NUM_BUKRS_US</VAR_NAME>
+       <VAR_DESC>Flexible Document Numbering for F2 S1 S2 G2 L2 &amp; BUKRS 1710</VAR_DESC>
+       <VINDEX>0004</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVFK</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>F2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>G2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>L2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>S2</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>FKART</FIELDNAME>
+                <FIELDVALUE>S1</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_VOFM_RTN_NMBR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>VOFMC_RTN_NMBR</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PROCESS_ENHANCEMENT_OPTION>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_OPTION>
+              <ROUTINE_NUMBER>3004444</ROUTINE_NUMBER>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULAPAR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0005</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULAPAR</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <IS_RESULT>X</IS_RESULT>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULA</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0004</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULA</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_DECT_ROWS</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_DECT_ROWS</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>1710</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEINTERVAL</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>01</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEPREFIX</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>PTF</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEINTERVAL</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>19</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>2</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEPREFIX</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_VOFM_RTN_ASSG</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0010</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>VOFMC_RTN_ASSG</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PROCESS_ENHANCEMENT_OPTION>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_OPTION>
+              <ROUTINE_NUMBER>3004444</ROUTINE_NUMBER>
+              <PROCESS_ENHANCEMENT_TASK>SD_BIL_FLEX_NUMBERING</PROCESS_ENHANCEMENT_TASK>
+              <IMPLEMENTATION_TYPE>B</IMPLEMENTATION_TYPE>
+              <ENHANCEMENT_SEQUENCE>0000001</ENHANCEMENT_SEQUENCE>
+              <ENHANCEMENT_ID>PTF_FLEX_DOC_NUMBERING</ENHANCEMENT_ID>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_DECT_SETUP</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_DECT_SETUP</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+              <PRIORITY>1</PRIORITY>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_PARAMCAT</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0007</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_PARAMCAT</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>ACCOUNTINGDOCUMENTTYPE</PARAMETER_NAME>
+              <REF_DATA_TYPE>BLART</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>BILLINGDOCUMENTTYPE</PARAMETER_NAME>
+              <REF_DATA_TYPE>FKART</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>COMPANYCODE</PARAMETER_NAME>
+              <REF_DATA_TYPE>BUKRS</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>SALESORGANIZATION</PARAMETER_NAME>
+              <REF_DATA_TYPE>VKORG</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>SDDOCUMENTCATEGORY</PARAMETER_NAME>
+              <REF_DATA_TYPE>VBTYPL</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <PARAMETER_NAME>TAXDEPARTURECOUNTRY</PARAMETER_NAME>
+              <REF_DATA_TYPE>LANDTX</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULATASK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0006</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULATASK</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>B01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <CPF_ROUTINE>1</CPF_ROUTINE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>FLEX_DOC_NUM_SLS_TYPE_QT</VAR_NAME>
+       <VAR_DESC>Flexible Sales Document Numbering for QT</VAR_DESC>
+       <VINDEX>0005</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>FIELD_DELTA_GENERIC</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>TVAK</DBTABLE>
+            <MOCK_MODE>U</MOCK_MODE>
+            <CHANGES_PER_RECORD>
+             <item>
+              <KEY_FIELDS>
+               <item>
+                <FIELDNAME>AUART</FIELDNAME>
+                <FIELDVALUE>AG</FIELDVALUE>
+               </item>
+              </KEY_FIELDS>
+              <MOCKED_FIELDS>
+               <item>
+                <FIELDNAME>FLEXNUM_ROUTINE_NO</FIELDNAME>
+                <FIELDVALUE>3004444</FIELDVALUE>
+               </item>
+              </MOCKED_FIELDS>
+             </item>
+            </CHANGES_PER_RECORD>
+           </item>
+          </ddic:CL_PTF_UTIL_--3D_--3ETY_GT_GEN_DELTA_MOCK_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_VOFM_RTN_NMBR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0011</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>VOFMC_RTN_NMBR</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PROCESS_ENHANCEMENT_OPTION>SD_SLS_FLEX_NUMBERING</PROCESS_ENHANCEMENT_OPTION>
+              <ROUTINE_NUMBER>3004444</ROUTINE_NUMBER>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_NMBR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULAPAR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0005</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULAPAR</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>SALESDOCUMENTTYPE</PARAMETER_NAME>
+             </item>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <IS_RESULT>X</IS_RESULT>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULAPAR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULA</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0004</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULA</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULA_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_DECT_ROWS</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_DECT_ROWS</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>SALESDOCUMENTTYPE</PARAMETER_NAME>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>AG</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEINTERVAL</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>01</VALUE>
+             </item>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <ROW_NUMBER>1</ROW_NUMBER>
+              <PARAMETER_NAME>NUMBERRANGERESULT</PARAMETER_NAME>
+              <SUBPARAMETER>NUMBERRANGEPREFIX</SUBPARAMETER>
+              <OPERATOR>EQ</OPERATOR>
+              <VALUE>QT</VALUE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_ROWS_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_VOFM_RTN_ASSG</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0010</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>VOFMC_RTN_ASSG</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <PROCESS_ENHANCEMENT_OPTION>SD_SLS_FLEX_NUMBERING</PROCESS_ENHANCEMENT_OPTION>
+              <ROUTINE_NUMBER>3004444</ROUTINE_NUMBER>
+              <PROCESS_ENHANCEMENT_TASK>SD_SLS_FLEX_NUMBERING_TSK</PROCESS_ENHANCEMENT_TASK>
+              <IMPLEMENTATION_TYPE>B</IMPLEMENTATION_TYPE>
+              <ENHANCEMENT_SEQUENCE>0000001</ENHANCEMENT_SEQUENCE>
+              <ENHANCEMENT_ID>PTF_FLEX_DOC_NUMBERING</ENHANCEMENT_ID>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_VOFM_RTN_ASSG_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_DECT_SETUP</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_DECT_SETUP</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <PARAMETER_NAME>SALESDOCUMENTTYPE</PARAMETER_NAME>
+              <PRIORITY>1</PRIORITY>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_DECT_SETUP_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_NRIV</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0008</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_NRIV_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>NRIV</DBTABLE>
+            <MOCK_MODE>I</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <OBJECT>RV_BELEG</OBJECT>
+              <SUBOBJECT>QT</SUBOBJECT>
+              <NRRANGENR>01</NRRANGENR>
+              <TOYEAR>0000</TOYEAR>
+              <FROMNUMBER>0000000001</FROMNUMBER>
+              <TONUMBER>0019999999</TONUMBER>
+              <NRLEVEL>0000000000</NRLEVEL>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_NRIV_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_PARAMCAT</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0007</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_PARAMCAT</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <PARAMETER_NAME>SALESDOCUMENTTYPE</PARAMETER_NAME>
+              <REF_DATA_TYPE>AUART</REF_DATA_TYPE>
+              <DATA_CATEGORY>D</DATA_CATEGORY>
+              <CPF_DS_ROUTINE>1</CPF_DS_ROUTINE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_PARAMCAT_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>TABLE_CPF_FORMULATASK</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0006</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <DBTABLE>CPFC_FORMULATASK</DBTABLE>
+            <MOCK_MODE>F</MOCK_MODE>
+            <CONTENT>
+             <item>
+              <CPF_USAGE>S01</CPF_USAGE>
+              <FORMULA_ID>PTF_FLEX_DOC_NUMBERING</FORMULA_ID>
+              <CPF_USAGE_TASK>SET_NUMBER_RANGE</CPF_USAGE_TASK>
+              <CPF_ROUTINE>1</CPF_ROUTINE>
+             </item>
+            </CONTENT>
+           </item>
+          </ddic:CL_PTF_SD_UTIL_--3D_--3ETY_GT_MOCK_CPF_FORMULATASK_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

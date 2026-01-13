@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_CLIENT</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Client information handling for ProTestFrwrk</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>AM_I_IN_HOMEDEVCLIENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Is the current client a home dev client?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>AM_I_IN_MAIN_HOMEDEVCLIENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Is crrnt client the home dev client and systm is main systm?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DOES_SYSTEM_BLOCK_MODIFICATION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>returns a MSGNO if given variant must not be modified here</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>HAS_USER_TADM_ROLE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>do not use - intended for DDCI</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>IS_ALLOWLISTED_AS_HOMEDEV</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Is on allow list of sysid/client to behave like in home dev</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>IS_BLOCKLISTED_AGAINST_TR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Is on block list of sysid/client (record no transports here)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>IS_BLOCKLISTED_AGAINST_Z_TDC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Is on block list of sysid/client where Z TDC shall be ignord</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>IS_VARIANT_FROM_THIS_SYSTEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Is the current system the original system of the variant?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_CLIENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Client ID</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MV_SYSID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of SAP System</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>IV_CLIENT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Client ID</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>IV_SYSID</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of SAP System</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>DOES_SYSTEM_BLOCK_MODIFICATION</CMPNAME>
+     <SCONAME>RV_RESULT_MSGNO</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP System Field: Message Number</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

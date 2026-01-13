@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_RAP_KEY_FINDER</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>RAP Key Finder</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_PTF_RAP_METADATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>RAP Metadata Functions</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_PTF_RAP_VALIDATE_TDO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>RAP Validate TDO Functions</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_RUN_ENVIRONMENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Represents a PTF variant run</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_MAXINSTANCES</CMPNAME>
+     <SCONAME>RV_MAXINSTANCES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>4 Byte Signed Integer</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <SCONAME>IO_RUN_ENVIRONMENT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Represents a PTF variant run</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_QUERY</CMPNAME>
+     <SCONAME>IV_MAXINSTANCES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>4 Byte Signed Integer</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>EXECUTE_QUERY</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[Ńąɱē∙ēįŋēş∙ĀƁĀƤ∙Ďįċţįŏŋąŗŷ-Ŏƃĵēķţş∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_FIELDS</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[Ńąɱē∙ēįŋēş∙ĀƁĀƤ∙Ďįċţįŏŋąŗŷ-Ŏƃĵēķţş∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_QUERY</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[Ńąɱē∙ēįŋēş∙ĀƁĀƤ∙Ďįċţįŏŋąŗŷ-Ŏƃĵēķţş∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_T_JOIN</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[Ńąɱē∙ēįŋēş∙ĀƁĀƤ∙Ďįċţįŏŋąŗŷ-Ŏƃĵēķţş∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_WHERE</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[Ńąɱē∙ēįŋēş∙ĀƁĀƤ∙Ďįċţįŏŋąŗŷ-Ŏƃĵēķţş∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>QUERY_BO</CMPNAME>
+     <SCONAME>IV_MAXINSTANCES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>4 Byte Signed Integer</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>QUERY_BO</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[Ńąɱē∙ēįŋēş∙ĀƁĀƤ∙Ďįċţįŏŋąŗŷ-Ŏƃĵēķţş∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RECURSIVE_BUILD_SEL_DATA</CMPNAME>
+     <SCONAME>IV_NAME</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name eines ABAP Dictionary-Objekts</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>RECURSIVE_BUILD_SEL_DATA</CMPNAME>
+     <SCONAME>IV_ROOT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Name of an ABAP Dictionary object</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

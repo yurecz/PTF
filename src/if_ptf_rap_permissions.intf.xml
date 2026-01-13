@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>IF_PTF_RAP_PERMISSIONS</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>RAP Permissions</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>BUILD_PERMISSIONS</CMPNAME>
+     <SCONAME>IS_STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>BUILD_PERMISSIONS</CMPNAME>
+     <SCONAME>IV_OP</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Operation in Behavior Implementation</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>HANDLE_PERMISSIONS_ERROR</CMPNAME>
+     <SCONAME>IT_FAILED</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Dynamic MODIFY/READ: Response Table</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

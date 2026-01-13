@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>TCL_PTF_CFD_VBFS_AUNIT_EXEC</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Example cl. with AUnit tests to start groups of PTF tests</DESCRIPT>
+    <CATEGORY>05</CATEGORY>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <DURATION_TYPE>36</DURATION_TYPE>
+    <RISK_LEVEL>22</RISK_LEVEL>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>CHCK_SCRIPT_EXSTCE_WO_ASSRT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check exist.of script SDBIL_STD_CREATE_MESSAGES w.o. Assert</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_PTF_SCRIPT_EXISTENCE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Assert existence of PTF script SDBIL_STD_CREATE_MESSAGES</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SCRIPT__MESSG_SIMPLE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Execute PTF script SDBIL_MESSG_SIMPLE</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SCRIPT__STD_CREATE_MESSAGES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Execute PTF script SDBIL_STD_CREATE_MESSAGES</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

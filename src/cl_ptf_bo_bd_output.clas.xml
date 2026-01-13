@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_BD_OUTPUT</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>PTF BO for billings output</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_EXISTENCE_OUTPUTITEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks if Output Items are available at all</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_OUTPUT_ITEMS_DETERMND</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks if output items are determined</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_OUTPUT_ITEMS_REMOVED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks if output items are removed</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_OUTPUT_ITEMS_SENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks if output items are sent</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_QUERY_BASE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks dependent on validation class</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_STRUCTURE_ONLY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks only structure of xml</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_SUB_NODES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks subNodes of given path</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_VALUES_ONLY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Checks only values of xml</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_EXISTENCE_OUTPUTITEM</CMPNAME>
+     <SCONAME>IV_STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>[[şţŗűċţűŗē!∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙]</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

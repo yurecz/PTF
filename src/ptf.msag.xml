@@ -1,0 +1,952 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>PTF</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>You cannot combine business object &amp;1 and action &amp;2.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>A reference step number must be an integer.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Enter a valid step number for the reference BO in step &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Business object &amp;1 can&apos;t be created without a reference business object.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>The business object entered for Step &amp;1 is incorrect or incomplete.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>You cannot combine &amp;1 and action &amp;2 without a reference BO for Step &amp;3.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>Enter a valid reference step for Step &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Enter a valid test data container variant for Step &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Data not found.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Error while reading data from test data container.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>Choose a processing action for the &amp;1 in Step &amp;2.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>Enter a business object for Step &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>012</MSGNR>
+     <TEXT>Enter a valid business object for Step &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>013</MSGNR>
+     <TEXT>Choose a valid test data variant or reference step for &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>014</MSGNR>
+     <TEXT>Enter a variant name, a short text, and the Script data.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>015</MSGNR>
+     <TEXT>(obsolete)</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>016</MSGNR>
+     <TEXT>Script &amp;1 already exists.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>017</MSGNR>
+     <TEXT>Unable to save script &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>018</MSGNR>
+     <TEXT>Script &amp;1 does not exist.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>019</MSGNR>
+     <TEXT>Script &amp;1 saved sucessfully.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>020</MSGNR>
+     <TEXT>Enter all required Script data for Script &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>021</MSGNR>
+     <TEXT>You can only delete (user-specific) Scripts that you have created.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>022</MSGNR>
+     <TEXT>Script &amp;1 deleted successfully.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>023</MSGNR>
+     <TEXT>Unable to delete Script &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>024</MSGNR>
+     <TEXT>You can only change (user-specific) Scripts that you have created.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>025</MSGNR>
+     <TEXT>Unable to change Script &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>026</MSGNR>
+     <TEXT>Script &amp;1 changed successfully.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>027</MSGNR>
+     <TEXT>Open the Script that you would like to change.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>028</MSGNR>
+     <TEXT>Unable to update Script &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>029</MSGNR>
+     <TEXT>Reference steps have been adapted.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>030</MSGNR>
+     <TEXT>Script &amp;1 already exists.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>031</MSGNR>
+     <TEXT>Unable to create a transport request.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>032</MSGNR>
+     <TEXT>No database entry found in ptf_varid.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>033</MSGNR>
+     <TEXT>No database entry found in ptf_varcon.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>034</MSGNR>
+     <TEXT>Assign a transport request or change the namespace. DB was not changed.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>035</MSGNR>
+     <TEXT>No Script is currently selected.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>036</MSGNR>
+     <TEXT>Script &amp;1 is assigned to transport request &amp;2.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>037</MSGNR>
+     <TEXT>Enter the Script data into the input table.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>038</MSGNR>
+     <TEXT>Enter a business object and action for Step &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>039</MSGNR>
+     <TEXT>Open the Script that you would like to delete.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>040</MSGNR>
+     <TEXT>&amp;1 is not a valid reference step. Please only use integers</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>041</MSGNR>
+     <TEXT>Step &amp;1: Problem with entered test data variant. See long text.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>042</MSGNR>
+     <TEXT>Step &amp;1: Problem with entered action. See long text for details.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>043</MSGNR>
+     <TEXT>Last step is not a check, meaning that negative tests are not possible.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>044</MSGNR>
+     <TEXT>Error while displaying Scripts.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>045</MSGNR>
+     <TEXT>Script Name must only contain the following characters: {a-z,A-Z,0-9,_}</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>046</MSGNR>
+     <TEXT>You cannot create new tags or modify this specific tag.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>047</MSGNR>
+     <TEXT>Managing of tags is only allowed in ER1/815.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>048</MSGNR>
+     <TEXT>A public tag already exists.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>049</MSGNR>
+     <TEXT>Please fill both fields.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>050</MSGNR>
+     <TEXT>Please enter a value for visibility.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>051</MSGNR>
+     <TEXT>Please fill both columns.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>052</MSGNR>
+     <TEXT>If you delete tag &amp;1, &amp;2 variants will lose a tag.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>053</MSGNR>
+     <TEXT>A private tag already exists. Please contact &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>054</MSGNR>
+     <TEXT>The entered tag(s) are not valid.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>055</MSGNR>
+     <TEXT>Script(s) successfully tagged.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>056</MSGNR>
+     <TEXT>Removed Tag(s) from Scripts.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>057</MSGNR>
+     <TEXT>Step &amp;1 is referenced twice in step &amp;2.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>058</MSGNR>
+     <TEXT>Tag &amp;1 is not valid</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>059</MSGNR>
+     <TEXT>(outdated) long text for data model change</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>060</MSGNR>
+     <TEXT>Client settings prevent the start of PTF tests.(SAUNIT_CLIENT_SETUP)</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>061</MSGNR>
+     <TEXT>You can only delete this Script in Original System &amp;1.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>062</MSGNR>
+     <TEXT>Modification is not allowed if original is in other twin system(ER9/ER1).</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>063</MSGNR>
+     <TEXT>Modification of Scripts is not allowed in ER6.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>064</MSGNR>
+     <TEXT>Option only available for RAP Business Objects</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>065</MSGNR>
+     <TEXT>JSON is invalid</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>066</MSGNR>
+     <TEXT>Script maintenance is only allowed in Home dev clients (except for Z*)</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>067</MSGNR>
+     <TEXT>Update of Scripts (non Z) is only allowed in Home dev clients.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>068</MSGNR>
+     <TEXT>Deletion of Scripts (non Z) is only allowed in Home dev clients.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>069</MSGNR>
+     <TEXT>Do not save a Script that has steps after an empty step.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>070</MSGNR>
+     <TEXT>&amp;1&amp;2&amp;3&amp;4</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>071</MSGNR>
+     <TEXT>Invalid JSON Test Data</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>072</MSGNR>
+     <TEXT>JSON validated successfully</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>073</MSGNR>
+     <TEXT>Invalid JSON: &amp;1 . Position: &amp;2</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>074</MSGNR>
+     <TEXT>No Script available to download</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>075</MSGNR>
+     <TEXT>Script loaded. Warning, a Script with the same name exists on DB.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>076</MSGNR>
+     <TEXT>Reference steps in JSON have been adapted.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>077</MSGNR>
+     <TEXT>Reference steps in cells and JSON have been adapted.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>078</MSGNR>
+     <TEXT>JSON Repository JSON ID not found</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>079</MSGNR>
+     <TEXT>Error saving JSON ID to JSON Repository</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>080</MSGNR>
+     <TEXT>JSON ID is initial</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>081</MSGNR>
+     <TEXT>Error deleting JSON ID from JSON Repository</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>082</MSGNR>
+     <TEXT>JSON ID saved to JSON Repository</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>083</MSGNR>
+     <TEXT>JSON ID loaded from JSON Repository</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>084</MSGNR>
+     <TEXT>JSON ID is copied to local</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>085</MSGNR>
+     <TEXT>JSON ID deleted from JSON Repository</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>086</MSGNR>
+     <TEXT>RAP BO Action &amp;1 is invalid</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>087</MSGNR>
+     <TEXT>Update of JSON ID (non Z) is only allowed in Home dev clients</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>088</MSGNR>
+     <TEXT>Deletion of JSON ID (non Z) is only allowed in Home dev clients</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>089</MSGNR>
+     <TEXT>JSON ID must only contain the following characters: {a-z,A-Z,0-9,_}</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>090</MSGNR>
+     <TEXT>COMMIT step, no input needed, filled JSON is ignored</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>091</MSGNR>
+     <TEXT>No Data Sets and Variables found</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>092</MSGNR>
+     <TEXT>Error saving Data Sets and Variables to JSON Repository</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>093</MSGNR>
+     <TEXT>Variant Name is initial</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>094</MSGNR>
+     <TEXT>Error deleting Data Sets and Variables</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>095</MSGNR>
+     <TEXT>Data Set ID is initial</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>096</MSGNR>
+     <TEXT>Variable Name is initial</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>097</MSGNR>
+     <TEXT>Variable Value is initial</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>098</MSGNR>
+     <TEXT>Variable Name starts with &amp;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>099</MSGNR>
+     <TEXT>Variant Name is inconsistent</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>PTF</ARBGB>
+     <MSGNR>102</MSGNR>
+     <TEXT>Maintain a JSON ID.</TEXT>
+    </T100>
+   </T100>
+   <LONGTEXTS>
+    <item>
+     <DOKIL>
+      <ID>NA</ID>
+      <OBJECT>PTF041</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0003</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00006</TXTLINES>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>PTF041</TDNAME>
+      <TDID>NA</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00003</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;CAUSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The test data container variant entered for this step is either</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>incorrect, incomplete, or does not correspond to the entered business</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>object and action.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;SYSTEM_RESPONSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The step cannot be executed.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;WHAT_TO_DO&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Change the test data container variant or change the business object so</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>that it corresponds to the chosen test data container variant.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>NA</ID>
+      <OBJECT>PTF042</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00006</TXTLINES>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>PTF042</TDNAME>
+      <TDID>NA</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;CAUSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The action that you have entered for this step is either incorrect or</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>does not correspond to the entered business object.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;SYSTEM_RESPONSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The step cannot be executed.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;WHAT_TO_DO&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Change the action so that it corresponds to the chosen business object</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>or change the business object so that it corresponds to the chosen</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>action.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>NA</ID>
+      <OBJECT>PTF059</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00008</TXTLINES>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>PTF059</TDNAME>
+      <TDID>NA</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;CAUSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>A data model change for PTF scripts is planned for July 27.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>The content of PTF scripts will not be affected. But open Transport</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>Requests that include a PTF script then cannot be released anymore, as</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>their table key will be outdated after the change. To avoid problems,</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>please ensure that you have no Transport Requests (that contain PTF</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>scripts) open at July 27.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;WHAT_TO_DO&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Release your relevant Transport Requests in time.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>For questions, contact D049099</TDLINE>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>NA</ID>
+      <OBJECT>PTF060</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00007</TXTLINES>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>PTF060</TDNAME>
+      <TDID>NA</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;CAUSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>This client has been restricted regarding the execution of Unit Tests.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>PTF tests start generic ABAP Unit tests of Risk Level &apos;Dangerous&apos;, as</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>/</TDFORMAT>
+       <TDLINE>master data and transactional data is changed.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;SYSTEM_RESPONSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>You can not execute PTF tests here.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;WHAT_TO_DO&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>See transaction SAUNIT_CLIENT_SETUP. See also details in</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>&lt;DS:SIMG.SAUNIT_CLIENT_SETUP&gt;ABAP Unit Configuration&lt;/&gt;.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Open an DLM ticket to change the setting.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;SYS_ADMIN&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+    <item>
+     <DOKIL>
+      <ID>NA</ID>
+      <OBJECT>PTF066</OBJECT>
+      <LANGU>E</LANGU>
+      <TYP>E</TYP>
+      <VERSION>0002</VERSION>
+      <MASTERLANG>X</MASTERLANG>
+      <TXTLINES>00005</TXTLINES>
+     </DOKIL>
+     <HEAD>
+      <TDOBJECT>DOKU</TDOBJECT>
+      <TDNAME>PTF066</TDNAME>
+      <TDID>NA</TDID>
+      <TDSPRAS>E</TDSPRAS>
+      <TDFORM>S_DOCU_SHOW</TDFORM>
+      <TDSTYLE>S_DOCUS1</TDSTYLE>
+      <TDVERSION>00002</TDVERSION>
+      <TDLINESIZE>072</TDLINESIZE>
+     </HEAD>
+     <LINES>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;CAUSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>You tried to maintain a PTF script in a client that is not a Home dev</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>client.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;SYSTEM_RESPONSE&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;WHAT_TO_DO&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+       <TDLINE>Change to a suitable client (often 815) or system. Or work with Z</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>scripts (name starting with Z or Y). You can also copy an existing</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDLINE>script to a new name, starting with Z, by pressing Save.</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>U1</TDFORMAT>
+       <TDLINE>&amp;SYS_ADMIN&amp;</TDLINE>
+      </TLINE>
+      <TLINE>
+       <TDFORMAT>AS</TDFORMAT>
+      </TLINE>
+     </LINES>
+    </item>
+   </LONGTEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

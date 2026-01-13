@@ -1,0 +1,2302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>Inbound Delivery</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_INB_DELIVERY</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-PTF</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>I_PTF_INB_DEL_CR</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Create Inbound Delivery</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_LE_SHP_INB_DELIVERY=</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_LE_SHP_INB_DELIVERY=&gt;TY_GS_I_PTF_LE_IDEL_CREATE_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_LE_SHP_INB_DELIVERY_--3D_--3ETY_GS_I_PTF_LE_IDEL_CREATE_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_LE_SHP_INB_DELIVERY=&gt;TY_GS_I_PTF_LE_IDEL_CREATE_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="SUPPLIER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LIFNR=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASEORDER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTNR=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIVERYDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LFDAT_LA=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_LE_SHP_INB_DELIVERY_--3D_--3ETY_GS_I_PTF_LE_IDEL_CREATE_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <SUPPLIER/>
+         <PURCHASEORDER/>
+         <DELIVERYDATE/>
+        </ddic:CL_PTF_BO_LE_SHP_INB_DELIVERY_--3D_--3ETY_GS_I_PTF_LE_IDEL_CREATE_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>I_PTF_INB_DEL_UPD</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Update Inbound Delivery</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_LE_SHP_INB_DELIVERY=</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_LE_SHP_INB_DELIVERY=&gt;TY_CHANGE_S</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_LE_SHP_INB_DELIVERY_--3D_--3ETY_CHANGE_S">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_LE_SHP_INB_DELIVERY=&gt;TY_CHANGE_S=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIVERY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HEADER_DATA" minOccurs="0" type="BAPIIBDLVHDRCHG"/>
+           <element name="HEADER_CONTROL" minOccurs="0" type="BAPIIBDLVHDRCTRLCHG"/>
+           <element name="HEADER_PARTNER" minOccurs="0" type="_-SPE_-BAPIDLVPARTNERCHG_T"/>
+           <element name="HEADER_PARTNER_ADDR" minOccurs="0" type="_-SPE_-BAPIDLVPARTNADDRCHG_T"/>
+           <element name="HEADER_DEADLINES" minOccurs="0" type="_-SPE_-BAPIDLVDEADLN_T"/>
+           <element name="ITEM_DATA" minOccurs="0" type="_-ACCGO_-OE_TT_BAPIIBDLVITEMCHG"/>
+           <element name="ITEM_CONTROL" minOccurs="0" type="_-ACCGO_-OE_TT_BAPIIBDLVITEMCTRL"/>
+           <element name="ITEM_SERIAL_NO" minOccurs="0" type="_-SPE_-BAPIDLVITMSERNO_T"/>
+           <element name="TEXT_HEADER" minOccurs="0" type="_-SPE_-BAPIDLVTXTHDR_TAB"/>
+           <element name="TEXT_LINES" minOccurs="0" type="_-SPE_-BAPIDLVTXTITEM_TAB"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIIBDLVHDRCHG">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIIBDLVHDRCHG=A=u=L=000000=doc=Change Inbou</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GROSS_WT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BRGEW_15=A=P=L=000015=doc=Gross Weight</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NET_WEIGHT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NTGEW_15=A=P=L=000015=doc=Net Weight</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNIT_OF_WT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GEWEI=A=C=L=000003=doc=Unit of Weight</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNIT_OF_WT_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GEWEI_ISO=A=C=L=000003=doc=Unit of weight in I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLUM_15=A=P=L=000015=doc=Volume</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUMEUNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLEH=A=C=L=000003=doc=Volume Unit</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUMEUNIT_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLEH_ISO=A=C=L=000003=doc=Volume unit in ISO</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LGTOR=A=C=L=000003=doc=Door for Warehouse Numb</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXTDELV_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LIFEX=A=C=L=000035=doc=External Identification</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIIBDLVHDRCTRLCHG">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIIBDLVHDRCTRLCHG=A=u=L=000000=doc=Control</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GROSS_WT_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZBRG=A=C=L=000001=doc=Confirmation of gross w</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NET_WT_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZNTG=A=C=L=000001=doc=Confirmation of net wei</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUME_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZVOL=A=C=L=000001=doc=Confirmation of volume</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_DATE_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZLFD=A=C=L=000001=doc=Confirm delivery date</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOCK_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZTOR=A=C=L=000001=doc=Confirm gate</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DLV_DEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LIKP_DEL=A=C=L=000001=doc=Flag: delete deliver</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SIMULATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LE_DLV_SIMULATE_CHG=A=C=L=000001=doc=Simulatio</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DLV_EXTID_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZLFX=A=C=L=000001=doc=Change External Deliver</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NO_LOCK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NO_SP=A=C=L=000001=doc=No-Blocking Field</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PART_POST_GR_FLAG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZTWE_OBSOLETE=A=C=L=000001=doc=This field is</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DLV_CHANGE_OFF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=V50AGL_DLV_CHANGE_OFF=A=C=L=000001=doc=Indicat</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="_-SPE_-BAPIDLVPARTNERCHG_T">
+          <annotation>
+           <documentation>I==O==C=T=K==D=/SPE/BAPIDLVPARTNERCHG_T=A=h=L=000000=doc=Tab</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPIDLVPARTNERCHG" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="_-SPE_-BAPIDLVPARTNADDRCHG_T">
+          <annotation>
+           <documentation>I==O==C=T=K==D=/SPE/BAPIDLVPARTNADDRCHG_T=A=h=L=000000=doc=T</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPIDLVPARTNADDRCHG" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="_-SPE_-BAPIDLVDEADLN_T">
+          <annotation>
+           <documentation>I==O==C=T=K==D=/SPE/BAPIDLVDEADLN_T=A=h=L=000000=doc=Tablety</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPIDLVDEADLN" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="_-ACCGO_-OE_TT_BAPIIBDLVITEMCHG">
+          <annotation>
+           <documentation>I==O==C=T=K==D=/ACCGO/OE_TT_BAPIIBDLVITEMCHG=A=h=L=000000=do</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPIIBDLVITEMCHG" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="_-ACCGO_-OE_TT_BAPIIBDLVITEMCTRL">
+          <annotation>
+           <documentation>I==O==C=T=K==D=/ACCGO/OE_TT_BAPIIBDLVITEMCTRL=A=h=L=000000=d</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPIIBDLVITEMCTRLCHG" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="_-SPE_-BAPIDLVITMSERNO_T">
+          <annotation>
+           <documentation>I==O==C=T=K==D=/SPE/BAPIDLVITMSERNO_T=A=h=L=000000=doc=Table</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPIDLVITMSERNO" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="_-SPE_-BAPIDLVTXTHDR_TAB">
+          <annotation>
+           <documentation>I==O==C=T=K==D=/SPE/BAPIDLVTXTHDR_TAB=A=h=L=000000=doc=table</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPIDLVTXTHDR" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="_-SPE_-BAPIDLVTXTITEM_TAB">
+          <annotation>
+           <documentation>I==O==C=T=K==D=/SPE/BAPIDLVTXTITEM_TAB=A=h=L=000000=doc=tabl</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="BAPIDLVTXTITEM" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIDLVPARTNERCHG">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIDLVPARTNERCHG=A=u=L=000000=doc=Delivery:</documentation>
+          </annotation>
+          <sequence>
+           <element name="UPD_MODE_PARTN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SHP_UPDKZ_PAR=A=C=L=000001=doc=Update Indicato</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITM_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR=A=N=L=000006=doc=Item number of the SD d</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARTN_ROLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARVW=A=C=L=000002=doc=Partner Function</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARTNER_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARNO_SHP=A=C=L=000017=doc=Partner number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="17"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDRESS_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ADRNR=A=C=L=000010=doc=Address</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DESC_PARTN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KNREF=A=C=L=000030=doc=Cust.-Specif. Descr. of</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MANUAL_ADDR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ADR_MAN_GN=A=C=L=000001=doc=Flag: Pass on manu</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SCA_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SCACD=A=C=L=000004=doc=Standard carrier access</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDRESS_ORIGIN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ADDR_ORIGIN=A=C=L=000001=doc=Origin of an addr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDR_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_ADRTYPE=A=C=L=000001=doc=Address type (1=Or</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PERS_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ADRNP=A=C=L=000010=doc=Home address</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDRESSGUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BU_ADDRESS_GUID_BAPI=A=C=L=000032=doc=GUID of</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BP_REF_ADDRESS_GUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDPD_BP_REF_ADDRESS_GUID_BAPI=A=C=L=000032=doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIDLVPARTNADDRCHG">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIDLVPARTNADDRCHG=A=u=L=000000=doc=Delivery</documentation>
+          </annotation>
+          <sequence>
+           <element name="UPD_MODE_ADR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SHP_UPDKZ_ADR=A=C=L=000001=doc=Update Indicato</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDR_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_ADDRNUM=A=C=L=000010=doc=Address Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORMOFADDR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TITLE_T=A=C=L=000020=doc=Form of address te</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME1=A=C=L=000040=doc=Name 1</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NAME_2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME2=A=C=L=000040=doc=Name 2</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NAME_3" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME3=A=C=L=000040=doc=Name 3</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NAME_4" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME4=A=C=L=000040=doc=Name 4</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="C_O_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME_CO=A=C=L=000040=doc=c/o name</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CITY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CITY1=A=C=L=000040=doc=City</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DISTRICT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CITY2=A=C=L=000040=doc=District</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CITY_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CITYNUM=A=C=L=000012=doc=City code for city</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="POSTL_COD1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PSTCD1=A=C=L=000010=doc=City Postal Code</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="POSTL_COD2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PSTCD2=A=C=L=000010=doc=PO Box Postal Code</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="POSTL_COD3" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PSTCD3=A=C=L=000010=doc=Company Postal Code</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_BOX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_POBX=A=C=L=000010=doc=PO Box</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_BOX_CIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_POBXLOC=A=C=L=000040=doc=PO Box city</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_DIS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PSTLAR=A=C=L=000015=doc=(Not Supported) Pos</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="15"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STREET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STR_OLD=A=C=L=000040=doc=Street</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STREET_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STRNUM=A=C=L=000012=doc=Street Number for C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STR_ABBR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STRABBR=A=C=L=000002=doc=(Not Supported) Ab</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HOUSE_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_HSNM1=A=C=L=000010=doc=House Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STR_SUPPL1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STRSPP1=A=C=L=000040=doc=Street 2</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STR_SUPPL2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STRSPP2=A=C=L=000040=doc=Street 3</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOCATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_LCTN=A=C=L=000040=doc=Street 5</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BUILDING" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_BLD_OLD=A=C=L=000010=doc=old: building (no.</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FLOOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_FLOOR=A=C=L=000010=doc=Floor in Building</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROOM_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_ROOMNUM=A=C=L=000010=doc=Room or Apartment</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COUNTRY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LAND1=A=C=L=000003=doc=Country/Region Key</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LANGU" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SPRAS=A=C=L=000001=doc=Language Key</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REGION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=REGIO=A=C=L=000003=doc=Region (State, Province</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SORT1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_SORT1=A=C=L=000020=doc=Search Term 1</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SORT2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_SORT2=A=C=L=000020=doc=Search Term 2</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TIME_ZONE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TZONE=A=C=L=000006=doc=Address Time Zone</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TAXJURCODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TXJCD=A=C=L=000015=doc=Tax Jurisdiction</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="15"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADR_NOTES" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_REMARK1=A=C=L=000050=doc=Address notes</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="50"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COMM_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_COMM=A=C=L=000003=doc=Communication Method</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TEL1_NUMBR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TLNMBR1=A=C=L=000030=doc=First Telephone No</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TEL1_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TLXTNS1=A=C=L=000010=doc=First Telephone No</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FAX_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_FXNMBR1=A=C=L=000030=doc=First Fax No.: Are</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FAX_EXTENS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_FXXTNS1=A=C=L=000010=doc=First fax no.: ext</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STREET_LNG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STREET=A=C=L=000060=doc=Street</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="60"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DISTRCT_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CITYPNM=A=C=L=000008=doc=District code for</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHCKSTATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CHECKST=A=C=L=000001=doc=City File Test Sta</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PBOXCIT_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CIT2NUM=A=C=L=000012=doc=City PO box code (</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TRANSPZONE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LZONE=A=C=L=000010=doc=Transportation zone to</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HOUSE_NO2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_HSNM2=A=C=L=000010=doc=House number supplem</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="E_MAIL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_SMTPADR=A=C=L=000241=doc=Email Address</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="241"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STR_SUPPL3" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STRSPP3=A=C=L=000040=doc=Street 4</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TITLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TITLETX=A=C=L=000030=doc=Title text</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COUNTRYISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INTCA=A=C=L=000002=doc=ISO Code of the Country</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LANGU_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LAISO=A=C=L=000002=doc=2-Character SAP Languag</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BUILD_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_BLDNG=A=C=L=000020=doc=Building (Number or</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REGIOGROUP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=REGIOGROUP=A=C=L=000008=doc=Regional structure</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HOME_CITY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CITY3=A=C=L=000040=doc=City (different from</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HOMECITYNO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CITYHNM=A=C=L=000012=doc=Different city for</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PCODE1_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PST1XT=A=C=L=000010=doc=(Not Supported)City</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PCODE2_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PST2XT=A=C=L=000010=doc=(Not Supported) PO</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PCODE3_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PST3XT=A=C=L=000010=doc=(Not Supported) Maj</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_W_O_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_POBXNUM=A=C=L=000001=doc=Flag: PO Box Witho</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_BOX_REG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_POBXREG=A=C=L=000003=doc=Region for PO Box</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="POBOX_CTRY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_POBXCTY=A=C=L=000003=doc=PO Box of Country/</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_CTRYISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INTCA=A=C=L=000002=doc=ISO Code of the Country</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HOMEPAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_URISCR=A=C=L=000132=doc=URI, e.g. Homepage</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="132"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DONT_USE_S" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NO_USES=A=C=L=000004=doc=Street Address Und</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DONT_USE_P" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NO_USEP=A=C=L=000004=doc=PO Box Address Und</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIDLVDEADLN">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIDLVDEADLN=A=u=L=000000=doc=Delivery Deadl</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TIMETYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TSEGTIMTYP=A=C=L=000010=doc=Logical time</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TIMESTAMP_UTC" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TZNTSTMPS=A=P=L=000015=doc=UTC Time Stamp in S</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="0"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TIMEZONE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TZNZONE=A=C=L=000006=doc=Time Zone</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIIBDLVITEMCHG">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIIBDLVITEMCHG=A=u=L=000000=doc=Change Inbo</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR_VL=A=N=L=000006=doc=Delivery Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATNR18=A=C=L=000018=doc=Material Number (18 C</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BATCH" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CHARG_D=A=C=L=000010=doc=Batch Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HIERARITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=HIPOS=A=N=L=000006=doc=Superior item in an ite</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="USEHIERITM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=HIEVW=A=C=L=000001=doc=Use of Hierarchy Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DLV_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LFIMG=A=P=L=000013=doc=Actual quantity deliver</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DLV_QTY_IMUNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LGMNG=A=P=L=000013=doc=Actual quantity deliver</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FACT_UNIT_NOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMVKZ=A=P=L=000005=doc=Numerator (factor) for</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="5"/>
+              <fractionDigits value="0"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FACT_UNIT_DENOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UMVKN=A=P=L=000005=doc=Denominator (divisor) f</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="5"/>
+              <fractionDigits value="0"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONV_FACT" minOccurs="0" type="double">
+            <annotation>
+             <documentation>I==O==C==K==D=UMREFF=A=F=L=000016=doc=Conversion factor: qua</documentation>
+            </annotation>
+           </element>
+           <element name="GROSS_WT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BRGEW_15=A=P=L=000015=doc=Gross Weight</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NET_WEIGHT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NTGEW_15=A=P=L=000015=doc=Net Weight</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNIT_OF_WT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GEWEI=A=C=L=000003=doc=Unit of Weight</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNIT_OF_WT_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GEWEI_ISO=A=C=L=000003=doc=Unit of weight in I</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLUM_15=A=P=L=000015=doc=Volume</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUMEUNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLEH=A=C=L=000003=doc=Volume Unit</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUMEUNIT_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLEH_ISO=A=C=L=000003=doc=Volume unit in ISO</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_UNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VRKME=A=C=L=000003=doc=Sales Unit</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_UNIT_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ISOCD_VRKME=A=C=L=000003=doc=ISO code for sale</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BASE_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MEINS=A=C=L=000003=doc=Base Unit of Measure</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BASE_UOM_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MEINS_ISO=A=C=L=000003=doc=Base unit of measur</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DEL_QTY_FLO" minOccurs="0" type="double">
+            <annotation>
+             <documentation>I==O==C==K==D=LFIMG_FLO=A=F=L=000016=doc=Internal field/ Do</documentation>
+            </annotation>
+           </element>
+           <element name="DLV_QTY_ST_FLO" minOccurs="0" type="double">
+            <annotation>
+             <documentation>I==O==C==K==D=LGMNG_FLO=A=F=L=000016=doc=Internal field/ Do</documentation>
+            </annotation>
+           </element>
+           <element name="STOCK_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MB_INSMK=A=C=L=000001=doc=Stock Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VAL_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BWTAR_D=A=C=L=000010=doc=Valuation Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_EXTERNAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MATERIAL_EXTERNAL=A=C=L=000040=doc=Long Ma</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_GUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MATERIAL_GUID=A=C=L=000032=doc=External GU</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_VERSION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MGV_MATERIAL_VERSION=A=C=L=000010=doc=Version</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INSPLOT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=QPLOS=A=N=L=000012=doc=Inspection Lot Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXPIRYDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VFDAT=A=D=L=000008=doc=Shelf Life Expiration o</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PART_GR_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EBUMNG_BME_OBSOLETE=A=P=L=000013=doc=This fiel</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STK_SEGMENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGT_SCAT16=A=C=L=000016=doc=Stock Segment</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATNR40=A=C=L=000040=doc=Material Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STK_SEG_LONG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGT_SCAT40=A=C=L=000040=doc=Stock Segment</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIIBDLVITEMCTRLCHG">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIIBDLVITEMCTRLCHG=A=u=L=000000=doc=Control</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR_VL=A=N=L=000006=doc=Delivery Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHG_DELQTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LIANP=A=C=L=000001=doc=Change delivery quantit</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DEL_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LIPS_DEL=A=C=L=000001=doc=Flag: delete deliver</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUME_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZVOL=A=C=L=000001=doc=Confirmation of volume</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NET_WT_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZNTG=A=C=L=000001=doc=Confirmation of net wei</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GROSS_WT_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZBRG=A=C=L=000001=doc=Confirmation of gross w</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXPIRYDATE_FLG" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZVFDAT=A=C=L=000001=doc=Verification of Expir</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIDLVITMSERNO">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIDLVITMSERNO=A=u=L=000000=doc=BAPI Deliver</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITM_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR=A=N=L=000006=doc=Item number of the SD d</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SERIALNO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GERNR=A=C=L=000018=doc=Serial Number</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UII" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UII_CHAR72=A=C=L=000072=doc=Unique Item Identi</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="72"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIDLVTXTHDR">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIDLVTXTHDR=A=u=L=000000=doc=Delivery Text</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR_VL=A=N=L=000006=doc=Delivery Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TEXT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDID=A=C=L=000004=doc=Text ID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LANGU" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LANGU=A=C=L=000001=doc=Language Key</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LANGU_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LAISO=A=C=L=000002=doc=2-Character SAP Languag</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TITLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDTITLE=A=C=L=000050=doc=Title in dialog box</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="50"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDFORM=A=C=L=000016=doc=Form name</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STYLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDSTYLE=A=C=L=000008=doc=Style Name</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LINESIZE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDLINESIZE=A=N=L=000003=doc=Line Width</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HYPHENAT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDHYPHENAT=A=C=L=000001=doc=Hyphenation Active</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATCHCOD1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDMACODE1=A=C=L=000016=doc=Short Title 1</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATCHCOD2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDMACODE2=A=C=L=000016=doc=Short Title 2</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TEXTTYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDTEXTTYPE=A=C=L=000006=doc=SAPscript: Format</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OBJ_CLASS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDOCLASS=A=C=L=000004=doc=SAPscript: Object Cl</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="BAPIDLVTXTITEM">
+          <annotation>
+           <documentation>I==O==C=S=K==D=BAPIDLVTXTITEM=A=u=L=000000=doc=Delivery Text</documentation>
+          </annotation>
+          <sequence>
+           <element name="DELIV_NUMB" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN_VL=A=C=L=000010=doc=Delivery</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIV_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR_VL=A=N=L=000006=doc=Delivery Item</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TEXT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDID=A=C=L=000004=doc=Text ID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LANGU" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LANGU=A=C=L=000001=doc=Language Key</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LANGU_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LAISO=A=C=L=000002=doc=2-Character SAP Languag</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LINE_NUMB" minOccurs="0" type="short">
+            <annotation>
+             <documentation>I==O==C==K==D=LINE_NUMB=A=s=L=000005=doc=Line number</documentation>
+            </annotation>
+           </element>
+           <element name="FORMAT_COL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDFORMAT=A=C=L=000002=doc=Tag column</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TEXT_LINE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDLINE=A=C=L=000132=doc=Text Line</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="132"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_LE_SHP_INB_DELIVERY_--3D_--3ETY_CHANGE_S xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <DELIVERY/>
+         <HEADER_DATA>
+          <DELIV_NUMB/>
+          <GROSS_WT/>
+          <NET_WEIGHT/>
+          <UNIT_OF_WT/>
+          <UNIT_OF_WT_ISO/>
+          <VOLUME/>
+          <VOLUMEUNIT/>
+          <VOLUMEUNIT_ISO/>
+          <DOOR/>
+          <EXTDELV_NO/>
+         </HEADER_DATA>
+         <HEADER_CONTROL>
+          <DELIV_NUMB/>
+          <GROSS_WT_FLG/>
+          <NET_WT_FLG/>
+          <VOLUME_FLG/>
+          <DELIV_DATE_FLG/>
+          <DOCK_FLG/>
+          <DLV_DEL/>
+          <SIMULATE/>
+          <DLV_EXTID_FLG/>
+          <NO_LOCK/>
+          <PART_POST_GR_FLAG/>
+          <DLV_CHANGE_OFF/>
+         </HEADER_CONTROL>
+         <HEADER_PARTNER empty="true">
+          <item>
+           <UPD_MODE_PARTN/>
+           <DELIV_NUMB/>
+           <ITM_NUMBER/>
+           <PARTN_ROLE/>
+           <PARTNER_NO/>
+           <ADDRESS_NO/>
+           <DESC_PARTN/>
+           <MANUAL_ADDR/>
+           <SCA_CODE/>
+           <ADDRESS_ORIGIN/>
+           <ADDR_TYPE/>
+           <PERS_NO/>
+           <ADDRESSGUID/>
+           <BP_REF_ADDRESS_GUID/>
+          </item>
+         </HEADER_PARTNER>
+         <HEADER_PARTNER_ADDR empty="true">
+          <item>
+           <UPD_MODE_ADR/>
+           <ADDR_NO/>
+           <FORMOFADDR/>
+           <NAME/>
+           <NAME_2/>
+           <NAME_3/>
+           <NAME_4/>
+           <C_O_NAME/>
+           <CITY/>
+           <DISTRICT/>
+           <CITY_NO/>
+           <POSTL_COD1/>
+           <POSTL_COD2/>
+           <POSTL_COD3/>
+           <PO_BOX/>
+           <PO_BOX_CIT/>
+           <DELIV_DIS/>
+           <STREET/>
+           <STREET_NO/>
+           <STR_ABBR/>
+           <HOUSE_NO/>
+           <STR_SUPPL1/>
+           <STR_SUPPL2/>
+           <LOCATION/>
+           <BUILDING/>
+           <FLOOR/>
+           <ROOM_NO/>
+           <COUNTRY/>
+           <LANGU/>
+           <REGION/>
+           <SORT1/>
+           <SORT2/>
+           <TIME_ZONE/>
+           <TAXJURCODE/>
+           <ADR_NOTES/>
+           <COMM_TYPE/>
+           <TEL1_NUMBR/>
+           <TEL1_EXT/>
+           <FAX_NUMBER/>
+           <FAX_EXTENS/>
+           <STREET_LNG/>
+           <DISTRCT_NO/>
+           <CHCKSTATUS/>
+           <PBOXCIT_NO/>
+           <TRANSPZONE/>
+           <HOUSE_NO2/>
+           <E_MAIL/>
+           <STR_SUPPL3/>
+           <TITLE/>
+           <COUNTRYISO/>
+           <LANGU_ISO/>
+           <BUILD_LONG/>
+           <REGIOGROUP/>
+           <HOME_CITY/>
+           <HOMECITYNO/>
+           <PCODE1_EXT/>
+           <PCODE2_EXT/>
+           <PCODE3_EXT/>
+           <PO_W_O_NO/>
+           <PO_BOX_REG/>
+           <POBOX_CTRY/>
+           <PO_CTRYISO/>
+           <HOMEPAGE/>
+           <DONT_USE_S/>
+           <DONT_USE_P/>
+          </item>
+         </HEADER_PARTNER_ADDR>
+         <HEADER_DEADLINES empty="true">
+          <item>
+           <DELIV_NUMB/>
+           <TIMETYPE/>
+           <TIMESTAMP_UTC/>
+           <TIMEZONE/>
+          </item>
+         </HEADER_DEADLINES>
+         <ITEM_DATA empty="true">
+          <item>
+           <DELIV_NUMB/>
+           <DELIV_ITEM/>
+           <MATERIAL/>
+           <BATCH/>
+           <HIERARITEM/>
+           <USEHIERITM/>
+           <DLV_QTY/>
+           <DLV_QTY_IMUNIT/>
+           <FACT_UNIT_NOM/>
+           <FACT_UNIT_DENOM/>
+           <CONV_FACT/>
+           <GROSS_WT/>
+           <NET_WEIGHT/>
+           <UNIT_OF_WT/>
+           <UNIT_OF_WT_ISO/>
+           <VOLUME/>
+           <VOLUMEUNIT/>
+           <VOLUMEUNIT_ISO/>
+           <SALES_UNIT/>
+           <SALES_UNIT_ISO/>
+           <BASE_UOM/>
+           <BASE_UOM_ISO/>
+           <DEL_QTY_FLO/>
+           <DLV_QTY_ST_FLO/>
+           <STOCK_TYPE/>
+           <VAL_TYPE/>
+           <MATERIAL_EXTERNAL/>
+           <MATERIAL_GUID/>
+           <MATERIAL_VERSION/>
+           <INSPLOT/>
+           <EXPIRYDATE/>
+           <PART_GR_QTY/>
+           <STK_SEGMENT/>
+           <MATERIAL_LONG/>
+           <STK_SEG_LONG/>
+          </item>
+         </ITEM_DATA>
+         <ITEM_CONTROL empty="true">
+          <item>
+           <DELIV_NUMB/>
+           <DELIV_ITEM/>
+           <CHG_DELQTY/>
+           <DEL_ITEM/>
+           <VOLUME_FLG/>
+           <NET_WT_FLG/>
+           <GROSS_WT_FLG/>
+           <EXPIRYDATE_FLG/>
+          </item>
+         </ITEM_CONTROL>
+         <ITEM_SERIAL_NO empty="true">
+          <item>
+           <DELIV_NUMB/>
+           <ITM_NUMBER/>
+           <SERIALNO/>
+           <UII/>
+          </item>
+         </ITEM_SERIAL_NO>
+         <TEXT_HEADER empty="true">
+          <item>
+           <DELIV_NUMB/>
+           <DELIV_ITEM/>
+           <TEXT_ID/>
+           <LANGU/>
+           <LANGU_ISO/>
+           <TITLE/>
+           <FORM/>
+           <STYLE/>
+           <LINESIZE/>
+           <HYPHENAT/>
+           <MATCHCOD1/>
+           <MATCHCOD2/>
+           <TEXTTYPE/>
+           <OBJ_CLASS/>
+          </item>
+         </TEXT_HEADER>
+         <TEXT_LINES empty="true">
+          <item>
+           <DELIV_NUMB/>
+           <DELIV_ITEM/>
+           <TEXT_ID/>
+           <LANGU/>
+           <LANGU_ISO/>
+           <LINE_NUMB/>
+           <FORMAT_COL/>
+           <TEXT_LINE/>
+          </item>
+         </TEXT_LINES>
+        </ddic:CL_PTF_BO_LE_SHP_INB_DELIVERY_--3D_--3ETY_CHANGE_S>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI/>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

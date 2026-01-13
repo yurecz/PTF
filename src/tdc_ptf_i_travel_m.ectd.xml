@@ -1,0 +1,1127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>TDC for RAP BO /DMO/I_TRAVEL_M</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_I_TRAVEL_M</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-BIL</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>I_TRAVEL_M_CHANGE</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>TDC DDIC for RAP BO /DMO/I_TRAVEL_M</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>TDC_PTF_I_TRAVEL_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>TDC_PTF_I_TRAVEL_M</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="TDC_PTF_I_TRAVEL_M">
+          <annotation>
+           <documentation>I==O==C=S=K==D=TDC_PTF_I_TRAVEL_M=A=v=L=000000=doc=TDC DDIC for RAP BO /DMO/I_TRAVEL_M</documentation>
+          </annotation>
+          <sequence>
+           <element name="TRAVEL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TRAVEL_ID=A=N=L=000008=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AGENCY_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/AGENCY_ID=A=N=L=000006=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CUSTOMER_ID=A=N=L=000006=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BEGIN_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BEGIN_DATE=A=D=L=000008=doc=Flight Refere</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="END_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/END_DATE=A=D=L=000008=doc=Flight Referenc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BOOKING_FEE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BOOKING_FEE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_PRICE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TOTAL_PRICE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CURRENCY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CURRENCY_CODE=A=C=L=000005=doc=Flight Ref</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DESCRIPTION" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/DESCRIPTION=A=g=L=001024=doc=Flight Refer</documentation>
+            </annotation>
+           </element>
+           <element name="OVERALL_STATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/OVERALL_STATUS=A=C=L=000001=doc=Flight Re</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_USER=A=C=L=000012=doc=Created By</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_TSTMPL=A=P=L=000021=doc=Creation</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_USER=A=C=L=000012=doc=L</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_TSTMPL=A=P=L=000021=doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <TRAVEL_ID/>
+         <AGENCY_ID/>
+         <CUSTOMER_ID/>
+         <BEGIN_DATE/>
+         <END_DATE/>
+         <BOOKING_FEE/>
+         <TOTAL_PRICE/>
+         <CURRENCY_CODE/>
+         <DESCRIPTION/>
+         <OVERALL_STATUS/>
+         <CREATED_BY/>
+         <CREATED_AT/>
+         <LAST_CHANGED_BY/>
+         <LAST_CHANGED_AT/>
+        </ddic:TDC_PTF_I_TRAVEL_M>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>I_TRAVEL_M_DELETE</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>TDC DDIC for RAP BO /DMO/I_TRAVEL_M</PDESC>
+       <PINDEX>0004</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>TDC_PTF_I_TRAVEL_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>TDC_PTF_I_TRAVEL_M</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="TDC_PTF_I_TRAVEL_M">
+          <annotation>
+           <documentation>I==O==C=S=K==D=TDC_PTF_I_TRAVEL_M=A=v=L=000000=doc=TDC DDIC for RAP BO /DMO/I_TRAVEL_M</documentation>
+          </annotation>
+          <sequence>
+           <element name="TRAVEL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TRAVEL_ID=A=N=L=000008=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AGENCY_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/AGENCY_ID=A=N=L=000006=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CUSTOMER_ID=A=N=L=000006=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BEGIN_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BEGIN_DATE=A=D=L=000008=doc=Flight Refere</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="END_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/END_DATE=A=D=L=000008=doc=Flight Referenc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BOOKING_FEE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BOOKING_FEE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_PRICE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TOTAL_PRICE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CURRENCY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CURRENCY_CODE=A=C=L=000005=doc=Flight Ref</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DESCRIPTION" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/DESCRIPTION=A=g=L=001024=doc=Flight Refer</documentation>
+            </annotation>
+           </element>
+           <element name="OVERALL_STATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/OVERALL_STATUS=A=C=L=000001=doc=Flight Re</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_USER=A=C=L=000012=doc=Created By</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_TSTMPL=A=P=L=000021=doc=Creation</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_USER=A=C=L=000012=doc=L</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_TSTMPL=A=P=L=000021=doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <TRAVEL_ID/>
+         <AGENCY_ID/>
+         <CUSTOMER_ID/>
+         <BEGIN_DATE/>
+         <END_DATE/>
+         <BOOKING_FEE/>
+         <TOTAL_PRICE/>
+         <CURRENCY_CODE/>
+         <DESCRIPTION/>
+         <OVERALL_STATUS/>
+         <CREATED_BY/>
+         <CREATED_AT/>
+         <LAST_CHANGED_BY/>
+         <LAST_CHANGED_AT/>
+        </ddic:TDC_PTF_I_TRAVEL_M>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>I_TRAVEL_M_CREATE</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>TDC DDIC for RAP BO /DMO/I_TRAVEL_M</PDESC>
+       <PINDEX>0003</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>TDC_PTF_I_TRAVEL_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0003</SORT_LNR>
+       <PREF_NAME2>TDC_PTF_I_TRAVEL_M</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="TDC_PTF_I_TRAVEL_M">
+          <annotation>
+           <documentation>I==O==C=S=K==D=TDC_PTF_I_TRAVEL_M=A=v=L=000000=doc=TDC DDIC for RAP BO /DMO/I_TRAVEL_M</documentation>
+          </annotation>
+          <sequence>
+           <element name="TRAVEL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TRAVEL_ID=A=N=L=000008=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AGENCY_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/AGENCY_ID=A=N=L=000006=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CUSTOMER_ID=A=N=L=000006=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BEGIN_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BEGIN_DATE=A=D=L=000008=doc=Flight Refere</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="END_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/END_DATE=A=D=L=000008=doc=Flight Referenc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BOOKING_FEE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BOOKING_FEE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_PRICE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TOTAL_PRICE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CURRENCY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CURRENCY_CODE=A=C=L=000005=doc=Flight Ref</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DESCRIPTION" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/DESCRIPTION=A=g=L=001024=doc=Flight Refer</documentation>
+            </annotation>
+           </element>
+           <element name="OVERALL_STATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/OVERALL_STATUS=A=C=L=000001=doc=Flight Re</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_USER=A=C=L=000012=doc=Created By</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_TSTMPL=A=P=L=000021=doc=Creation</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_USER=A=C=L=000012=doc=L</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_TSTMPL=A=P=L=000021=doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <TRAVEL_ID/>
+         <AGENCY_ID/>
+         <CUSTOMER_ID/>
+         <BEGIN_DATE/>
+         <END_DATE/>
+         <BOOKING_FEE/>
+         <TOTAL_PRICE/>
+         <CURRENCY_CODE/>
+         <DESCRIPTION/>
+         <OVERALL_STATUS/>
+         <CREATED_BY/>
+         <CREATED_AT/>
+         <LAST_CHANGED_BY/>
+         <LAST_CHANGED_AT/>
+        </ddic:TDC_PTF_I_TRAVEL_M>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>I_TRAVEL_M_ATRAVEL</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>TDC DDIC for RAP BO /DMO/I_TRAVEL_M</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>TDC_PTF_I_TRAVEL_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0004</SORT_LNR>
+       <PREF_NAME2>TDC_PTF_I_TRAVEL_M</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="TDC_PTF_I_TRAVEL_M">
+          <annotation>
+           <documentation>I==O==C=S=K==D=TDC_PTF_I_TRAVEL_M=A=v=L=000000=doc=TDC DDIC for RAP BO /DMO/I_TRAVEL_M</documentation>
+          </annotation>
+          <sequence>
+           <element name="TRAVEL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TRAVEL_ID=A=N=L=000008=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AGENCY_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/AGENCY_ID=A=N=L=000006=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CUSTOMER_ID=A=N=L=000006=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BEGIN_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BEGIN_DATE=A=D=L=000008=doc=Flight Refere</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="END_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/END_DATE=A=D=L=000008=doc=Flight Referenc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BOOKING_FEE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BOOKING_FEE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_PRICE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TOTAL_PRICE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CURRENCY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CURRENCY_CODE=A=C=L=000005=doc=Flight Ref</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DESCRIPTION" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/DESCRIPTION=A=g=L=001024=doc=Flight Refer</documentation>
+            </annotation>
+           </element>
+           <element name="OVERALL_STATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/OVERALL_STATUS=A=C=L=000001=doc=Flight Re</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_USER=A=C=L=000012=doc=Created By</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_TSTMPL=A=P=L=000021=doc=Creation</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_USER=A=C=L=000012=doc=L</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_TSTMPL=A=P=L=000021=doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <TRAVEL_ID/>
+         <AGENCY_ID/>
+         <CUSTOMER_ID/>
+         <BEGIN_DATE/>
+         <END_DATE/>
+         <BOOKING_FEE/>
+         <TOTAL_PRICE/>
+         <CURRENCY_CODE/>
+         <DESCRIPTION/>
+         <OVERALL_STATUS/>
+         <CREATED_BY/>
+         <CREATED_AT/>
+         <LAST_CHANGED_BY/>
+         <LAST_CHANGED_AT/>
+        </ddic:TDC_PTF_I_TRAVEL_M>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>I_TRAVEL_M_RTRAVEL</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>TDC DDIC for RAP BO /DMO/I_TRAVEL_M</PDESC>
+       <PINDEX>0005</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>TDC_PTF_I_TRAVEL_M</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0005</SORT_LNR>
+       <PREF_NAME2>TDC_PTF_I_TRAVEL_M</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="TDC_PTF_I_TRAVEL_M">
+          <annotation>
+           <documentation>I==O==C=S=K==D=TDC_PTF_I_TRAVEL_M=A=v=L=000000=doc=TDC DDIC for RAP BO /DMO/I_TRAVEL_M</documentation>
+          </annotation>
+          <sequence>
+           <element name="TRAVEL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TRAVEL_ID=A=N=L=000008=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AGENCY_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/AGENCY_ID=A=N=L=000006=doc=Flight Referen</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CUSTOMER_ID=A=N=L=000006=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BEGIN_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BEGIN_DATE=A=D=L=000008=doc=Flight Refere</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="END_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/END_DATE=A=D=L=000008=doc=Flight Referenc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BOOKING_FEE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/BOOKING_FEE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_PRICE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/TOTAL_PRICE=A=P=L=000016=doc=Flight Refer</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="16"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CURRENCY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/CURRENCY_CODE=A=C=L=000005=doc=Flight Ref</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DESCRIPTION" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/DESCRIPTION=A=g=L=001024=doc=Flight Refer</documentation>
+            </annotation>
+           </element>
+           <element name="OVERALL_STATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/DMO/OVERALL_STATUS=A=C=L=000001=doc=Flight Re</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_USER=A=C=L=000012=doc=Created By</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_CREATION_TSTMPL=A=P=L=000021=doc=Creation</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_USER=A=C=L=000012=doc=L</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABP_LOCINST_LASTCHANGE_TSTMPL=A=P=L=000021=doc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <TRAVEL_ID/>
+         <AGENCY_ID/>
+         <CUSTOMER_ID/>
+         <BEGIN_DATE/>
+         <END_DATE/>
+         <BOOKING_FEE/>
+         <TOTAL_PRICE/>
+         <CURRENCY_CODE/>
+         <DESCRIPTION/>
+         <OVERALL_STATUS/>
+         <CREATED_BY/>
+         <CREATED_AT/>
+         <LAST_CHANGED_BY/>
+         <LAST_CHANGED_AT/>
+        </ddic:TDC_PTF_I_TRAVEL_M>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>I_TRAVEL_M_SIMPLE</VAR_NAME>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_TRAVEL_M_CHANGE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <TRAVEL_ID>00000032</TRAVEL_ID>
+           <AGENCY_ID>070002</AGENCY_ID>
+           <CUSTOMER_ID>000599</CUSTOMER_ID>
+           <BEGIN_DATE>20220406</BEGIN_DATE>
+           <END_DATE>20220406</END_DATE>
+           <BOOKING_FEE>20</BOOKING_FEE>
+           <TOTAL_PRICE>1406</TOTAL_PRICE>
+           <CURRENCY_CODE>EUR</CURRENCY_CODE>
+           <DESCRIPTION>Test change</DESCRIPTION>
+           <OVERALL_STATUS>O</OVERALL_STATUS>
+           <CREATED_BY>Test</CREATED_BY>
+           <CREATED_AT>BURNAR</CREATED_AT>
+           <LAST_CHANGED_BY>BURNAR</LAST_CHANGED_BY>
+          </ddic:TDC_PTF_I_TRAVEL_M>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>I_TRAVEL_M_DELETE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0004</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <TRAVEL_ID>00000999</TRAVEL_ID>
+           <DESCRIPTION>Test delete</DESCRIPTION>
+          </ddic:TDC_PTF_I_TRAVEL_M>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>I_TRAVEL_M_CREATE</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <AGENCY_ID>070002</AGENCY_ID>
+           <CUSTOMER_ID>000599</CUSTOMER_ID>
+           <BEGIN_DATE>20220406</BEGIN_DATE>
+           <END_DATE>20220406</END_DATE>
+           <BOOKING_FEE>20</BOOKING_FEE>
+           <CURRENCY_CODE>EUR</CURRENCY_CODE>
+           <DESCRIPTION>Test create</DESCRIPTION>
+           <OVERALL_STATUS>O</OVERALL_STATUS>
+          </ddic:TDC_PTF_I_TRAVEL_M>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>I_TRAVEL_M_ATRAVEL</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <TRAVEL_ID>00004137</TRAVEL_ID>
+          </ddic:TDC_PTF_I_TRAVEL_M>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>I_TRAVEL_M_RTRAVEL</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0005</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:TDC_PTF_I_TRAVEL_M xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <TRAVEL_ID>00004137</TRAVEL_ID>
+          </ddic:TDC_PTF_I_TRAVEL_M>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

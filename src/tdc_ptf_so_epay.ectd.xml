@@ -1,0 +1,4851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>SD Sales Order Electronic Payment</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_SO_EPAY</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>SD-SLS-EPY</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>I_PTF_SO_CR</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Input SO Create (Goal)</PDESC>
+       <PINDEX>0003</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SO=&gt;TY_GS_I_PTF_SO_C</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SO=&gt;TY_GS_I_PTF_SO_CR_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_I_PTF_SO_CR_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_I_PTF_SO_CR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="GOAL_BO_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TABNAME=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HEAD" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GS_HEAD"/>
+           <element name="ITEM_LIST" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_ITEM"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_HEAD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_HEAD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="UNCONDITIONAL_TAKE_OVER_FIELDS" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_FIELD"/>
+           <element name="RELATIVE_DATES" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_RELATIVE_DATE"/>
+           <element name="PARTY_LIST" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_PARTY"/>
+           <element name="TEXT_LIST" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_TEXT"/>
+           <element name="EPAY_LIST" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_EPAY"/>
+           <element name="HANDLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GUID_32=A=C=L=000032=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOCUMENT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VBELN=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TYPE_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AUART=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_ORGANIZATION_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VKORG=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DISTRIBUTION_CHANNEL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VTWEG=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DIVISION_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SPART=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_OFFICE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VKBUR=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_GROUP_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VKGRP=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SOLD_TO_PARTY_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KUNAG=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIP_TO_PARTY_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KUNWE=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_ORDER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTKD=A=C=L=000035=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_ORDER_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTDK=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIP_TO_PURCHASE_ORDER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTKD_E=A=C=L=000035=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIP_TO_PURCHASE_ORDER_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTDK_E=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REQ_DELIVERY_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EDATU_VBAK=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIVERY_DATE_TYPE_RULE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_DELIVERY_DATE_TYPE_RULE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDER_REASON_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AUGRU=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIVERY_BLOCK_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LIFSK=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BILLING_BLOCK_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FAKSK=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CURRENCY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WAERK=A=C=L=000005=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRICING_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRSDT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BILLING_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKDAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOCUMENT_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AUDAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COMPLETE_DELIVERY_IND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AUTLF=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NET_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NETWR_AK=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TAX_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MWSBP=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ENDBK=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERNAM=A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_ON" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERDAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATION_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERZET=A=T=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="..:..:.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_BY_USER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LAST_CHANGED_BY_USER=A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LAST_CHANGED_DATE_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TIMESTAMPL=A=P=L=000021=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PAYMENT_TERM_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DZTERM=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCO1=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_LOCATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCO2=A=C=L=000028=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="28"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_LOCATION_1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCO2_L=A=C=L=000070=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="70"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_LOCATION_2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCO3_L=A=C=L=000070=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="70"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_VERSION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCOV=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DWERK_EXT=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KETDAT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KETDAT=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KPRGBZ" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KPRGBZ=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXCHANGE_RATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KURSK=A=P=L=000009=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="9"/>
+              <fractionDigits value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXCHANGE_RATE_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXCHANGE_RATE_FI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KURRF=A=P=L=000009=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="9"/>
+              <fractionDigits value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDER_COMBINATION_IND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZAZU_D=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SOLD_TO_PARTY_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NAME1_GP=A=C=L=000035=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SOLD_TO_PARTY_NAME2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NAME2_GP=A=C=L=000035=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIPPING_CONDITION_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VSBED=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIPPING_TYPE_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VSARTTR=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RELEVANT_FOR_POD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PODKZ=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP1_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG1=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP2_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG2=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP3_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG3=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP4_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG4=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP5_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG5=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_GROUP_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDGRP=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_GROUP_1_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KVGR1=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_GROUP_2_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KVGR2=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_GROUP_3_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KVGR3=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_GROUP_4_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KVGR4=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_GROUP_5_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KVGR5=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_ORDER_TYPE_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSARK=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUST_ACCASS_GRP_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KTGRD=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDITIONAL_VALUE_DAYS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VALTG=A=N=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIXED_VALUE_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VALDT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_DISTRICT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BZIRK=A=C=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PAYMENT_METHOD_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SCHZW_BSEG=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RECEIVING_POINT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EMPST=A=C=L=000025=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNLOADING_POINT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABLAD=A=C=L=000025=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXT_REV_TMSTMP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EXT_REV_TMSTMP=A=P=L=000021=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COMPANY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BUKRS=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ASSIGNMENT_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ORDNR_V=A=C=L=000018=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ACC_DOC_EXT_REF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XBLNR_V1=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXT_REF_DOC_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_EXT_REF_DOC_ID=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CORRESPONDENCE_EXT_REF" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=IHREZ=A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK1_AK=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK2=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_3" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK3=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_4" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK4=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_5" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK5=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_6" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK6=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_7" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK7=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_8" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK8=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_TAX_CLASSIF_9" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXK9=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TAX_DEPARTURE_COUNTRY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LANDTX=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TAX_DESTINATION_COUNTRY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LAND1TX=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DISTRIBUTION_CHANNEL_ID_CUST" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VTWKU=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTROLLING_AREA_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KOKRS=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APM_APPROVAL_REASON_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_APM_APPROVAL_REASON=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SOLUTION_ORDER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CRMT_OBJECT_ID=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRICING_PROCEDURE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KALSMASD=A=C=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_PRICE_GROUP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KONDA=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRICE_LIST_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PLTYP=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXT_COMM_SYST_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDD_COMM_SYST_TYPE=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXT_BUS_SYST_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_EXT_BUS_SYST_ID=A=C=L=000060=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="60"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_WEIGHT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GSGEW=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WEIGHT_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GEWEI=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLUM_15=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUME_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLEH=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_CREDIT_ACCOUNT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KNKLI=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTRACT_ACCOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CORR_VKONT_KK=A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_ORDER_SUPLMNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTZD=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SERVICES_RENDERED_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FBUDA=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TRIANGULAR_DEAL_EU_IND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=XEGDR=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DUMMY_SALESDOC_INCL_EEW_PS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DUMMY=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RETAILADDITIONALCUSTGRP6" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_KVGR6=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RETAILADDITIONALCUSTGRP7" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_KVGR7=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RETAILADDITIONALCUSTGRP8" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_KVGR8=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RETAILADDITIONALCUSTGRP9" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_KVGR9=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RETAILADDITIONALCUSTGRP10" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_KVGR10=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FASHIONCANCELDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_CANDATE=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_ITEM">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_ITEM=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_ITEM" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_FIELD">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_FIELD" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_RELATIVE_DATE">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_RELATIVE_DATE=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_RELATIVE_DATE" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_PARTY">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_PARTY=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_PARTY" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_TEXT">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_TEXT=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_TEXT" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_EPAY">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_EPAY=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_EPAY" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_ITEM">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_ITEM=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="UNCONDITIONAL_TAKE_OVER_FIELDS" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_FIELD"/>
+           <element name="RELATIVE_DATES" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_RELATIVE_DATE"/>
+           <element name="DELETE_ENTRY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABAP_BOOL=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SLINE_LIST" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_SLINE"/>
+           <element name="PARTY_LIST" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_PARTY"/>
+           <element name="TEXT_LIST" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_TEXT"/>
+           <element name="HANDLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GUID_32=A=C=L=000032=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSNR=A=N=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CATEGORY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PSTYV=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATNR=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDER_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KWMENG=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONFIRMED_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KBMENG=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VRKME=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BASIC_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MEINS=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REQ_DELIVERY_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EDATU=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITEM_DESCR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ARKTX=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_MATERIAL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATNR_KU=A=C=L=000035=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_ORDER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTKD=A=C=L=000035=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_ORDER_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTDK=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIP_TO_PURCHASE_ORDER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSTKD_E=A=C=L=000035=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="35"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WERKS_EXT=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NET_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NETWR_AP=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TAX_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MWSBP=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ENDBP=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOCUMENT_CURRENCY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WAERK=A=C=L=000005=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REJECTION_REASON_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABGRU_VA=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERNAM=A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_ON" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERDAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AENAM=A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANGED_ON" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AEDAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WBS_ELEMENT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PS_PSP_PNR=A=N=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WBS_ELEMENT_ID_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PS_POSID=A=C=L=000024=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="24"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HIGHER_LEVEL_ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UEPOS=A=N=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HIGHER_LEVEL_ITEM_USAGE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UEPVW=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BILLING_BLOCK_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FAKSP_AP=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BILLING_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FKDAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRGBZ" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRGBZ=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ETDAT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ETDAT=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIVERY_PRIORITY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LPRIO=A=N=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCO1=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_LOCATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCO2=A=C=L=000028=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="28"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_LOCATION_1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCO2_L=A=C=L=000070=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="70"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_LOCATION_2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCO3_L=A=C=L=000070=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="70"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INCOTERMS_VERSION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=INCOV=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_1" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_3" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_4" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_5" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_6" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_7" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_8" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCT_TAX_CLASSIF_9" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TAXMT=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATL_ACCOUNT_ASSIGNMENT_GRP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KTGRM=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PAYMENT_TERM_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DZTERM=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRICING_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRSDT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXCHANGE_RATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KURSK=A=P=L=000009=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="9"/>
+              <fractionDigits value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXCHANGE_RATE_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXCHANGE_RATE_FI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KURRF=A=P=L=000009=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="9"/>
+              <fractionDigits value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DIP_PROFILE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD01PROFNR=A=C=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="8"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TARGET_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DZMENG=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TARGET_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DZIEME=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARTIAL_DELIVERY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZTLF=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RESOURCE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NSDM_RESOURCENAME_SID=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NUMBER_ALLOWED_DLVS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ANTLF=A=P=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="1"/>
+              <fractionDigits value="0"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PBS_STATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_PBS_STATE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UPDATE_INDICATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UPDKZ_D=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="IS_NEW" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FLAG=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PROFIT_CENTER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRCTR=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIXED_VALUE_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VALDT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDITIONAL_VALUE_DAYS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VALTG=A=N=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RELEVANT_FOR_POD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PODKZ=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP1_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG1=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP2_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG2=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP3_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG3=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP4_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG4=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_COND_GRP5_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDKG5=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_GROUP_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KDGRP=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_GROUP1_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MVGR1=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_GROUP2_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MVGR2=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_GROUP3_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MVGR3=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_GROUP4_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MVGR4=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_GROUP5_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MVGR5=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXTERNAL_ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=POSEX=A=C=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_GROUP_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATKL=A=C=L=000009=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="9"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_PRICING_GROUP_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KONDM=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRICING_REFERENCE_MATERIAL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PMATN=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_SUBSTITUTION_REASON" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SUGRD=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_ORDER_TYPE_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BSARK=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INTERNATIONAL_ARTICLE_NO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EAN11=A=C=L=000018=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RECEIVING_POINT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EMPST=A=C=L=000025=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REASON_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_ITEM_REASON_CODE=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DUMMY_SLSDOCITEM_INCL_EEW_PS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DUMMY=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REQUESTED_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=REQD_QTY=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REQUESTED_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=REQD_QTY_UNIT=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNLOADING_POINT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABLAD=A=C=L=000025=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="IFRS15_RELEVANCE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=IFRS15_RELEVANCE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="IFRS15_TOTAL_SSP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=IFRS15_TOTAL_SSP=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STORAGE_LOCATION_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LGORT_D=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIPPING_POINT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VSTEL=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SHIPPING_TYPE_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VSARTTR=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONF_DELIVERY_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EDATU=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIVERY_DATE_TYPE_RULE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_DELIVERY_DATE_TYPE_RULE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROUTE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ROUTE=A=C=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIVERY_GROUP_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GRKOR=A=N=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CAPPED_NET_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CAPPED_NET_AMOUNT=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CAPPED_NET_AMOUNT_ALERT_THLD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CAPPED_NET_AMOUNT_ALERT_THLD=A=N=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EXT_REF_ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_EXT_REF_ITEM_ID=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_DOCUMENT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VGBEL=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REF_ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VGPOS=A=N=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBTOTAL_1_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZWI1=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBTOTAL_2_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZWI2=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBTOTAL_3_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZWI3=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBTOTAL_4_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZWI4=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBTOTAL_5_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZWI5=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SUBTOTAL_6_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZWI6=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COST_AMOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WAVWR=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BATCH_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CHARG_D=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="BUSINESS_AREA_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GSBER=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONFIGURATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CUOBJ=A=N=L=000018=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="18"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GROSS_WEIGHT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BRGEW_AP=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NET_WEIGHT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NTGEW_AP=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="WEIGHT_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GEWEI=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLUM_AP=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VOLUME_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VOLEH=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SOLUTION_ORDER_ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CRMS4_NUMBER_INT=A=N=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CUSTOMER_PRICE_GROUP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KONDA=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDER_COMBINATION_IND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KZAZU_D=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONTRACT_ACCOUNT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CORR_VKONT_KK=A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SERVICES_RENDERED_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FBUDA=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OVERDELIVERY_TOLERANCE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UEBTO=A=P=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="3"/>
+              <fractionDigits value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNDERDELIVERY_TOLERANCE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UNTTO=A=P=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="3"/>
+              <fractionDigits value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNLIMITED_OVERDELIVERY_IND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UEBTK=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REQUIREMENTSEGMENT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SGT_RCAT=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCTSEASONYEAR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_SAISJ=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCTSEASON" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_SAISO=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCTCOLLECTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_COLLECTION=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRODUCTTHEME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_THEME=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FASHIONCANCELDATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FSH_CANDATE=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FASHIONREJECTIONQTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KWMENG=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FASHIONREJECTIONREASON" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABGRU_VA=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FASHIONREJECTIONTYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RFM_REJECTION_TYPE=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_FIELD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_FIELD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="NAME" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_RELATIVE_DATE">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_RELATIVE_DATE=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="DATE_FIELD_NAME" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+           <element name="OFFSET_IN_DAYS" minOccurs="0" type="int">
+            <annotation>
+             <documentation>I==O==C==K==D==A=I=L=000001=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_PARTY">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_PARTY=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="UNCONDITIONAL_TAKE_OVER_FIELDS" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_FIELD"/>
+           <element name="HANDLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GUID_32=A=C=L=000032=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FUNCTION_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARVW=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COUNTER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CNT_PARVW=A=N=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARTY_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=KUNNR=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME1=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NAME2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME2=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NAME3" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME3=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="NAME4" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_NAME4=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STREET" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STREET=A=C=L=000060=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="60"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HOUSE_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_HSNM1=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STREET2" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STRSPP1=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STREET3" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STRSPP2=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STREET4" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_STRSPP3=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOCATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_LCTN=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="POSTAL_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PSTCD1=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CITY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CITY1=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DISTRICT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_CITY2=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REGION_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=REGIO=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COUNTRY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LAND1=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_BOX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_POBX=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PO_BOX_PCODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PSTCD2=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LANGUAGE_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SPRAS=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LANGUAGE_ISO_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SPRAS_ISO=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PHONE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TLNMBR1=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PHONE_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TLXTNS1=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FAX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_FXNMBR1=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FAX_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_FXXTNS1=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EMAIL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_SMTPADR=A=C=L=000241=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="241"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOBILE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_MBNMBR1=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TAX_JURISDICTION_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TXJCD=A=C=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="15"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TITLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TITLE=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TITLE_DESCR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_TITLETX=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITEM_IND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_PARTNER_POSFLAG=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDRESS_LINE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_LINE_S=A=C=L=000080=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="80"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDRESS_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_ADDRNUM=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARTNER_TYPE_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=NRART=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARTY_ID_EXT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PARTNER_VB_60=A=C=L=000060=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="60"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TRANSPORTATION_ZONE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LZONE=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VAT_REGISTRATION_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=STCEG=A=C=L=000020=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="20"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UNLOADING_POINT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABLAD=A=C=L=000025=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDRESS_GUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BU_ADDRESS_GUID=A=X=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ASSIGNED_BP" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BU_PARTNER=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOC_SPEC_ADDR_IND" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SD_DOC_SPEC_ADDR_FLAG=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ADDRESS_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_ADRTYPE=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PERSON_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AD_PERSNUM=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_TEXT">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_TEXT=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="UNCONDITIONAL_TAKE_OVER_FIELDS" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_FIELD"/>
+           <element name="HANDLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GUID_32=A=C=L=000032=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TEXT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDID=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SPRAS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SPRAS=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SPRAS_ISO" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LAISO=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDTEXTTYPE=A=C=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FIRST_TLINE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+           <element name="TEXT_STRING" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+           <element name="CREATED_BY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDFUSER=A=C=L=000012=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_ON" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDFDATE=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREATED_AT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDFTIME=A=T=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="..:..:.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ID_T" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDTEXT=A=C=L=000030=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SPRAS_T" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SPTXT=A=C=L=000016=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_EPAY">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_EPAY=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="UNCONDITIONAL_TAKE_OVER_FIELDS" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_FIELD"/>
+           <element name="HANDLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GUID_32=A=C=L=000032=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="INSTANCE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FPLTR=A=N=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CARD_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CCINS=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CARD_NUMBER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CCNUM=A=C=L=000025=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VALID_TO_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EXDATBI_CC=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HOLDER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CCNAME=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AMOUNT_MAX" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FAKWR_P=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AMOUNT_LIMIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CCBEG=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CURRENCY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WAERS=A=C=L=000005=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VERIFICATION_VALUE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CVVAL=A=C=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VERIFICATION_USAGE_STATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CVVST=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VERIFICATION_RESULT_CHECK" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=RCCVV_CC=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CARD_GUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CCARDEC_GUID=A=C=L=000032=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CARD_CATEGORY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CCTYP=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="AMOUNT_AUTHORIZED" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=AUTWR=A=P=L=000015=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="15"/>
+              <fractionDigits value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FPLNR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FPLNR=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DP_TOKEN" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DP_TOKEN=A=C=L=000025=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="25"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DP_PAYMENT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DP_PAYID=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DP_PAYMENT_SERVICE_PROVIDER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DP_PAYMENT_SERVICE_PROVIDER=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DP_PSP_TRANSID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DP_PSP_TRANS_ID=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_SLINE">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_SLINE=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_SLINE" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_SLINE">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_SLINE=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="UNCONDITIONAL_TAKE_OVER_FIELDS" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_FIELD"/>
+           <element name="RELATIVE_DATES" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_RELATIVE_DATE"/>
+           <element name="DELETE_ENTRY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ABAP_BOOL=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="HANDLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=GUID_32=A=C=L=000032=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SLINE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ETENR=A=N=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CATEGORY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ETTYP=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SLINE_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EDATU=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SLINE_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=EZEIT_VBEP=A=T=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="..:..:.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ORDER_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WMENG=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CORRECTED_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=CMENG=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CONFIRMED_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BMENG=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIVERED_QTY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VSMNG=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SALES_UOM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=VRKME=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DELIVERY_BLOCK_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LIFSP_EP=A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GOODS_ISSUE_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WADAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOADING_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LDDAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_AVAILABILITY_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MBDAT=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TRANSPORTATION_PLANNING_DATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDDAT_D=A=D=L=000008=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="....-..-.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="GOODS_ISSUE_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WAUHR=A=T=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="..:..:.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOADING_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LDUHR=A=T=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="..:..:.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MATERIAL_AVAILABILITY_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MBUHR=A=T=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="..:..:.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TRANSPORTATION_PLANNING_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=TDUHR=A=T=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="..:..:.."/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_REQUISITION_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BANFN=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PURCHASE_REQUISITION_ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BNFPO=A=N=L=000005=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRGBZ" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PRGBZ=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ETDAT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ETDAT=A=C=L=000010=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DLVQTY_SU" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=DLVQTY=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OCDQTY_SU" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=OCDQTY=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UPDATE_INDICATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=UPDKZ_D=A=C=L=000001=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SO_--3D_--3ETY_GS_I_PTF_SO_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <GOAL_BO_ID/>
+         <HEAD>
+          <UNCONDITIONAL_TAKE_OVER_FIELDS empty="true">
+           <item>
+            <NAME/>
+           </item>
+          </UNCONDITIONAL_TAKE_OVER_FIELDS>
+          <RELATIVE_DATES empty="true">
+           <item>
+            <DATE_FIELD_NAME/>
+            <OFFSET_IN_DAYS/>
+           </item>
+          </RELATIVE_DATES>
+          <PARTY_LIST empty="true">
+           <item>
+            <UNCONDITIONAL_TAKE_OVER_FIELDS empty="true">
+             <item>
+              <NAME/>
+             </item>
+            </UNCONDITIONAL_TAKE_OVER_FIELDS>
+            <HANDLE/>
+            <FUNCTION_CODE/>
+            <COUNTER/>
+            <PARTY_ID/>
+            <NAME/>
+            <NAME2/>
+            <NAME3/>
+            <NAME4/>
+            <STREET/>
+            <HOUSE_NUMBER/>
+            <STREET2/>
+            <STREET3/>
+            <STREET4/>
+            <LOCATION/>
+            <POSTAL_CODE/>
+            <CITY/>
+            <DISTRICT/>
+            <REGION_CODE/>
+            <COUNTRY_CODE/>
+            <PO_BOX/>
+            <PO_BOX_PCODE/>
+            <LANGUAGE_CODE/>
+            <LANGUAGE_ISO_CODE/>
+            <PHONE/>
+            <PHONE_EXT/>
+            <FAX/>
+            <FAX_EXT/>
+            <EMAIL/>
+            <MOBILE/>
+            <TAX_JURISDICTION_CODE/>
+            <TITLE/>
+            <TITLE_DESCR/>
+            <ITEM_IND/>
+            <ADDRESS_LINE/>
+            <ADDRESS_ID/>
+            <PARTNER_TYPE_CODE/>
+            <PARTY_ID_EXT/>
+            <TRANSPORTATION_ZONE_ID/>
+            <VAT_REGISTRATION_NUMBER/>
+            <UNLOADING_POINT_ID/>
+            <ADDRESS_GUID/>
+            <ASSIGNED_BP/>
+            <DOC_SPEC_ADDR_IND/>
+            <ADDRESS_TYPE/>
+            <PERSON_NUMBER/>
+           </item>
+          </PARTY_LIST>
+          <TEXT_LIST empty="true">
+           <item>
+            <UNCONDITIONAL_TAKE_OVER_FIELDS empty="true">
+             <item>
+              <NAME/>
+             </item>
+            </UNCONDITIONAL_TAKE_OVER_FIELDS>
+            <HANDLE/>
+            <TEXT_ID/>
+            <SPRAS/>
+            <SPRAS_ISO/>
+            <TYPE/>
+            <FIRST_TLINE/>
+            <TEXT_STRING/>
+            <CREATED_BY/>
+            <CREATED_ON/>
+            <CREATED_AT/>
+            <ID_T/>
+            <SPRAS_T/>
+           </item>
+          </TEXT_LIST>
+          <EPAY_LIST empty="true">
+           <item>
+            <UNCONDITIONAL_TAKE_OVER_FIELDS empty="true">
+             <item>
+              <NAME/>
+             </item>
+            </UNCONDITIONAL_TAKE_OVER_FIELDS>
+            <HANDLE/>
+            <INSTANCE_ID/>
+            <CARD_TYPE/>
+            <CARD_NUMBER/>
+            <VALID_TO_DATE/>
+            <HOLDER_NAME/>
+            <AMOUNT_MAX/>
+            <AMOUNT_LIMIT/>
+            <CURRENCY_CODE/>
+            <VERIFICATION_VALUE/>
+            <VERIFICATION_USAGE_STATUS/>
+            <VERIFICATION_RESULT_CHECK/>
+            <CARD_GUID/>
+            <CARD_CATEGORY/>
+            <AMOUNT_AUTHORIZED/>
+            <FPLNR/>
+            <DP_TOKEN/>
+            <DP_PAYMENT_ID/>
+            <DP_PAYMENT_SERVICE_PROVIDER/>
+            <DP_PSP_TRANSID/>
+           </item>
+          </EPAY_LIST>
+          <HANDLE/>
+          <DOCUMENT_ID/>
+          <TYPE_CODE/>
+          <SALES_ORGANIZATION_ID/>
+          <DISTRIBUTION_CHANNEL_ID/>
+          <DIVISION_ID/>
+          <SALES_OFFICE_ID/>
+          <SALES_GROUP_ID/>
+          <SOLD_TO_PARTY_ID/>
+          <SHIP_TO_PARTY_ID/>
+          <PURCHASE_ORDER_ID/>
+          <PURCHASE_ORDER_DATE/>
+          <SHIP_TO_PURCHASE_ORDER_ID/>
+          <SHIP_TO_PURCHASE_ORDER_DATE/>
+          <REQ_DELIVERY_DATE/>
+          <DELIVERY_DATE_TYPE_RULE/>
+          <ORDER_REASON_CODE/>
+          <DELIVERY_BLOCK_CODE/>
+          <BILLING_BLOCK_CODE/>
+          <CURRENCY_CODE/>
+          <PRICING_DATE/>
+          <BILLING_DATE/>
+          <DOCUMENT_DATE/>
+          <COMPLETE_DELIVERY_IND/>
+          <NET_AMOUNT/>
+          <TAX_AMOUNT/>
+          <TOTAL_AMOUNT/>
+          <CREATED_BY/>
+          <CREATED_ON/>
+          <CREATION_TIME/>
+          <LAST_CHANGED_BY_USER/>
+          <LAST_CHANGED_DATE_TIME/>
+          <PAYMENT_TERM_CODE/>
+          <INCOTERMS_CODE/>
+          <INCOTERMS_LOCATION/>
+          <INCOTERMS_LOCATION_1/>
+          <INCOTERMS_LOCATION_2/>
+          <INCOTERMS_VERSION/>
+          <PLANT_ID/>
+          <KETDAT/>
+          <KPRGBZ/>
+          <EXCHANGE_RATE/>
+          <EXCHANGE_RATE_EXT/>
+          <EXCHANGE_RATE_FI/>
+          <ORDER_COMBINATION_IND/>
+          <SOLD_TO_PARTY_NAME/>
+          <SOLD_TO_PARTY_NAME2/>
+          <SHIPPING_CONDITION_CODE/>
+          <SHIPPING_TYPE_CODE/>
+          <RELEVANT_FOR_POD/>
+          <CUSTOMER_COND_GRP1_CODE/>
+          <CUSTOMER_COND_GRP2_CODE/>
+          <CUSTOMER_COND_GRP3_CODE/>
+          <CUSTOMER_COND_GRP4_CODE/>
+          <CUSTOMER_COND_GRP5_CODE/>
+          <CUSTOMER_GROUP_CODE/>
+          <CUSTOMER_GROUP_1_CODE/>
+          <CUSTOMER_GROUP_2_CODE/>
+          <CUSTOMER_GROUP_3_CODE/>
+          <CUSTOMER_GROUP_4_CODE/>
+          <CUSTOMER_GROUP_5_CODE/>
+          <PURCHASE_ORDER_TYPE_CODE/>
+          <CUST_ACCASS_GRP_CODE/>
+          <ADDITIONAL_VALUE_DAYS/>
+          <FIXED_VALUE_DATE/>
+          <SALES_DISTRICT_ID/>
+          <PAYMENT_METHOD_CODE/>
+          <RECEIVING_POINT_ID/>
+          <UNLOADING_POINT_ID/>
+          <EXT_REV_TMSTMP/>
+          <COMPANY_CODE/>
+          <ASSIGNMENT_NUMBER/>
+          <ACC_DOC_EXT_REF/>
+          <EXT_REF_DOC_ID/>
+          <CORRESPONDENCE_EXT_REF/>
+          <CUSTOMER_TAX_CLASSIF_1/>
+          <CUSTOMER_TAX_CLASSIF_2/>
+          <CUSTOMER_TAX_CLASSIF_3/>
+          <CUSTOMER_TAX_CLASSIF_4/>
+          <CUSTOMER_TAX_CLASSIF_5/>
+          <CUSTOMER_TAX_CLASSIF_6/>
+          <CUSTOMER_TAX_CLASSIF_7/>
+          <CUSTOMER_TAX_CLASSIF_8/>
+          <CUSTOMER_TAX_CLASSIF_9/>
+          <TAX_DEPARTURE_COUNTRY/>
+          <TAX_DESTINATION_COUNTRY/>
+          <DISTRIBUTION_CHANNEL_ID_CUST/>
+          <CONTROLLING_AREA_CODE/>
+          <APM_APPROVAL_REASON_ID/>
+          <SOLUTION_ORDER_ID/>
+          <PRICING_PROCEDURE_ID/>
+          <CUSTOMER_PRICE_GROUP/>
+          <PRICE_LIST_TYPE/>
+          <EXT_COMM_SYST_TYPE/>
+          <EXT_BUS_SYST_ID/>
+          <TOTAL_WEIGHT/>
+          <WEIGHT_UOM/>
+          <VOLUME/>
+          <VOLUME_UOM/>
+          <CUSTOMER_CREDIT_ACCOUNT_ID/>
+          <CONTRACT_ACCOUNT/>
+          <PURCHASE_ORDER_SUPLMNT/>
+          <SERVICES_RENDERED_DATE/>
+          <TRIANGULAR_DEAL_EU_IND/>
+          <DUMMY_SALESDOC_INCL_EEW_PS/>
+          <RETAILADDITIONALCUSTGRP6/>
+          <RETAILADDITIONALCUSTGRP7/>
+          <RETAILADDITIONALCUSTGRP8/>
+          <RETAILADDITIONALCUSTGRP9/>
+          <RETAILADDITIONALCUSTGRP10/>
+          <FASHIONCANCELDATE/>
+         </HEAD>
+         <ITEM_LIST empty="true">
+          <item>
+           <UNCONDITIONAL_TAKE_OVER_FIELDS empty="true">
+            <item>
+             <NAME/>
+            </item>
+           </UNCONDITIONAL_TAKE_OVER_FIELDS>
+           <RELATIVE_DATES empty="true">
+            <item>
+             <DATE_FIELD_NAME/>
+             <OFFSET_IN_DAYS/>
+            </item>
+           </RELATIVE_DATES>
+           <DELETE_ENTRY/>
+           <SLINE_LIST empty="true">
+            <item>
+             <UNCONDITIONAL_TAKE_OVER_FIELDS empty="true">
+              <item>
+               <NAME/>
+              </item>
+             </UNCONDITIONAL_TAKE_OVER_FIELDS>
+             <RELATIVE_DATES empty="true">
+              <item>
+               <DATE_FIELD_NAME/>
+               <OFFSET_IN_DAYS/>
+              </item>
+             </RELATIVE_DATES>
+             <DELETE_ENTRY/>
+             <HANDLE/>
+             <SLINE_ID/>
+             <CATEGORY_CODE/>
+             <SLINE_DATE/>
+             <SLINE_TIME/>
+             <ORDER_QTY/>
+             <CORRECTED_QTY/>
+             <CONFIRMED_QTY/>
+             <DELIVERED_QTY/>
+             <SALES_UOM/>
+             <DELIVERY_BLOCK_CODE/>
+             <GOODS_ISSUE_DATE/>
+             <LOADING_DATE/>
+             <MATERIAL_AVAILABILITY_DATE/>
+             <TRANSPORTATION_PLANNING_DATE/>
+             <GOODS_ISSUE_TIME/>
+             <LOADING_TIME/>
+             <MATERIAL_AVAILABILITY_TIME/>
+             <TRANSPORTATION_PLANNING_TIME/>
+             <PURCHASE_REQUISITION_ID/>
+             <PURCHASE_REQUISITION_ITEM_ID/>
+             <PRGBZ/>
+             <ETDAT/>
+             <DLVQTY_SU/>
+             <OCDQTY_SU/>
+             <UPDATE_INDICATOR/>
+            </item>
+           </SLINE_LIST>
+           <PARTY_LIST empty="true">
+            <item>
+             <UNCONDITIONAL_TAKE_OVER_FIELDS empty="true">
+              <item>
+               <NAME/>
+              </item>
+             </UNCONDITIONAL_TAKE_OVER_FIELDS>
+             <HANDLE/>
+             <FUNCTION_CODE/>
+             <COUNTER/>
+             <PARTY_ID/>
+             <NAME/>
+             <NAME2/>
+             <NAME3/>
+             <NAME4/>
+             <STREET/>
+             <HOUSE_NUMBER/>
+             <STREET2/>
+             <STREET3/>
+             <STREET4/>
+             <LOCATION/>
+             <POSTAL_CODE/>
+             <CITY/>
+             <DISTRICT/>
+             <REGION_CODE/>
+             <COUNTRY_CODE/>
+             <PO_BOX/>
+             <PO_BOX_PCODE/>
+             <LANGUAGE_CODE/>
+             <LANGUAGE_ISO_CODE/>
+             <PHONE/>
+             <PHONE_EXT/>
+             <FAX/>
+             <FAX_EXT/>
+             <EMAIL/>
+             <MOBILE/>
+             <TAX_JURISDICTION_CODE/>
+             <TITLE/>
+             <TITLE_DESCR/>
+             <ITEM_IND/>
+             <ADDRESS_LINE/>
+             <ADDRESS_ID/>
+             <PARTNER_TYPE_CODE/>
+             <PARTY_ID_EXT/>
+             <TRANSPORTATION_ZONE_ID/>
+             <VAT_REGISTRATION_NUMBER/>
+             <UNLOADING_POINT_ID/>
+             <ADDRESS_GUID/>
+             <ASSIGNED_BP/>
+             <DOC_SPEC_ADDR_IND/>
+             <ADDRESS_TYPE/>
+             <PERSON_NUMBER/>
+            </item>
+           </PARTY_LIST>
+           <TEXT_LIST empty="true">
+            <item>
+             <UNCONDITIONAL_TAKE_OVER_FIELDS empty="true">
+              <item>
+               <NAME/>
+              </item>
+             </UNCONDITIONAL_TAKE_OVER_FIELDS>
+             <HANDLE/>
+             <TEXT_ID/>
+             <SPRAS/>
+             <SPRAS_ISO/>
+             <TYPE/>
+             <FIRST_TLINE/>
+             <TEXT_STRING/>
+             <CREATED_BY/>
+             <CREATED_ON/>
+             <CREATED_AT/>
+             <ID_T/>
+             <SPRAS_T/>
+            </item>
+           </TEXT_LIST>
+           <HANDLE/>
+           <ITEM_ID/>
+           <CATEGORY_CODE/>
+           <MATERIAL_ID/>
+           <ORDER_QTY/>
+           <CONFIRMED_QTY/>
+           <SALES_UOM/>
+           <BASIC_UOM/>
+           <REQ_DELIVERY_DATE/>
+           <ITEM_DESCR/>
+           <CUSTOMER_MATERIAL_ID/>
+           <PURCHASE_ORDER_ID/>
+           <PURCHASE_ORDER_DATE/>
+           <SHIP_TO_PURCHASE_ORDER_ID/>
+           <PLANT_ID/>
+           <NET_AMOUNT/>
+           <TAX_AMOUNT/>
+           <TOTAL_AMOUNT/>
+           <DOCUMENT_CURRENCY_CODE/>
+           <REJECTION_REASON_CODE/>
+           <CREATED_BY/>
+           <CREATED_ON/>
+           <CHANGED_BY/>
+           <CHANGED_ON/>
+           <WBS_ELEMENT_ID/>
+           <WBS_ELEMENT_ID_EXT/>
+           <HIGHER_LEVEL_ITEM_ID/>
+           <HIGHER_LEVEL_ITEM_USAGE/>
+           <BILLING_BLOCK_CODE/>
+           <BILLING_DATE/>
+           <PRGBZ/>
+           <ETDAT/>
+           <DELIVERY_PRIORITY_CODE/>
+           <INCOTERMS_CODE/>
+           <INCOTERMS_LOCATION/>
+           <INCOTERMS_LOCATION_1/>
+           <INCOTERMS_LOCATION_2/>
+           <INCOTERMS_VERSION/>
+           <PRODUCT_TAX_CLASSIF_1/>
+           <PRODUCT_TAX_CLASSIF_2/>
+           <PRODUCT_TAX_CLASSIF_3/>
+           <PRODUCT_TAX_CLASSIF_4/>
+           <PRODUCT_TAX_CLASSIF_5/>
+           <PRODUCT_TAX_CLASSIF_6/>
+           <PRODUCT_TAX_CLASSIF_7/>
+           <PRODUCT_TAX_CLASSIF_8/>
+           <PRODUCT_TAX_CLASSIF_9/>
+           <MATL_ACCOUNT_ASSIGNMENT_GRP/>
+           <PAYMENT_TERM_CODE/>
+           <PRICING_DATE/>
+           <EXCHANGE_RATE/>
+           <EXCHANGE_RATE_EXT/>
+           <EXCHANGE_RATE_FI/>
+           <DIP_PROFILE_ID/>
+           <TARGET_QTY/>
+           <TARGET_UOM/>
+           <PARTIAL_DELIVERY_CODE/>
+           <RESOURCE_ID/>
+           <NUMBER_ALLOWED_DLVS/>
+           <PBS_STATE/>
+           <UPDATE_INDICATOR/>
+           <IS_NEW/>
+           <PROFIT_CENTER/>
+           <FIXED_VALUE_DATE/>
+           <ADDITIONAL_VALUE_DAYS/>
+           <RELEVANT_FOR_POD/>
+           <CUSTOMER_COND_GRP1_CODE/>
+           <CUSTOMER_COND_GRP2_CODE/>
+           <CUSTOMER_COND_GRP3_CODE/>
+           <CUSTOMER_COND_GRP4_CODE/>
+           <CUSTOMER_COND_GRP5_CODE/>
+           <CUSTOMER_GROUP_CODE/>
+           <MATERIAL_GROUP1_CODE/>
+           <MATERIAL_GROUP2_CODE/>
+           <MATERIAL_GROUP3_CODE/>
+           <MATERIAL_GROUP4_CODE/>
+           <MATERIAL_GROUP5_CODE/>
+           <EXTERNAL_ITEM_ID/>
+           <MATERIAL_GROUP_ID/>
+           <MATERIAL_PRICING_GROUP_ID/>
+           <PRICING_REFERENCE_MATERIAL/>
+           <MATERIAL_SUBSTITUTION_REASON/>
+           <PURCHASE_ORDER_TYPE_CODE/>
+           <INTERNATIONAL_ARTICLE_NO/>
+           <RECEIVING_POINT_ID/>
+           <REASON_CODE/>
+           <DUMMY_SLSDOCITEM_INCL_EEW_PS/>
+           <REQUESTED_QTY/>
+           <REQUESTED_UOM/>
+           <UNLOADING_POINT_ID/>
+           <IFRS15_RELEVANCE/>
+           <IFRS15_TOTAL_SSP/>
+           <STORAGE_LOCATION_ID/>
+           <SHIPPING_POINT_ID/>
+           <SHIPPING_TYPE_CODE/>
+           <CONF_DELIVERY_DATE/>
+           <DELIVERY_DATE_TYPE_RULE/>
+           <ROUTE_ID/>
+           <DELIVERY_GROUP_ID/>
+           <CAPPED_NET_AMOUNT/>
+           <CAPPED_NET_AMOUNT_ALERT_THLD/>
+           <EXT_REF_ITEM_ID/>
+           <REF_DOCUMENT_ID/>
+           <REF_ITEM_ID/>
+           <SUBTOTAL_1_AMOUNT/>
+           <SUBTOTAL_2_AMOUNT/>
+           <SUBTOTAL_3_AMOUNT/>
+           <SUBTOTAL_4_AMOUNT/>
+           <SUBTOTAL_5_AMOUNT/>
+           <SUBTOTAL_6_AMOUNT/>
+           <COST_AMOUNT/>
+           <BATCH_ID/>
+           <BUSINESS_AREA_ID/>
+           <CONFIGURATION/>
+           <GROSS_WEIGHT/>
+           <NET_WEIGHT/>
+           <WEIGHT_UOM/>
+           <VOLUME/>
+           <VOLUME_UOM/>
+           <SOLUTION_ORDER_ITEM_ID/>
+           <CUSTOMER_PRICE_GROUP/>
+           <ORDER_COMBINATION_IND/>
+           <CONTRACT_ACCOUNT/>
+           <SERVICES_RENDERED_DATE/>
+           <OVERDELIVERY_TOLERANCE/>
+           <UNDERDELIVERY_TOLERANCE/>
+           <UNLIMITED_OVERDELIVERY_IND/>
+           <REQUIREMENTSEGMENT/>
+           <PRODUCTSEASONYEAR/>
+           <PRODUCTSEASON/>
+           <PRODUCTCOLLECTION/>
+           <PRODUCTTHEME/>
+           <FASHIONCANCELDATE/>
+           <FASHIONREJECTIONQTY/>
+           <FASHIONREJECTIONREASON/>
+           <FASHIONREJECTIONTYPE/>
+          </item>
+         </ITEM_LIST>
+        </ddic:CL_PTF_BO_SO_--3D_--3ETY_GS_I_PTF_SO_CR_TD>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>I_PTF_SO_CHECK_EPAY</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Check FPLTC Epay Data</PDESC>
+       <PINDEX>0002</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_SO=&gt;TY_GT_PTF_SO_CHE</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0002</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_SO=&gt;TY_GT_PTF_SO_CHECK_EPAY</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_PTF_SO_CHECK_EPAY=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_PTF_SO_CHECK_EPAY" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_PTF_SO_CHECK_EPAY">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_PTF_SO_CHECK_EPAY=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="FPLTR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=FPLTR=A=N=L=000006=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHECK_CONDITIONS" minOccurs="0" type="CL_PTF_BO_SO_--3D_--3ETY_GT_CONDITION"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GT_CONDITION">
+          <annotation>
+           <documentation>I==O==C=T=K==D=CL_PTF_BO_SO=&gt;TY_GT_CONDITION=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="CL_PTF_BO_SO_--3D_--3ETY_GS_CONDITION" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="CL_PTF_BO_SO_--3D_--3ETY_GS_CONDITION">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_SO=&gt;TY_GS_CONDITION=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="FIELD_NAME" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+           <element name="OPERATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=C=L=000002=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="VALUE" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D==A=g=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic" empty="true">
+         <item>
+          <FPLTR/>
+          <CHECK_CONDITIONS empty="true">
+           <item>
+            <FIELD_NAME/>
+            <OPERATOR/>
+            <VALUE/>
+           </item>
+          </CHECK_CONDITIONS>
+         </item>
+        </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY>
+       </DEEP_DATA>
+      </item>
+      <item>
+       <PNAME>I_PTF_GR_CREATE_FOR_MAT</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Create GR for Material</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_GR=&gt;TY_GS_PTF_GR_CRE</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0003</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_GR=&gt;TY_GS_PTF_GR_CREATE_FOR_MAT_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_GR_--3D_--3ETY_GS_PTF_GR_CREATE_FOR_MAT_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_GR=&gt;TY_GS_PTF_GR_CREATE_FOR_MAT_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="MATNR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=MATNR=A=C=L=000040=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PLANT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=WERKS_D=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STORAGELOCATION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=LGORT_D=A=C=L=000004=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="4"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MOVE_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BWART=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="QUANTITYINENTRYUNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERFMG=A=P=L=000013=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="13"/>
+              <fractionDigits value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENTRYUNIT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=ERFME=A=C=L=000003=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_GR_--3D_--3ETY_GS_PTF_GR_CREATE_FOR_MAT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <MATNR/>
+         <PLANT/>
+         <STORAGELOCATION/>
+         <MOVE_TYPE/>
+         <QUANTITYINENTRYUNIT/>
+         <ENTRYUNIT/>
+        </ddic:CL_PTF_BO_GR_--3D_--3ETY_GS_PTF_GR_CREATE_FOR_MAT_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>SO_1EPAY_CHECK</VAR_NAME>
+       <VAR_DESC>Card with authline</VAR_DESC>
+       <VINDEX>0003</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_SO_CHECK_EPAY</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <FPLTR>900001</FPLTR>
+            <CHECK_CONDITIONS>
+             <item>
+              <FIELD_NAME>REACT</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>A</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>CCWAE</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>USD</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>AUTWR</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>182.52</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>DP_TOKEN</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>7KMNRMA7J6BOVUHBMJRGZQ2E</VALUE>
+             </item>
+            </CHECK_CONDITIONS>
+           </item>
+           <item>
+            <FPLTR>000001</FPLTR>
+            <CHECK_CONDITIONS>
+             <item>
+              <FIELD_NAME>CCINS</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>DPVI</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>DP_TOKEN</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>7KMNRMA7J6BOVUHBMJRGZQ2E</VALUE>
+             </item>
+            </CHECK_CONDITIONS>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SO_1CARD</VAR_NAME>
+       <VAR_DESC>1 Card no auth</VAR_DESC>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_SO_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GS_I_PTF_SO_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <HEAD>
+            <EPAY_LIST>
+             <item>
+              <AMOUNT_MAX>182.52</AMOUNT_MAX>
+              <AMOUNT_LIMIT>X</AMOUNT_LIMIT>
+              <CURRENCY_CODE>USD</CURRENCY_CODE>
+              <DP_TOKEN>7KMNRMA7J6BOVUHBMJRGZQ2E</DP_TOKEN>
+             </item>
+            </EPAY_LIST>
+            <TYPE_CODE>TA</TYPE_CODE>
+            <SALES_ORGANIZATION_ID>1710</SALES_ORGANIZATION_ID>
+            <DISTRIBUTION_CHANNEL_ID>10</DISTRIBUTION_CHANNEL_ID>
+            <DIVISION_ID>00</DIVISION_ID>
+            <SOLD_TO_PARTY_ID>0017100001</SOLD_TO_PARTY_ID>
+            <SHIP_TO_PARTY_ID>0017100001</SHIP_TO_PARTY_ID>
+            <PURCHASE_ORDER_ID>PTF Epay</PURCHASE_ORDER_ID>
+           </HEAD>
+           <ITEM_LIST>
+            <item>
+             <MATERIAL_ID>TG11</MATERIAL_ID>
+             <ORDER_QTY>10</ORDER_QTY>
+            </item>
+           </ITEM_LIST>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GS_I_PTF_SO_CR_TD>
+         </DEEP_DATA>
+        </item>
+        <item>
+         <PNAME>I_PTF_GR_CREATE_FOR_MAT</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_GR_--3D_--3ETY_GS_PTF_GR_CREATE_FOR_MAT_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <MATNR>TG11</MATNR>
+           <PLANT>1710</PLANT>
+           <STORAGELOCATION>171A</STORAGELOCATION>
+           <QUANTITYINENTRYUNIT>100</QUANTITYINENTRYUNIT>
+           <ENTRYUNIT>ST</ENTRYUNIT>
+          </ddic:CL_PTF_BO_GR_--3D_--3ETY_GS_PTF_GR_CREATE_FOR_MAT_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SO_2EPAY_CHECK</VAR_NAME>
+       <VAR_DESC>Card with authline</VAR_DESC>
+       <VINDEX>0006</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_SO_CHECK_EPAY</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <FPLTR>900001</FPLTR>
+            <CHECK_CONDITIONS>
+             <item>
+              <FIELD_NAME>REACT</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>A</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>CCWAE</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>USD</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>AUTWR</FIELD_NAME>
+              <OPERATOR>ge</OPERATOR>
+              <VALUE>1.00</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>DP_TOKEN</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>7KMNRMA7J6BOVUHBMJRGZQ2E</VALUE>
+             </item>
+            </CHECK_CONDITIONS>
+           </item>
+           <item>
+            <FPLTR>900002</FPLTR>
+            <CHECK_CONDITIONS>
+             <item>
+              <FIELD_NAME>DP_TOKEN</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>7KMNRMA7J6BOVUHBMJRGZQ2E</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>AUTWR</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>100.00</VALUE>
+             </item>
+            </CHECK_CONDITIONS>
+           </item>
+           <item>
+            <FPLTR>000002</FPLTR>
+            <CHECK_CONDITIONS>
+             <item>
+              <FIELD_NAME>DP_TOKEN</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>7KMNRMA7J6BOVUHBMJRGZQ2E</VALUE>
+             </item>
+            </CHECK_CONDITIONS>
+           </item>
+           <item>
+            <FPLTR>000001</FPLTR>
+            <CHECK_CONDITIONS>
+             <item>
+              <FIELD_NAME>CCINS</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>DPVI</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>DP_TOKEN</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>7KMNRMA7J6BOVUHBMJRGZQ2E</VALUE>
+             </item>
+            </CHECK_CONDITIONS>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SO_2CARD</VAR_NAME>
+       <VAR_DESC>2 Card no auth</VAR_DESC>
+       <VINDEX>0005</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_SO_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0003</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GS_I_PTF_SO_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <HEAD>
+            <EPAY_LIST>
+             <item>
+              <HANDLE>1</HANDLE>
+              <INSTANCE_ID>000001</INSTANCE_ID>
+              <DP_TOKEN>7KMNRMA7J6BOVUHBMJRGZQ2E</DP_TOKEN>
+             </item>
+             <item>
+              <HANDLE>2</HANDLE>
+              <INSTANCE_ID>000002</INSTANCE_ID>
+              <AMOUNT_MAX>100</AMOUNT_MAX>
+              <AMOUNT_LIMIT>X</AMOUNT_LIMIT>
+              <CURRENCY_CODE>USD</CURRENCY_CODE>
+              <DP_TOKEN>7KMNRMA7J6BOVUHBMJRGZQ2E</DP_TOKEN>
+             </item>
+            </EPAY_LIST>
+            <TYPE_CODE>TA</TYPE_CODE>
+            <SALES_ORGANIZATION_ID>1710</SALES_ORGANIZATION_ID>
+            <DISTRIBUTION_CHANNEL_ID>10</DISTRIBUTION_CHANNEL_ID>
+            <DIVISION_ID>00</DIVISION_ID>
+            <SOLD_TO_PARTY_ID>0017100001</SOLD_TO_PARTY_ID>
+            <SHIP_TO_PARTY_ID>0017100001</SHIP_TO_PARTY_ID>
+            <PURCHASE_ORDER_ID>PTF Epay</PURCHASE_ORDER_ID>
+           </HEAD>
+           <ITEM_LIST>
+            <item>
+             <MATERIAL_ID>TG11</MATERIAL_ID>
+             <ORDER_QTY>10</ORDER_QTY>
+            </item>
+           </ITEM_LIST>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GS_I_PTF_SO_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+      <item>
+       <VAR_NAME>SO_1EPAY_CHECK_NEG</VAR_NAME>
+       <VAR_DESC>Card with authline</VAR_DESC>
+       <VINDEX>0004</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_SO_CHECK_EPAY</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0002</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <item>
+            <FPLTR>900001</FPLTR>
+            <CHECK_CONDITIONS>
+             <item>
+              <FIELD_NAME>REACT</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>C</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>CCWAE</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>USD</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>AUTWR</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>0.00</VALUE>
+             </item>
+             <item>
+              <FIELD_NAME>RCRSP</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>02</VALUE>
+             </item>
+            </CHECK_CONDITIONS>
+           </item>
+           <item>
+            <FPLTR>000001</FPLTR>
+            <CHECK_CONDITIONS>
+             <item>
+              <FIELD_NAME>CCINS</FIELD_NAME>
+              <OPERATOR>eq</OPERATOR>
+              <VALUE>DPVI</VALUE>
+             </item>
+            </CHECK_CONDITIONS>
+           </item>
+          </ddic:CL_PTF_BO_SO_--3D_--3ETY_GT_PTF_SO_CHECK_EPAY>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

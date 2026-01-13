@@ -1,0 +1,10 @@
+unmanaged implementation in class cl_ptf_variant_manager unique;
+
+define behavior for P_PTF_VARIANT //alias <alias_name>
+//late numbering
+//lock master
+//authorization master
+//etag master <field_name>
+{
+  action execute_variant parameter I_PTF_EXEC_VARIANT_INPUT result [0..1] I_PTF_EXECUTION_RESULT;
+}

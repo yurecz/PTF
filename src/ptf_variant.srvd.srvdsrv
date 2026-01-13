@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for P_PTF_VARIANT'
+define service PTF_VARIANT {
+  expose P_PTF_VARIANT;
+}

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_FUGR" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <AREAT>Output Item related FM</AREAT>
+   <INCLUDES>
+    <SOBJ_NAME>LPTF_OUTPUT_ITEMTOP</SOBJ_NAME>
+    <SOBJ_NAME>SAPLPTF_OUTPUT_ITEM</SOBJ_NAME>
+   </INCLUDES>
+   <FUNCTIONS>
+    <item>
+     <FUNCNAME>FM_BILLING_DOCUMENT_OUTPUT_RUN</FUNCNAME>
+     <SHORT_TEXT>Proceed Output Items</SHORT_TEXT>
+     <IMPORT>
+      <RSIMP>
+       <PARAMETER>OUT_CHANNEL</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>SFORM_S_CHANNEL-CHANNEL</TYP>
+      </RSIMP>
+      <RSIMP>
+       <PARAMETER>VBELN</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>VBRK-VBELN</TYP>
+      </RSIMP>
+     </IMPORT>
+     <EXPORT>
+      <RSEXP>
+       <PARAMETER>SUBRC</PARAMETER>
+       <REFERENCE>X</REFERENCE>
+       <TYP>SY-SUBRC</TYP>
+      </RSEXP>
+     </EXPORT>
+     <DOCUMENTATION>
+      <RSFDO>
+       <PARAMETER>OUT_CHANNEL</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Output Management: Channel</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>VBELN</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>Billing Document</STEXT>
+      </RSFDO>
+      <RSFDO>
+       <PARAMETER>SUBRC</PARAMETER>
+       <KIND>P</KIND>
+       <STEXT>ABAP System Field: Return Code of ABAP Statements</STEXT>
+      </RSFDO>
+     </DOCUMENTATION>
+    </item>
+   </FUNCTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,1213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_ECTD" serializer_version="v1.0.0">
+ <VERSIONS>
+  <VERSION>
+   <ECTD VERSION="1.5">
+    <ATTRIBUTES>
+     <ETOBJ_GNDT>
+      <VERSION>00000001</VERSION>
+      <TWB_TITLE>OC Test data container for PTF</TWB_TITLE>
+      <SOFTCOMP/>
+      <TWB_DEP_RF/>
+      <TWB_DEP_RT/>
+      <TWB_STATUS>X</TWB_STATUS>
+      <TWB_RELE>N</TWB_RELE>
+      <FUSER></FUSER>
+      <FDATE></FDATE>
+      <LUSER></LUSER>
+      <LDATE></LDATE>
+      <LTIME></LTIME>
+      <REL_BAS_F/>
+      <REL_BAS_T/>
+      <SERVICE/>
+      <PVNR/>
+      <BACKUP/>
+     </ETOBJ_GNDT>
+     <ETOBJNOVER>
+      <NAME>TDC_PTF_OUTPUT_REQ</NAME>
+      <TYPE>ECTD</TYPE>
+      <TWB_RESP></TWB_RESP>
+      <TWB_DISTL>B</TWB_DISTL>
+      <TWB_EUBOBJ/>
+      <TWB_EUTYPE/>
+      <DEVCLASS></DEVCLASS>
+      <MASTERLANG>E</MASTERLANG>
+      <TADIR_RESP></TADIR_RESP>
+      <FRANGE>CA-GTF-OC</FRANGE>
+      <BCSET_MODE/>
+      <API_MODE/>
+      <COL_TSTOBJDATA/>
+      <NO_TRANSLATION>X</NO_TRANSLATION>
+     </ETOBJNOVER>
+     <ETOBJ_DOC>
+      <SEARCH_1/>
+      <SEARCH_2/>
+      <SEARCH_3/>
+      <SEARCH_4/>
+      <SEARCH_5/>
+      <SEARCH_6/>
+      <SEARCH_7/>
+      <SEARCH_8/>
+      <SEARCH_9/>
+      <SEARCH_10/>
+      <S_DOC_ID/>
+      <S_OBJ_ID/>
+      <S_DOC_TITL/>
+     </ETOBJ_DOC>
+     <ETOBJ_CNST>
+      <TWB_DEP_S/>
+      <TWB_DEPV_S/>
+      <TWB_DEP_L/>
+      <TWB_DEPV_L/>
+      <TWB_USE_A/>
+      <TWB_USE_P/>
+      <TWB_USE_H/>
+      <TWB_USE_E/>
+      <REUSE/>
+      <TWB_DEP_C/>
+      <TWB_DEP_VC/>
+      <TWB_DEP_F/>
+      <TWB_DEP_VF/>
+      <TWB_DEP_P/>
+      <TWB_DEP_VP/>
+      <TWB_DEP_DB/>
+      <TWB_DEPVDB/>
+      <TWB_WKREQ>0.0</TWB_WKREQ>
+      <TWB_WKUNIT>MIN</TWB_WKUNIT>
+      <TWB_PRIO>3</TWB_PRIO>
+     </ETOBJ_CNST>
+     <ETSC_TSYS>
+      <SYSTEMDATA/>
+      <TESTSYSTEM/>
+     </ETSC_TSYS>
+     <ETSYS_COMP_TABTYPE/>
+     <ETSYS_REL_TABTYPE/>
+     <ETBF_OBJ_TABTYPE/>
+     <ETBF_VER_TABTYPE/>
+    </ATTRIBUTES>
+    <PARAMETERS>
+     <ETPAR_GUIX>
+      <item>
+       <PNAME>I_PTF_OR_CR</PNAME>
+       <PTYP>V</PTYP>
+       <PDESC>Input OR Create</PDESC>
+       <PINDEX>0001</PINDEX>
+       <XMLREF_TYP>D</XMLREF_TYP>
+       <PSTRUC_TYP>T</PSTRUC_TYP>
+       <PREF_NAME>CL_PTF_BO_OUTPUT_REQUEST=&gt;TY_G</PREF_NAME>
+       <PDATLEN>0000</PDATLEN>
+       <PINTLEN>000000</PINTLEN>
+       <PDECIMALS>000000</PDECIMALS>
+       <SORT_LNR>0001</SORT_LNR>
+       <PREF_NAME2>CL_PTF_BO_OUTPUT_REQUEST=&gt;TY_GS_I_PTF_OR_CR_TD</PREF_NAME2>
+       <VALUE>&lt;INITIAL&gt;</VALUE>
+       <VAL_TYPE>T</VAL_TYPE>
+       <TAB_INDEX>0</TAB_INDEX>
+       <DEEP_STRU>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xml.sap.com/2003/05/eCATT/ddic" version="1.0">
+         <xsd:complexType name="CL_PTF_BO_OUTPUT_REQUEST_--3D_--3ETY_GS_I_PTF_OR_CR_TD">
+          <annotation>
+           <documentation>I==O==C=S=K==D=CL_PTF_BO_OUTPUT_REQUEST=&gt;TY_GS_I_PTF_OR_CR_TD=A==L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="ROOT" minOccurs="0" type="APOC_S_OR_ROOT"/>
+           <element name="ITEM" minOccurs="0" type="APOC_T_OR_ITEM"/>
+           <element name="ITEM_EMAIL" minOccurs="0" type="APOC_T_OR_ITEM_EMAIL"/>
+           <element name="ITEM_ATTACHMENT" minOccurs="0" type="APOC_T_OR_ITEM_ATTACH"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="APOC_S_OR_ROOT">
+          <annotation>
+           <documentation>I==O==C=S=K==D=APOC_S_OR_ROOT=A=v=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARENT_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROOT_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APPL_OBJECT_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_APPL_OBJECT_TYPE=A=C=L=000030=doc=Anwendu</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APPL_OBJECT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_APPL_OBJECT_ID=A=C=L=000255=doc=ID des An</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="255"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OUTPUT_PARAMETER" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OUTPUT_PARAMETER=A=g=L=000000=doc=Ausgabe</documentation>
+            </annotation>
+           </element>
+           <element name="LOG_HANDLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_LOG_HANDLE=A=C=L=000022=doc=Anwendungspro</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="22"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENABLE_ISSUE_OUTPUT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BOOLEAN=A=C=L=000001=doc=boolsche Variable (X=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENABLE_RETRY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BOOLEAN=A=C=L=000001=doc=boolsche Variable (X=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENABLE_DUPLICATE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BOOLEAN=A=C=L=000001=doc=boolsche Variable (X=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ENABLE_SET_TO_COMPLETED" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BOOLEAN=A=C=L=000001=doc=boolsche Variable (X=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="APOC_T_OR_ITEM">
+          <annotation>
+           <documentation>I==O==C=T=K==D=APOC_T_OR_ITEM=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="APOC_S_OR_ITEM" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="APOC_T_OR_ITEM_EMAIL">
+          <annotation>
+           <documentation>I==O==C=T=K==D=APOC_T_OR_ITEM_EMAIL=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="APOC_S_OR_ITEM_EMAIL" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="APOC_T_OR_ITEM_ATTACH">
+          <annotation>
+           <documentation>I==O==C=T=K==D=APOC_T_OR_ITEM_ATTACH=A=h=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="item" type="APOC_S_OR_ITEM_ATTACH" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="APOC_S_OR_ITEM">
+          <annotation>
+           <documentation>I==O==C=S=K==D=APOC_S_OR_ITEM=A=v=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARENT_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROOT_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APPL_OBJECT_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_APPL_OBJECT_TYPE=A=C=L=000030=doc=Anwendu</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APPL_OBJECT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_APPL_OBJECT_ID=A=C=L=000255=doc=ID des An</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="255"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OR_ITEM_ID=A=N=L=000006=doc=Positions-ID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="STATUS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OR_OUTPUT_STATUS=A=C=L=000001=doc=Ausgabe</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OUTPUT_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OUTPUT_TYPE=A=C=L=000030=doc=Ausgabeart</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RECEIVER_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_RECEIVER_ID=A=C=L=000010=doc=Empfänger-ID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RECEIVER_ROLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_ROLE_CODE=A=C=L=000002=doc=Rollencode</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CHANNEL" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_CHANNEL=A=C=L=000005=doc=Ausgabekanal</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORM_TEMPLATE_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_FORM_TEMPLATE_ID=A=C=L=000030=doc=Formula</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORM_TEMPLATE_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_FORM_TYPE=A=C=L=000001=doc=Typ der Formul</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORM_TEMPLATE_LANGUAGE_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_FORM_TEMPLATE_LANGUAGE=A=C=L=000001=doc=S</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORM_TEMPLATE_COUNTRY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_FORM_TEMPLATE_COUNTRY=A=C=L=000003=doc=La</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SENDER_ORGANIZATION_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SFM_V_ORG_ID=A=C=L=000040=doc=Ausgabeverwaltun</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SENDER_ORGANIZATION_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SFM_V_ORG_TYPE=A=C=L=000010=doc=Ausgabeverwalt</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SENDER_ORG_UNIT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SFM_V_ORG_UNIT_ID=A=C=L=000040=doc=Ausgabeverw</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SENDER_ORG_UNIT_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SFM_V_ORG_UNIT_TYPE=A=C=L=000010=doc=Ausgabeve</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SENDER_COUNTRY_CODE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SFM_V_SENDER_COUNTRY=A=C=L=000003=doc=Ausgabev</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="3"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SENDER_EMAIL_URI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_EMAIL_ADDRESS=A=C=L=000241=doc=E-Mail-Adr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="241"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOG_HANDLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_LOG_HANDLE=A=C=L=000022=doc=Anwendungspro</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="22"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DOC_NUMBER_OF_PAGES" minOccurs="0" type="int">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_DOC_NO_OF_PAGES=A=I=L=000010=doc=Anzahl a</documentation>
+            </annotation>
+           </element>
+           <element name="CHANGE_INDICATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_CHANGE_INDICATOR=A=C=L=000001=doc=Änderun</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="DISPATCH_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OR_DISPATCH_TIME=A=C=L=000001=doc=Versand</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="REFERENCE_ITEM" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EMAIL_TEMPLATE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_EMAIL_TEMPLATE=A=C=L=000030=doc=E-Mail-Vo</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EMAIL_SUBJECT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_EMAIL_SUBJECT=A=C=L=000255=doc=E-Mail-Bet</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="255"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EMAIL_BODY" minOccurs="0" type="string">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_EMAIL_BODY=A=g=L=000000=doc=E-Mail-Text</documentation>
+            </annotation>
+           </element>
+           <element name="PRINT_QUEUE_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_PRINT_QUEUE=A=C=L=000032=doc=Druckwartesc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRINT_QUEUE_ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_PRINT_QUEUE_ID=A=C=L=000032=doc=Druckwart</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRINT_NUMBER_OF_COPIES" minOccurs="0" type="short">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_NUMBER_OF_COPIES=A=s=L=000005=doc=Anzahl</documentation>
+            </annotation>
+           </element>
+           <element name="PRINTING_METHOD" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_PRINTING_METHOD=A=C=L=000002=doc=Veraltet</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="2"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="XI_MESSAGE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_XI_MSG_ID=A=X=L=000016=doc=XI-Meldungs-ID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MESSAGE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_MESSAGE_ID=A=C=L=000060=doc=Meldungs-ID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="60"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OUTBOUND_SERVICE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OUTBOUND_SERVICE_ID=A=C=L=000040=doc=Ausg</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREA_DATE_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_CREATED_AT=A=P=L=000021=doc=Anlegedatum/-</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="CREA_IDENT_UUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_CREATED_BY=A=C=L=000012=doc=Angelegt von</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LCHG_DATE_TIME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_LCHANGED_AT=A=P=L=000021=doc=Letzte(s) Än</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="decimal">
+              <totalDigits value="21"/>
+              <fractionDigits value="7"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LCHG_IDENT_UUID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_LCHANGED_BY=A=C=L=000012=doc=Zuletzt geän</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="12"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KPRO_CLASS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDOK_CLASS=A=C=L=000010=doc=Dokumentenklasse</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="KPRO_OBJID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDOK_DOCID=A=C=L=000032=doc=ID für Dokumente u</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="OUTPUT_DATA" minOccurs="0" type="base64Binary">
+            <annotation>
+             <documentation>I==O==C==K==D==A=y=L=000000=doc=</documentation>
+            </annotation>
+           </element>
+           <element name="PREVIEW_INDICATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=BOOLEAN=A=C=L=000001=doc=boolsche Variable (X=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MASTER_FORM_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_FORM_TEMPLATE_ID=A=C=L=000030=doc=Formula</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RECEIVER_NAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_RECEIVER_NAME=A=C=L=000080=doc=Empfängern</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="80"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORM_TEMPLATE_DESCRIPTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_FORM_TEMPLATE_DESCR=A=C=L=000060=doc=Besc</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="60"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FORM_TEMPLATE_COUNTRY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=c=L=000000=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="15"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="TOTAL_NUMBER_OF_ATTACH" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_TOTAL_NR_OF_ATTACH=A=b=L=000003=doc=Gesa</documentation>
+            </annotation>
+           </element>
+           <element name="NUMBER_OF_SEL_ATTACH" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_NR_OF_SEL_ATTACH=A=b=L=000003=doc=Anzahl</documentation>
+            </annotation>
+           </element>
+           <element name="REFERENCE_ITEMID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D==A=c=L=000000=doc=</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRINT_QUEUE_FORMAT" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_PRINT_QUEUE_FORMAT=A=C=L=000051=doc=Techn</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="51"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PRINT_QUEUE_FORMAT_DESCRIPTION" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=PQ_QFORMAT_DESCRIPTION=A=C=L=000040=doc=Wartes</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="40"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UX_FC_CHANNEL" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+           <element name="UX_FC_DISPATCH_TIME" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+           <element name="UX_FC_FORM_TEMPL_COUNTRY_CODE" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+           <element name="UX_FC_FORM_TEMPL_LANGUAGE_CODE" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+           <element name="UX_FC_FORM_TEMPLATE_NAME" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+           <element name="UX_FC_OUTPUT_TYPE" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+           <element name="UX_FC_RECEIVER_ID" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+           <element name="UX_FC_ITEM_ATTACHMENT" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+           <element name="UX_FC_SENDER_COUNTRY_CODE" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="APOC_S_OR_ITEM_EMAIL">
+          <annotation>
+           <documentation>I==O==C=S=K==D=APOC_S_OR_ITEM_EMAIL=A=u=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARENT_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROOT_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APPL_OBJECT_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_APPL_OBJECT_TYPE=A=C=L=000030=doc=Anwendu</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APPL_OBJECT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_APPL_OBJECT_ID=A=C=L=000255=doc=ID des An</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="255"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OR_ITEM_ID=A=N=L=000006=doc=Positions-ID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="COUNTER" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OR_EMAIL_COUNTER=A=N=L=000006=doc=E-Mail-</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EMAIL_ROLE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_EMAIL_ROLE_CODE=A=C=L=000005=doc=E-Mail-E</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="5"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="EMAIL_URI" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_EMAIL_ADDRESS=A=C=L=000241=doc=E-Mail-Adr</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="241"/>
+             </restriction>
+            </simpleType>
+           </element>
+          </sequence>
+         </xsd:complexType>
+         <xsd:complexType name="APOC_S_OR_ITEM_ATTACH">
+          <annotation>
+           <documentation>I==O==C=S=K==D=APOC_S_OR_ITEM_ATTACH=A=u=L=000000=doc=</documentation>
+          </annotation>
+          <sequence>
+           <element name="KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PARENT_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ROOT_KEY" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=/BOBF/CONF_KEY=A=X=L=000016=doc=NodeID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="base64Binary">
+              <length value="16"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APPL_OBJECT_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_APPL_OBJECT_TYPE=A=C=L=000030=doc=Anwendu</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="30"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="APPL_OBJECT_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_APPL_OBJECT_ID=A=C=L=000255=doc=ID des An</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="255"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="ITEM_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_OR_ITEM_ID=A=N=L=000006=doc=Positions-ID</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <pattern value="\d+"/>
+              <maxLength value="6"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SDOK_FILE_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDOK_PHID=A=C=L=000032=doc=Physisches Dokument</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="SDOK_APPL_ID" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDOK_LOID=A=C=L=000032=doc=Logisches Dokument</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="32"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MERGE_INDICATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_MERGE_INDICATOR=A=C=L=000001=doc=Kennzeic</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="FILENAME" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_FILE_NAME=A=C=L=000255=doc=Dateiname</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="255"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="MIME_TYPE" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=W3CONTTYPE=A=C=L=000128=doc=HTML-Content-Type</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="128"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="RELEVANCE_INDICATOR" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=APOC_RELEVANCE_INDICATOR=A=C=L=000001=doc=Rele</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="1"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="LOIO_CLASS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDOK_CLASS=A=C=L=000010=doc=Dokumentenklasse</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="PHIO_CLASS" minOccurs="0">
+            <annotation>
+             <documentation>I==O==C==K==D=SDOK_CLASS=A=C=L=000010=doc=Dokumentenklasse</documentation>
+            </annotation>
+            <simpleType>
+             <restriction base="string">
+              <maxLength value="10"/>
+             </restriction>
+            </simpleType>
+           </element>
+           <element name="UX_FC_MERGE_ENABLED" minOccurs="0" type="unsignedByte">
+            <annotation>
+             <documentation>I==O==C=D=K==D=APOC_ODATA_UX_FC=A=b=L=000003=doc=UI-Feldsteu</documentation>
+            </annotation>
+           </element>
+          </sequence>
+         </xsd:complexType>
+        </xsd:schema>
+       </DEEP_STRU>
+       <DEEP_DATA>
+        <ddic:CL_PTF_BO_OUTPUT_REQUEST_--3D_--3ETY_GS_I_PTF_OR_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+         <ROOT>
+          <KEY/>
+          <PARENT_KEY/>
+          <ROOT_KEY/>
+          <APPL_OBJECT_TYPE/>
+          <APPL_OBJECT_ID/>
+          <OUTPUT_PARAMETER/>
+          <LOG_HANDLE/>
+          <ENABLE_ISSUE_OUTPUT/>
+          <ENABLE_RETRY/>
+          <ENABLE_DUPLICATE/>
+          <ENABLE_SET_TO_COMPLETED/>
+         </ROOT>
+         <ITEM empty="true">
+          <item>
+           <KEY/>
+           <PARENT_KEY/>
+           <ROOT_KEY/>
+           <APPL_OBJECT_TYPE/>
+           <APPL_OBJECT_ID/>
+           <ITEM_ID/>
+           <STATUS/>
+           <OUTPUT_TYPE/>
+           <RECEIVER_ID/>
+           <RECEIVER_ROLE/>
+           <CHANNEL/>
+           <FORM_TEMPLATE_NAME/>
+           <FORM_TEMPLATE_TYPE/>
+           <FORM_TEMPLATE_LANGUAGE_CODE/>
+           <FORM_TEMPLATE_COUNTRY_CODE/>
+           <SENDER_ORGANIZATION_ID/>
+           <SENDER_ORGANIZATION_TYPE/>
+           <SENDER_ORG_UNIT_ID/>
+           <SENDER_ORG_UNIT_TYPE/>
+           <SENDER_COUNTRY_CODE/>
+           <SENDER_EMAIL_URI/>
+           <LOG_HANDLE/>
+           <DOC_NUMBER_OF_PAGES/>
+           <CHANGE_INDICATOR/>
+           <DISPATCH_TIME/>
+           <REFERENCE_ITEM/>
+           <EMAIL_TEMPLATE_ID/>
+           <EMAIL_SUBJECT/>
+           <EMAIL_BODY/>
+           <PRINT_QUEUE_NAME/>
+           <PRINT_QUEUE_ITEM_ID/>
+           <PRINT_NUMBER_OF_COPIES/>
+           <PRINTING_METHOD/>
+           <XI_MESSAGE_ID/>
+           <MESSAGE_ID/>
+           <OUTBOUND_SERVICE_ID/>
+           <CREA_DATE_TIME/>
+           <CREA_IDENT_UUID/>
+           <LCHG_DATE_TIME/>
+           <LCHG_IDENT_UUID/>
+           <KPRO_CLASS/>
+           <KPRO_OBJID/>
+           <OUTPUT_DATA/>
+           <PREVIEW_INDICATOR/>
+           <MASTER_FORM_NAME/>
+           <RECEIVER_NAME/>
+           <FORM_TEMPLATE_DESCRIPTION/>
+           <FORM_TEMPLATE_COUNTRY/>
+           <TOTAL_NUMBER_OF_ATTACH/>
+           <NUMBER_OF_SEL_ATTACH/>
+           <REFERENCE_ITEMID/>
+           <PRINT_QUEUE_FORMAT/>
+           <PRINT_QUEUE_FORMAT_DESCRIPTION/>
+           <UX_FC_CHANNEL/>
+           <UX_FC_DISPATCH_TIME/>
+           <UX_FC_FORM_TEMPL_COUNTRY_CODE/>
+           <UX_FC_FORM_TEMPL_LANGUAGE_CODE/>
+           <UX_FC_FORM_TEMPLATE_NAME/>
+           <UX_FC_OUTPUT_TYPE/>
+           <UX_FC_RECEIVER_ID/>
+           <UX_FC_ITEM_ATTACHMENT/>
+           <UX_FC_SENDER_COUNTRY_CODE/>
+          </item>
+         </ITEM>
+         <ITEM_EMAIL empty="true">
+          <item>
+           <KEY/>
+           <PARENT_KEY/>
+           <ROOT_KEY/>
+           <APPL_OBJECT_TYPE/>
+           <APPL_OBJECT_ID/>
+           <ITEM_ID/>
+           <COUNTER/>
+           <EMAIL_ROLE/>
+           <EMAIL_URI/>
+          </item>
+         </ITEM_EMAIL>
+         <ITEM_ATTACHMENT empty="true">
+          <item>
+           <KEY/>
+           <PARENT_KEY/>
+           <ROOT_KEY/>
+           <APPL_OBJECT_TYPE/>
+           <APPL_OBJECT_ID/>
+           <ITEM_ID/>
+           <SDOK_FILE_ID/>
+           <SDOK_APPL_ID/>
+           <MERGE_INDICATOR/>
+           <FILENAME/>
+           <MIME_TYPE/>
+           <RELEVANCE_INDICATOR/>
+           <LOIO_CLASS/>
+           <PHIO_CLASS/>
+           <UX_FC_MERGE_ENABLED/>
+          </item>
+         </ITEM_ATTACHMENT>
+        </ddic:CL_PTF_BO_OUTPUT_REQUEST_--3D_--3ETY_GS_I_PTF_OR_CR_TD>
+       </DEEP_DATA>
+      </item>
+     </ETPAR_GUIX>
+     <ETPAR_VARI>
+      <item>
+       <VAR_NAME>OR_CR_STANDARD</VAR_NAME>
+       <VINDEX>0002</VINDEX>
+       <SORTLNR></SORTLNR>
+       <PAR_VALUES>
+        <item>
+         <PNAME>I_PTF_OR_CR</PNAME>
+         <PTYP>V</PTYP>
+         <PINDEX>0001</PINDEX>
+         <VALUE>&lt;VALUE&gt;</VALUE>
+         <VAL_TYPE>X</VAL_TYPE>
+         <DEEP_DATA>
+          <ddic:CL_PTF_BO_OUTPUT_REQUEST_--3D_--3ETY_GS_I_PTF_OR_CR_TD xmlns:ddic="http://xml.sap.com/2003/05/eCATT/ddic">
+           <ROOT>
+            <KEY>A100000000000001</KEY>
+            <APPL_OBJECT_TYPE>BILLING_DOCUMENT</APPL_OBJECT_TYPE>
+            <APPL_OBJECT_ID>47000001</APPL_OBJECT_ID>
+           </ROOT>
+          </ddic:CL_PTF_BO_OUTPUT_REQUEST_--3D_--3ETY_GS_I_PTF_OR_CR_TD>
+         </DEEP_DATA>
+        </item>
+       </PAR_VALUES>
+      </item>
+     </ETPAR_VARI>
+    </PARAMETERS>
+    <VARIANT_MODE>
+     <ETVAR_EXT></ETVAR_EXT>
+    </VARIANT_MODE>
+   </ECTD>
+  </VERSION>
+ </VERSIONS>
+</abapGit>

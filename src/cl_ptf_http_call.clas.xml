@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_HTTP_CALL</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Call http requests</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>CALL_HTTP_CLIENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Call HTTP client</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>CALL_HTTP_CLIENT</CMPNAME>
+     <SCONAME>EV_STATUS_CODE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Whole Number with +/- Sign (-2.147.483.648 .. 2.147.483.647)</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

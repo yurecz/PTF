@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>CL_PTF_BO_OR</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Sales Order Class for Process Test Framework</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ACTION_IC_ADD_ITEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: add IC-relevant item</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_F_ITEM_BP_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add bp for first item</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_HEAD_BPL_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add billing plan to header level via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_HIGHER_LEVEL_ITEM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Append material to higher level item</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_ITEM_BILLING_PLAN</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add billing plan on item level</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_ITEM_BILLING_PLAN_BOM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add billing plan for BoMs main material</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_ITEM_BOM_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add item with BoM via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ADD_ITEM_BPL_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Add billing plan to item level via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CALL_ORDER_REQUEST_IN</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Call Order Request Inbound Processing</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHANGE_IC_SO2</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Change SO2</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_BPL_COPIED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check billing plan copied from header to item</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_DELIVERY_BLOCK_BOM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check delivey block for &apos;Apply to BoMs&apos;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_DELIVERY_BLOCK_SLINE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check delivery block was determined by billing plan</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_F_IT_BP_S_NBP</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check first bp exist &amp; second bp not exist</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_HEAD_BPL_CREATED_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check header billing plan was created via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_HEAD_BPL_DELETED_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check header billing plan was deleted via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_HEAD_BPL_UPDATED_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check header billing plan was updated via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_HEAD_BP_EXIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check header billing plan exist</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_HEAD_BP_NOT_EXIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check header billing plan not exist</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IC_DOC_FLOW</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Check if the doc flow was created correctly</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IC_MOVEMENT_TYPE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Check the movement type of the ICO item</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IC_SO4</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Check the existence of sucessor S04</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IC_TRANSIT_PLANT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Check if the transit plant was filled</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IC_VCM_NOT_TRIGGERED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Check that VCM was not triggered</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IC_WAIT_FOR_PO3</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Wait until PO(3) is available</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_IC_WAIT_FOR_SO4</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Wait until SO(4) is available</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ITEM_BPL_CREATED_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check item billing plan was created via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ITEM_BPL_DELETED_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check item billing plan was deleted via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ITEM_BPL_UPDATED_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check item billing plan was updated via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ITEM_BP_EXIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check item billing plan exist</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ITEM_BP_NOT_EXIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>check item billing plan not exist</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ML_IC_DC_SO_CREATED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany:  check Delivering Company SO is available</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ML_IC_WAIT_FOR_PO3</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Wait until PO(3) is available</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ML_IC_WAIT_FOR_SC_PO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Multi Stage Intercompany: Wait until IC_PO is available</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ML_VCM_DC_SO_BATCH_ID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check ML VCM DC_SO Batch</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ML_VCM_IC_PO_BATCH_ID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check ML VCM IC_PO Batch</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ML_VCM_IC_SO_BATCH_ID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check ML VCM IC_SO Batch</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_ML_VCM_SC_PO_BATCH_ID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check ML VCM SC_PO Batch</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_PREFIX</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check document number prefix</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_SO_DELIVERY_BLOCKED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Sales Order schedule line Delivery Blocked</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CHECK_SO_DELIVERY_UNBLOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check Sales Order schedule line Delivery not Block</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>COMPARE_AGAINST_DB_DOC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Compare 2 sales documents</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>COMPARE_AGAINST_DB_DOC_PREPARE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Comp.2 docs - genrc prep (move to centr.CL,fwd mo_run_envrnt</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_FOR_PROJECT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Project Billing: Create Sales Order for Profess. Services</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_IC</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Create</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_SO_API</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create a sales order via api</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>CREATE_WITH_REFERENCE_LK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>reference type lk</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DELETE_HEAD_BPL_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Delete billing plan from header level via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DELETE_ITEM_BPL_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Delete billing plan from item level via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>DOC_CHECK_AFTER_OBD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>To check the Documents after OBD</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_PURCH_REQUISITION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get purch. requisitions from schedule lines</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>IC_PREPARE_TESTDATA_CREATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Prepare Testdata for &apos;SD_SALESDOCUMENT_CREATE&apos;</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ML_CHECK_DOC_FLOW</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Verify the document flow for multistage sales</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ML_CHK_PLANT_CHANGE_SC_PO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>To verify the supplier, purchasing org and purchasing group</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ML_CHK_PLANT_CHG_AFTER_OBD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>To verify the plant change after outbound delivery creation</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ML_CHK_SHIP_TO_CHANGE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check the ship-to-party change in successor documents</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ML_DOC_GM_CHECK_OUTDELIVERY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>To check the movement type for ML</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>ML_SUBITEM_CREATE_OBD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create OBD for the subitem genereated Orders</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_SDSLS_DOC_VCM</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Assign Sales Doc Type and Item Cat. to Value Chain</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TY_GS_PTF_OR_CHECK_IC_BWART_TD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Movement Type</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TY_GS_PTF_OR_CHECK_IC_RPTS_TD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Repeats</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TY_GS_PTF_SD_CHECK_TD_EXT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Extended Data</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TY_GT_PTF_OR_CHECK_IC_BWART_TD</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Intercompany: Movement Types</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>UPDATE_HEAD_BPL_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Update billing plan from header level via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>UPDATE_ITEM_BPL_GOAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Update billing plan from item level via GOAL</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>WAIT_LOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Wait until order lock is released</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>ADD_F_ITEM_BP_GOAL</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ADD_HIGHER_LEVEL_ITEM</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>ADD_ITEM_BILLING_PLAN_BOM</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_DELIVERY_BLOCK_BOM</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_F_IT_BP_S_NBP</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_HEAD_BP_EXIST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_HEAD_BP_NOT_EXIST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ITEM_BP_EXIST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>CHECK_ITEM_BP_NOT_EXIST</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>COMPARE_AGAINST_DB_DOC_PREPARE</CMPNAME>
+     <SCONAME>ET_VBELN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Referenced docs</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_PURCH_REQUISITION</CMPNAME>
+     <SCONAME>STEP_DATA</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>structure!</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IC_PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>IV_VBELN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sales and Distribution Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IC_PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LS_ORDER_HEADER_IN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields: Sales and Distribution Document Header</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IC_PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_ORDER_ITEMS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields: Sales and Distribution Document Item</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IC_PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_ORDER_PARTNERS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communications Fields: SD Document Partner: WWW</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>IC_PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_SCHEDULES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields for Maintaining SD Doc. Schedule Lines</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>IV_VBELN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sales and Distribution Document Number</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LS_ORDER_HEADER_IN</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields: Sales and Distribution Document Header</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_ORDER_ITEMS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields: Sales and Distribution Document Item</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_ORDER_PARTNERS</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communications Fields: SD Document Partner: WWW</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PREPARE_TESTDATA_CREATE</CMPNAME>
+     <SCONAME>LT_SCHEDULES</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Communication Fields for Maintaining SD Doc. Schedule Lines</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>
