@@ -1,0 +1,22 @@
+name: ABAP Syntax Check
+
+on:
+  pull_request:
+    paths:
+      - 'src/**/*.abap'
+      - 'src/**/*.clas.xml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/**/*.abap'
+
+jobs:
+  abaplint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: abaplint
+        uses: abaplint/actions-abaplint@master
+        with:
+          config_file: .abaplint.json
