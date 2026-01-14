@@ -2568,6 +2568,11 @@ CLASS CL_PTF_JSON IMPLEMENTATION.
           CLEAR rv_json.
           RETURN.
 
+        WHEN 'MODIFY'.
+          rv_json = |\{"_comment":"JSON MODIFY Example for RAP BO { ls_entity-ext_name } - EML operations table"{ cl_abap_char_utilities=>newline }|.
+          CLEAR rv_json.
+          RETURN.
+
         WHEN OTHERS. "Action
           TRY.
               DATA(ls_action) = lt_actions[ name = iv_ptf_act ] ##NEEDED.
