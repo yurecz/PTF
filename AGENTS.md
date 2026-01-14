@@ -40,19 +40,37 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 1. **Search existing working code** for the same API/pattern using `grep_search` or `semantic_search`
    - Example: Before using `cl_abap_behvdescr=>create_data()`, search for existing usage: `rg -n "create_data\(" src/**/*.abap`
    - Copy parameter names and patterns from working code
-2. **Use MCP or CLI to verify** API signatures from the actual ABAP system when available
-   - Preferred CLI wrapper: `tools/abap_cli.sh fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN`
-   - Raw CLI: `PYTHON_KEYRING_BACKEND=keyrings.alt.file.PlaintextKeyring PYTHONPATH=tools/abap_artifacts python3 -m abap_artifacts fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN`
-   - MCP should work via Codex extension (see `docs/MCP_SETUP.md`)
+2. **MANDATORY: Use MCP to verify API signatures** from the actual ABAP system (ERX/815)
+   - Use MCP tool to fetch class definition from ABAP system
+   - If MCP is unavailable, fall back to CLI wrapper: `tools/abap_cli.sh fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN`
+   - Raw CLI fallback: `PYTHON_KEYRING_BACKEND=keyrings.alt.file.PlaintextKeyring PYTHONPATH=tools/abap_artifacts python3 -m abap_artifacts fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN`
+   - See `docs/MCP_SETUP.md` for MCP configuration
+   - ❌ NEVER assume parameter names or API signatures without verification
+   - ✅ ALWAYS verify with MCP before making code changes
 3. **Check documentation** in `docs/` folder for patterns and examples
 4. **Only then make changes** based on verified information
+
+**AFTER making code changes, MANDATORY:**
+5. **ALWAYS deploy and verify in ABAP system (ERX/815)**
+   - Changes MUST be tested in the actual ABAP system before considering them complete
+   - Use abapGit to pull changes into ERX/815
+   - Activate objects in ABAP system
+   - Check for compilation errors
+   - Run relevant tests to verify functionality
+   - ❌ NEVER assume changes work without ABAP system verification
+   - ✅ Only mark work as complete after successful ABAP system validation
 
 **Common mistakes to avoid:**
 - ❌ Guessing API parameter names (e.g., assuming `p_tab` instead of checking existing code shows `p_data`)
 - ❌ Using non-existent constants (e.g., `if_abap_behv=>op-m-execute` doesn't exist; use `op-m-action` for actions)
 - ❌ Making assumptions about ABAP APIs without verification
+- ❌ Committing code without testing in ABAP system first
+- ❌ Relying solely on MCP/CLI verification without deployment testing
+- ❌ Skipping MCP verification and assuming API signatures are correct
 - ✅ Always search for existing usage patterns first
+- ✅ ALWAYS use MCP to verify API signatures before making changes
 - ✅ Follow established codebase conventions
+- ✅ Deploy to ABAP system and verify compilation/execution success
 
 ## Default environment assumptions
 - The developer machine is Windows.
