@@ -267,11 +267,11 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 *   Get entity structure
     TRY.
-        lo_behv_descr = cl_abap_behvdescr=>get_by_entity( iv_entity ).
-        lo_struct_descr ?= lo_behv_descr->get_field_type( ).
+        lo_behv_descr = cl_abap_behvdescr=>describe_by_name( iv_entity ).
+        lo_struct_descr ?= lo_behv_descr->get_type( ).
         lt_components = lo_struct_descr->get_components( ).
 
-      CATCH cx_abap_behv_not_found cx_sy_move_cast_error.
+      CATCH cx_abap_behv cx_sy_move_cast_error.
         rv_fields_json = |        "field": "value"{ cl_abap_char_utilities=>newline }|.
         RETURN.
     ENDTRY.
