@@ -27,5 +27,7 @@ If you later add an MCP server, this tool can be used as a safe backend:
 - It reads credentials from keyring/env.
 - It exposes *read-only* calls like “get BDEF source”, returning only the artifact content.
 
-This repo also includes a minimal MCP server wrapper:
+This repo includes a minimal MCP server wrapper:
 - `tools/abap_artifacts_mcp/README.md`
+
+**Note:** In the current environment, GitHub Copilot Chat cannot access MCP servers (blocked by administrator). The MCP server runs but is only accessible to other VS Code features. Use the CLI tool directly for artifact fetching from Copilot Chat sessions.

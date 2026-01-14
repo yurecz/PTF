@@ -28,6 +28,12 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - MCP is configured in `.vscode/settings.json` to launch `python3 -m abap_artifacts_mcp` directly (no wrapper script).
 - Use `tools/sync_mcp_config.sh` to sync repo MCP settings into the global WSL MCP config (`~/.vscode-server/data/User/mcp.json`).
 
+## MCP server limitations
+- **GitHub Copilot Chat cannot access MCP servers** in this environment (blocked by administrator settings).
+- The MCP server (`abap_artifacts_mcp`) runs successfully but is only accessible to other VS Code features/extensions that support MCP integration, not to Copilot Chat.
+- For ABAP artifact fetching (BDEF/CDS/classes/DDIC), use the CLI tool directly: `python3 -m abap_artifacts fetch-class <name> --client 815`
+- See `tools/abap_artifacts/README.md` for CLI usage.
+
 ## Useful searches
 - Find a class: `rg -n \"^CLASS\\s+cl_\" src`
 - Find references: `rg -n \"cl_ptf_\" src`
