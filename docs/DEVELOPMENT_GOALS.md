@@ -56,9 +56,13 @@ This document captures the two main upcoming goals for evolving PTF.
   - Wires %cid_ref using "parent_ref" field for CREATE_BY associations
   - Maps "key" structure to %pky for existing parent references
   - Sets %control fields for modified attributes
-- [x] **Step 4** (2026-01-14): JSON template generation already implemented (commit 3bf2dd4)
-  - CL_PTF_JSON=>GENERATE_SAMPLE_JSON recognizes MODIFY action
-  - Returns minimal CREATE operation template with reference to docs/EML_MODIFY.md
+- [x] **Step 4** (2026-01-14): JSON template generation fully implemented
+  - Created CL_PTF_RAP_MODIFY_TEMPLATE in RAP subpackage (commits 3bf2dd4, ccb9022, 8465f50)
+  - Generates BO-specific MODIFY templates with CREATE/UPDATE/DELETE operations
+  - Filters read-only fields using if_abap_behv=>fc-f-read_only permission checks
+  - Limits to first 5 editable fields plus "...add more" hint for clarity
+  - CL_PTF_JSON=>GENERATE_SAMPLE_JSON calls CL_PTF_RAP_MODIFY_TEMPLATE=>GENERATE
+  - Architectural decision: MODIFY uses separate template generator because EML operations array format differs from traditional PTF JSON format (fields/associations structure)
 - [ ] **Step 5**: End-to-end testing with real RAP BO
   - Deploy changes via abapGit to ABAP system
   - Create PTF step with MODIFY action and test JSON payload

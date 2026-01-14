@@ -12,7 +12,18 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - `.abapgit.xml`: abapGit repo settings (starting folder, folder logic, original system).
 - `src/`: abapGit-serialized ABAP objects.
 - `src/core/`, `src/util/`, `src/rfc/`, `src/rap/`: package-oriented subfolders.
+- `src/rap/cl_ptf_rap_modify_json.clas.abap`: Deserializes EML-style MODIFY JSON to ABP_BEHV_CHANGES_TAB.
+- `src/rap/cl_ptf_rap_modify_template.clas.abap`: Generates BO-specific MODIFY operation templates.
 - `docs/DEVELOPMENT_GOALS.md`: current development goals and acceptance criteria.
+
+## RAP MODIFY architectural pattern
+- The MODIFY action uses a different JSON format than other PTF RAP actions:
+  - **MODIFY format**: EML operations array `[{op, entity, instances}]` matching standard RAP EML
+  - **Other actions format**: Traditional PTF structure `{fields: [], associations: []}`
+- In `cl_ptf_json.clas.abap`, MODIFY case calls `cl_ptf_rap_modify_template=>generate()` with RETURN
+- This bypasses shared template generation logic (get_permissions, generate_json_fields, pretty_printer)
+- Other actions fall through to shared logic after CASE statement
+- This separation is intentional: MODIFY needs fundamentally different JSON structure
 
 ## Working style
 - Keep patches small and scoped to the requested change.
