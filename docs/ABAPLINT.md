@@ -13,8 +13,17 @@ abaplint cannot validate:
 - Custom DDIC types from your ABAP system (unless you add them to `deps/`)
 - System-specific checks (ATC, authorization, transport)
 - Runtime behavior
+- **RAP framework API completeness**: Method existence in classes like `cl_abap_behvdescr`, exception class hierarchies (e.g., `cx_abap_behv` subclasses), and other newer SAP framework APIs may not be in abaplint's validation database
 
 **Always activate in ABAP and run checks there as the final validation.**
+
+### Known gaps (2026-01-14)
+During RAP MODIFY implementation, abaplint missed these semantic errors that were caught by ERX/815:
+- `cl_abap_behvdescr=>get_by_entity()` doesn't exist (correct: `describe_by_name()`)
+- `lo_behv_descr->get_field_type()` doesn't exist (correct: `get_type()`)
+- `cx_abap_behv_not_found` doesn't exist (correct: use parent `cx_abap_behv`)
+
+**Lesson**: abaplint validates ABAP grammar/syntax but cannot fully validate SAP framework semantics. The ABAP system is the only source of truth for method signatures and class hierarchies.
 
 ## Setup
 
