@@ -2569,58 +2569,8 @@ CLASS CL_PTF_JSON IMPLEMENTATION.
           RETURN.
 
         WHEN 'MODIFY'.
-          rv_json = |\{"_comment":"JSON MODIFY Example for RAP BO { ls_entity-ext_name } - EML operations table",{ cl_abap_char_utilities=>newline }|.
-          rv_json = |{ rv_json }"operations":[|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }\{|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }  "op":"CREATE",|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }  "entity":"{ ls_entity-ext_name }",|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }  "instances":[|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }    \{|.
-          
-          DATA lv_json_create TYPE string.
-          DATA lv_temp_ptf_act TYPE ptf_act.
-          lv_temp_ptf_act = 'CREATE'.
-          
-*         Get permissions for CREATE
-          cl_ptf_json=>get_permissions(
-            EXPORTING
-              iv_entity       = iv_ptf_bo
-              it_entities     = lt_entities
-              it_associations = lt_associations
-            IMPORTING
-              et_permissions  = lt_permissions
-          ).
-          
-*         Generate fields for CREATE operation
-          cl_ptf_json=>generate_json_fields(
-            EXPORTING
-              iv_entity       = iv_ptf_bo
-              iv_ptf_act      = lv_temp_ptf_act
-              iv_ptf_json_opt = iv_ptf_json_opt
-              iv_last         = abap_on
-              it_permissions  = lt_permissions
-              it_entities     = lt_entities
-              it_actions      = lt_actions
-              it_features     = lt_features
-            CHANGING
-              ct_associations = lt_associations
-              cv_json         = lv_json_create
-          ).
-          
-*         Remove the outer JSON structure and keep only fields
-          IF lv_json_create IS NOT INITIAL.
-            REPLACE ALL OCCURRENCES OF '"fields":[' IN lv_json_create WITH ''.
-            REPLACE ALL OCCURRENCES OF ']' IN lv_json_create WITH ''.
-            rv_json = |{ rv_json }{ lv_json_create }|.
-          ENDIF.
-          
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }    \}|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }  ]|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }\}|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }]|.
-          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }\}|.
-          
-          cl_ptf_json=>pretty_printer( EXPORTING iv_entity = iv_ptf_bo CHANGING cv_json = rv_json ).
+          rv_json = |\{"_comment":"JSON MODIFY Example for RAP BO { ls_entity-ext_name } - EML operations table (see docs/EML_MODIFY.md)",{ cl_abap_char_utilities=>newline }|.
+          rv_json = |{ rv_json }"operations":[\{"op":"CREATE","entity":"{ ls_entity-ext_name }","instances":[\{"field":"value"\}]\}]\}|.
           RETURN.
 
         WHEN OTHERS. "Action
