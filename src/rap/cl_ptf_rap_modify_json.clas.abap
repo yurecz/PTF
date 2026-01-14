@@ -84,8 +84,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
         CONTINUE. "Skip operations without 'op' field
       ENDIF.
 
-      UNASSIGN <fs_op>->*.
-      ASSIGN <fs_op>->* TO FIELD-SYMBOL(<fv_op>).
+      ASSIGN <fs_op> TO FIELD-SYMBOL(<fv_op>).
 
 *     Map op code to EML constant
       CASE to_upper( <fv_op> ).
@@ -106,8 +105,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
 *     Extract entity name
       ASSIGN COMPONENT 'ENTITY' OF STRUCTURE <fs_json_op> TO <fs_entity>.
       IF sy-subrc = 0.
-        UNASSIGN <fs_entity>->*.
-        ASSIGN <fs_entity>->* TO FIELD-SYMBOL(<fv_entity>).
+        ASSIGN <fs_entity> TO FIELD-SYMBOL(<fv_entity>).
         ls_operation-entity_name = to_upper( <fv_entity> ).
       ELSE.
         CONTINUE. "Skip operations without entity
@@ -116,8 +114,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
 *     Extract sub_name (for CREATE_BY or EXECUTE)
       ASSIGN COMPONENT 'SUB_NAME' OF STRUCTURE <fs_json_op> TO <fs_sub_name>.
       IF sy-subrc = 0.
-        UNASSIGN <fs_sub_name>->*.
-        ASSIGN <fs_sub_name>->* TO FIELD-SYMBOL(<fv_sub_name>).
+        ASSIGN <fs_sub_name> TO FIELD-SYMBOL(<fv_sub_name>).
         ls_operation-sub_name = to_upper( <fv_sub_name> ).
       ENDIF.
 
@@ -127,8 +124,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
         CONTINUE. "Skip operations without instances
       ENDIF.
 
-      UNASSIGN <fs_instances>->*.
-      ASSIGN <fs_instances>->* TO <ft_instances>.
+      ASSIGN <fs_instances> TO <ft_instances>.
 
 *     Create target table based on operation type
       CASE ls_operation-op.
@@ -136,33 +132,33 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-create
             p_name       = ls_operation-entity_name
-            p_table      = abap_on ).
+            p_tab        = abap_on ).
 
         WHEN if_abap_behv=>op-m-create_ba.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-create_ba
             p_name       = ls_operation-entity_name
-            p_assoc_name = ls_operation-sub_name
-            p_table      = abap_on ).
+            p_sub_name   = ls_operation-sub_name
+            p_tab        = abap_on ).
 
         WHEN if_abap_behv=>op-m-update.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-update
             p_name       = ls_operation-entity_name
-            p_table      = abap_on ).
+            p_tab        = abap_on ).
 
         WHEN if_abap_behv=>op-m-delete.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-delete
             p_name       = ls_operation-entity_name
-            p_table      = abap_on ).
+            p_tab        = abap_on ).
 
-        WHEN if_abap_behv=>op-m-execute.
+        WHEN if_abap_behv=>op-r-read.
           lr_instances = cl_abap_behvdescr=>create_data(
-            p_op           = if_abap_behv=>op-m-execute
-            p_name         = ls_operation-entity_name
-            p_action_name  = ls_operation-sub_name
-            p_table        = abap_on ).
+            p_op         = if_abap_behv=>op-r-read
+            p_name       = ls_operation-entity_name
+            p_sub_name   = ls_operation-sub_name
+            p_tab        = abap_on ).
 
       ENDCASE.
 
@@ -174,16 +170,14 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
 
 *     Process each instance
       LOOP AT <ft_instances> ASSIGNING <fs_instance>.
-        UNASSIGN <fs_instance>->*.
-        ASSIGN <fs_instance>->* TO FIELD-SYMBOL(<fs_instance_data>).
+        ASSIGN <fs_instance> TO FIELD-SYMBOL(<fs_instance_data>).
 
 *       Create target line
         DATA(lr_target_line) = cl_abap_behvdescr=>create_data(
           p_op         = ls_operation-op
           p_name       = ls_operation-entity_name
-          p_assoc_name = COND #( WHEN ls_operation-op = if_abap_behv=>op-m-create_ba THEN ls_operation-sub_name )
-          p_action_name = COND #( WHEN ls_operation-op = if_abap_behv=>op-m-execute THEN ls_operation-sub_name )
-          p_structure  = abap_on ).
+          p_sub_name   = COND #( WHEN ls_operation-op = if_abap_behv=>op-m-create_ba OR ls_operation-op = if_abap_behv=>op-r-read THEN ls_operation-sub_name )
+          p_struct     = abap_on ).
 
         ASSIGN lr_target_line->* TO <fs_target_line>.
 
@@ -194,8 +188,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
 *           Check if JSON has a "ref" field
             ASSIGN COMPONENT 'REF' OF STRUCTURE <fs_instance_data> TO <fs_ref>.
             IF sy-subrc = 0.
-              UNASSIGN <fs_ref>->*.
-              ASSIGN <fs_ref>->* TO FIELD-SYMBOL(<fv_ref>).
+              ASSIGN <fs_ref> TO FIELD-SYMBOL(<fv_ref>).
               <fv_cid> = |{ <fv_ref> }|.
             ELSE.
 *             Auto-generate %cid
@@ -212,8 +205,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
 *           Check if JSON has a "parent_ref" field
             ASSIGN COMPONENT 'PARENT_REF' OF STRUCTURE <fs_instance_data> TO <fs_parent_ref>.
             IF sy-subrc = 0.
-              UNASSIGN <fs_parent_ref>->*.
-              ASSIGN <fs_parent_ref>->* TO FIELD-SYMBOL(<fv_parent_ref>).
+              ASSIGN <fs_parent_ref> TO FIELD-SYMBOL(<fv_parent_ref>).
               <fv_cid_ref> = |{ <fv_parent_ref> }|.
             ENDIF.
 
@@ -222,8 +214,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
               ASSIGN COMPONENT 'KEY' OF STRUCTURE <fs_instance_data> TO <fs_key>.
               IF sy-subrc = 0.
 *               Map key fields to %pky
-                UNASSIGN <fs_key>->*.
-                ASSIGN <fs_key>->* TO FIELD-SYMBOL(<fs_key_data>).
+                ASSIGN <fs_key> TO FIELD-SYMBOL(<fs_key_data>).
                 ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-pky OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fs_pky>).
                 IF sy-subrc = 0.
 *                 Copy key fields
@@ -232,8 +223,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
                   LOOP AT lo_struct_descr->get_components( ) ASSIGNING FIELD-SYMBOL(<fs_key_comp>).
                     ASSIGN COMPONENT <fs_key_comp>-name OF STRUCTURE <fs_key_data> TO <fs_field>.
                     IF sy-subrc = 0.
-                      UNASSIGN <fs_field>->*.
-                      ASSIGN <fs_field>->* TO FIELD-SYMBOL(<fv_key_value>).
+                      ASSIGN <fs_field> TO FIELD-SYMBOL(<fv_key_value>).
                       ASSIGN COMPONENT <fs_key_comp>-name OF STRUCTURE <fs_pky> TO FIELD-SYMBOL(<fv_pky_field>).
                       IF sy-subrc = 0.
                         <fv_pky_field> = <fv_key_value>.
@@ -259,8 +249,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
 
           ASSIGN COMPONENT <fs_comp>-name OF STRUCTURE <fs_instance_data> TO <fs_field>.
           IF sy-subrc = 0.
-            UNASSIGN <fs_field>->*.
-            ASSIGN <fs_field>->* TO <fv_key_value>.
+            ASSIGN <fs_field> TO <fv_key_value>.
             ASSIGN COMPONENT <fs_comp>-name OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fv_target_field>).
             IF sy-subrc = 0.
               <fv_target_field> = <fv_key_value>.
