@@ -20211,6 +20211,7 @@
              <MATERIAL_ID>PTFTEST111_1</MATERIAL_ID>
              <ORDER_QTY>3</ORDER_QTY>
              <PLANT_ID>1010</PLANT_ID>
+             <DELIVERY_PRIORITY_CODE>B</DELIVERY_PRIORITY_CODE>
             </item>
            </ITEM_LIST>
           </ddic:CL_PTF_BO_SO_--3D_--3ETY_GS_I_PTF_SO_CR_TD>
