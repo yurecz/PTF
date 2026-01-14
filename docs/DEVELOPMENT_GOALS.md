@@ -43,15 +43,25 @@ This document captures the two main upcoming goals for evolving PTF.
   - Minimal implementation: returns success without executing EML
   - Automatically discoverable via class reflection (no PTFBOA table entry needed)
   - Ready for abapGit deployment and testing
-- [ ] **Step 2**: Implement actual EML MODIFY logic
-  - Call existing `mo_ptf_bo_rap_generic_eml->modify_entities()` wrapper
-  - Build operations table from JSON input
-  - Handle FAILED/MAPPED/REPORTED responses
-- [ ] **Step 3**: Add JSON deserialization for MODIFY payload
-  - Create deserializer that converts EML-style JSON to ABP_BEHV_CHANGES_TAB
-  - Support operations array with op/entity/instances structure
-  - Handle %cid generation and %cid_ref wiring
-- [ ] **Step 4**: Add JSON template generation for MODIFY action
-  - Extend CL_PTF_JSON=>GENERATE_SAMPLE_JSON to recognize MODIFY action
-  - Generate BO-specific templates based on BDEF metadata
+- [x] **Step 2** (2026-01-14): Implemented actual EML MODIFY logic
+  - Calls `mo_ptf_bo_rap_generic_eml->modify_entities()` wrapper with operations table
+  - Deserializes JSON to ABP_BEHV_CHANGES_TAB using new CL_PTF_JSON=>DESERIALIZE_MODIFY method
+  - Handles FAILED/MAPPED/REPORTED responses and error logging
+  - Executes COMMIT ENTITIES after successful MODIFY
+- [x] **Step 3** (2026-01-14): Added JSON deserialization for MODIFY payload
+  - Created CL_PTF_JSON=>DESERIALIZE_MODIFY method
+  - Supports EML-style operations array with op/entity/sub_name/instances structure
+  - Handles CREATE, CREATE_BY, UPDATE, DELETE, EXECUTE operations
+  - Auto-generates %cid (cid_1, cid_2, ...) or uses "ref" field from JSON
+  - Wires %cid_ref using "parent_ref" field for CREATE_BY associations
+  - Maps "key" structure to %pky for existing parent references
+  - Sets %control fields for modified attributes
+- [x] **Step 4** (2026-01-14): JSON template generation already implemented (commit 3bf2dd4)
+  - CL_PTF_JSON=>GENERATE_SAMPLE_JSON recognizes MODIFY action
+  - Returns minimal CREATE operation template with reference to docs/EML_MODIFY.md
 - [ ] **Step 5**: End-to-end testing with real RAP BO
+  - Deploy changes via abapGit to ABAP system
+  - Create PTF step with MODIFY action and test JSON payload
+  - Verify CREATE operations execute correctly
+  - Test CREATE_BY, UPDATE, DELETE operations
+  - Validate error handling and message collection
