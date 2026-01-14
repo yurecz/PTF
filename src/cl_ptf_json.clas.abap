@@ -58,6 +58,13 @@ public section.
       !IV_JSON type STRING
     returning
       value(RV_INSTANCES) type INT4 .
+  class-methods GET_PERMISSIONS
+    importing
+      !IV_ENTITY type ABP_ENTITY_NAME
+      !IT_ENTITIES type CL_ABAP_BEHV_LOAD=>TT_ENTITY
+      !IT_ASSOCIATIONS type CL_ABAP_BEHV_LOAD=>TT_ASSOC
+    exporting
+      !ET_PERMISSIONS type ABP_BEHV_PERMISSIONS_TAB .
   PROTECTED SECTION.
 private section.
 
@@ -301,13 +308,6 @@ private section.
     changing
       !CT_ASSOCIATIONS type CL_PTF_JSON=>TT_ASSOC
       !CT_FEATURES type CL_PTF_JSON=>TT_FEATURE .
-  class-methods GET_PERMISSIONS
-    importing
-      !IV_ENTITY type ABP_ENTITY_NAME
-      !IT_ENTITIES type CL_ABAP_BEHV_LOAD=>TT_ENTITY
-      !IT_ASSOCIATIONS type CL_ABAP_BEHV_LOAD=>TT_ASSOC
-    exporting
-      !ET_PERMISSIONS type ABP_BEHV_PERMISSIONS_TAB .
 ENDCLASS.
 
 
