@@ -40,6 +40,13 @@ public section.
       !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
       !EV_EXECUTION_STATUS type ABAP_BOOL
       !EV_CHECK_STATUS type ABAP_BOOL .
+  methods MODIFY
+    importing
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
   methods CONSTRUCTOR
     importing
       !IV_RUN_ENVIRONMENT type ref to CL_PTF_RUN .
@@ -927,6 +934,14 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
         ev_execution_status = ev_execution_status
         ev_check_status     = ev_check_status
     ).
+
+  ENDMETHOD.
+
+
+  METHOD modify.
+*   Minimal implementation - does nothing, returns success
+    ev_execution_status = abap_on.
+    ev_check_status = abap_on.
 
   ENDMETHOD.
 
