@@ -2570,7 +2570,14 @@ CLASS CL_PTF_JSON IMPLEMENTATION.
 
         WHEN 'MODIFY'.
           rv_json = |\{"_comment":"JSON MODIFY Example for RAP BO { ls_entity-ext_name } - EML operations table"{ cl_abap_char_utilities=>newline }|.
-          CLEAR rv_json.
+          rv_json = |{ rv_json },"operations":[\{|.
+          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }  "op":"CREATE",|.
+          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }  "entity":"{ ls_entity-ext_name }",|.
+          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }  "instances":[\{|.
+          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }    "field1":"value1"|.
+          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }  \}]|.
+          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }\}]|.
+          rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }\}|.
           RETURN.
 
         WHEN OTHERS. "Action
