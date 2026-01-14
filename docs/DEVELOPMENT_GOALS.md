@@ -36,3 +36,22 @@ This document captures the two main upcoming goals for evolving PTF.
 **Acceptance criteria**
 - A PTF step with action `MODIFY` can execute a RAP BO request that cannot be expressed via the current PTF action set (e.g., multiple operations in a single MODIFY or a RAP operation type not currently mapped).
 - JSON sample/template generation is available for `MODIFY` payloads (or clearly documented).
+
+**Progress tracking**
+- [x] **Step 1** (2026-01-14): Added minimal MODIFY method to CL_PTF_BO_RAP_GENERIC (commit 44a94d5)
+  - Method signature matches other RAP actions (IV_STEP_NUMBER in, EV_DOCUMENT_ID/EV_EXECUTION_STATUS/EV_CHECK_STATUS out)
+  - Minimal implementation: returns success without executing EML
+  - Automatically discoverable via class reflection (no PTFBOA table entry needed)
+  - Ready for abapGit deployment and testing
+- [ ] **Step 2**: Implement actual EML MODIFY logic
+  - Call existing `mo_ptf_bo_rap_generic_eml->modify_entities()` wrapper
+  - Build operations table from JSON input
+  - Handle FAILED/MAPPED/REPORTED responses
+- [ ] **Step 3**: Add JSON deserialization for MODIFY payload
+  - Create deserializer that converts EML-style JSON to ABP_BEHV_CHANGES_TAB
+  - Support operations array with op/entity/instances structure
+  - Handle %cid generation and %cid_ref wiring
+- [ ] **Step 4**: Add JSON template generation for MODIFY action
+  - Extend CL_PTF_JSON=>GENERATE_SAMPLE_JSON to recognize MODIFY action
+  - Generate BO-specific templates based on BDEF metadata
+- [ ] **Step 5**: End-to-end testing with real RAP BO
