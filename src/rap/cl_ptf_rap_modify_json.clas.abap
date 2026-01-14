@@ -132,33 +132,33 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-create
             p_name       = ls_operation-entity_name
-            p_data       = abap_on ).
+            p_kind       = if_abap_behv=>typekind-import ).
 
         WHEN if_abap_behv=>op-m-create_ba.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-create_ba
             p_name       = ls_operation-entity_name
             p_sub_name   = ls_operation-sub_name
-            p_data       = abap_on ).
+            p_kind       = if_abap_behv=>typekind-import ).
 
         WHEN if_abap_behv=>op-m-update.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-update
             p_name       = ls_operation-entity_name
-            p_data       = abap_on ).
+            p_kind       = if_abap_behv=>typekind-import ).
 
         WHEN if_abap_behv=>op-m-delete.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-delete
             p_name       = ls_operation-entity_name
-            p_data       = abap_on ).
+            p_kind       = if_abap_behv=>typekind-import ).
 
         WHEN if_abap_behv=>op-r-read.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-r-read
             p_name       = ls_operation-entity_name
             p_sub_name   = ls_operation-sub_name
-            p_data       = abap_on ).
+            p_kind       = if_abap_behv=>typekind-import ).
 
       ENDCASE.
 
