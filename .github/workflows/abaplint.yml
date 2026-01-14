@@ -17,6 +17,6 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: abaplint
-        uses: abaplint/actions-abaplint@master
+        uses: abaplint/actions-abaplint@0.4.0
         with:
-          config_file: .abaplint.json
+          config_file: abaplint.json
