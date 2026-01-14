@@ -25,13 +25,14 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - VSCode and the Codex extension run in WSL (Ubuntu) for this repo.
 - When troubleshooting Codex/MCP, check the latest WSL log at `~/.vscode-server/data/logs/<timestamp>/exthost*/openai.chatgpt/Codex.log`.
 - Do not run `sudo` commands; provide exact instructions for the user to run with their password when root access is needed.
-- MCP is configured in `.vscode/settings.json` to launch `python3 -m abap_artifacts_mcp` directly (no wrapper script).
+- MCP is configured in `.vscode/settings.json` to launch the wrapper script `.vscode/abap_mcp.sh`, which runs `python3 -m abap_artifacts_mcp` with the required environment.
 - Use `tools/sync_mcp_config.sh` to sync repo MCP settings into the global WSL MCP config (`~/.vscode-server/data/User/mcp.json`).
+- MCP setup details: `docs/MCP_SETUP.md`.
 
 ## MCP server limitations
 - **GitHub Copilot Chat cannot access MCP servers** in this environment (blocked by administrator settings).
-- The MCP server (`abap_artifacts_mcp`) runs successfully but is only accessible to other VS Code features/extensions that support MCP integration, not to Copilot Chat.
-- For ABAP artifact fetching (BDEF/CDS/classes/DDIC), use the CLI tool directly: `python3 -m abap_artifacts fetch-class <name> --client 815`
+- Codex can access MCP servers when configured (see `docs/MCP_SETUP.md`).
+- If MCP is unavailable, fall back to the CLI tool: `python3 -m abap_artifacts fetch-class <name> --client 815`
 - See `tools/abap_artifacts/README.md` for CLI usage.
 
 ## Useful searches
