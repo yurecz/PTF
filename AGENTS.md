@@ -18,6 +18,11 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - Keep patches small and scoped to the requested change.
 - Do not reformat unrelated ABAP code.
 - When searching, prefer `rg` (ripgrep) and include the ABAP object name in the query when possible.
+- **Always track progress** when working on goals from `docs/DEVELOPMENT_GOALS.md`:
+  - Add a "Progress tracking" section under the relevant goal
+  - Mark completed steps with `[x]` and date/commit reference
+  - List remaining steps with `[ ]` and brief descriptions
+  - This helps future LLM sessions continue work incrementally
 
 ## Default environment assumptions
 - The developer machine is Windows.
