@@ -97,7 +97,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
         WHEN 'DELETE'.
           ls_operation-op = if_abap_behv=>op-m-delete.
         WHEN 'EXECUTE'.
-          ls_operation-op = if_abap_behv=>op-m-execute.
+          ls_operation-op = if_abap_behv=>op-m-action.
         WHEN OTHERS.
           CONTINUE. "Skip unknown operation codes
       ENDCASE.
@@ -132,33 +132,33 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-create
             p_name       = ls_operation-entity_name
-            p_tab        = abap_on ).
+            p_data       = abap_on ).
 
         WHEN if_abap_behv=>op-m-create_ba.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-create_ba
             p_name       = ls_operation-entity_name
             p_sub_name   = ls_operation-sub_name
-            p_tab        = abap_on ).
+            p_data       = abap_on ).
 
         WHEN if_abap_behv=>op-m-update.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-update
             p_name       = ls_operation-entity_name
-            p_tab        = abap_on ).
+            p_data       = abap_on ).
 
         WHEN if_abap_behv=>op-m-delete.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-m-delete
             p_name       = ls_operation-entity_name
-            p_tab        = abap_on ).
+            p_data       = abap_on ).
 
         WHEN if_abap_behv=>op-r-read.
           lr_instances = cl_abap_behvdescr=>create_data(
             p_op         = if_abap_behv=>op-r-read
             p_name       = ls_operation-entity_name
             p_sub_name   = ls_operation-sub_name
-            p_tab        = abap_on ).
+            p_data       = abap_on ).
 
       ENDCASE.
 
@@ -177,7 +177,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
           p_op         = ls_operation-op
           p_name       = ls_operation-entity_name
           p_sub_name   = COND #( WHEN ls_operation-op = if_abap_behv=>op-m-create_ba OR ls_operation-op = if_abap_behv=>op-r-read THEN ls_operation-sub_name )
-          p_struct     = abap_on ).
+          p_structure  = abap_on ).
 
         ASSIGN lr_target_line->* TO <fs_target_line>.
 
