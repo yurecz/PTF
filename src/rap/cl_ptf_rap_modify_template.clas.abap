@@ -251,14 +251,19 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 
   METHOD get_entity_fields.
-*   Get entity fields as JSON string
+*   Get entity fields as JSON string, prioritizing non-read-only fields
     DATA: lo_behv_descr    TYPE REF TO cl_abap_behvdescr,
           lo_struct_descr  TYPE REF TO cl_abap_structdescr,
           lt_components    TYPE abap_component_tab,
           lv_field_count   TYPE i,
-          ls_permission    TYPE abp_behv_permissions.
+          ls_permission    TYPE abp_behv_permissions,
+          lr_result        TYPE REF TO data,
+          lr_global        TYPE REF TO data.
 
-    FIELD-SYMBOLS: <fs_component> TYPE abap_componentdescr.
+    FIELD-SYMBOLS: <fs_component>     TYPE abap_componentdescr,
+                   <fs_result>        TYPE any,
+                   <fs_global>        TYPE any,
+                   <fs_field_control> TYPE any.
 
 *   Get entity structure
     TRY.
@@ -277,9 +282,18 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 *   Get permissions for filtering
     IF it_permissions IS NOT INITIAL.
       READ TABLE it_permissions INTO ls_permission WITH KEY entity_name = iv_entity.
+      IF sy-subrc = 0 AND ls_permission-results IS BOUND.
+        ASSIGN ls_permission-results->* TO <fs_result>.
+        IF sy-subrc = 0.
+          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-global OF STRUCTURE <fs_result> TO <fs_global>.
+          IF sy-subrc = 0.
+            ASSIGN <fs_global>->* TO lr_global.
+          ENDIF.
+        ENDIF.
+      ENDIF.
     ENDIF.
 
-*   Build fields JSON
+*   Build fields JSON - prioritize non-read-only fields
     LOOP AT lt_components ASSIGNING <fs_component>.
 *     Skip technical fields
       IF <fs_component>-name = cl_abap_behv=>co_techfield_name-cid
@@ -298,9 +312,20 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
         ENDIF.
       ENDIF.
 
-*     Check permissions if available
-      IF ls_permission IS NOT INITIAL.
-        "For simplicity, include all fields - permission check can be enhanced later
+*     Check if field is read-only via permissions
+      DATA(lv_is_read_only) = abap_off.
+      IF lr_global IS BOUND.
+        ASSIGN COMPONENT <fs_component>-name OF STRUCTURE lr_global TO <fs_field_control>.
+        IF sy-subrc = 0.
+          IF <fs_field_control> = if_abap_behv=>fc-f-read_only.
+            lv_is_read_only = abap_on.
+          ENDIF.
+        ENDIF.
+      ENDIF.
+
+*     Skip read-only fields unless we're showing keys only
+      IF lv_is_read_only = abap_on AND iv_only_keys = abap_off.
+        CONTINUE.
       ENDIF.
 
 *     Add field to JSON
