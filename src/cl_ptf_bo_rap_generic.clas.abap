@@ -954,9 +954,9 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
 *   Get step data
     ls_step_data = me->mo_run_environment->get_step_data( iv_step_number = iv_step_number ).
 
-*   Deserialize JSON to operations table
+*   Deserialize JSON to operations table using RAP-specific deserializer
     TRY.
-        cl_ptf_json=>deserialize_modify(
+        cl_ptf_rap_modify_json=>deserialize(
           EXPORTING
             iv_entity     = ls_step_data-bus_obj
             iv_json       = ls_step_data-data
