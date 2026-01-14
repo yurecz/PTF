@@ -69,3 +69,26 @@ This document captures the two main upcoming goals for evolving PTF.
   - Verify CREATE operations execute correctly
   - Test CREATE_BY, UPDATE, DELETE operations
   - Validate error handling and message collection
+## Quality Gates & Lessons Learned
+
+### Issue: Method visibility error not caught during development (2026-01-14)
+**What happened**: GET_PERMISSIONS method was declared in private section but called as public static method from CL_PTF_RAP_MODIFY_TEMPLATE. Error only discovered during ABAP system deployment.
+
+**Root causes**:
+1. abaplint with parser v757 has limited cross-file visibility checking
+2. Code never compiled in ABAP system until deployment (local-only development via abapGit)
+3. Stricter linter rules not enabled (check_syntax, check_ddic)
+
+**Prevention measures**:
+- [x] **Stricter abaplint rules** enabled: check_syntax, check_ddic, method_parameter_names (commit f462a72)
+- [x] **Pre-commit hook** added: `.git/hooks/pre-commit` runs abaplint before commit (commit f462a72)
+- [ ] **ABAP system syntax check** before merge: Deploy to test client, run mass syntax check or ATC
+- [ ] **Cross-file visibility validation**: Periodic ABAP system compilation of all objects
+
+### Quality gate checklist
+Before pushing changes to main:
+1. ✅ Run `abaplint` locally (now automated via pre-commit hook)
+2. ⚠️ Deploy to test system/client via abapGit
+3. ⚠️ Run ABAP mass syntax check (SE38 → Utilities → More Utilities → Mass Processing → Check)
+4. ⚠️ Optional: Run ABAP Test Cockpit (ATC) checks
+5. ✅ Commit visibility/syntax fix if needed
