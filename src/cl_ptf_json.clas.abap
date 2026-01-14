@@ -2569,8 +2569,10 @@ CLASS CL_PTF_JSON IMPLEMENTATION.
           RETURN.
 
         WHEN 'MODIFY'.
-          rv_json = |[\{"_comment":"JSON MODIFY Example for RAP BO { ls_entity-ext_name } - EML operations array (see docs/EML_MODIFY.md)",{ cl_abap_char_utilities=>newline }|.
-          rv_json = |{ rv_json }"op":"CREATE","entity":"{ ls_entity-ext_name }","instances":[\{"field":"value"\}]\}]|.
+*         Generate BO-specific MODIFY template using RAP template generator
+          rv_json = cl_ptf_rap_modify_template=>generate(
+            iv_entity   = iv_ptf_bo
+            iv_json_opt = iv_ptf_json_opt ).
           RETURN.
 
         WHEN OTHERS. "Action
