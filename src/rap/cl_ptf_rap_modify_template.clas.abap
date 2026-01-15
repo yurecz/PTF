@@ -262,7 +262,8 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
                    <fs_result>        TYPE any,
                    <fs_global>        TYPE any,
                    <fs_field_control> TYPE any,
-                   <fs_global_struct> TYPE any.
+                   <fs_global_struct> TYPE any,
+                   <fs_field_struct>  TYPE any.
 
 *   Get entity structure
     TRY.
@@ -270,8 +271,12 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
           p_name      = iv_entity
           p_op        = cl_abap_behvdescr=>op_primarykey
           p_structure = abap_on ).
-        lo_struct_descr ?= cl_abap_typedescr=>describe_by_data_ref( lr_result ).
-        lt_components = lo_struct_descr->get_components( ).
+        
+        ASSIGN lr_result->* TO FIELD-SYMBOL(<fs_structure>).
+        lo_struct_descr ?= cl_abap_structdescr=>describe_by_data( <fs_structure> ).
+        
+        DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
+        lt_components = lo_metadata->recursive_get_components( lo_struct_descr ).
 
       CATCH cx_abap_behvdescr cx_sy_move_cast_error.
         rv_fields_json = |        "field": "value"{ cl_abap_char_utilities=>newline }|.
@@ -279,7 +284,6 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     ENDTRY.
 
 *   Get key fields
-    DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
     DATA(lt_key_fields) = lo_metadata->get_key_fields( iv_name = iv_entity ).
 
 *   Get permissions for filtering
@@ -290,7 +294,7 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
         IF sy-subrc = 0.
           ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-global OF STRUCTURE <fs_result> TO <fs_global>.
           IF sy-subrc = 0.
-            ASSIGN <fs_global>->* TO <fs_global_struct>.
+            ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-field OF STRUCTURE <fs_global> TO <fs_field_struct>.
           ENDIF.
         ENDIF.
       ENDIF.
@@ -298,6 +302,11 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 *   Build fields JSON - prioritize non-read-only fields
     LOOP AT lt_components ASSIGNING <fs_component>.
+*     Skip empty component names (structure itself)
+      IF <fs_component>-name IS INITIAL.
+        CONTINUE.
+      ENDIF.
+
 *     Skip technical fields
       IF <fs_component>-name = cl_abap_behv=>co_techfield_name-cid
         OR <fs_component>-name = cl_abap_behv=>co_techfield_name-cid_ref
@@ -317,8 +326,8 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 *     Check if field is read-only via permissions
       DATA(lv_is_read_only) = abap_off.
-      IF <fs_global_struct> IS ASSIGNED.
-        ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_global_struct> TO <fs_field_control>.
+      IF <fs_field_struct> IS ASSIGNED.
+        ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_field_struct> TO <fs_field_control>.
         IF sy-subrc = 0.
           IF <fs_field_control> = if_abap_behv=>fc-f-read_only.
             lv_is_read_only = abap_on.
