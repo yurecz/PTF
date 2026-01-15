@@ -1066,6 +1066,20 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
 
 
   METHOD execute_action.
+*   MODIFY is a special PTF operation that uses its own execution path
+    DATA(ls_step_data) = me->mo_run_environment->get_step_data( iv_step_number = iv_step_number ).
+    IF to_upper( ls_step_data-action ) = 'MODIFY'.
+      me->modify(
+        EXPORTING
+          iv_step_number      = iv_step_number
+        IMPORTING
+          ev_document_id      = ev_document_id
+          ev_execution_status = ev_execution_status
+          ev_check_status     = ev_check_status
+      ).
+      RETURN.
+    ENDIF.
+
     me->operation(
       EXPORTING
         iv_op               = if_abap_behv=>op-m-action

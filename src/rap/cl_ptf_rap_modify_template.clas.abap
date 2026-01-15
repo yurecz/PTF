@@ -267,18 +267,26 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
                    <fs_global_struct> TYPE any,
                    <fs_field_struct>  TYPE any.
 
-*   Get entity structure
+*   Get entity structure with all fields (not just keys)
     TRY.
         lr_result = cl_abap_behvdescr=>create_data(
-          p_name      = iv_entity
-          p_op        = cl_abap_behvdescr=>op_primarykey
-          p_structure = abap_on ).
+          p_name = iv_entity
+          p_op   = cl_abap_behvdescr=>op_permission
+          p_kind = if_abap_behv=>typekind-result ).
         
-        ASSIGN lr_result->* TO FIELD-SYMBOL(<fs_structure>).
-        lo_struct_descr ?= cl_abap_structdescr=>describe_by_data( <fs_structure> ).
+        ASSIGN lr_result->* TO <fs_result>.
+        IF sy-subrc = 0.
+          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-global OF STRUCTURE <fs_result> TO <fs_global>.
+          IF sy-subrc = 0.
+            ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-field OF STRUCTURE <fs_global> TO FIELD-SYMBOL(<fs_structure>).
+            IF sy-subrc = 0.
+              lo_struct_descr ?= cl_abap_structdescr=>describe_by_data( <fs_structure> ).
+              lt_components = lo_struct_descr->get_components( ).
+            ENDIF.
+          ENDIF.
+        ENDIF.
         
         DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
-        lt_components = lo_metadata->recursive_get_components( lo_struct_descr ).
 
       CATCH cx_abap_behvdescr cx_sy_move_cast_error.
         rv_fields_json = |        "field": "value"{ cl_abap_char_utilities=>newline }|.
@@ -360,11 +368,16 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 *     Limit number of fields in template
       IF lv_field_count >= 5 AND iv_only_keys = abap_off.
-        rv_fields_json = |{ rv_fields_json }{ cl_abap_char_utilities=>newline }        "_comment": "...add more fields as needed"|.
+        rv_fields_json = |{ rv_fields_json },{ cl_abap_char_utilities=>newline }        "_comment": "...add more fields as needed"|.
         EXIT.
       ENDIF.
 
     ENDLOOP.
+
+*   Add trailing comment if fields were added but limit not reached
+    IF rv_fields_json IS NOT INITIAL AND lv_field_count < 5 AND lv_field_count > 0 AND iv_only_keys = abap_off.
+      rv_fields_json = |{ rv_fields_json },{ cl_abap_char_utilities=>newline }        "_comment": "...add more fields as needed"|.
+    ENDIF.
 
     IF rv_fields_json IS INITIAL.
 *     If no writable fields found, provide helpful comment
