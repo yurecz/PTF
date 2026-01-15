@@ -42,6 +42,7 @@ private section.
       !IV_ENTITY type ABP_ENTITY_NAME
       !IT_PERMISSIONS type ABP_BEHV_PERMISSIONS_TAB
       !IV_ONLY_KEYS type ABAP_BOOL default ABAP_OFF
+      !IV_EXCLUDE_KEYS type ABAP_BOOL default ABAP_OFF
     returning
       value(RV_FIELDS_JSON) type STRING .
 ENDCLASS.
@@ -205,11 +206,12 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     rv_json = |{ rv_json }{ lv_keys }|.
     rv_json = |{ rv_json }        \},{ cl_abap_char_utilities=>newline }|.
 
-*   Add fields to update
+*   Add fields to update (exclude keys since they're already in key section)
     DATA(lv_fields) = get_entity_fields(
       iv_entity      = iv_entity
       it_permissions = it_permissions
-      iv_only_keys   = COND #( WHEN iv_json_opt = '1' THEN abap_on ELSE abap_off ) ).
+      iv_only_keys   = COND #( WHEN iv_json_opt = '1' THEN abap_on ELSE abap_off )
+      iv_exclude_keys = abap_on ).
 
     rv_json = |{ rv_json }{ lv_fields }|.
 
@@ -324,6 +326,13 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
         ENDIF.
       ENDIF.
 
+*     If excluding keys, skip key fields
+      IF iv_exclude_keys = abap_on.
+        IF line_exists( lt_key_fields[ name = <fs_component>-name ] ).
+          CONTINUE.
+        ENDIF.
+      ENDIF.
+
 *     Check if field is read-only via permissions
       DATA(lv_is_read_only) = abap_off.
       IF <fs_field_struct> IS ASSIGNED.
@@ -358,7 +367,22 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     ENDLOOP.
 
     IF rv_fields_json IS INITIAL.
-      rv_fields_json = |        "field": "value"|.
+*     If no writable fields found, provide helpful comment
+      IF iv_only_keys = abap_on.
+*       Show at least one key field as example
+        IF lt_key_fields IS NOT INITIAL.
+          READ TABLE lt_key_fields INDEX 1 INTO DATA(ls_key_field).
+          rv_fields_json = |        "{ ls_key_field-name }": ""|
+        ELSE.
+          rv_fields_json = |        "_comment": "No key fields defined"|
+        ENDIF.
+      ELSEIF iv_exclude_keys = abap_on.
+*       For UPDATE fields section (keys excluded)
+        rv_fields_json = |        "_comment": "No writable non-key fields (all are read-only)"|
+      ELSE.
+*       For CREATE (no keys excluded)
+        rv_fields_json = |        "_comment": "No writable fields available"|
+      ENDIF.
     ENDIF.
 
     rv_fields_json = |{ rv_fields_json }{ cl_abap_char_utilities=>newline }|.
