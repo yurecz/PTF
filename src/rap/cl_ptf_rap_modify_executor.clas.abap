@@ -341,6 +341,9 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     CLEAR et_operations.
     lv_json = iv_json.
 
+*   Debug: Log JSON length
+    me->mo_run_environment->append_log( |JSON length: { strlen( lv_json ) }| ).
+
 *   Parse JSON array
     /ui2/cl_json=>deserialize(
         EXPORTING
@@ -358,6 +361,10 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
     ENDIF.
 
+*   Debug: Log number of operations found in JSON
+    DATA(lv_lines) = lines( <ft_json_ops> ).
+    me->mo_run_environment->append_log( |Parsed { lv_lines } JSON elements| ).
+
 *   Process each operation
     LOOP AT <ft_json_ops> ASSIGNING <fs_json_op>.
       CLEAR ls_operation.
@@ -365,11 +372,13 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *     Extract operation code
       ASSIGN COMPONENT 'OP' OF STRUCTURE <fs_json_op> TO <fs_op>.
       IF sy-subrc <> 0.
+        me->mo_run_environment->append_log( |Skipping JSON element (no 'op' field) - probably comment| ).
         CONTINUE. "Skip entries without 'op' field (e.g., comments)
       ENDIF.
 
       DATA(lv_op_code) = CONV string( <fs_op> ).
       lv_op_code = to_upper( lv_op_code ).
+      me->mo_run_environment->append_log( |Processing operation: { lv_op_code }| ).
 
 *     Map op code to EML constant
       CASE lv_op_code.
@@ -485,7 +494,10 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *     Store operation with instances
       ls_operation-instances = lr_instances.
       APPEND ls_operation TO et_operations.
+      me->mo_run_environment->append_log( |Added operation for entity { ls_operation-entity_name } with { lines( <ft_target_table> ) } instances| ).
     ENDLOOP.
+
+    me->mo_run_environment->append_log( |Total operations created: { lines( et_operations ) }| ).
 
   ENDMETHOD.
 ENDCLASS.
