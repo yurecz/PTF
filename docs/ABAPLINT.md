@@ -1,8 +1,15 @@
 # ABAP Syntax Checking (abaplint)
 
-This repository uses [abaplint](https://abaplint.org) to validate ABAP syntax locally before pushing to the ABAP system.
+**Status: Pre-commit hook DISABLED** (2026-01-15)
 
-## Why abaplint?
+This repository has [abaplint](https://abaplint.org) configured but the pre-commit hook is disabled because:
+- The ABAP system (ERX/815) is the source of truth for validation
+- 1000+ existing "violations" are mostly style preferences, not real errors
+- MCP verification + ABAP activation is the mandatory workflow (see AGENTS.md)
+
+abaplint remains available for reference but doesn't block commits.
+
+## Original intent
 - **No ABAP system required**: Parses ABAP offline
 - **Fast feedback**: Catches basic syntax errors in seconds
 - **CI integration**: Runs automatically on pull requests
@@ -38,16 +45,14 @@ npm install -g @abaplint/cli
 abaplint
 ```
 
-### 3. Enable pre-commit hook (optional)
+### 3. Enable pre-commit hook (CURRENTLY DISABLED)
+The pre-commit hook was disabled on 2026-01-15 because abaplint validation is not reliable enough for this project (see top of document).
+
+If you want to re-enable it:
 ```bash
-# Make executable
-chmod +x tools/pre-commit.js
-
-# Link into git hooks
-ln -s ../../tools/pre-commit.js .git/hooks/pre-commit
+# Restore the hook
+mv .git/hooks/pre-commit.disabled .git/hooks/pre-commit
 ```
-
-Now `git commit` will automatically run abaplint on staged ABAP files.
 
 ### 4. VS Code extension (recommended)
 Install the [abaplint extension](https://marketplace.visualstudio.com/items?itemName=larshp.vscode-abaplint) for real-time feedback.

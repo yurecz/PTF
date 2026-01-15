@@ -256,13 +256,13 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
           lt_components    TYPE abap_component_tab,
           lv_field_count   TYPE i,
           ls_permission    TYPE abp_behv_permissions,
-          lr_result        TYPE REF TO data,
-          lr_global        TYPE REF TO data.
+          lr_result        TYPE REF TO data.
 
     FIELD-SYMBOLS: <fs_component>     TYPE abap_componentdescr,
                    <fs_result>        TYPE any,
                    <fs_global>        TYPE any,
-                   <fs_field_control> TYPE any.
+                   <fs_field_control> TYPE any,
+                   <fs_global_struct> TYPE any.
 
 *   Get entity structure
     TRY.
@@ -290,7 +290,7 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
         IF sy-subrc = 0.
           ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-global OF STRUCTURE <fs_result> TO <fs_global>.
           IF sy-subrc = 0.
-            ASSIGN <fs_global>->* TO lr_global.
+            ASSIGN <fs_global>->* TO <fs_global_struct>.
           ENDIF.
         ENDIF.
       ENDIF.
@@ -317,8 +317,8 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 *     Check if field is read-only via permissions
       DATA(lv_is_read_only) = abap_off.
-      IF lr_global IS BOUND.
-        ASSIGN COMPONENT <fs_component>-name OF STRUCTURE lr_global TO <fs_field_control>.
+      IF <fs_global_struct> IS ASSIGNED.
+        ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_global_struct> TO <fs_field_control>.
         IF sy-subrc = 0.
           IF <fs_field_control> = if_abap_behv=>fc-f-read_only.
             lv_is_read_only = abap_on.
