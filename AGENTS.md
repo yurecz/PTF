@@ -45,6 +45,40 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - Other actions fall through to shared logic after CASE statement
 - This separation is intentional: MODIFY needs fundamentally different JSON structure
 
+## Class design guidelines
+
+When creating new ABAP classes, follow **POJO (Plain Old Java Object) methodology**:
+
+- **✅ DO:** Use `create public` for simple, stateless classes
+- **✅ DO:** Instantiate directly with `NEW cl_class_name( )`
+- **✅ DO:** Make classes testable with constructor injection
+- **✅ DO:** Keep classes focused and single-purpose
+- **❌ AVOID:** Singleton patterns (`get_instance()`) unless absolutely necessary
+- **❌ AVOID:** Global static state that makes testing difficult
+- **❌ AVOID:** Complex inheritance hierarchies
+
+**Example - Good POJO pattern:**
+```abap
+CLASS cl_ptf_rap_metadata DEFINITION
+  PUBLIC
+  CREATE PUBLIC.
+  
+  " Simple, stateless, directly instantiable
+  DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
+  DATA(lt_fields) = lo_metadata->get_key_fields( iv_name = 'ENTITY' ).
+```
+
+**Example - Avoid unless needed:**
+```abap
+CLASS cl_singleton DEFINITION
+  PUBLIC
+  CREATE PRIVATE.  " Forces singleton pattern
+  
+  CLASS-METHODS get_instance RETURNING VALUE(ro_instance) TYPE REF TO cl_singleton.
+```
+
+**Why POJO?** Simpler instantiation, easier testing, clearer dependencies, less coupling.
+
 ## Working style
 - Keep patches small and scoped to the requested change.
 - Do not reformat unrelated ABAP code.

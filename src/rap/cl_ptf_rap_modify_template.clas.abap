@@ -279,7 +279,8 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     ENDTRY.
 
 *   Get key fields
-    DATA(lt_key_fields) = cl_ptf_rap_metadata=>get_instance( )->get_key_fields( iv_name = iv_entity ).
+    DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
+    DATA(lt_key_fields) = lo_metadata->get_key_fields( iv_name = iv_entity ).
 
 *   Get permissions for filtering
     IF it_permissions IS NOT INITIAL.
