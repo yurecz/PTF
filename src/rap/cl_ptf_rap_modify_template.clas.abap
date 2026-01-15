@@ -372,18 +372,17 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 *       Show at least one key field as example
         IF lt_key_fields IS NOT INITIAL.
           READ TABLE lt_key_fields INDEX 1 INTO DATA(ls_key_field).
-          rv_fields_json = |        "{ ls_key_field-name }": ""|
+          rv_fields_json = |        "{ ls_key_field-name }": ""|.
         ELSE.
-          rv_fields_json = |        "_comment": "No key fields defined"|
+          rv_fields_json = |        "_comment": "No key fields defined"|.
         ENDIF.
       ELSEIF iv_exclude_keys = abap_on.
 *       For UPDATE fields section (keys excluded)
-        rv_fields_json = |        "_comment": "No writable non-key fields (all are read-only)"|
+        rv_fields_json = |        "_comment": "No writable non-key fields (all are read-only)"|.
       ELSE.
 *       For CREATE (no keys excluded)
-        rv_fields_json = |        "_comment": "No writable fields available"|
+        rv_fields_json = |        "_comment": "No writable fields available"|.
       ENDIF.
-    ENDIF.
 
     rv_fields_json = |{ rv_fields_json }{ cl_abap_char_utilities=>newline }|.
 
