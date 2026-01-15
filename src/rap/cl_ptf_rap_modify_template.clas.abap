@@ -383,6 +383,7 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 *       For CREATE (no keys excluded)
         rv_fields_json = |        "_comment": "No writable fields available"|.
       ENDIF.
+    ENDIF.
 
     rv_fields_json = |{ rv_fields_json }{ cl_abap_char_utilities=>newline }|.
 

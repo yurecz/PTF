@@ -51,6 +51,9 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 4. **VERIFICATION PHASE (MANDATORY):**
    - Run `get_errors` on modified files
    - Verify error count is ZERO
+   - Read and review complete modified methods/sections for logical correctness
+   - Verify all control structures properly nested (IF/ENDIF, LOOP/ENDLOOP, TRY/ENDTRY)
+   - Verify all statements end with periods
    - If errors remain, repeat from SEARCH PHASE
    - Only proceed to commit when get_errors returns "No errors found"
 
