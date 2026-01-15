@@ -1036,7 +1036,8 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
 
 *   Add all messages to step attributes
     IF lt_messages IS NOT INITIAL.
-      cl_ptf_step_attr=>get_instance( )->if_ptf_step_attr~add_actual_messages( lt_messages ).
+      MOVE-CORRESPONDING lt_messages TO lt_act_messages.
+      cl_ptf_step_attr=>get_instance( )->if_ptf_step_attr~add_actual_messages( lt_act_messages ).
     ENDIF.
 
 *   Set return values

@@ -16,11 +16,61 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 
 **AFTER making changes:**
 
+- [ ] **Run get_errors** - MANDATORY after every code edit to catch compilation errors immediately
+- [ ] **Verify completeness** - If search found N occurrences, verify ALL N are fixed (not just first one)
 - [ ] **Deploy to ABAP system** - Changes MUST be tested in ERX/815 via abapGit before considering work complete
 - [ ] **Activate and verify** - Check compilation, run tests, verify functionality
 
 ❌ **NEVER:** Assume API signatures, guess parameter names, or skip MCP verification
+❌ **NEVER:** Fix only first occurrence when search shows multiple matches
+❌ **NEVER:** Commit without running get_errors to verify no compilation errors
 ✅ **ALWAYS:** Verify first, code second, deploy third
+✅ **ALWAYS:** When search shows N matches, document and fix ALL N relevant matches
+
+## 🔴 SYSTEMATIC FAILURE PREVENTION
+
+**When fixing type errors or repetitive issues:**
+
+1. **SEARCH PHASE:**
+   ```bash
+   rg -n "problematic_pattern" src/**/*.abap
+   ```
+   - Document ALL match locations (line numbers)
+   - Example: "Found 3 matches: line 1013, 1039, 1450"
+
+2. **ANALYSIS PHASE:**
+   - Read context for EACH match location
+   - Determine which matches need fixing
+   - Example: "Lines 1013 and 1039 need fixing (same method), line 1450 already correct (different context)"
+
+3. **FIX PHASE:**
+   - Use multi_replace_string_in_file for multiple fixes
+   - Fix ALL identified issues in ONE operation
+   - Document what was fixed: "Fixed 2 of 3 occurrences (3rd already correct)"
+
+4. **VERIFICATION PHASE (MANDATORY):**
+   - Run `get_errors` on modified files
+   - Verify error count is ZERO
+   - If errors remain, repeat from SEARCH PHASE
+   - Only proceed to commit when get_errors returns "No errors found"
+
+5. **COMMIT PHASE:**
+   - Only commit after successful verification
+   - Include in commit message: "Verified with get_errors - no compilation errors"
+
+**Example of correct workflow:**
+```
+1. Search: rg -n "add_actual_messages" → found 3 matches
+2. Analyze: Lines 1013, 1039, 1450
+3. Fix: Changed lines 1013 and 1039 (1450 different context)
+4. Verify: get_errors → "No errors found"
+5. Commit: "Fix all type conversions in MODIFY method"
+```
+
+**This prevents:**
+- Incomplete fixes (fixing 1 of N occurrences)
+- Committing code with compilation errors
+- Discovering errors only after push
 
 ## What to edit (and what not to)
 - Prefer editing `src/**/*.abap` (class/program sources) and let abapGit manage the adjacent `*.xml` metadata.
