@@ -252,8 +252,7 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
   METHOD get_entity_fields.
 *   Get entity fields as JSON string, prioritizing non-read-only fields
-    DATA: lo_behv_descr    TYPE REF TO cl_abap_behvdescr,
-          lo_struct_descr  TYPE REF TO cl_abap_structdescr,
+    DATA: lo_struct_descr  TYPE REF TO cl_abap_structdescr,
           lt_components    TYPE abap_component_tab,
           lv_field_count   TYPE i,
           ls_permission    TYPE abp_behv_permissions,
@@ -267,11 +266,14 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 *   Get entity structure
     TRY.
-        lo_behv_descr = cl_abap_behvdescr=>describe_by_name( iv_entity ).
-        lo_struct_descr ?= lo_behv_descr->get_type( ).
+        lr_result = cl_abap_behvdescr=>create_data(
+          p_name      = iv_entity
+          p_op        = cl_abap_behvdescr=>op_primarykey
+          p_structure = abap_on ).
+        lo_struct_descr ?= cl_abap_typedescr=>describe_by_data_ref( lr_result ).
         lt_components = lo_struct_descr->get_components( ).
 
-      CATCH cx_abap_behv cx_sy_move_cast_error.
+      CATCH cx_abap_behvdescr cx_sy_move_cast_error.
         rv_fields_json = |        "field": "value"{ cl_abap_char_utilities=>newline }|.
         RETURN.
     ENDTRY.

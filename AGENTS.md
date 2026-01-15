@@ -2,6 +2,26 @@
 
 This repository is an **abapGit** export of the ABAP package **PTF** (Process Test Framework) and subpackages, originally extracted from **ERX/815**. Most work happens by changing objects in an ABAP system and letting abapGit serialize them into `src/`.
 
+## ⚠️ MANDATORY PRE-FLIGHT CHECKLIST - READ THIS FIRST
+
+**BEFORE touching any code, you MUST complete these steps IN ORDER:**
+
+- [ ] **Step 1: Search for existing patterns** - Use `grep_search` or `semantic_search` to find how the API is currently used in the codebase
+- [ ] **Step 2: VERIFY with MCP** - Use MCP tool to fetch the actual API definition from ERX/815:
+  ```bash
+  tools/abap_cli.sh fetch-class <CLASS_NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN
+  ```
+- [ ] **Step 3: Check docs/** - Review relevant documentation files for patterns and examples
+- [ ] **Step 4: Make changes** - Only now implement changes based on verified information
+
+**AFTER making changes:**
+
+- [ ] **Deploy to ABAP system** - Changes MUST be tested in ERX/815 via abapGit before considering work complete
+- [ ] **Activate and verify** - Check compilation, run tests, verify functionality
+
+❌ **NEVER:** Assume API signatures, guess parameter names, or skip MCP verification
+✅ **ALWAYS:** Verify first, code second, deploy third
+
 ## What to edit (and what not to)
 - Prefer editing `src/**/*.abap` (class/program sources) and let abapGit manage the adjacent `*.xml` metadata.
 - Avoid hand-editing generated `*.xml` unless you know the object format and the change is intentional.
