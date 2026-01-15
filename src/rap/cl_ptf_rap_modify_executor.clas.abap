@@ -204,8 +204,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 
         IF lo_message IS BOUND.
           ls_message-type       = lo_message->if_t100_dyn_msg~msgty.
-          ls_message-id         = lo_message->if_t100_dyn_msg~msgid.
-          ls_message-number     = lo_message->if_t100_dyn_msg~msgno.
+          ls_message-id         = lo_message->if_t100_message~t100key-msgid.
+          ls_message-number     = lo_message->if_t100_message~t100key-msgno.
           ls_message-message_v1 = lo_message->if_t100_dyn_msg~msgv1.
           ls_message-message_v2 = lo_message->if_t100_dyn_msg~msgv2.
           ls_message-message_v3 = lo_message->if_t100_dyn_msg~msgv3.
@@ -470,10 +470,12 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
               <fs_field> = <fs_value>.
 
 *             Set %control field if present
-              DATA(lv_control_name) = lv_comp_name && '-' && if_abap_behv=>flag_changed.
-              ASSIGN COMPONENT lv_control_name OF STRUCTURE <fs_target> TO <fs_field>.
+              ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_control_struct>).
               IF sy-subrc = 0.
-                <fs_field> = if_abap_behv=>mk-on.
+                ASSIGN COMPONENT lv_comp_name OF STRUCTURE <fs_control_struct> TO FIELD-SYMBOL(<fs_control_field>).
+                IF sy-subrc = 0.
+                  <fs_control_field> = if_abap_behv=>mk-on.
+                ENDIF.
               ENDIF.
             ENDIF.
           ENDIF.
