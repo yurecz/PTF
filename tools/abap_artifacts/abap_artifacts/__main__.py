@@ -13,6 +13,7 @@ from .adt import (
     fetch_data_element_source,
     fetch_ddl_source,
     fetch_domain_source,
+    fetch_interface_source,
     fetch_structure_source,
     fetch_table_source,
 )
@@ -197,6 +198,25 @@ def cmd_fetch_class(args: argparse.Namespace) -> int:
     return 0 if res.status_code < 400 else 2
 
 
+def cmd_fetch_interface(args: argparse.Namespace) -> int:
+    creds = load_credentials(
+        base_url=args.base_url,
+        client=args.client,
+        user=args.user,
+        password=args.password,
+        allow_keyring=not args.no_keyring,
+    )
+    res = fetch_interface_source(
+        interface_name=args.name,
+        creds=creds,
+        client=args.client,
+        version=args.version,
+        verify_tls=not args.insecure,
+    )
+    sys.stdout.write(res.text)
+    return 0 if res.status_code < 400 else 2
+
+
 def cmd_fetch_class_include(args: argparse.Namespace) -> int:
     creds = load_credentials(
         base_url=args.base_url,
@@ -296,6 +316,12 @@ def main(argv: list[str] | None = None) -> int:
     p_class.add_argument("--version", default="active", choices=["active", "inactive"])
     _add_common_auth_args(p_class)
     p_class.set_defaults(func=cmd_fetch_class)
+
+    p_interface = sub.add_parser("fetch-interface", help="Fetch ABAP interface main source via ADT")
+    p_interface.add_argument("name", help="Interface name (ADT id), e.g. if_foo")
+    p_interface.add_argument("--version", default="active", choices=["active", "inactive"])
+    _add_common_auth_args(p_interface)
+    p_interface.set_defaults(func=cmd_fetch_interface)
 
     p_class_inc = sub.add_parser("fetch-class-include", help="Fetch ABAP class include via ADT")
     p_class_inc.add_argument("name", help="Class name (ADT id), e.g. cl_foo")
