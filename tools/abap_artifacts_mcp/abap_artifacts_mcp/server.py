@@ -12,6 +12,9 @@ from abap_artifacts.adt import (
     fetch_data_element_source,
     fetch_ddl_source,
     fetch_domain_source,
+    fetch_function_group_include,
+    fetch_function_group_source,
+    fetch_function_module_source,
     fetch_interface_source,
     fetch_structure_source,
     fetch_table_source,
@@ -203,6 +206,50 @@ def _tool_schema() -> list[dict[str, Any]]:
             },
         },
         {
+            "name": "abap.fetchFunctionGroup",
+            "description": "Fetch function group main source via ADT.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "client": {"type": "string"},
+                    "version": {"type": "string", "enum": ["active", "inactive"], "default": "active"},
+                    "insecure": {"type": "boolean", "default": False},
+                },
+                "required": ["name"],
+            },
+        },
+        {
+            "name": "abap.fetchFunctionGroupInclude",
+            "description": "Fetch function group include source via ADT.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "group": {"type": "string"},
+                    "include": {"type": "string"},
+                    "client": {"type": "string"},
+                    "version": {"type": "string", "enum": ["active", "inactive"], "default": "active"},
+                    "insecure": {"type": "boolean", "default": False},
+                },
+                "required": ["group", "include"],
+            },
+        },
+        {
+            "name": "abap.fetchFunctionModule",
+            "description": "Fetch function module source via ADT.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "group": {"type": "string"},
+                    "name": {"type": "string"},
+                    "client": {"type": "string"},
+                    "version": {"type": "string", "enum": ["active", "inactive"], "default": "active"},
+                    "insecure": {"type": "boolean", "default": False},
+                },
+                "required": ["group", "name"],
+            },
+        },
+        {
             "name": "abap.fetchClassInclude",
             "description": "Fetch ABAP class include (definitions/implementations/testclasses/macros) via ADT.",
             "inputSchema": {
@@ -324,6 +371,59 @@ def _handle_tool_call(name: str, args: dict[str, Any]) -> dict[str, Any]:
         )
         res = fetch_interface_source(
             interface_name=args["name"],
+            creds=creds,
+            client=client,
+            version=args.get("version", "active"),
+            verify_tls=verify_tls,
+        )
+        return _content_text(res.text)
+
+    if name == "abap.fetchFunctionGroup":
+        client = args.get("client") or _env_default("ABAP_CLIENT")
+        creds = load_credentials(
+            base_url=_env_default("ABAP_BASE_URL"),
+            client=client,
+            user=_env_default("ABAP_USER"),
+            allow_keyring=True,
+        )
+        res = fetch_function_group_source(
+            function_group_name=args["name"],
+            creds=creds,
+            client=client,
+            version=args.get("version", "active"),
+            verify_tls=verify_tls,
+        )
+        return _content_text(res.text)
+
+    if name == "abap.fetchFunctionGroupInclude":
+        client = args.get("client") or _env_default("ABAP_CLIENT")
+        creds = load_credentials(
+            base_url=_env_default("ABAP_BASE_URL"),
+            client=client,
+            user=_env_default("ABAP_USER"),
+            allow_keyring=True,
+        )
+        res = fetch_function_group_include(
+            function_group_name=args["group"],
+            include_name=args["include"],
+            creds=creds,
+            client=client,
+            version=args.get("version", "active"),
+            verify_tls=verify_tls,
+        )
+        return _content_text(res.text)
+
+    if name == "abap.fetchFunctionModule":
+        client = args.get("client") or _env_default("ABAP_CLIENT")
+        creds = load_credentials(
+            base_url=_env_default("ABAP_BASE_URL"),
+            client=client,
+            user=_env_default("ABAP_USER"),
+            allow_keyring=True,
+        )
+        res = fetch_function_module_source(
+            function_group_name=args["group"],
+            function_module_name=args["name"],
             creds=creds,
             client=client,
             version=args.get("version", "active"),

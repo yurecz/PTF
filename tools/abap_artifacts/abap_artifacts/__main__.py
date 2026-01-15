@@ -13,6 +13,9 @@ from .adt import (
     fetch_data_element_source,
     fetch_ddl_source,
     fetch_domain_source,
+    fetch_function_group_include,
+    fetch_function_group_source,
+    fetch_function_module_source,
     fetch_interface_source,
     fetch_structure_source,
     fetch_table_source,
@@ -237,6 +240,65 @@ def cmd_fetch_class_include(args: argparse.Namespace) -> int:
     return 0 if res.status_code < 400 else 2
 
 
+def cmd_fetch_function_group(args: argparse.Namespace) -> int:
+    creds = load_credentials(
+        base_url=args.base_url,
+        client=args.client,
+        user=args.user,
+        password=args.password,
+        allow_keyring=not args.no_keyring,
+    )
+    res = fetch_function_group_source(
+        function_group_name=args.name,
+        creds=creds,
+        client=args.client,
+        version=args.version,
+        verify_tls=not args.insecure,
+    )
+    sys.stdout.write(res.text)
+    return 0 if res.status_code < 400 else 2
+
+
+def cmd_fetch_function_group_include(args: argparse.Namespace) -> int:
+    creds = load_credentials(
+        base_url=args.base_url,
+        client=args.client,
+        user=args.user,
+        password=args.password,
+        allow_keyring=not args.no_keyring,
+    )
+    res = fetch_function_group_include(
+        function_group_name=args.group,
+        include_name=args.include,
+        creds=creds,
+        client=args.client,
+        version=args.version,
+        verify_tls=not args.insecure,
+    )
+    sys.stdout.write(res.text)
+    return 0 if res.status_code < 400 else 2
+
+
+def cmd_fetch_function_module(args: argparse.Namespace) -> int:
+    creds = load_credentials(
+        base_url=args.base_url,
+        client=args.client,
+        user=args.user,
+        password=args.password,
+        allow_keyring=not args.no_keyring,
+    )
+    res = fetch_function_module_source(
+        function_group_name=args.group,
+        function_module_name=args.name,
+        creds=creds,
+        client=args.client,
+        version=args.version,
+        verify_tls=not args.insecure,
+    )
+    sys.stdout.write(res.text)
+    return 0 if res.status_code < 400 else 2
+
+
 def cmd_fetch_docu(args: argparse.Namespace) -> int:
     res = fetch_keyword_docu(
         base_url=args.base_url,
@@ -334,6 +396,26 @@ def main(argv: list[str] | None = None) -> int:
     p_class_inc.add_argument("--version", default="active", choices=["active", "inactive"])
     _add_common_auth_args(p_class_inc)
     p_class_inc.set_defaults(func=cmd_fetch_class_include)
+
+    p_fgroup = sub.add_parser("fetch-function-group", help="Fetch function group main source via ADT")
+    p_fgroup.add_argument("name", help="Function group name (ADT id), e.g. ptf_rfc")
+    p_fgroup.add_argument("--version", default="active", choices=["active", "inactive"])
+    _add_common_auth_args(p_fgroup)
+    p_fgroup.set_defaults(func=cmd_fetch_function_group)
+
+    p_fgroup_inc = sub.add_parser("fetch-function-group-include", help="Fetch function group include via ADT")
+    p_fgroup_inc.add_argument("--group", required=True, help="Function group name, e.g. ptf_rfc")
+    p_fgroup_inc.add_argument("--include", required=True, help="Include name, e.g. lptf_rfcuxx")
+    p_fgroup_inc.add_argument("--version", default="active", choices=["active", "inactive"])
+    _add_common_auth_args(p_fgroup_inc)
+    p_fgroup_inc.set_defaults(func=cmd_fetch_function_group_include)
+
+    p_fmodule = sub.add_parser("fetch-function-module", help="Fetch function module source via ADT")
+    p_fmodule.add_argument("--group", required=True, help="Function group name, e.g. ptf_rfc")
+    p_fmodule.add_argument("name", help="Function module name, e.g. ptf_invoke_action")
+    p_fmodule.add_argument("--version", default="active", choices=["active", "inactive"])
+    _add_common_auth_args(p_fmodule)
+    p_fmodule.set_defaults(func=cmd_fetch_function_module)
 
     p_docu = sub.add_parser("fetch-docu", help="Fetch ABAP keyword docu page by object id (no auth)")
     p_docu.add_argument("object", help="Keyword docu object id, e.g. ABENEML")

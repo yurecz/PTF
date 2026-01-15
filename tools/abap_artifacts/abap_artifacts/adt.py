@@ -132,6 +132,50 @@ def fetch_interface_source(
     return fetch_text(url=url, creds=creds, verify_tls=verify_tls, accept="text/plain, */*;q=0.1")
 
 
+def fetch_function_group_source(
+    *,
+    function_group_name: str,
+    creds: Credentials,
+    client: Optional[str] = None,
+    version: str = "active",
+    verify_tls: bool = True,
+) -> FetchResult:
+    effective_client = client or creds.client
+    path = f"/sap/bc/adt/functions/groups/{function_group_name}/source/main"
+    url = _adt_url(creds.base_url, path, query={"version": version, "sap-client": effective_client})
+    return fetch_text(url=url, creds=creds, verify_tls=verify_tls, accept="text/plain, */*;q=0.1")
+
+
+def fetch_function_group_include(
+    *,
+    function_group_name: str,
+    include_name: str,
+    creds: Credentials,
+    client: Optional[str] = None,
+    version: str = "active",
+    verify_tls: bool = True,
+) -> FetchResult:
+    effective_client = client or creds.client
+    path = f"/sap/bc/adt/functions/groups/{function_group_name}/includes/{include_name}/source/main"
+    url = _adt_url(creds.base_url, path, query={"version": version, "sap-client": effective_client})
+    return fetch_text(url=url, creds=creds, verify_tls=verify_tls, accept="text/plain, */*;q=0.1")
+
+
+def fetch_function_module_source(
+    *,
+    function_group_name: str,
+    function_module_name: str,
+    creds: Credentials,
+    client: Optional[str] = None,
+    version: str = "active",
+    verify_tls: bool = True,
+) -> FetchResult:
+    effective_client = client or creds.client
+    path = f"/sap/bc/adt/functions/groups/{function_group_name}/fmodules/{function_module_name}/source/main"
+    url = _adt_url(creds.base_url, path, query={"version": version, "sap-client": effective_client})
+    return fetch_text(url=url, creds=creds, verify_tls=verify_tls, accept="text/plain, */*;q=0.1")
+
+
 def fetch_class_include(
     *,
     class_name: str,
