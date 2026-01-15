@@ -947,7 +947,7 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
           lt_reported_commit   TYPE abp_behv_response_tab,
           lt_messages          TYPE ptf_t100_message_t,
           lv_error             TYPE abap_bool,
-          ls_step_data         TYPE cl_ptf_step=>ts_step_data.
+          ls_step_data         TYPE cl_ptf_util=>gt_ptf_step.
 
     CLEAR: ev_execution_status, ev_check_status, ev_document_id.
 
