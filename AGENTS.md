@@ -148,6 +148,7 @@ CLASS cl_singleton DEFINITION
    - Use MCP tool to fetch class definition from ABAP system
    - If MCP is unavailable, fall back to CLI wrapper: `tools/abap_cli.sh fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN`
    - Raw CLI fallback: `PYTHON_KEYRING_BACKEND=keyrings.alt.file.PlaintextKeyring PYTHONPATH=tools/abap_artifacts python3 -m abap_artifacts fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN`
+   - **Case sensitivity matters:** When grepping ABAP source fails, try different case. Keywords are typically lowercase (`begin of`, `method`, `data`), names typically uppercase (`CL_CLASS`, `IF_INTERFACE`). If grep finds nothing, try the opposite case.
    - See `docs/MCP_SETUP.md` for MCP configuration
    - ❌ NEVER assume parameter names or API signatures without verification
    - ✅ ALWAYS verify with MCP before making code changes
