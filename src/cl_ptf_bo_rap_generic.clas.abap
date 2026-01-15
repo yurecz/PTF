@@ -945,7 +945,8 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
           lt_mapped            TYPE abp_behv_response_tab,
           lt_reported          TYPE abp_behv_response_tab,
           lt_reported_commit   TYPE abp_behv_response_tab,
-          lt_messages          TYPE ptf_t100_message_t,
+          lt_messages          TYPE bapirettab,
+          lt_act_messages      TYPE ptf_t100_message_t,
           lv_error             TYPE abap_bool,
           ls_step_data         TYPE cl_ptf_util=>gt_ptf_step.
 
@@ -959,12 +960,12 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
         cl_ptf_rap_modify_json=>deserialize(
           EXPORTING
             iv_entity     = ls_step_data-bus_obj
-            iv_json       = ls_step_data-data
+            iv_json       = ls_step_data-json_file
           IMPORTING
             et_operations = lt_operations ).
 
       CATCH cx_ptf_json INTO DATA(lx_json).
-        me->mo_run_environment->append_log_exception( lx_json ).
+        me->mo_run_environment->append_log( lx_json->get_text( ) ).
         ev_execution_status = abap_off.
         ev_check_status = abap_off.
         RETURN.
@@ -1008,7 +1009,8 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
 
 *     Add messages to step attributes
       IF lt_messages IS NOT INITIAL.
-        cl_ptf_step_attr=>get_instance( )->if_ptf_step_attr~add_actual_messages( lt_messages ).
+        MOVE-CORRESPONDING lt_messages TO lt_act_messages.
+        cl_ptf_step_attr=>get_instance( )->if_ptf_step_attr~add_actual_messages( lt_act_messages ).
       ENDIF.
 
       RETURN.
