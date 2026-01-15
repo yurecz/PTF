@@ -1548,6 +1548,9 @@ CLASS cl_ptf_run IMPLEMENTATION.
         WHEN 'COMMIT'.
           MOVE 'COMMIT' TO ev_method_name.
 
+        WHEN 'MODIFY'.
+          MOVE 'MODIFY' TO ev_method_name.
+
       ENDCASE.
 
     ENDIF.
