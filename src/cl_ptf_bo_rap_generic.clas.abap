@@ -40,13 +40,6 @@ public section.
       !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
       !EV_EXECUTION_STATUS type ABAP_BOOL
       !EV_CHECK_STATUS type ABAP_BOOL .
-  methods MODIFY
-    importing
-      !IV_STEP_NUMBER type I
-    exporting
-      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
-      !EV_EXECUTION_STATUS type ABAP_BOOL
-      !EV_CHECK_STATUS type ABAP_BOOL .
   methods CONSTRUCTOR
     importing
       !IV_RUN_ENVIRONMENT type ref to CL_PTF_RUN .
@@ -76,6 +69,7 @@ private section.
   data MO_PTF_RAP_OPERATIONS type ref to IF_PTF_RAP_OPERATIONS .
   data MO_PTF_RAP_KEY_FINDER type ref to IF_PTF_RAP_KEY_FINDER .
   data MO_PTF_JSON_REPOSITORY type ref to IF_PTF_JSON_REPOSITORY .
+  data MO_PTF_RAP_MODIFY_EXECUTOR type ref to CL_PTF_RAP_MODIFY_EXECUTOR .
   class-data MT_ROOT_ENTITIES type ABP_ENTITY_NAME_TAB .
   class-data MT_PID_MAPPED type IF_PTF_BO_RAP_GENERIC_EML=>TT_PID_MAPPED .
 
@@ -906,6 +900,10 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
     me->mo_ptf_rap_operations       = NEW cl_ptf_rap_operations( iv_run_environment ).
     me->mo_ptf_rap_key_finder       = NEW cl_ptf_rap_key_finder( iv_run_environment ).
     me->mo_ptf_json_repository      = NEW cl_ptf_json_repository( ).
+    me->mo_ptf_rap_modify_executor  = NEW cl_ptf_rap_modify_executor(
+      io_run_environment = me->mo_run_environment
+      io_eml             = me->mo_ptf_bo_rap_generic_eml
+      io_operations      = me->mo_ptf_rap_operations ).
 
   ENDMETHOD.
 
@@ -938,120 +936,6 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD modify.
-*   MODIFY action for RAP Business Objects using EML MODIFY ENTITIES OPERATIONS
-    DATA: lt_operations        TYPE abp_behv_changes_tab,
-          lt_failed            TYPE abp_behv_response_tab,
-          lt_mapped            TYPE abp_behv_response_tab,
-          lt_reported          TYPE abp_behv_response_tab,
-          lt_reported_commit   TYPE abp_behv_response_tab,
-          lt_messages          TYPE bapirettab,
-          lt_act_messages      TYPE ptf_t100_message_t,
-          lv_error             TYPE abap_bool,
-          ls_step_data         TYPE cl_ptf_util=>gt_ptf_step.
-
-    CLEAR: ev_execution_status, ev_check_status, ev_document_id.
-
-*   Get step data
-    ls_step_data = me->mo_run_environment->get_step_data( iv_step_number = iv_step_number ).
-
-*   Deserialize JSON to operations table using RAP-specific deserializer
-    TRY.
-        cl_ptf_rap_modify_json=>deserialize(
-          EXPORTING
-            iv_entity     = ls_step_data-bus_obj
-            iv_json       = ls_step_data-json_file
-          IMPORTING
-            et_operations = lt_operations ).
-
-      CATCH cx_ptf_json INTO DATA(lx_json).
-        me->mo_run_environment->append_log( lx_json->get_text( ) ).
-        ev_execution_status = abap_off.
-        ev_check_status = abap_off.
-        RETURN.
-    ENDTRY.
-
-    IF lt_operations IS INITIAL.
-      me->mo_run_environment->append_log( 'No operations found in JSON payload' ).
-      ev_execution_status = abap_off.
-      ev_check_status = abap_off.
-      RETURN.
-    ENDIF.
-
-*   Execute EML MODIFY ENTITIES
-    me->mo_ptf_bo_rap_generic_eml->modify_entities(
-      IMPORTING
-        et_failed     = lt_failed
-        et_mapped     = lt_mapped
-        et_reported   = lt_reported
-      CHANGING
-        ct_operations = lt_operations ).
-
-*   Collect messages from REPORTED
-    me->collect_messages(
-      EXPORTING
-        it_reported = lt_reported
-      CHANGING
-        ct_messages = lt_messages ).
-
-*   Check for errors
-    me->mo_ptf_rap_operations->handle_operations_error(
-      EXPORTING
-        it_failed   = lt_failed
-        it_mapped   = lt_mapped
-        it_reported = lt_reported
-      IMPORTING
-        ev_error    = lv_error ).
-
-    IF lv_error = abap_on.
-      ev_execution_status = abap_off.
-      ev_check_status = abap_off.
-
-*     Add messages to step attributes
-      IF lt_messages IS NOT INITIAL.
-        MOVE-CORRESPONDING lt_messages TO lt_act_messages.
-        cl_ptf_step_attr=>get_instance( )->if_ptf_step_attr~add_actual_messages( lt_act_messages ).
-      ENDIF.
-
-      RETURN.
-    ENDIF.
-
-*   Fill list of root entities for commit
-    IF NOT line_exists( me->mt_root_entities[ table_line = ls_step_data-bus_obj ] ).
-      INSERT ls_step_data-bus_obj INTO TABLE me->mt_root_entities.
-    ENDIF.
-
-*   Execute COMMIT ENTITIES
-    me->commit_entities(
-      IMPORTING
-        et_reported_commit  = lt_reported_commit
-        ev_error            = lv_error ).
-
-*   Collect commit messages
-    me->collect_messages(
-      EXPORTING
-        it_reported = lt_reported_commit
-      CHANGING
-        ct_messages = lt_messages ).
-
-*   Add all messages to step attributes
-    IF lt_messages IS NOT INITIAL.
-      MOVE-CORRESPONDING lt_messages TO lt_act_messages.
-      cl_ptf_step_attr=>get_instance( )->if_ptf_step_attr~add_actual_messages( lt_act_messages ).
-    ENDIF.
-
-*   Set return values
-    IF lv_error = abap_off.
-      ev_execution_status = abap_on.
-      ev_check_status = abap_on.
-    ELSE.
-      ev_execution_status = abap_off.
-      ev_check_status = abap_off.
-    ENDIF.
-
-  ENDMETHOD.
-
-
   METHOD entity_action.
     me->execute_action(
       EXPORTING
@@ -1069,7 +953,7 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
 *   MODIFY is a special PTF operation that uses its own execution path
     DATA(ls_step_data) = me->mo_run_environment->get_step_data( iv_step_number = iv_step_number ).
     IF to_upper( ls_step_data-action ) = 'MODIFY'.
-      me->modify(
+      me->mo_ptf_rap_modify_executor->execute(
         EXPORTING
           iv_step_number      = iv_step_number
         IMPORTING
