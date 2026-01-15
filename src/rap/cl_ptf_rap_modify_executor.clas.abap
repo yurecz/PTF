@@ -40,6 +40,15 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         ev_error            TYPE abap_bool
       CHANGING
         ct_pid_mapped       TYPE if_ptf_bo_rap_generic_eml=>tt_pid_mapped .
+
+    METHODS deserialize_json
+      IMPORTING
+        iv_entity     TYPE abp_entity_name
+        iv_json       TYPE string
+      EXPORTING
+        et_operations TYPE abp_behv_changes_tab
+      RAISING
+        cx_ptf_json .
 ENDCLASS.
 
 
@@ -73,10 +82,10 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *   Get step data
     ls_step_data = me->mo_run_environment->get_step_data( iv_step_number = iv_step_number ).
 
-*   Deserialize JSON to operations table using RAP-specific deserializer
+*   Deserialize JSON to operations table for MODIFY action
 *   MODIFY uses json_file field (same as other RAP operations)
     TRY.
-        cl_ptf_rap_modify_json=>deserialize(
+        me->deserialize_json(
           EXPORTING
             iv_entity     = ls_step_data-bus_obj
             iv_json       = ls_step_data-json_file
@@ -304,6 +313,177 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     IF ev_error EQ abap_off.
       me->mo_run_environment->append_log( 'Executed/committed without EML error' ).
     ENDIF.
+
+  ENDMETHOD.
+
+
+  METHOD deserialize_json.
+*   Deserialize JSON for MODIFY action
+*   Handles EML operation format: [{"op": "CREATE", "entity": "...", "instances": [...]}]
+    DATA: lr_json_data   TYPE REF TO data,
+          lr_instances   TYPE REF TO data,
+          ls_operation   TYPE abp_behv_changes,
+          lv_json        TYPE string.
+
+    FIELD-SYMBOLS: <ft_json_ops>     TYPE STANDARD TABLE,
+                   <fs_json_op>      TYPE any,
+                   <fs_op>           TYPE any,
+                   <fs_entity>       TYPE any,
+                   <fs_sub_name>     TYPE any,
+                   <fs_instances>    TYPE any,
+                   <ft_instances>    TYPE STANDARD TABLE,
+                   <ft_target_table> TYPE STANDARD TABLE,
+                   <fs_instance>     TYPE any,
+                   <fs_target>       TYPE any,
+                   <fs_field>        TYPE any,
+                   <fs_value>        TYPE any.
+
+    CLEAR et_operations.
+    lv_json = iv_json.
+
+*   Parse JSON array
+    /ui2/cl_json=>deserialize(
+        EXPORTING
+          json          = lv_json
+          assoc_arrays  = abap_on
+        CHANGING
+          data          = lr_json_data ).
+
+    IF lr_json_data IS NOT BOUND.
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
+
+    ASSIGN lr_json_data->* TO <ft_json_ops>.
+    IF sy-subrc <> 0.
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
+
+*   Process each operation
+    LOOP AT <ft_json_ops> ASSIGNING <fs_json_op>.
+      CLEAR ls_operation.
+
+*     Extract operation code
+      ASSIGN COMPONENT 'OP' OF STRUCTURE <fs_json_op> TO <fs_op>.
+      IF sy-subrc <> 0.
+        CONTINUE. "Skip entries without 'op' field (e.g., comments)
+      ENDIF.
+
+      DATA(lv_op_code) = CONV string( <fs_op> ).
+      lv_op_code = to_upper( lv_op_code ).
+
+*     Map op code to EML constant
+      CASE lv_op_code.
+        WHEN 'CREATE'.
+          ls_operation-op = if_abap_behv=>op-m-create.
+        WHEN 'CREATE_BY'.
+          ls_operation-op = if_abap_behv=>op-m-create_ba.
+        WHEN 'UPDATE'.
+          ls_operation-op = if_abap_behv=>op-m-update.
+        WHEN 'DELETE'.
+          ls_operation-op = if_abap_behv=>op-m-delete.
+        WHEN 'EXECUTE'.
+          ls_operation-op = if_abap_behv=>op-m-action.
+        WHEN OTHERS.
+          CONTINUE. "Skip unknown operations
+      ENDCASE.
+
+*     Extract entity name
+      ASSIGN COMPONENT 'ENTITY' OF STRUCTURE <fs_json_op> TO <fs_entity>.
+      IF sy-subrc = 0.
+        ls_operation-entity_name = to_upper( CONV string( <fs_entity> ) ).
+      ELSE.
+        CONTINUE. "Skip operations without entity
+      ENDIF.
+
+*     Extract sub_name (for CREATE_BY or EXECUTE actions)
+      ASSIGN COMPONENT 'SUB_NAME' OF STRUCTURE <fs_json_op> TO <fs_sub_name>.
+      IF sy-subrc = 0.
+        ls_operation-sub_name = to_upper( CONV string( <fs_sub_name> ) ).
+      ENDIF.
+
+*     Extract instances array
+      ASSIGN COMPONENT 'INSTANCES' OF STRUCTURE <fs_json_op> TO <fs_instances>.
+      IF sy-subrc <> 0.
+        CONTINUE. "Skip operations without instances
+      ENDIF.
+
+      ASSIGN <fs_instances> TO <ft_instances>.
+
+*     Create typed target table using cl_abap_behvdescr
+      CASE ls_operation-op.
+        WHEN if_abap_behv=>op-m-create.
+          lr_instances = cl_abap_behvdescr=>create_data(
+            p_op       = if_abap_behv=>op-m-create
+            p_name     = ls_operation-entity_name
+            p_kind     = if_abap_behv=>typekind-import ).
+
+        WHEN if_abap_behv=>op-m-create_ba.
+          lr_instances = cl_abap_behvdescr=>create_data(
+            p_op       = if_abap_behv=>op-m-create_ba
+            p_name     = ls_operation-entity_name
+            p_sub_name = ls_operation-sub_name
+            p_kind     = if_abap_behv=>typekind-import ).
+
+        WHEN if_abap_behv=>op-m-update.
+          lr_instances = cl_abap_behvdescr=>create_data(
+            p_op       = if_abap_behv=>op-m-update
+            p_name     = ls_operation-entity_name
+            p_kind     = if_abap_behv=>typekind-import ).
+
+        WHEN if_abap_behv=>op-m-delete.
+          lr_instances = cl_abap_behvdescr=>create_data(
+            p_op       = if_abap_behv=>op-m-delete
+            p_name     = ls_operation-entity_name
+            p_kind     = if_abap_behv=>typekind-import ).
+
+        WHEN if_abap_behv=>op-m-action.
+          lr_instances = cl_abap_behvdescr=>create_data(
+            p_op       = if_abap_behv=>op-m-action
+            p_name     = ls_operation-entity_name
+            p_sub_name = ls_operation-sub_name
+            p_kind     = if_abap_behv=>typekind-import ).
+      ENDCASE.
+
+      IF lr_instances IS NOT BOUND.
+        CONTINUE.
+      ENDIF.
+
+      ASSIGN lr_instances->* TO <ft_target_table>.
+
+*     Process each instance
+      LOOP AT <ft_instances> ASSIGNING <fs_instance>.
+        APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+
+*       Get structure components
+        DATA(lo_struct_descr) = CAST cl_abap_structdescr(
+          cl_abap_typedescr=>describe_by_data( <fs_target> ) ).
+
+*       Map JSON fields to structure fields
+        LOOP AT lo_struct_descr->components INTO DATA(ls_comp).
+          DATA(lv_comp_name) = to_upper( ls_comp-name ).
+
+*         Try to find matching field in JSON (case-insensitive)
+          ASSIGN COMPONENT lv_comp_name OF STRUCTURE <fs_instance> TO <fs_value>.
+          IF sy-subrc = 0.
+            ASSIGN COMPONENT lv_comp_name OF STRUCTURE <fs_target> TO <fs_field>.
+            IF sy-subrc = 0.
+              <fs_field> = <fs_value>.
+
+*             Set %control field if present
+              DATA(lv_control_name) = lv_comp_name && '-' && if_abap_behv=>flag_changed.
+              ASSIGN COMPONENT lv_control_name OF STRUCTURE <fs_target> TO <fs_field>.
+              IF sy-subrc = 0.
+                <fs_field> = if_abap_behv=>mk-on.
+              ENDIF.
+            ENDIF.
+          ENDIF.
+        ENDLOOP.
+      ENDLOOP.
+
+*     Store operation with instances
+      ls_operation-instances = lr_instances.
+      APPEND ls_operation TO et_operations.
+    ENDLOOP.
 
   ENDMETHOD.
 ENDCLASS.
