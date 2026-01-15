@@ -40,6 +40,13 @@ public section.
       !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
       !EV_EXECUTION_STATUS type ABAP_BOOL
       !EV_CHECK_STATUS type ABAP_BOOL .
+  methods MODIFY
+    importing
+      !IV_STEP_NUMBER type I
+    exporting
+      !EV_DOCUMENT_ID type CL_PTF_UTIL=>TY_VBELN_TAB
+      !EV_EXECUTION_STATUS type ABAP_BOOL
+      !EV_CHECK_STATUS type ABAP_BOOL .
   methods CONSTRUCTOR
     importing
       !IV_RUN_ENVIRONMENT type ref to CL_PTF_RUN .
@@ -1222,6 +1229,19 @@ CLASS CL_PTF_BO_RAP_GENERIC IMPLEMENTATION.
 
     ENDIF.
 
+  ENDMETHOD.
+
+
+  METHOD modify.
+*   MODIFY action delegates to dedicated executor
+    me->mo_ptf_rap_modify_executor->execute(
+      EXPORTING
+        iv_step_number      = iv_step_number
+      IMPORTING
+        ev_document_id      = ev_document_id
+        ev_execution_status = ev_execution_status
+        ev_check_status     = ev_check_status
+    ).
   ENDMETHOD.
 
 
