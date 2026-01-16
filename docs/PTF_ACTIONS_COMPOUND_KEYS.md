@@ -246,7 +246,9 @@ The `retrieve_document_id()` method follows this priority:
 
 ## Comparison: PTF Actions vs MODIFY Action
 
-| Aspect | PTF CREATE/UPDATE/DELETE | MODIFY Action |
+**Note**: MODIFY is under development; this comparison reflects current implementation.
+
+| Aspect | PTF CREATE/UPDATE/DELETE (Established) | MODIFY Action (Under Development) |
 |--------|--------------------------|---------------|
 | **JSON Format** | `{fields: [], associations: []}` | `[{op, entity, instances}]` |
 | **Key Extraction For CREATE** | From MAPPED/REPORTED_COMMIT | From MAPPED/PID_MAPPED |

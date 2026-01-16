@@ -1,11 +1,15 @@
 # Compound Keys in PTF MODIFY Action
 
+## ⚠️ Development Status
+
+**MODIFY is under active development** - This documentation describes the current implementation approach, which may change as we validate and refine the feature.
+
 ## Summary
 
 This document explains compound key handling for **RAP operations within the PTF MODIFY action**.
 
 **Important Distinction:**
-- **PTF Actions**: CREATE, UPDATE, DELETE, EXECUTE, **MODIFY** - Framework-level test actions
+- **PTF Actions**: CREATE, UPDATE, DELETE, EXECUTE (established) + **MODIFY** (under development)
 - **RAP Operations**: CREATE, UPDATE, DELETE, EXECUTE - Low-level EML operations inside MODIFY's `operations` array
 - **This document covers**: RAP operations (op: "CREATE", op: "UPDATE", etc.) within PTF MODIFY action
 

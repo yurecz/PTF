@@ -1,5 +1,7 @@
 # RAP MODIFY Action - Working Examples (ERX/001)
 
+**⚠️ Development Status**: MODIFY action is under active development. These examples reflect the current implementation but may require adjustments after system testing.
+
 Simplified working examples for the RAP MODIFY action in ERX/001 system.
 
 ## JSON Format

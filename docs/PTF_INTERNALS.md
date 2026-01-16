@@ -258,6 +258,8 @@ ls_step_data-document_id = VALUE #( ( vbeln = lv_vbeln ) ).
 
 ### MODIFY Action (RAP BOs)
 
+**⚠️ Under Development** - This is a new PTF action being built to support EML-style operations. Implementation is subject to change as we validate the approach.
+
 **Executor Class**: `cl_ptf_rap_modify_executor`
 
 **Flow**:

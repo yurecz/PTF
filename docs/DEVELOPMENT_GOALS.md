@@ -20,6 +20,11 @@ This document captures the two main upcoming goals for evolving PTF.
 - JSON templates/sample payloads can be generated or documented for the supported actions.
 
 ## Goal 2: Add RAP EML-level `MODIFY` action support (standard RAP input model)
+
+**Status**: 🔄 In Development - Core code complete, **pending ABAP system validation** (2026-01-17)
+
+**⚠️ Testing Required**: Implementation not yet validated in ERX/815. May require adjustments based on actual system behavior.
+
 **Problem today**
 - PTF’s RAP support exposes a set of PTF-specific “actions” (create/change/delete/retrieve/etc.). This does not map 1:1 to RAP EML capabilities and can limit what can be tested for a RAP BO.
 - RAP EML’s central operation is `MODIFY ENTITIES … OPERATIONS ct_operations …`, which can represent multiple entity operations in one request.

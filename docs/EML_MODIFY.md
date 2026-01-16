@@ -1,5 +1,7 @@
 # RAP EML MODIFY ENTITIES (Dynamic Form)
 
+**⚠️ Under Development** - This format is being implemented for PTF's MODIFY action. Changes may occur based on system testing and validation.
+
 This document summarizes the ABAP EML dynamic form of `MODIFY ENTITIES ... OPERATIONS` and its input model.
 It is intended to guide the PTF `MODIFY` action implementation and JSON payload mapping.
 
