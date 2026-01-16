@@ -133,6 +133,53 @@ Simplified working examples for the RAP MODIFY action in ERX/001 system.
    - `Executed/committed without EML error`
    - `Extracted document ID: NNNNNNNNNN`
 
+## Example 4: Compound Keys (Multiple Key Components)
+
+Entity with multiple key fields: `I_ProductionSupplyAreaTP`
+- Key fields: `ProductionSupplyArea` + `ProductionSupplyAreaVersion`
+
+**JSON:**
+```json
+[
+  {
+    "op": "UPDATE",
+    "entity": "I_ProductionSupplyAreaTP",
+    "instances": [
+      {
+        "ProductionSupplyArea": "TEST_ARE01",
+        "ProductionSupplyAreaVersion": "0001",
+        "ProductionSupplyAreaName": "Updated Area Name",
+        "ProductionSupplyAreaIsActive": true
+      }
+    ]
+  },
+  {
+    "op": "DELETE",
+    "entity": "I_ProductionSupplyAreaTP",
+    "instances": [
+      {
+        "ProductionSupplyArea": "TEST_ARE02",
+        "ProductionSupplyAreaVersion": "0001"
+      }
+    ]
+  }
+]
+```
+
+**Compound Key Behavior:**
+- **All key components must be specified** for UPDATE/DELETE operations
+- Key fields used for record identification only (NOT modified in UPDATE)
+- `%control` marks only non-key fields (`ProductionSupplyAreaName`, `ProductionSupplyAreaIsActive`)
+- EML runtime automatically combines key fields into `%key`/`%tky` structure
+- PTF stores document_id as concatenated string: `"TEST_ARE01|0001"` (for internal reference using pipe delimiter)
+- Order of key fields in JSON doesn't matter (matched by name, not position)
+
+**Example with two-field keys from test data:**
+- Entity: `R_PRODUCTIONSUPPLYAREATP`
+- Key 1: `ProductionSupplyArea = "TEST_ARE01"`
+- Key 2: `ProductionSupplyAreaType = "0001"`
+- Result document_id: `"TEST_ARE01|0001"`
+
 ## Document ID Extraction
 
 - **PID_MAPPED (Primary)**: Real keys after COMMIT (for late numbering entities)
