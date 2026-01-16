@@ -54,8 +54,8 @@ This document captures the two main upcoming goals for evolving PTF.
   - Handles CREATE, CREATE_BY, UPDATE, DELETE, EXECUTE operations
   - Auto-generates %cid (cid_1, cid_2, ...) or uses "ref" field from JSON
   - Wires %cid_ref using "parent_ref" field for CREATE_BY associations
-  - Maps "key" structure to %pky for existing parent references
-  - Sets %control fields for modified attributes
+  - Key fields specified directly in instances (not wrapped in %pky) for identification
+  - Sets %control fields for modified attributes only (excludes key fields)
 - [x] **Step 4** (2026-01-14): JSON template generation fully implemented
   - Created CL_PTF_RAP_MODIFY_TEMPLATE in RAP subpackage (commits 3bf2dd4, ccb9022, 8465f50)
   - Generates BO-specific MODIFY templates with CREATE/UPDATE/DELETE operations

@@ -49,6 +49,14 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         et_operations TYPE abp_behv_changes_tab
       RAISING
         cx_ptf_json .
+
+    METHODS extract_document_ids
+      IMPORTING
+        iv_entity      TYPE abp_entity_name
+        it_pid_mapped  TYPE if_ptf_bo_rap_generic_eml=>tt_pid_mapped
+        it_mapped      TYPE abp_behv_response_tab
+      EXPORTING
+        ev_document_id TYPE cl_ptf_util=>ty_vbeln_tab .
 ENDCLASS.
 
 
@@ -170,6 +178,28 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     IF lt_messages IS NOT INITIAL.
       MOVE-CORRESPONDING lt_messages TO lt_act_messages.
       cl_ptf_step_attr=>get_instance( )->if_ptf_step_attr~add_actual_messages( lt_act_messages ).
+    ENDIF.
+
+*   Extract document IDs (only for successful operations)
+*   Priority: lt_pid_mapped (real keys after commit) > lt_mapped (preliminary keys)
+    IF lv_error = abap_off.
+      me->extract_document_ids(
+        EXPORTING
+          iv_entity      = ls_step_data-bus_obj
+          it_pid_mapped  = lt_pid_mapped
+          it_mapped      = lt_mapped
+        IMPORTING
+          ev_document_id = ev_document_id ).
+
+*     Log extracted document IDs
+      IF ev_document_id IS NOT INITIAL.
+        LOOP AT ev_document_id ASSIGNING FIELD-SYMBOL(<lv_doc_id>).
+          DATA(lv_doc_id_str) = CONV string( <lv_doc_id> ).
+          me->mo_run_environment->append_log( |Extracted document ID: { lv_doc_id_str }| ).
+        ENDLOOP.
+      ELSE.
+        me->mo_run_environment->append_log( 'No document IDs extracted from MAPPED table' ).
+      ENDIF.
     ENDIF.
 
 *   Set return values
@@ -320,6 +350,22 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
   METHOD deserialize_json.
 *   Deserialize JSON for MODIFY action
 *   Handles EML operation format: [{"op": "CREATE", "entity": "...", "instances": [...]}]
+*
+*   IMPORTANT: /ui2/cl_json=>deserialize with generic REF TO data
+*   ============================================================
+*   When deserializing to a generic REF TO data (no type information at compile time),
+*   /ui2/cl_json creates NESTED REFERENCES for all structures and values:
+*   - Each array element is a reference: <fs_json_op>->* needed
+*   - Each component value is a reference: <fs_op>->*, <fs_entity>->* needed
+*   - Nested arrays are references: <fs_instances>->* needed
+*   - Instance elements are references: <fs_instance>->* needed
+*
+*   The assoc_arrays parameter only affects HOW arrays are represented
+*   (associative vs standard tables), NOT whether values are wrapped in references.
+*
+*   See: https://github.com/SAP/abap-to-json/blob/main/docs/data-access.md
+*   for patterns on working with dynamic data from /ui2/cl_json
+*
     DATA: lr_json_data   TYPE REF TO data,
           lr_instances   TYPE REF TO data,
           ls_operation   TYPE abp_behv_changes,
@@ -344,11 +390,12 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *   Debug: Log JSON length
     me->mo_run_environment->append_log( |JSON length: { strlen( lv_json ) }| ).
 
-*   Parse JSON array
+*   Parse JSON array into dynamic structure
+*   Result: lr_json_data points to table of references to structures
     /ui2/cl_json=>deserialize(
         EXPORTING
           json          = lv_json
-          assoc_arrays  = abap_on
+          assoc_arrays  = abap_off
         CHANGING
           data          = lr_json_data ).
 
@@ -369,14 +416,21 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     LOOP AT <ft_json_ops> ASSIGNING <fs_json_op>.
       CLEAR ls_operation.
 
-*     Extract operation code
-      ASSIGN COMPONENT 'OP' OF STRUCTURE <fs_json_op> TO <fs_op>.
+*     Dereference JSON operation element (1st level: array element -> structure)
+      ASSIGN <fs_json_op>->* TO FIELD-SYMBOL(<json_op>).
+      IF sy-subrc <> 0.
+        CONTINUE. "Skip invalid JSON elements
+      ENDIF.
+
+*     Extract operation code (2nd level: structure component -> value)
+      ASSIGN COMPONENT 'OP' OF STRUCTURE <json_op> TO <fs_op>.
       IF sy-subrc <> 0.
         me->mo_run_environment->append_log( |Skipping JSON element (no 'op' field) - probably comment| ).
         CONTINUE. "Skip entries without 'op' field (e.g., comments)
       ENDIF.
 
-      DATA(lv_op_code) = CONV string( <fs_op> ).
+*     Dereference op value (value is also a reference)
+      DATA(lv_op_code) = CONV string( <fs_op>->* ).
       lv_op_code = to_upper( lv_op_code ).
       me->mo_run_environment->append_log( |Processing operation: { lv_op_code }| ).
 
@@ -396,27 +450,28 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           CONTINUE. "Skip unknown operations
       ENDCASE.
 
-*     Extract entity name
-      ASSIGN COMPONENT 'ENTITY' OF STRUCTURE <fs_json_op> TO <fs_entity>.
+*     Extract entity name (dereference value reference)
+      ASSIGN COMPONENT 'ENTITY' OF STRUCTURE <json_op> TO <fs_entity>.
       IF sy-subrc = 0.
-        ls_operation-entity_name = to_upper( CONV string( <fs_entity> ) ).
+        ls_operation-entity_name = to_upper( CONV string( <fs_entity>->* ) ).
       ELSE.
         CONTINUE. "Skip operations without entity
       ENDIF.
 
-*     Extract sub_name (for CREATE_BY or EXECUTE actions)
-      ASSIGN COMPONENT 'SUB_NAME' OF STRUCTURE <fs_json_op> TO <fs_sub_name>.
+*     Extract sub_name for CREATE_BY or EXECUTE (dereference value reference)
+      ASSIGN COMPONENT 'SUB_NAME' OF STRUCTURE <json_op> TO <fs_sub_name>.
       IF sy-subrc = 0.
-        ls_operation-sub_name = to_upper( CONV string( <fs_sub_name> ) ).
+        ls_operation-sub_name = to_upper( CONV string( <fs_sub_name>->* ) ).
       ENDIF.
 
-*     Extract instances array
-      ASSIGN COMPONENT 'INSTANCES' OF STRUCTURE <fs_json_op> TO <fs_instances>.
+*     Extract instances array and dereference
+      ASSIGN COMPONENT 'INSTANCES' OF STRUCTURE <json_op> TO <fs_instances>.
       IF sy-subrc <> 0.
         CONTINUE. "Skip operations without instances
       ENDIF.
 
-      ASSIGN <fs_instances> TO <ft_instances>.
+*     Dereference instances array (component value is reference to table)
+      ASSIGN <fs_instances>->* TO <ft_instances>.
 
 *     Create typed target table using cl_abap_behvdescr
       TRY.
@@ -466,29 +521,55 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 
       ASSIGN lr_instances->* TO <ft_target_table>.
 
-*     Process each instance
+*     Get key fields for this entity (for %control filtering)
+      DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
+      DATA(lt_key_fields) = lo_metadata->get_key_fields( iv_name = ls_operation-entity_name ).
+
+*     Process each instance from JSON and map to typed EML structure
+      DATA(lv_instance_counter) = 0.
       LOOP AT <ft_instances> ASSIGNING <fs_instance>.
+        lv_instance_counter = lv_instance_counter + 1.
+*       Dereference instance element (array element -> structure)
+        ASSIGN <fs_instance>->* TO FIELD-SYMBOL(<json_instance>).
+        IF sy-subrc <> 0.
+          CONTINUE. "Skip invalid instance elements
+        ENDIF.
+
         APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
 
-*       Get structure components
-        DATA(lo_struct_descr) = CAST cl_abap_structdescr(
-          cl_abap_typedescr=>describe_by_data( <fs_target> ) ).
+*       Get structure components of JSON instance (more efficient: iterate over fewer fields)
+        DATA(lo_json_descr) = CAST cl_abap_structdescr(
+          cl_abap_typedescr=>describe_by_data( <json_instance> ) ).
 
-*       Map JSON fields to structure fields
-        LOOP AT lo_struct_descr->components INTO DATA(ls_comp).
-          DATA(lv_comp_name) = to_upper( ls_comp-name ).
+*       Map each JSON field to corresponding EML structure field
+*       Performance: iterate through JSON fields (typically 5-10) instead of target fields (80-100)
+        LOOP AT lo_json_descr->components INTO DATA(ls_json_comp).
+          DATA(lv_field_name) = to_upper( ls_json_comp-name ).
 
-*         Try to find matching field in JSON (case-insensitive)
-          ASSIGN COMPONENT lv_comp_name OF STRUCTURE <fs_instance> TO <fs_value>.
+*         Get JSON field value
+          ASSIGN COMPONENT lv_field_name OF STRUCTURE <json_instance> TO <fs_value>.
+          IF sy-subrc <> 0.
+            CONTINUE.
+          ENDIF.
+
+*         Try to assign to target EML structure
+          ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_target> TO <fs_field>.
           IF sy-subrc = 0.
-            ASSIGN COMPONENT lv_comp_name OF STRUCTURE <fs_target> TO <fs_field>.
+*           Dereference field value (component values are also references)
+            ASSIGN <fs_value>->* TO FIELD-SYMBOL(<actual_value>).
             IF sy-subrc = 0.
+              <fs_field> = <actual_value>.
+            ELSE.
+*             Not a reference, use direct value (fallback for edge cases)
               <fs_field> = <fs_value>.
+            ENDIF.
 
-*             Set %control field if present
+*           Set %control field if present (skip key fields - they're for identification, not modification)
+            DATA(lv_is_key_field) = xsdbool( line_exists( lt_key_fields[ name = lv_field_name ] ) ).
+            IF lv_is_key_field = abap_off.
               ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_control_struct>).
               IF sy-subrc = 0.
-                ASSIGN COMPONENT lv_comp_name OF STRUCTURE <fs_control_struct> TO FIELD-SYMBOL(<fs_control_field>).
+                ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_control_struct> TO FIELD-SYMBOL(<fs_control_field>).
                 IF sy-subrc = 0.
                   <fs_control_field> = if_abap_behv=>mk-on.
                 ENDIF.
@@ -496,6 +577,26 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
             ENDIF.
           ENDIF.
         ENDLOOP.
+
+*       Auto-fill %CID for CREATE operations if not provided or initial
+        IF ls_operation-op = if_abap_behv=>op-m-create.
+          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_cid>).
+          IF sy-subrc = 0 AND <fs_cid> IS INITIAL.
+*           Generate unique CID: AUTO-{step}-{instance}
+            <fs_cid> = |AUTO-{ sy-datum }{ sy-uzeit }-{ lv_instance_counter }|.
+            me->mo_run_environment->append_log( |Auto-generated %CID: { <fs_cid> }| ).
+          ENDIF.
+        ENDIF.
+
+*       Auto-fill %CID for CREATE_BY operations if not provided or initial
+        IF ls_operation-op = if_abap_behv=>op-m-create_ba.
+          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_target> TO <fs_cid>.
+          IF sy-subrc = 0 AND <fs_cid> IS INITIAL.
+*           Generate unique CID for child entity
+            <fs_cid> = |AUTO-{ sy-datum }{ sy-uzeit }-{ lv_instance_counter }|.
+            me->mo_run_environment->append_log( |Auto-generated %CID for CREATE_BY: { <fs_cid> }| ).
+          ENDIF.
+        ENDIF.
       ENDLOOP.
 
 *     Store operation with instances
@@ -505,6 +606,94 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     ENDLOOP.
 
     me->mo_run_environment->append_log( |Total operations created: { lines( et_operations ) }| ).
+
+  ENDMETHOD.
+
+
+  METHOD extract_document_ids.
+*   Extract document IDs from PID_MAPPED (real keys) or MAPPED (preliminary keys)
+*   Pattern follows cl_ptf_bo_rap_generic=>retr_doc_id_from_pid_mapped + retrieve_doc_id_from_mapped
+*
+*   Flow: MODIFY returns %PID -> COMMIT converts to real keys -> stored in PID_MAPPED
+*   Priority: PID_MAPPED (final keys) > MAPPED (preliminary/temporary keys)
+    DATA: lv_ptf_key      TYPE ptfkey,
+          lo_metadata     TYPE REF TO cl_ptf_rap_metadata.
+
+    FIELD-SYMBOLS: <fs_entries>    TYPE STANDARD TABLE,
+                   <fs_entry>      TYPE any,
+                   <fs_field>      TYPE any,
+                   <fs_pid_mapped> TYPE if_ptf_bo_rap_generic_eml=>ts_pid_mapped.
+
+    CLEAR ev_document_id.
+
+*   Try to get document IDs from PID_MAPPED first (real keys after commit)
+    LOOP AT it_pid_mapped ASSIGNING <fs_pid_mapped> WHERE root_name = iv_entity.
+      IF <fs_pid_mapped>-key IS NOT INITIAL.
+        APPEND <fs_pid_mapped>-key TO ev_document_id.
+      ENDIF.
+    ENDLOOP.
+
+*   If we got keys from PID_MAPPED, we're done
+    IF ev_document_id IS NOT INITIAL.
+      me->mo_run_environment->append_log( |Extracted { lines( ev_document_id ) } document ID(s) from PID_MAPPED (real keys)| ).
+      RETURN.
+    ENDIF.
+
+*   Fallback: Extract from MAPPED (for entities without late numbering)
+    me->mo_run_environment->append_log( |No PID_MAPPED entries, falling back to MAPPED table| ).
+
+    IF NOT line_exists( it_mapped[ entity_name = iv_entity ] ).
+      me->mo_run_environment->append_log( |No MAPPED entries found for entity { iv_entity }| ).
+      RETURN.
+    ENDIF.
+
+*   Get key field metadata
+    lo_metadata = NEW cl_ptf_rap_metadata( ).
+    DATA(lt_components) = lo_metadata->get_key_fields( iv_name = iv_entity ).
+
+    IF lt_components IS INITIAL.
+      me->mo_run_environment->append_log( |No key fields found for entity { iv_entity }| ).
+      RETURN.
+    ENDIF.
+
+*   Extract entries from MAPPED
+    DATA(lr_entries) = it_mapped[ entity_name = iv_entity ]-entries.
+    ASSIGN lr_entries->* TO <fs_entries>.
+
+    IF <fs_entries> IS NOT ASSIGNED.
+      me->mo_run_environment->append_log( |Could not access MAPPED entries for entity { iv_entity }| ).
+      RETURN.
+    ENDIF.
+
+*   Process each mapped entry (could be multiple creates)
+    LOOP AT <fs_entries> ASSIGNING <fs_entry>.
+      CLEAR lv_ptf_key.
+
+*     Build PTF key from key field values
+      LOOP AT lt_components ASSIGNING FIELD-SYMBOL(<fs_component>).
+        DATA(lv_tabix) = sy-tabix.
+
+        ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_entry> TO <fs_field>.
+        IF sy-subrc = 0.
+          IF lv_tabix = 1.
+            lv_ptf_key = <fs_field>.
+          ELSE.
+*           Concatenate with delimiter
+            lv_ptf_key = |{ lv_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_field> }|.
+          ENDIF.
+        ENDIF.
+      ENDLOOP.
+
+*     Don't add temporary keys (ex. %00000000001) - indicated by $ or %
+      IF lv_ptf_key IS NOT INITIAL AND lv_ptf_key NA '$%'.
+        APPEND lv_ptf_key TO ev_document_id.
+        me->mo_run_environment->append_log( |Extracted key from MAPPED: { lv_ptf_key }| ).
+      ENDIF.
+    ENDLOOP.
+
+    IF ev_document_id IS INITIAL.
+      me->mo_run_environment->append_log( |No valid keys found in MAPPED (only temporary keys like %PID or %00000001)| ).
+    ENDIF.
 
   ENDMETHOD.
 ENDCLASS.

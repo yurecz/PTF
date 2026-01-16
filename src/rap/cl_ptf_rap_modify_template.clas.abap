@@ -165,8 +165,8 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     rv_json = |{ rv_json }    "instances": [{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
 
-*   Add optional ref field
-    rv_json = |{ rv_json }        "ref": "new-1",{ cl_abap_char_utilities=>newline }|.
+*   Add optional %CID field for content ID
+    rv_json = |{ rv_json }        "%CID": "new-1",{ cl_abap_char_utilities=>newline }|.
 
 *   Add entity fields
     DATA(lv_fields) = get_entity_fields(
@@ -195,16 +195,18 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     rv_json = |{ rv_json }    "instances": [{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
 
-*   Add key structure
-    rv_json = |{ rv_json }        "key": \{{ cl_abap_char_utilities=>newline }|.
-
+*   Add key fields directly (for identification - NOT marked for update in %control)
     DATA(lv_keys) = get_entity_fields(
       iv_entity      = iv_entity
       it_permissions = it_permissions
       iv_only_keys   = abap_on ).
 
     rv_json = |{ rv_json }{ lv_keys }|.
-    rv_json = |{ rv_json }        \},{ cl_abap_char_utilities=>newline }|.
+
+*   Add separator if keys were added
+    IF lv_keys IS NOT INITIAL.
+      rv_json = |{ rv_json },{ cl_abap_char_utilities=>newline }|.
+    ENDIF.
 
 *   Add fields to update (exclude keys since they're already in key section)
     DATA(lv_fields) = get_entity_fields(
@@ -234,8 +236,8 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     rv_json = |{ rv_json }    "instances": [{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
 
-*   Only key fields for DELETE
-    rv_json = |{ rv_json }        "key": \{{ cl_abap_char_utilities=>newline }|.
+*   Only parent key fields for DELETE
+    rv_json = |{ rv_json }        "%pky": \{{ cl_abap_char_utilities=>newline }|.
 
     DATA(lv_keys) = get_entity_fields(
       iv_entity      = iv_entity

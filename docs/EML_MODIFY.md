@@ -49,6 +49,7 @@ The valid field spec expressions and required table components depend on the ope
 - Table type: `TABLE FOR UPDATE bdef`
 - Components: `%cid_ref`, `%control`, `%data`, `%key`, `%pky`, `%tky`
 - Note: for `FROM`, `%control` must be filled explicitly.
+- **Key fields for identification**: Key fields can be specified directly in instances (not wrapped in `%pky`). They are used to identify the record to update and are NOT marked for modification in `%control`.
 
 ### DELETE
 - Field spec: `FROM`
@@ -74,21 +75,18 @@ Given a BDEF name in the PTF step (for example `R_LstMiRouteTP`), we can build a
 The template can then be structured so that:
 - Data-changing operations use instance-level fields (flat) inside `instances`.
 - Actions accept their input fields directly on the operation (mapped to `%param`).
-- Keys are provided separately as `key` for update/delete.
 
 Example skeleton for `R_LstMiRouteTP` (BDEF-driven):
 
 ```json
 [
   {
-    "_comment": "JSON MODIFY Example for RAP BO R_LstMiRouteTP",
+    "_comment": "JSON MODIFY Example for RAP BO R_LstMiRouteTP - UPDATE with direct key specification",
     "op": "UPDATE",
     "entity": "R_LstMiRouteTP",
     "instances": [
       {
-        "key": {
-          "LastMileRouteUUID": "..."
-        },
+        "LastMileRouteUUID": "...",
         "LastMileRouteDepartureLocation": "..."
       }
     ]
@@ -108,9 +106,7 @@ Example skeleton for `R_LstMiRouteTP` (BDEF-driven):
     "op": "EXECUTE",
     "entity": "R_LstMiRteCheckOutTP",
     "sub_name": "AssignCheckOutLoadRequest",
-    "key": {
-      "LastMileRouteCheckOutUUID": "..."
-    },
+    "LastMileRouteCheckOutUUID": "...",
     "ParamFieldA": "...",
     "ParamFieldB": "..."
   }
@@ -143,12 +139,12 @@ The `parent_ref` is a local reference used to wire `%cid_ref` internally; users 
 ```json
 [
   {
-    "_comment": "CREATE BY association example (CID auto-generated)",
+    "_comment": "CREATE BY association example (using EML field names)",
     "op": "CREATE",
     "entity": "R_LstMiRouteTP",
     "instances": [
       {
-        "ref": "route-1",
+        "%CID": "route-1",
         "LastMileRouteType": "...",
         "LastMileRouteCategory": "..."
       }
@@ -160,7 +156,7 @@ The `parent_ref` is a local reference used to wire `%cid_ref` internally; users 
     "sub_name": "_Visit",
     "instances": [
       {
-        "parent_ref": "route-1",
+        "%CID_REF": "route-1",
         "LastMileRouteStopType": "...",
         "LastMileRouteStopSequenceValue": "..."
       }
@@ -170,9 +166,9 @@ The `parent_ref` is a local reference used to wire `%cid_ref` internally; users 
 ```
 
 Rules:
-- `ref` is set per instance and is only needed when a child needs to reference a parent created in the same payload.
+- `%CID` is set per instance and is only needed when a child needs to reference a parent created in the same payload.
 - If instances need different parents, split them into multiple `CREATE_BY` operations (one per parent).
-- Use `parent_ref` for parents created in the same payload; for existing parents, use `key` on the child instance.
+- Use `%CID_REF` for parents created in the same payload; for existing parents, specify key fields directly.
 
 Single payload example with both cases:
 
@@ -184,7 +180,7 @@ Single payload example with both cases:
     "entity": "R_LstMiRouteTP",
     "instances": [
       {
-        "ref": "route-1",
+        "%CID": "route-1",
         "LastMileRouteType": "...",
         "LastMileRouteCategory": "..."
       }
@@ -196,7 +192,7 @@ Single payload example with both cases:
     "sub_name": "_Visit",
     "instances": [
       {
-        "parent_ref": "route-1",
+        "%CID_REF": "route-1",
         "LastMileRouteStopType": "...",
         "LastMileRouteStopSequenceValue": "..."
       }
@@ -208,9 +204,7 @@ Single payload example with both cases:
     "sub_name": "_Visit",
     "instances": [
       {
-        "key": {
-          "LastMileRouteUUID": "...existing..."
-        },
+        "LastMileRouteUUID": "...existing...",
         "LastMileRouteStopType": "...",
         "LastMileRouteStopSequenceValue": "..."
       }
@@ -227,7 +221,7 @@ Multi-level create example (root -> Visit -> VisitDlv -> VisitDlvItem):
     "op": "CREATE",
     "entity": "R_LstMiRouteTP",
     "instances": [
-      { "ref": "route-1", "LastMileRouteType": "...", "LastMileRouteCategory": "..." }
+      { "%CID": "route-1", "LastMileRouteType": "...", "LastMileRouteCategory": "..." }
     ]
   },
   {
@@ -235,7 +229,7 @@ Multi-level create example (root -> Visit -> VisitDlv -> VisitDlvItem):
     "entity": "R_LstMiRouteTP",
     "sub_name": "_Visit",
     "instances": [
-      { "ref": "visit-1", "parent_ref": "route-1", "LastMileRouteStopType": "...", "LastMileRouteStopSequenceValue": "..." }
+      { "%CID": "visit-1", "%CID_REF": "route-1", "LastMileRouteStopType": "...", "LastMileRouteStopSequenceValue": "..." }
     ]
   },
   {
@@ -243,7 +237,7 @@ Multi-level create example (root -> Visit -> VisitDlv -> VisitDlvItem):
     "entity": "R_LstMiRteVisitTP",
     "sub_name": "_CustomerDelivery",
     "instances": [
-      { "ref": "dlv-1", "parent_ref": "visit-1", "LastMileRouteDocumentType": "...", "DeliveryDocument": "..." }
+      { "%CID": "dlv-1", "%CID_REF": "visit-1", "LastMileRouteDocumentType": "...", "DeliveryDocument": "..." }
     ]
   },
   {
@@ -251,7 +245,7 @@ Multi-level create example (root -> Visit -> VisitDlv -> VisitDlvItem):
     "entity": "R_LstMiRouteVisitCustDlvTP",
     "sub_name": "_Item",
     "instances": [
-      { "parent_ref": "dlv-1", "DeliveryDocumentItem": "...", "ProductID": "...", "LastMileRoutePlannedQuantity": "..." }
+      { "%CID_REF": "dlv-1", "DeliveryDocumentItem": "...", "ProductID": "...", "LastMileRoutePlannedQuantity": "..." }
     ]
   }
 ]
@@ -267,9 +261,7 @@ Single operation (single object instead of array):
   "entity": "R_LstMiRouteTP",
   "instances": [
     {
-      "key": {
-        "LastMileRouteUUID": "..."
-      },
+      "LastMileRouteUUID": "...",
       "LastMileRouteDepartureLocation": "..."
     }
   ]
@@ -283,9 +275,7 @@ Single instance (no `instances` array):
   "op": "UPDATE",
   "entity": "R_LstMiRouteTP",
   "instance": {
-    "key": {
-      "LastMileRouteUUID": "..."
-    },
+    "LastMileRouteUUID": "...",
     "LastMileRouteDepartureLocation": "..."
   }
 }

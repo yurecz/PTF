@@ -132,6 +132,61 @@ CLASS cl_singleton DEFINITION
 
 **Why POJO?** Simpler instantiation, easier testing, clearer dependencies, less coupling.
 
+## CRITICAL: /ui2/cl_json nested references behavior
+
+**⚠️ When using `/ui2/cl_json=>deserialize` with generic `REF TO data` (no compile-time type):**
+
+The deserializer creates **NESTED REFERENCES at ALL levels**, regardless of the `assoc_arrays` parameter:
+- Each array element is a reference: `<fs_element>->*` required
+- Each structure component VALUE is a reference: `<fs_field>->*` required  
+- Nested arrays are references: `<fs_array>->*` required
+- This applies recursively to all nested structures
+
+**The `assoc_arrays` parameter only controls:**
+- How arrays are represented (associative vs standard tables)
+- NOT whether values are wrapped in references
+
+**Example - Multi-level dereferencing required:**
+```abap
+DATA lr_json_data TYPE REF TO data.
+
+/ui2/cl_json=>deserialize(
+  EXPORTING json = lv_json assoc_arrays = abap_off
+  CHANGING data = lr_json_data ).
+
+ASSIGN lr_json_data->* TO <ft_operations>.
+
+LOOP AT <ft_operations> ASSIGNING <fs_op>.
+  " Level 1: Dereference array element to get structure
+  ASSIGN <fs_op>->* TO <ls_operation>.
+  
+  " Level 2: Dereference structure component to get value
+  ASSIGN COMPONENT 'FIELD' OF STRUCTURE <ls_operation> TO <fs_field>.
+  DATA(lv_value) = CONV string( <fs_field>->* ).  " Must dereference!
+  
+  " Level 3: Nested arrays also need dereferencing
+  ASSIGN COMPONENT 'ITEMS' OF STRUCTURE <ls_operation> TO <fs_items>.
+  ASSIGN <fs_items>->* TO <ft_items>.  " Dereference array
+  
+  LOOP AT <ft_items> ASSIGNING <fs_item>.
+    ASSIGN <fs_item>->* TO <ls_item>.  " Dereference element
+    " ... and so on recursively
+  ENDLOOP.
+ENDLOOP.
+```
+
+**Why this happens:**
+- Without compile-time type information, the deserializer can't know the target structure
+- It creates a fully dynamic structure with references at every level
+- This allows maximum flexibility but requires explicit dereferencing
+
+**Best practice:**
+- Add TRY-CATCH for `cx_sy_assign_illegal_cast` as safe fallback
+- Use inline comments to document each dereferencing level
+- See `src/rap/cl_ptf_rap_modify_executor.clas.abap` method `deserialize_json` for complete example
+
+**Reference:** https://github.com/SAP/abap-to-json/blob/main/docs/data-access.md
+
 ## Working style
 - Keep patches small and scoped to the requested change.
 - Do not reformat unrelated ABAP code.
