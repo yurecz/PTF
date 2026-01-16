@@ -469,6 +469,95 @@ Extracted document ID: 0000000123
 
 ## RAP-Specific Components
 
+### cl_ptf_rap_modify_executor (MODIFY Action Execution)
+
+**Purpose**: Deserializes JSON and executes RAP MODIFY operations (CREATE/UPDATE/DELETE/EXECUTE)
+
+**Key Methods:**
+
+#### execute() - Main Orchestration
+```
+1. Get step data (json_file contains EML operations array)
+2. deserialize_json() → operations table (ABP_BEHV_CHANGES_TAB)
+3. mo_eml->modify_entities() → Execute EML MODIFY ENTITIES OPERATIONS
+4. collect_messages() → Extract messages from REPORTED
+5. handle_operations_error() → Check FAILED table
+6. commit_entities() → COMMIT ENTITIES with PID conversion
+7. extract_document_ids() → Get real keys from PID_MAPPED/MAPPED
+```
+
+#### deserialize_json() - JSON to EML Operations
+```
+1. Parse JSON array with /ui2/cl_json=>deserialize
+   - Creates nested references at ALL levels
+   
+2. Loop through JSON operations:
+   - Extract 'op' code → map to if_abap_behv constants
+   - Extract 'entity' name → target BO entity
+   - Extract 'sub_name' → for CREATE_BY/EXECUTE
+   - Extract 'instances' array → dereferenced to table
+   
+3. Create typed EML structure:
+   - cl_abap_behvdescr=>create_data(p_op=... p_name=... p_kind=...)
+   - Returns correctly typed structure for operation
+   
+4. Map JSON fields to EML structure:
+   - Iterate JSON components (5-10 fields, not target 80-100)
+   - Dereference: <fs_value>->* → <actual_value>
+   - Direct assignment: <fs_field> = <actual_value>
+   - NO CONVERSION: UUID x16 passed as-is
+   
+5. Set %control for UPDATE operations:
+   - Get key fields: lo_metadata->get_key_fields()
+   - Skip key fields (identification only)
+   - Mark non-key fields: <fs_control_field> = if_abap_behv=>mk-on
+   
+6. Auto-generate %CID if missing:
+   - Format: AUTO-{YYYYMMDD}{HHMMSS}-{counter}
+   - For CREATE and CREATE_BY operations
+```
+
+**UUID Handling:**
+- **No conversion applied** - Direct assignment from JSON to EML structure
+- JSON value must already be in **x16 format** (32 hex chars, no hyphens)
+- Example: `"NOTEBASICUUID": "42010AEF83EE1FE0BCE4BDE0DDB24D36"`
+- Assignment: `<fs_field> = <actual_value>` where actual_value is the x16 string
+- ABAP runtime handles x16 string → sysuuid_x16 type conversion automatically
+
+**Key Field Detection:**
+- Uses `cl_ptf_rap_metadata->get_key_fields(iv_name = entity_name)`
+- Returns `abap_component_tab` with key field names
+- Key fields in UPDATE:
+  * Present in instances for record identification
+  * NOT marked in %control (excluded from modification)
+  * Used to populate %key/%tky automatically by EML runtime
+
+### cl_ptf_bo_rap_generic_eml (EML Wrapper)
+
+**Purpose**: Direct EML execution wrapper
+
+**Method: modify_entities()**
+```abap
+METHOD if_ptf_bo_rap_generic_eml~modify_entities.
+  MODIFY ENTITIES
+    OPERATIONS ct_operations
+    FAILED et_failed
+    MAPPED et_mapped
+    REPORTED et_reported.
+ENDMETHOD.
+```
+
+**No additional logic** - Pure passthrough to EML
+- Operations table already correctly typed from deserialize_json
+- EML runtime handles:
+  * Type validation
+  * %control interpretation
+  * Key field extraction (%key/%tky/%pky)
+  * Early/late numbering
+  * Authorization checks
+  * Feature control
+  * Validations and determinations
+
 ### cl_ptf_rap_metadata
 
 **Purpose**: RAP BO structure introspection
