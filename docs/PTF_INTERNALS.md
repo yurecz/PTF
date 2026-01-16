@@ -526,92 +526,18 @@ Extracted document ID: 0000000123
 - Assignment: `<fs_field> = <actual_value>` where actual_value is the x16 string
 - ABAP runtime handles x16 string → sysuuid_x16 type conversion automatically
 
-**Key Field Detection:**
+**Key Field Detection (Code Fact):**
 - Uses `cl_ptf_rap_metadata->get_key_fields(iv_name = entity_name)`
 - Returns `abap_component_tab` with key field names (multiple components for compound keys)
-- Key fields in UPDATE:
-  * Present in instances for record identification
-  * NOT marked in %control (excluded from modification)
-  * Used to populate %key/%tky automatically by EML runtime
-
-**Compound Key Handling (Multiple Key Components):**
-
-**Note:** The examples below show RAP operations (CREATE, UPDATE, DELETE) within the PTF MODIFY action, not separate PTF CREATE/UPDATE/DELETE actions.
-
-**RAP CREATE Operation (within MODIFY):**
-```
-JSON with compound key:
-{
-  "op": "CREATE",
-  "entity": "I_ProductionSupplyAreaTP", 
-  "instances": [{
-    "ProductionSupplyArea": "TEST_ARE01",  // Key field 1
-    "ProductionSupplyAreaVersion": "0001", // Key field 2
-    "ProductionSupplyAreaName": "Test Area"
-  }]
-}
-
-Flow:
-1. All key fields assigned to EML structure
-2. EML runtime populates %key structure with both fields
-3. COMMIT returns both key values in MAPPED
-
-Result extraction:
-- extract_document_ids() loops through key components
-- Concatenates: "TEST_ARE01|0001" (using | delimiter)
-- Stored in document_id for reference steps
-```
-
-**RAP UPDATE Operation (within MODIFY):**
-```
-JSON with compound key (in MODIFY operations array):
-{
-  "op": "UPDATE",
-  "entity": "I_ProductionSupplyAreaTP",
-  "instances": [{
-    "ProductionSupplyArea": "TEST_ARE01",       // Key 1 - identification
-    "ProductionSupplyAreaVersion": "0001",      // Key 2 - identification  
-    "ProductionSupplyAreaName": "Updated Name"  // Data field - modification
-  }]
-}
-
-Flow:
-1. get_key_fields() returns: [ProductionSupplyArea, ProductionSupplyAreaVersion]
-2. Both key fields assigned to <fs_target>
-3. %control check: lv_is_key_field for EACH field
-   - ProductionSupplyArea: SKIPPED (key field, no %control mark)
-   - ProductionSupplyAreaVersion: SKIPPED (key field, no %control mark)
-   - ProductionSupplyAreaName: MARKED (data field, %control-ProductionSupplyAreaName = mk-on)
-4. EML runtime:
-   - Extracts both key values → populates %key/%tky
-   - Uses both values to identify record
-   - Only updates ProductionSupplyAreaName
-```
-
-**RAP DELETE Operation (within MODIFY):**
-```
-JSON with compound key (in MODIFY operations array):
-{
-  "op": "DELETE",
-  "entity": "I_ProductionSupplyAreaTP",
-  "instances": [{
-    "ProductionSupplyArea": "TEST_ARE01",   // Key 1
-    "ProductionSupplyAreaVersion": "0001"   // Key 2
-  }]
-}
-
-Flow:
-1. Both key fields assigned to DELETE structure
-2. EML runtime extracts to %key/%tky
-3. Uses both values to identify record for deletion
-```
+- In `deserialize_json()` method: loops through key components, checks if field is key field
+- If key field detected: skip marking in %control (lines 569-577)
 
 **Key Delimiter Constant:**
 ```abap
 cl_ptf_util=>gc_key_field_delimiter = '|'  "Pipe character
 ```
 
-**Example Compound Key Extraction:**
+**Document ID Extraction Code (extract_document_ids method):**
 ```abap
 "From extract_document_ids() method (lines 673-684):
 LOOP AT lt_components ASSIGNING <fs_component>.
@@ -619,19 +545,19 @@ LOOP AT lt_components ASSIGNING <fs_component>.
   ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_entry> TO <fs_field>.
   IF sy-subrc = 0.
     IF lv_tabix = 1.
-      lv_ptf_key = <fs_field>.              "First key: TEST_ARE01"
+      lv_ptf_key = <fs_field>.
     ELSE.
-      lv_ptf_key = |{ lv_ptf_key }|{ <fs_field> }|.  "Result: TEST_ARE01|0001"
+      lv_ptf_key = |{ lv_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_field> }|.
     ENDIF.
   ENDIF.
 ENDLOOP.
 ```
 
-**Important Notes:**
-- **All key components must be provided** in JSON for UPDATE/DELETE
-- **Order doesn't matter** - EML matches by field name, not position
-- **Delimiter only in document_id** - not in JSON or EML structures
-- **Referenced steps**: When using reference_step, PTF splits document_id by | to restore individual key values
+**What the code does:**
+- Gets key field metadata for entity
+- Loops through MAPPED/PID_MAPPED entries
+- Concatenates key field values with `|` delimiter
+- Filters temporary keys containing `$` or `%`
 
 ### cl_ptf_bo_rap_generic_eml (EML Wrapper)
 
