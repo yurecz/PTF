@@ -135,10 +135,12 @@ Simplified working examples for the RAP MODIFY action in ERX/001 system.
 
 ## Example 4: Compound Keys (Multiple Key Components)
 
+**Context:** RAP operations (UPDATE, DELETE) within PTF MODIFY action
+
 Entity with multiple key fields: `I_ProductionSupplyAreaTP`
 - Key fields: `ProductionSupplyArea` + `ProductionSupplyAreaVersion`
 
-**JSON:**
+**MODIFY Action JSON (with RAP operations):**
 ```json
 [
   {
@@ -167,8 +169,8 @@ Entity with multiple key fields: `I_ProductionSupplyAreaTP`
 ```
 
 **Compound Key Behavior:**
-- **All key components must be specified** for UPDATE/DELETE operations
-- Key fields used for record identification only (NOT modified in UPDATE)
+- **All key components must be specified** for RAP UPDATE/DELETE operations (within MODIFY)
+- Key fields used for record identification only (NOT modified in RAP UPDATE)
 - `%control` marks only non-key fields (`ProductionSupplyAreaName`, `ProductionSupplyAreaIsActive`)
 - EML runtime automatically combines key fields into `%key`/`%tky` structure
 - PTF stores document_id as concatenated string: `"TEST_ARE01|0001"` (for internal reference using pipe delimiter)

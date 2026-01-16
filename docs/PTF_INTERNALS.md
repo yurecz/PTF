@@ -534,7 +534,9 @@ Extracted document ID: 0000000123
 
 **Compound Key Handling (Multiple Key Components):**
 
-**CREATE Operation:**
+**Note:** The examples below show RAP operations (CREATE, UPDATE, DELETE) within the PTF MODIFY action, not separate PTF CREATE/UPDATE/DELETE actions.
+
+**RAP CREATE Operation (within MODIFY):**
 ```
 JSON with compound key:
 {
@@ -558,9 +560,9 @@ Result extraction:
 - Stored in document_id for reference steps
 ```
 
-**UPDATE Operation:**
+**RAP UPDATE Operation (within MODIFY):**
 ```
-JSON with compound key:
+JSON with compound key (in MODIFY operations array):
 {
   "op": "UPDATE",
   "entity": "I_ProductionSupplyAreaTP",
@@ -584,9 +586,9 @@ Flow:
    - Only updates ProductionSupplyAreaName
 ```
 
-**DELETE Operation:**
+**RAP DELETE Operation (within MODIFY):**
 ```
-JSON with compound key:
+JSON with compound key (in MODIFY operations array):
 {
   "op": "DELETE",
   "entity": "I_ProductionSupplyAreaTP",

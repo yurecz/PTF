@@ -1,6 +1,13 @@
-# Compound Keys in PTF RAP MODIFY
+# Compound Keys in PTF MODIFY Action
 
 ## Summary
+
+This document explains compound key handling for **RAP operations within the PTF MODIFY action**.
+
+**Important Distinction:**
+- **PTF Actions**: CREATE, UPDATE, DELETE, EXECUTE, **MODIFY** - Framework-level test actions
+- **RAP Operations**: CREATE, UPDATE, DELETE, EXECUTE - Low-level EML operations inside MODIFY's `operations` array
+- **This document covers**: RAP operations (op: "CREATE", op: "UPDATE", etc.) within PTF MODIFY action
 
 When a RAP Business Object entity has **multiple key components** (compound key), PTF handles them transparently. All key fields must be specified individually in JSON, but PTF concatenates them internally for document tracking purposes.
 
@@ -12,13 +19,13 @@ cl_ptf_util=>gc_key_field_delimiter = '|'  "Pipe character
 
 All compound keys are concatenated using the pipe `|` delimiter.
 
-## CREATE Operation with Compound Keys
+## RAP CREATE Operation (within MODIFY) with Compound Keys
 
 **Example Entity:** `I_ProductionSupplyAreaTP`
 - Key Field 1: `ProductionSupplyArea`
 - Key Field 2: `ProductionSupplyAreaVersion`
 
-**JSON Format:**
+**MODIFY Action JSON with RAP CREATE Operation:**
 ```json
 {
   "op": "CREATE",
@@ -43,9 +50,9 @@ All compound keys are concatenated using the pipe `|` delimiter.
 5. `COMMIT ENTITIES` returns both keys in `MAPPED` table
 6. PTF concatenates keys for document_id: `"TEST_ARE01|0001"`
 
-## UPDATE Operation with Compound Keys
+## RAP UPDATE Operation (within MODIFY) with Compound Keys
 
-**JSON Format:**
+**MODIFY Action JSON with RAP UPDATE Operation:**
 ```json
 {
   "op": "UPDATE",
@@ -75,9 +82,9 @@ All compound keys are concatenated using the pipe `|` delimiter.
 4. EML runtime extracts keys → populates `%key`/`%tky` → identifies record
 5. Only `ProductionSupplyAreaName` updated (marked in %control)
 
-## DELETE Operation with Compound Keys
+## RAP DELETE Operation (within MODIFY) with Compound Keys
 
-**JSON Format:**
+**MODIFY Action JSON with RAP DELETE Operation:**
 ```json
 {
   "op": "DELETE",
@@ -141,13 +148,14 @@ ENDLOOP.
 ## Important Rules
 
 ### ✅ Required Behavior
-- **All key components MUST be specified** in JSON for UPDATE/DELETE operations
-- Key fields used for identification only (never modified in UPDATE)
+- **All key components MUST be specified** in JSON for RAP UPDATE/DELETE operations (within MODIFY)
+- Key fields used for identification only (never modified in RAP UPDATE)
 - Order doesn't matter - EML matches by field name, not position
-- PTF automatically detects and handles compound keys
+- PTF automatically detects and handles compound keys in MODIFY action
 
 ### ❌ Common Mistakes
-- ❌ Missing key components: JSON must include ALL key fields
+- ❌ Confusing PTF actions with RAP operations: This applies to RAP operations within MODIFY, not PTF CREATE/UPDATE/DELETE actions
+- ❌ Missing key components: JSON must include ALL key fields for RAP UPDATE/DELETE
 - ❌ Trying to update key fields: Keys excluded from %control, EML won't update them
 - ❌ Wrong delimiter in JSON: Don't concatenate keys in JSON (specify individually)
 - ❌ Assuming single key: Always check entity metadata for all key components
@@ -169,8 +177,8 @@ ENDLOOP.
 
 2. Create test in `/n/ptf/run`:
    - BO: Entity with compound key
-   - Action: `MODIFY`
-   - JSON: Include all key fields for UPDATE/DELETE
+   - **Action: `MODIFY`** (not CREATE/UPDATE/DELETE - those are different PTF actions)
+   - JSON: Array of operations, include all key fields for RAP UPDATE/DELETE operations
 
 3. Check logs:
    - `Extracted document ID: KEY1|KEY2|...`
