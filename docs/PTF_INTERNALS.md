@@ -104,6 +104,35 @@ END OF ty_outtab.
 8. Log execution to Application Log
 ```
 
+### ABAP Unit (AUnit) as Execution Container
+
+PTF is an **integration test framework** for end-to-end business processes (e.g., SD → LE → TM → EWM → LMD → FI). Steps frequently execute **inside ABAP Unit sessions** to leverage AUnit's controlled execution container and permission/risk-level checks.
+
+**Why AUnit:**
+- Provides controlled execution environment
+- Reuses AUnit permission/risk-level checks for productive integration tests
+- Enables client-specific configuration via `SAUNIT_CLIENT_SETUP`
+
+**Implementation:**
+- Run orchestration: `cl_ptf_run.clas.abap`
+  - AUnit permission/risk checks: Line 357
+  - AUnit session start for full run: Line 388
+  - AUnit container classes: Line 316 (`TCL_PTF_STEP_IN_AU`, `TCL_PTF_FULL_RUN_IN_AU`)
+- Step container: `tcl_ptf_step_in_au.clas.abap`
+  - Imports step data from ABAP memory ID `CG__PTF_STEP`: Line 73
+- Task API wrapper: `cl_ptf_wrapper.clas.abap:371`
+
+**Configuration:**
+- Control parameter `USE_AUNIT` can disable AUnit-per-step mode (read in `cl_ptf_run.clas.abap:314`)
+- One overall AUnit session for whole run in specific cases (logic in `cl_ptf_run.clas.abap:341`)
+- Client configuration and risk level permissions via `SAUNIT_CLIENT_SETUP`
+
+**State Sharing:**
+- Steps running in AUnit sessions use ABAP memory IDs for state sharing
+- Step input fields (`test_data_container`, `variant`, `json_file`) defined in `cl_ptf_util.clas.abap:59`
+- All step attributes must remain serializable through ABAP memory
+- New input mechanisms (e.g., JSON payload) must work with memory export/import
+
 ### 3. BO Class Hierarchy
 
 **Base Interface**: `if_ptf_bo`
