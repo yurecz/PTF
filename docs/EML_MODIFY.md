@@ -50,6 +50,7 @@ The valid field spec expressions and required table components depend on the ope
 - Components: `%cid_ref`, `%control`, `%data`, `%key`, `%pky`, `%tky`
 - Note: for `FROM`, `%control` must be filled explicitly.
 - **Key fields for identification**: Key fields can be specified directly in instances (not wrapped in `%pky`). They are used to identify the record to update and are NOT marked for modification in `%control`.
+- **UUID format**: UUID key fields must use x16 format (32 hex characters without hyphens).
 
 ### DELETE
 - Field spec: `FROM`

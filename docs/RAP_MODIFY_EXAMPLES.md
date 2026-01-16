@@ -25,6 +25,7 @@ Simplified working examples for the RAP MODIFY action in ERX/001 system.
 - **%CID**: Content ID for CREATE operations (auto-generated if omitted)
 - **%CID_REF**: References parent %CID for CREATE_BY operations
 - **Direct key specification**: For UPDATE/DELETE, key fields can be specified directly in instances (not wrapped in %pky). Keys identify the record but are NOT marked for modification in %control.
+- **UUID format**: UUID key fields must use x16 format (32 hex characters without hyphens, e.g., `42010AEF83EE1FE0BCE4BDE0DDB24D36`)
 
 ## Example 1: Sales Order - CREATE with Items
 
@@ -118,6 +119,7 @@ Simplified working examples for the RAP MODIFY action in ERX/001 system.
 - `NOTEBASICUUID` is the key field - used to identify which note to update
 - Key field is NOT marked for modification in `%control`
 - Only `NOTEBASICCOMMENT` is actually updated
+- **UUID format**: UUID key fields must use x16 format (32 hex characters without hyphens, e.g., `42010AEF83EE1FE0BCE4BDE0DDB24D36`)
 
 ## Testing in PTF
 
