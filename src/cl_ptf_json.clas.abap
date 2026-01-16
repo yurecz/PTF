@@ -2347,6 +2347,8 @@ CLASS CL_PTF_JSON IMPLEMENTATION.
               associations = DATA(lt_foreign_associations)
           ).
 
+          DELETE lt_foreign_associations WHERE target_entity = iv_entity. " ERX CG. jan 15,2026
+
           ls_entity = lt_foreign_entities[ name = <fs_association>-target_entity ].
 
           cv_json = |{ cv_json }\{"childEntityName":"{ ls_entity-ext_name }","assocName":"{ <fs_association>-name }"|.

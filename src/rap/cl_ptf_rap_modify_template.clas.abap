@@ -273,7 +273,7 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
           p_name = iv_entity
           p_op   = cl_abap_behvdescr=>op_permission
           p_kind = if_abap_behv=>typekind-result ).
-        
+
         ASSIGN lr_result->* TO <fs_result>.
         IF sy-subrc = 0.
           ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-global OF STRUCTURE <fs_result> TO <fs_global>.
@@ -285,7 +285,7 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
             ENDIF.
           ENDIF.
         ENDIF.
-        
+
         DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
 
       CATCH cx_abap_behvdescr cx_sy_move_cast_error.
