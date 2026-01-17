@@ -48,24 +48,6 @@ CLASS cl_ptf_rap_modify_formatter IMPLEMENTATION.
 *       If field metadata unavailable, continue without field name replacement
     ENDTRY.
 
-*   Replace internal entity names with external names in JSON
-    LOOP AT lt_entities ASSIGNING FIELD-SYMBOL(<fs_entity>).
-      cv_json = replace( val = cv_json pcre = <fs_entity>-name with = <fs_entity>-ext_name case = abap_false occ = 0 ).
-    ENDLOOP.
-
-*   Replace internal action names with external names
-    LOOP AT lt_actions ASSIGNING FIELD-SYMBOL(<fs_action>).
-      cv_json = replace( val = cv_json pcre = <fs_action>-name with = <fs_action>-ext_name case = abap_false occ = 0 ).
-    ENDLOOP.
-
-*   Replace internal field names with external names (using component-suffix for external name)
-    LOOP AT lt_components ASSIGNING FIELD-SYMBOL(<fs_component>).
-      IF <fs_component>-suffix IS NOT INITIAL.
-*       suffix contains the external name from CDS annotations
-        cv_json = replace( val = cv_json pcre = <fs_component>-name with = <fs_component>-suffix case = abap_false occ = 0 ).
-      ENDIF.
-    ENDLOOP.
-
 *   Use /ui2/cl_json to format the JSON with proper indentation
     TRY.
         /ui2/cl_json=>deserialize(
@@ -83,6 +65,25 @@ CLASS cl_ptf_rap_modify_formatter IMPLEMENTATION.
 *       If formatting fails, return original JSON
         RETURN.
     ENDTRY.
+
+*   Replace internal entity names with external names in formatted JSON
+*   Must be done AFTER serialization because /ui2/cl_json uppercases all names
+    LOOP AT lt_entities ASSIGNING FIELD-SYMBOL(<fs_entity>).
+      cv_json = replace( val = cv_json pcre = to_upper( <fs_entity>-name ) with = <fs_entity>-ext_name case = abap_false occ = 0 ).
+    ENDLOOP.
+
+*   Replace internal action names with external names
+    LOOP AT lt_actions ASSIGNING FIELD-SYMBOL(<fs_action>).
+      cv_json = replace( val = cv_json pcre = to_upper( <fs_action>-name ) with = <fs_action>-ext_name case = abap_false occ = 0 ).
+    ENDLOOP.
+
+*   Replace internal field names with external names (using component-suffix for external name)
+    LOOP AT lt_components ASSIGNING FIELD-SYMBOL(<fs_component>).
+      IF <fs_component>-suffix IS NOT INITIAL.
+*       suffix contains the external name from CDS annotations
+        cv_json = replace( val = cv_json pcre = to_upper( <fs_component>-name ) with = <fs_component>-suffix case = abap_false occ = 0 ).
+      ENDIF.
+    ENDLOOP.
 
   ENDMETHOD.
 ENDCLASS.
