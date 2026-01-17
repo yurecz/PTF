@@ -121,6 +121,27 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - Other actions fall through to shared logic after CASE statement
 - This separation is intentional: MODIFY needs fundamentally different JSON structure
 
+### Modern EML syntax (NO legacy wrappers)
+- **DELETE**: Keys directly in instance, NOT wrapped in `%pky`: `{"UUID": "123"}` not `{"%pky": {"UUID": "123"}}`
+- **CREATE_BY (existing parent)**: Parent keys directly in instance, NOT in `"KEY"` structure: `{"ParentID": "123", "ChildField": "value"}`
+- **CREATE_BY (new parent)**: Use `%CID_REF` to reference parent created in same request
+- Legacy `%pky` and `KEY` wrapper support has been removed - use direct field notation
+
+### CREATE_BY composite key handling
+- **Composite keys in legacy BOs** (e.g., Sales Order items): Parent key field serves dual purpose
+  - Identifies parent (for association navigation)
+  - First part of child's composite key
+  - Example: `"SalesOrder"` identifies parent AND is part of item key `(SalesOrder, SalesOrderItem)`
+- **Auto-generated key parts**: Omit field entirely from JSON, BO will generate it
+  - Example: Omit `"SalesOrderItem"` to auto-generate item number
+  - Template shows all key fields for visibility, but they're optional in actual JSON
+
+### JSON formatting
+- MODIFY uses custom character-by-character pretty printer (`cl_ptf_rap_modify_formatter=>pretty_print_json`)
+- Preserves field order (unlike `/ui2/cl_json=>serialize` which alphabetizes)
+- Handles escape sequences correctly inside JSON strings
+- Replaces internal entity/action/field names with external CDS names from DD03ND table
+
 ## Class design guidelines
 
 When creating new ABAP classes, follow **POJO (Plain Old Java Object) methodology**:
