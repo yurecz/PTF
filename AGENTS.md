@@ -121,14 +121,13 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - Other actions fall through to shared logic after CASE statement
 - This separation is intentional: MODIFY needs fundamentally different JSON structure
 
-### Modern EML syntax (NO legacy wrappers)
-- **DELETE**: Keys directly in instance, NOT wrapped in `%pky`: `{"UUID": "123"}` not `{"%pky": {"UUID": "123"}}`
-- **CREATE_BY (existing parent)**: Parent keys directly in instance, NOT in `"KEY"` structure: `{"ParentID": "123", "ChildField": "value"}`
+### Modern EML syntax
+- **DELETE**: Keys directly in instance: `{"UUID": "123"}`
+- **CREATE_BY (existing parent)**: Parent keys directly in instance: `{"ParentID": "123", "ChildField": "value"}`
 - **CREATE_BY (new parent)**: Use `%CID_REF` to reference parent created in same request
-- Legacy `%pky` and `KEY` wrapper support has been removed - use direct field notation
 
 ### CREATE_BY composite key handling
-- **Composite keys in legacy BOs** (e.g., Sales Order items): Parent key field serves dual purpose
+- **Composite keys** (e.g., Sales Order items): Parent key field serves dual purpose
   - Identifies parent (for association navigation)
   - First part of child's composite key
   - Example: `"SalesOrder"` identifies parent AND is part of item key `(SalesOrder, SalesOrderItem)`
