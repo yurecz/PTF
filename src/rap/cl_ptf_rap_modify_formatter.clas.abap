@@ -87,11 +87,19 @@ CLASS cl_ptf_rap_modify_formatter IMPLEMENTATION.
 
 *     Track string context (don't format inside quoted strings)
       IF lv_char = '"' AND lv_escape = abap_false.
-        lv_in_string = xsym( lv_in_string ).
+        IF lv_in_string = abap_true.
+          lv_in_string = abap_false.
+        ELSE.
+          lv_in_string = abap_true.
+        ENDIF.
       ENDIF.
 
       IF lv_char = '\'.
-        lv_escape = xsym( lv_escape ).
+        IF lv_escape = abap_true.
+          lv_escape = abap_false.
+        ELSE.
+          lv_escape = abap_true.
+        ENDIF.
       ELSEIF lv_escape = abap_on.
         lv_escape = abap_off.
       ENDIF.
