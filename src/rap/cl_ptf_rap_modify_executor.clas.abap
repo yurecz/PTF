@@ -619,17 +619,17 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *       Set %control fields for non-key fields
         LOOP AT lt_key_fields INTO DATA(ls_key_field).
           DATA(lv_key_name) = to_upper( ls_key_field-name ).
-          
+
           ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_control_struct>).
           IF sy-subrc = 0.
             LOOP AT lo_json_descr->components INTO ls_json_comp.
               lv_field_name = to_upper( ls_json_comp-name ).
-              
+
 *             Skip key fields - they're for identification, not modification
               IF lv_field_name = lv_key_name.
                 CONTINUE.
               ENDIF.
-              
+
 *             Check if field exists in target and was populated
               ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_target> TO <fs_field>.
               IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
@@ -741,11 +741,11 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     ENDIF.
 
 *   Extract from UPDATE/DELETE operations (keys are in the instances)
-    
+
     LOOP AT it_operations ASSIGNING <fs_operation>
       WHERE entity_name = iv_entity
         AND ( op = if_abap_behv=>op-m-update OR op = if_abap_behv=>op-m-delete ).
-      
+
 *     Get key field metadata if not already loaded
       IF lo_metadata IS NOT BOUND.
         lo_metadata = NEW cl_ptf_rap_metadata( ).
