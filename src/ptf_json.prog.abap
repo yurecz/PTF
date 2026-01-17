@@ -560,7 +560,12 @@ FORM pai_8001.
         g_editor->get_textstream( IMPORTING text = gv_json_file ). "<fs_outtab_step>-json_file
         cl_gui_cfw=>flush( ). "needed
 
-        cl_ptf_json=>pretty_printer( EXPORTING iv_entity = <fs_outtab_step>-bus_obj CHANGING cv_json = gv_json_file ).
+*       MODIFY action uses different JSON format - apply custom formatting
+        IF <fs_outtab_step>-action = 'MODIFY'.
+          cl_ptf_rap_modify_formatter=>format_json( EXPORTING iv_entity = <fs_outtab_step>-bus_obj CHANGING cv_json = gv_json_file ).
+        ELSE.
+          cl_ptf_json=>pretty_printer( EXPORTING iv_entity = <fs_outtab_step>-bus_obj CHANGING cv_json = gv_json_file ).
+        ENDIF.
 
         g_editor->set_textstream( gv_json_file ). "<fs_outtab_step>-json_file
 
