@@ -23,19 +23,9 @@ CLASS cl_ptf_rap_modify_formatter IMPLEMENTATION.
   METHOD format_json.
 *   Pretty printer for MODIFY action JSON format
 *   MODIFY uses EML operations array: [{"op":"CREATE","entity":"...","instances":[...]}]
-*   This is different from traditional PTF JSON with fields/associations structure
-    DATA: lv_json            TYPE string,
-          lv_indent          TYPE i VALUE 0,
-          lv_char            TYPE c LENGTH 1,
-          lv_prev_char       TYPE c LENGTH 1,
-          lv_next_char       TYPE c LENGTH 1,
-          lv_in_string       TYPE abap_bool VALUE abap_false,
-          lv_escape          TYPE abap_bool VALUE abap_false.
-
-    CONSTANTS: lc_tab    TYPE string VALUE '  ',
-               lc_newline TYPE c LENGTH 1 VALUE cl_abap_char_utilities=>newline.
-
-    lv_json = cv_json.
+*   Uses /ui2/cl_json for formatting with entity/action/field name replacements
+    DATA: lr_data TYPE REF TO data,
+          lt_components TYPE cl_abap_structdescr=>component_table.
 
 *   Load entity metadata to replace internal names with external names
     cl_abap_behv_load=>get_load(
@@ -46,102 +36,53 @@ CLASS cl_ptf_rap_modify_formatter IMPLEMENTATION.
         entities = DATA(lt_entities)
         actions  = DATA(lt_actions) ).
 
+*   Get field structure to replace field names
+    TRY.
+        DATA(lo_struct_descr) = CAST cl_abap_structdescr(
+          cl_abap_behvdescr=>get_type(
+            p_structure = abap_true
+            p_name      = iv_entity
+            p_op        = if_abap_behv=>op-m-update ) ).
+        lt_components = lo_struct_descr->get_components( ).
+      CATCH cx_root.
+*       If field metadata unavailable, continue without field name replacement
+    ENDTRY.
+
 *   Replace internal entity names with external names in JSON
     LOOP AT lt_entities ASSIGNING FIELD-SYMBOL(<fs_entity>).
-      lv_json = replace( val = lv_json pcre = <fs_entity>-name with = <fs_entity>-ext_name case = abap_false occ = 0 ).
+      cv_json = replace( val = cv_json pcre = <fs_entity>-name with = <fs_entity>-ext_name case = abap_false occ = 0 ).
     ENDLOOP.
 
 *   Replace internal action names with external names
     LOOP AT lt_actions ASSIGNING FIELD-SYMBOL(<fs_action>).
-      lv_json = replace( val = lv_json pcre = <fs_action>-name with = <fs_action>-ext_name case = abap_false occ = 0 ).
+      cv_json = replace( val = cv_json pcre = <fs_action>-name with = <fs_action>-ext_name case = abap_false occ = 0 ).
     ENDLOOP.
 
-*   Remove all existing whitespace
-    lv_json = replace( val = lv_json sub = cl_abap_char_utilities=>cr_lf with = '' occ = 0 ).
-    lv_json = replace( val = lv_json sub = cl_abap_char_utilities=>newline with = '' occ = 0 ).
-    lv_json = replace( val = lv_json sub = cl_abap_char_utilities=>horizontal_tab with = '' occ = 0 ).
-    lv_json = replace( val = lv_json pcre = '(?<=\,|\"|\{|\[|\]|\}|\:)\s+(?=|\"|\{|\[|\]|\}|\:)' with = '' occ = 0 ).
-
-*   Build formatted output character by character
-    DATA(lv_output) = ||.
-    DATA(lv_len) = strlen( lv_json ).
-
-    DO lv_len TIMES.
-      DATA(lv_pos) = sy-index - 1.
-      lv_char = lv_json+lv_pos(1).
-
-*     Get previous and next characters
-      IF lv_pos > 0.
-        lv_prev_char = lv_json+0(lv_pos).
-        lv_prev_char = substring( val = lv_prev_char off = strlen( lv_prev_char ) - 1 len = 1 ).
-      ELSE.
-        CLEAR lv_prev_char.
+*   Replace internal field names with external names (using component-suffix for external name)
+    LOOP AT lt_components ASSIGNING FIELD-SYMBOL(<fs_component>).
+      IF <fs_component>-suffix IS NOT INITIAL.
+*       suffix contains the external name from CDS annotations
+        cv_json = replace( val = cv_json pcre = <fs_component>-name with = <fs_component>-suffix case = abap_false occ = 0 ).
       ENDIF.
+    ENDLOOP.
 
-      IF lv_pos < lv_len - 1.
-        lv_next_char = lv_json+lv_pos(2).
-        lv_next_char = substring( val = lv_next_char off = 1 len = 1 ).
-      ELSE.
-        CLEAR lv_next_char.
-      ENDIF.
+*   Use /ui2/cl_json to format the JSON with proper indentation
+    TRY.
+        /ui2/cl_json=>deserialize(
+          EXPORTING
+            json = cv_json
+          CHANGING
+            data = lr_data ).
 
-*     Track string context (don't format inside quoted strings)
-      IF lv_char = '"' AND lv_escape = abap_false.
-        IF lv_in_string = abap_true.
-          lv_in_string = abap_false.
-        ELSE.
-          lv_in_string = abap_true.
-        ENDIF.
-      ENDIF.
+        cv_json = /ui2/cl_json=>serialize(
+          data          = lr_data
+          compress      = abap_false
+          format_output = abap_true ).
 
-      IF lv_char = '\'.
-        IF lv_escape = abap_true.
-          lv_escape = abap_false.
-        ELSE.
-          lv_escape = abap_true.
-        ENDIF.
-      ELSEIF lv_escape = abap_on.
-        lv_escape = abap_off.
-      ENDIF.
-
-*     Apply formatting rules (only outside strings)
-      IF lv_in_string = abap_false.
-        CASE lv_char.
-          WHEN '['.
-            lv_indent = lv_indent + 1.
-            lv_output = |{ lv_output }[{ lc_newline }{ repeat( val = lc_tab occ = lv_indent ) }|.
-
-          WHEN ']'.
-            lv_indent = lv_indent - 1.
-            lv_output = |{ lv_output }{ lc_newline }{ repeat( val = lc_tab occ = lv_indent ) }]|.
-
-          WHEN '{'.
-            lv_indent = lv_indent + 1.
-            lv_output = |{ lv_output }\{{ lc_newline }{ repeat( val = lc_tab occ = lv_indent ) }|.
-
-          WHEN '}'.
-            lv_indent = lv_indent - 1.
-            lv_output = |{ lv_output }{ lc_newline }{ repeat( val = lc_tab occ = lv_indent ) }\}|.
-
-          WHEN ','.
-            lv_output = |{ lv_output },{ lc_newline }{ repeat( val = lc_tab occ = lv_indent ) }|.
-
-          WHEN ':'.
-            lv_output = |{ lv_output }: |.
-
-          WHEN OTHERS.
-*           Skip standalone spaces (already handled by context)
-            IF lv_char <> ' ' OR lv_prev_char <> ':'.
-              lv_output = |{ lv_output }{ lv_char }|.
-            ENDIF.
-        ENDCASE.
-      ELSE.
-*       Inside string - preserve as-is
-        lv_output = |{ lv_output }{ lv_char }|.
-      ENDIF.
-    ENDDO.
-
-    cv_json = lv_output.
+      CATCH cx_root.
+*       If formatting fails, return original JSON
+        RETURN.
+    ENDTRY.
 
   ENDMETHOD.
 ENDCLASS.
