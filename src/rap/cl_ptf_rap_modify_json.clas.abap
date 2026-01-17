@@ -202,37 +202,14 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
         IF ls_operation-op = if_abap_behv=>op-m-create_ba.
           ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fv_cid_ref>).
           IF sy-subrc = 0.
-*           Check if JSON has a "parent_ref" field
+*           Check if JSON has a "%CID_REF" field to reference parent created in same request
             ASSIGN COMPONENT 'PARENT_REF' OF STRUCTURE <fs_instance_data> TO <fs_parent_ref>.
             IF sy-subrc = 0.
               ASSIGN <fs_parent_ref> TO FIELD-SYMBOL(<fv_parent_ref>).
               <fv_cid_ref> = |{ <fv_parent_ref> }|.
             ENDIF.
-
-*           If no parent_ref, check for "key" structure (existing parent)
-            IF <fv_cid_ref> IS INITIAL.
-              ASSIGN COMPONENT 'KEY' OF STRUCTURE <fs_instance_data> TO <fs_key>.
-              IF sy-subrc = 0.
-*               Map key fields to %pky
-                ASSIGN <fs_key> TO FIELD-SYMBOL(<fs_key_data>).
-                ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-pky OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fs_pky>).
-                IF sy-subrc = 0.
-*                 Copy key fields
-                  DATA(lo_struct_descr) = CAST cl_abap_structdescr(
-                    cl_abap_typedescr=>describe_by_data( <fs_key_data> ) ).
-                  LOOP AT lo_struct_descr->get_components( ) ASSIGNING FIELD-SYMBOL(<fs_key_comp>).
-                    ASSIGN COMPONENT <fs_key_comp>-name OF STRUCTURE <fs_key_data> TO <fs_field>.
-                    IF sy-subrc = 0.
-                      ASSIGN <fs_field> TO FIELD-SYMBOL(<fv_key_value>).
-                      ASSIGN COMPONENT <fs_key_comp>-name OF STRUCTURE <fs_pky> TO FIELD-SYMBOL(<fv_pky_field>).
-                      IF sy-subrc = 0.
-                        <fv_pky_field> = <fv_key_value>.
-                      ENDIF.
-                    ENDIF.
-                  ENDLOOP.
-                ENDIF.
-              ENDIF.
-            ENDIF.
+*           If no %CID_REF, parent keys should be specified directly as instance fields
+*           They will be mapped in the data field loop below
           ENDIF.
         ENDIF.
 
@@ -243,7 +220,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
         LOOP AT lo_target_descr->get_components( ) ASSIGNING FIELD-SYMBOL(<fs_comp>).
 *         Skip special PTF fields
           IF <fs_comp>-name = 'REF' OR <fs_comp>-name = 'PARENT_REF'
-            OR <fs_comp>-name = 'KEY' OR <fs_comp>-name = '_COMMENT'.
+            OR <fs_comp>-name = '_COMMENT'.
             CONTINUE.
           ENDIF.
 

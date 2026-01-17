@@ -236,16 +236,13 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     rv_json = |{ rv_json }    "instances": [{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
 
-*   Only parent key fields for DELETE
-    rv_json = |{ rv_json }        "%pky": \{{ cl_abap_char_utilities=>newline }|.
-
+*   Only key fields directly in instance (modern EML syntax, no %pky wrapper)
     DATA(lv_keys) = get_entity_fields(
       iv_entity      = iv_entity
       it_permissions = VALUE #( )  "No permissions needed for key display
       iv_only_keys   = abap_on ).
 
     rv_json = |{ rv_json }{ lv_keys }|.
-    rv_json = |{ rv_json }        \}{ cl_abap_char_utilities=>newline }|.
 
     rv_json = |{ rv_json }      \}{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }    ]{ cl_abap_char_utilities=>newline }|.
