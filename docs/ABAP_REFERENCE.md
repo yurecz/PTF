@@ -44,6 +44,7 @@ Typical link parameters:
 - **Object:** `abapmodify_entity_entities`
 - **Link:** `...?sap-language=EN&tree=X&version=X&sap-client=000&object=abapmodify_entity_entities`
 - **Why:** Defines all MODIFY variants, including the dynamic-operations variant used for generic execution.
+- **See also:** [EML_SYNTAX_REFERENCE.md](EML_SYNTAX_REFERENCE.md) for PTF-specific EML patterns and %CID/%CID_REF usage.
 
 Key variant (relevant to PTF “MODIFY” goal):
 - `MODIFY ENTITIES ... OPERATIONS op_tab [response_param].`

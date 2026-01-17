@@ -118,6 +118,16 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
         ls_operation-sub_name = to_upper( <fv_sub_name> ).
       ENDIF.
 
+*     Extract %CID_REF at operation level (for CREATE_BY flattened structure)
+      DATA lv_operation_cid_ref TYPE string.
+      IF ls_operation-op = if_abap_behv=>op-m-create_ba.
+        ASSIGN COMPONENT '%CID_REF' OF STRUCTURE <fs_json_op> TO FIELD-SYMBOL(<fs_op_cid_ref>).
+        IF sy-subrc = 0.
+          ASSIGN <fs_op_cid_ref> TO FIELD-SYMBOL(<fv_op_cid_ref>).
+          lv_operation_cid_ref = <fv_op_cid_ref>.
+        ENDIF.
+      ENDIF.
+
 *     Extract instances array
       ASSIGN COMPONENT 'INSTANCES' OF STRUCTURE <fs_json_op> TO <fs_instances>.
       IF sy-subrc <> 0.
@@ -168,84 +178,163 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
 
       ASSIGN lr_instances->* TO <ft_target_table>.
 
-*     Process each instance
-      LOOP AT <ft_instances> ASSIGNING <fs_instance>.
-        ASSIGN <fs_instance> TO FIELD-SYMBOL(<fs_instance_data>).
-
-*       Create target line
-        DATA(lr_target_line) = cl_abap_behvdescr=>create_data(
-          p_op         = ls_operation-op
+*     Special handling for CREATE_BY with operation-level %CID_REF
+      IF ls_operation-op = if_abap_behv=>op-m-create_ba AND lv_operation_cid_ref IS NOT INITIAL.
+*       Create ONE parent row with %cid_ref and %target containing all children
+        DATA(lr_parent_line) = cl_abap_behvdescr=>create_data(
+          p_op         = if_abap_behv=>op-m-create_ba
           p_name       = ls_operation-entity_name
-          p_sub_name   = COND #( WHEN ls_operation-op = if_abap_behv=>op-m-create_ba OR ls_operation-op = if_abap_behv=>op-r-read THEN ls_operation-sub_name )
+          p_sub_name   = ls_operation-sub_name
           p_structure  = abap_on ).
 
-        ASSIGN lr_target_line->* TO <fs_target_line>.
+        ASSIGN lr_parent_line->* TO FIELD-SYMBOL(<fs_parent_line>).
 
-*       Handle %cid for CREATE operations
-        IF ls_operation-op = if_abap_behv=>op-m-create OR ls_operation-op = if_abap_behv=>op-m-create_ba.
-          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fv_cid>).
-          IF sy-subrc = 0.
-*           Check if JSON has a "ref" field
-            ASSIGN COMPONENT 'REF' OF STRUCTURE <fs_instance_data> TO <fs_ref>.
-            IF sy-subrc = 0.
-              ASSIGN <fs_ref> TO FIELD-SYMBOL(<fv_ref>).
-              <fv_cid> = |{ <fv_ref> }|.
-            ELSE.
-*             Auto-generate %cid
-              <fv_cid> = |cid_{ lv_cid_counter }|.
-              lv_cid_counter = lv_cid_counter + 1.
-            ENDIF.
-          ENDIF.
+*       Set %cid_ref on parent row
+        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_parent_line> TO FIELD-SYMBOL(<fv_cid_ref_parent>).
+        IF sy-subrc = 0.
+          <fv_cid_ref_parent> = lv_operation_cid_ref.
         ENDIF.
 
-*       Handle %cid_ref for CREATE_BY operations
-        IF ls_operation-op = if_abap_behv=>op-m-create_ba.
-          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fv_cid_ref>).
-          IF sy-subrc = 0.
-*           Check if JSON has a "%CID_REF" field to reference parent created in same request
-            ASSIGN COMPONENT 'PARENT_REF' OF STRUCTURE <fs_instance_data> TO <fs_parent_ref>.
+*       Create %target table for children
+        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_parent_line> TO FIELD-SYMBOL(<ft_target>).
+        IF sy-subrc = 0.
+*         Create child instances and add to %target
+          LOOP AT <ft_instances> ASSIGNING <fs_instance>.
+            ASSIGN <fs_instance> TO FIELD-SYMBOL(<fs_child_data>).
+
+*           Create child line
+            DATA(lr_child_line) = cl_abap_behvdescr=>create_data(
+              p_op         = if_abap_behv=>op-m-create_ba
+              p_name       = ls_operation-entity_name
+              p_sub_name   = ls_operation-sub_name
+              p_structure  = abap_on
+              p_target     = abap_on ).
+
+            ASSIGN lr_child_line->* TO FIELD-SYMBOL(<fs_child_line>).
+
+*           Handle %cid for child
+            ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_child_line> TO FIELD-SYMBOL(<fv_child_cid>).
             IF sy-subrc = 0.
-              ASSIGN <fs_parent_ref> TO FIELD-SYMBOL(<fv_parent_ref>).
-              <fv_cid_ref> = |{ <fv_parent_ref> }|.
-            ENDIF.
-*           If no %CID_REF, parent keys should be specified directly as instance fields
-*           They will be mapped in the data field loop below
-          ENDIF.
-        ENDIF.
-
-*       Map data fields from JSON to target structure
-        DATA(lo_target_descr) = CAST cl_abap_structdescr(
-          cl_abap_typedescr=>describe_by_data( <fs_instance_data> ) ).
-
-        LOOP AT lo_target_descr->get_components( ) ASSIGNING FIELD-SYMBOL(<fs_comp>).
-*         Skip special PTF fields
-          IF <fs_comp>-name = 'REF' OR <fs_comp>-name = 'PARENT_REF'
-            OR <fs_comp>-name = '_COMMENT'.
-            CONTINUE.
-          ENDIF.
-
-          ASSIGN COMPONENT <fs_comp>-name OF STRUCTURE <fs_instance_data> TO <fs_field>.
-          IF sy-subrc = 0.
-            ASSIGN <fs_field> TO <fv_key_value>.
-            ASSIGN COMPONENT <fs_comp>-name OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fv_target_field>).
-            IF sy-subrc = 0.
-              <fv_target_field> = <fv_key_value>.
-*             Set %control field if it exists
-              ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fs_control>).
+              ASSIGN COMPONENT 'REF' OF STRUCTURE <fs_child_data> TO <fs_ref>.
               IF sy-subrc = 0.
-                ASSIGN COMPONENT <fs_comp>-name OF STRUCTURE <fs_control> TO FIELD-SYMBOL(<fv_control_field>).
+                ASSIGN <fs_ref> TO FIELD-SYMBOL(<fv_ref>).
+                <fv_child_cid> = |{ <fv_ref> }|.
+              ELSE.
+                <fv_child_cid> = |cid_{ lv_cid_counter }|.
+                lv_cid_counter = lv_cid_counter + 1.
+              ENDIF.
+            ENDIF.
+
+*           Map child fields
+            DATA(lo_child_descr) = CAST cl_abap_structdescr(
+              cl_abap_typedescr=>describe_by_data( <fs_child_data> ) ).
+
+            LOOP AT lo_child_descr->get_components( ) ASSIGNING FIELD-SYMBOL(<fs_child_comp>).
+              IF <fs_child_comp>-name = 'REF' OR <fs_child_comp>-name = '_COMMENT'.
+                CONTINUE.
+              ENDIF.
+
+              ASSIGN COMPONENT <fs_child_comp>-name OF STRUCTURE <fs_child_data> TO <fs_field>.
+              IF sy-subrc = 0.
+                ASSIGN <fs_field> TO <fv_key_value>.
+                ASSIGN COMPONENT <fs_child_comp>-name OF STRUCTURE <fs_child_line> TO FIELD-SYMBOL(<fv_child_field>).
                 IF sy-subrc = 0.
-                  <fv_control_field> = if_abap_behv=>mk-on.
+                  <fv_child_field> = <fv_key_value>.
+*                 Set %control
+                  ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_child_line> TO FIELD-SYMBOL(<fs_child_control>).
+                  IF sy-subrc = 0.
+                    ASSIGN COMPONENT <fs_child_comp>-name OF STRUCTURE <fs_child_control> TO FIELD-SYMBOL(<fv_child_control_field>).
+                    IF sy-subrc = 0.
+                      <fv_child_control_field> = if_abap_behv=>mk-on.
+                    ENDIF.
+                  ENDIF.
                 ENDIF.
+              ENDIF.
+            ENDLOOP.
+
+*           Add child to %target
+            INSERT <fs_child_line> INTO TABLE <ft_target>.
+          ENDLOOP.
+        ENDIF.
+
+*       Insert the ONE parent row into result table
+        INSERT <fs_parent_line> INTO TABLE <ft_target_table>.
+
+      ELSE.
+*       Standard processing for CREATE, UPDATE, DELETE (one row per JSON instance)
+        LOOP AT <ft_instances> ASSIGNING <fs_instance>.
+          ASSIGN <fs_instance> TO FIELD-SYMBOL(<fs_instance_data>).
+
+*         Create target line
+          DATA(lr_target_line) = cl_abap_behvdescr=>create_data(
+            p_op         = ls_operation-op
+            p_name       = ls_operation-entity_name
+            p_sub_name   = COND #( WHEN ls_operation-op = if_abap_behv=>op-m-create_ba OR ls_operation-op = if_abap_behv=>op-r-read THEN ls_operation-sub_name )
+            p_structure  = abap_on ).
+
+          ASSIGN lr_target_line->* TO <fs_target_line>.
+
+*         Handle %cid for CREATE operations
+          IF ls_operation-op = if_abap_behv=>op-m-create.
+            ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fv_cid>).
+            IF sy-subrc = 0.
+              ASSIGN COMPONENT 'REF' OF STRUCTURE <fs_instance_data> TO <fs_ref>.
+              IF sy-subrc = 0.
+                ASSIGN <fs_ref> TO <fv_ref>.
+                <fv_cid> = |{ <fv_ref> }|.
+              ELSE.
+                <fv_cid> = |cid_{ lv_cid_counter }|.
+                lv_cid_counter = lv_cid_counter + 1.
               ENDIF.
             ENDIF.
           ENDIF.
+
+*         Handle %cid_ref for UPDATE and EXECUTE operations (instance-level)
+          IF ls_operation-op = if_abap_behv=>op-m-update
+            OR ls_operation-op = if_abap_behv=>op-m-action.
+            ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fv_update_cid_ref>).
+            IF sy-subrc = 0.
+              ASSIGN COMPONENT '%CID_REF' OF STRUCTURE <fs_instance_data> TO FIELD-SYMBOL(<fs_instance_cid_ref>).
+              IF sy-subrc = 0.
+                ASSIGN <fs_instance_cid_ref> TO FIELD-SYMBOL(<fv_instance_cid_ref>).
+                <fv_update_cid_ref> = <fv_instance_cid_ref>.
+              ENDIF.
+            ENDIF.
+          ENDIF.
+
+*         Map data fields from JSON to target structure
+          DATA(lo_target_descr) = CAST cl_abap_structdescr(
+            cl_abap_typedescr=>describe_by_data( <fs_instance_data> ) ).
+
+          LOOP AT lo_target_descr->get_components( ) ASSIGNING FIELD-SYMBOL(<fs_comp>).
+            IF <fs_comp>-name = 'REF' OR <fs_comp>-name = 'PARENT_REF'
+              OR <fs_comp>-name = '_COMMENT' OR <fs_comp>-name = '%CID_REF'.
+              CONTINUE.
+            ENDIF.
+
+            ASSIGN COMPONENT <fs_comp>-name OF STRUCTURE <fs_instance_data> TO <fs_field>.
+            IF sy-subrc = 0.
+              ASSIGN <fs_field> TO <fv_key_value>.
+              ASSIGN COMPONENT <fs_comp>-name OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fv_target_field>).
+              IF sy-subrc = 0.
+                <fv_target_field> = <fv_key_value>.
+*               Set %control field if it exists
+                ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_target_line> TO FIELD-SYMBOL(<fs_control>).
+                IF sy-subrc = 0.
+                  ASSIGN COMPONENT <fs_comp>-name OF STRUCTURE <fs_control> TO FIELD-SYMBOL(<fv_control_field>).
+                  IF sy-subrc = 0.
+                    <fv_control_field> = if_abap_behv=>mk-on.
+                  ENDIF.
+                ENDIF.
+              ENDIF.
+            ENDIF.
+          ENDLOOP.
+
+*         Append instance to target table
+          INSERT <fs_target_line> INTO TABLE <ft_target_table>.
+
         ENDLOOP.
-
-*       Append instance to target table
-        INSERT <fs_target_line> INTO TABLE <ft_target_table>.
-
-      ENDLOOP.
+      ENDIF.
 
 *     Store instances reference in operation
       ls_operation-instances = lr_instances.

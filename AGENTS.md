@@ -121,10 +121,20 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - Other actions fall through to shared logic after CASE statement
 - This separation is intentional: MODIFY needs fundamentally different JSON structure
 
-### Modern EML syntax
-- **DELETE**: Keys directly in instance: `{"UUID": "123"}`
+**For comprehensive EML syntax, operation types, and %CID/%CID_REF patterns, see [docs/EML_SYNTAX_REFERENCE.md](docs/EML_SYNTAX_REFERENCE.md)**
+
+### Modern EML syntax and %CID_REF support
+- **CREATE**: Uses `%CID` (instance-level) to assign content ID for later reference
 - **CREATE_BY (existing parent)**: Parent keys directly in instance: `{"ParentID": "123", "ChildField": "value"}`
-- **CREATE_BY (new parent)**: Use `%CID_REF` to reference parent created in same request
+- **CREATE_BY (new parent)**: Use `%CID_REF` at **operation level** to reference parent created in same request
+- **UPDATE with %CID_REF**: Use `%CID_REF` at **instance level** to update entity created in same request
+- **DELETE**: Keys directly in instance - `%CID_REF` not supported (delete by key only)
+- **EXECUTE (actions)**: Executes RAP business object actions
+  - `sub_name` field contains action name from BDEF
+  - Instance actions: Require key fields OR `%CID_REF` to identify target entity
+  - Static actions: No key fields needed (execute on entity type)
+  - Action parameters passed as additional fields in instances
+  - `%CID_REF` support: Can execute action on entity created in same request (instance-level)
 
 ### CREATE_BY composite key handling
 - **Composite keys** (e.g., Sales Order items): Parent key field serves dual purpose
@@ -134,6 +144,25 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - **Auto-generated key parts**: Omit field entirely from JSON, BO will generate it
   - Example: Omit `"SalesOrderItem"` to auto-generate item number
   - Template shows all key fields for visibility, but they're optional in actual JSON
+- **%CID_REF placement rules**:
+  - **CREATE_BY**: Operation level (outside instances)
+  - **UPDATE**: Instance level (inside each instance)
+  ```json
+  {
+    "op": "CREATE_BY",
+    "entity": "ParentEntity",
+    "sub_name": "_Child",
+    "%CID_REF": "parent-cid",
+    "instances": [{"ChildField": "value"}]
+  }
+  ```
+  ```json
+  {
+    "op": "UPDATE",
+    "entity": "Entity",
+    "instances": [{"ChildField": "newvalue", "%CID_REF": "cid-to-update"}]
+  }
+  ```
 
 ### JSON formatting
 - MODIFY uses custom character-by-character pretty printer (`cl_ptf_rap_modify_formatter=>pretty_print_json`)

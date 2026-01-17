@@ -37,6 +37,22 @@ private section.
       !IT_ENTITIES type CL_ABAP_BEHV_LOAD=>TT_ENTITY
     returning
       value(RV_JSON) type STRING .
+  class-methods GENERATE_CREATE_BY_TEMPLATE
+    importing
+      !IV_ENTITY type ABP_ENTITY_NAME
+      !IT_ENTITIES type CL_ABAP_BEHV_LOAD=>TT_ENTITY
+      !IT_ASSOCIATIONS type CL_ABAP_BEHV_LOAD=>TT_ASSOC
+      !IT_PERMISSIONS type ABP_BEHV_PERMISSIONS_TAB
+      !IV_JSON_OPT type PTF_JSON_OPT
+    returning
+      value(RV_JSON) type STRING .
+  class-methods GENERATE_EXECUTE_TEMPLATE
+    importing
+      !IV_ENTITY type ABP_ENTITY_NAME
+      !IT_ENTITIES type CL_ABAP_BEHV_LOAD=>TT_ENTITY
+      !IT_ACTIONS type CL_ABAP_BEHV_LOAD=>TT_ACTION
+    returning
+      value(RV_JSON) type STRING .
   class-methods GET_ENTITY_FIELDS
     importing
       !IV_ENTITY type ABP_ENTITY_NAME
@@ -110,6 +126,30 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
     ENDIF.
 
+*   Add CREATE_BY examples if entity has associations
+    IF lt_associations IS NOT INITIAL.
+      LOOP AT lt_associations INTO DATA(ls_assoc) WHERE source_name = iv_entity.
+        IF ls_assoc-cardinality-n = cl_abap_behv_load=>c_cardinality_n
+          AND ls_assoc-properties-has_create_enabled = cl_abap_behv_load=>c_enabled.
+
+          IF ls_entity-properties-has_create = cl_abap_behv_load=>c_enabled
+            OR ls_entity-properties-has_create = cl_abap_behv_load=>c_enabled_both.
+            rv_json = |{ rv_json },{ cl_abap_char_utilities=>newline }|.
+          ENDIF.
+
+          DATA(lv_create_by_json) = generate_create_by_template(
+            iv_entity       = ls_assoc-target_name
+            it_entities     = lt_entities
+            it_associations = lt_associations
+            it_permissions  = lt_permissions
+            iv_json_opt     = iv_json_opt ).
+
+          rv_json = |{ rv_json }{ lv_create_by_json }|.
+          EXIT.  " Show one CREATE_BY example
+        ENDIF.
+      ENDLOOP.
+    ENDIF.
+
 *   Add UPDATE example if entity supports update
     IF ls_entity-properties-has_update = cl_abap_behv_load=>c_enabled
       OR ls_entity-properties-has_update = cl_abap_behv_load=>c_enabled_both.
@@ -146,6 +186,28 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
       rv_json = |{ rv_json }{ lv_delete_json }|.
 
+    ENDIF.
+
+*   Add EXECUTE example if entity has actions
+    IF lt_actions IS NOT INITIAL.
+      LOOP AT lt_actions INTO DATA(ls_action) WHERE owner_entity = iv_entity.
+        IF ls_entity-properties-has_create = cl_abap_behv_load=>c_enabled
+          OR ls_entity-properties-has_create = cl_abap_behv_load=>c_enabled_both
+          OR ls_entity-properties-has_update = cl_abap_behv_load=>c_enabled
+          OR ls_entity-properties-has_update = cl_abap_behv_load=>c_enabled_both
+          OR ls_entity-properties-has_delete = cl_abap_behv_load=>c_enabled
+          OR ls_entity-properties-has_delete = cl_abap_behv_load=>c_enabled_both.
+          rv_json = |{ rv_json },{ cl_abap_char_utilities=>newline }|.
+        ENDIF.
+
+        DATA(lv_execute_json) = generate_execute_template(
+          iv_entity   = iv_entity
+          it_entities = lt_entities
+          it_actions  = lt_actions ).
+
+        rv_json = |{ rv_json }{ lv_execute_json }|.
+        EXIT.  " Show one EXECUTE example
+      ENDLOOP.
     ENDIF.
 
     rv_json = |{ rv_json }{ cl_abap_char_utilities=>newline }]|.
@@ -194,6 +256,8 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     rv_json = |{ rv_json }    "entity": "{ ls_entity-ext_name }",{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }    "instances": [{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }        "_comment": "Update by key OR use %CID_REF to reference entity created in same request",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }        "%CID_REF": "Optional: CID of entity from CREATE operation",{ cl_abap_char_utilities=>newline }|.
 
 *   Add key fields directly (for identification - NOT marked for update in %control)
     DATA(lv_keys) = get_entity_fields(
@@ -237,6 +301,41 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
 
 *   Only key fields directly in instance (modern EML syntax, no %pky wrapper)
+    DATA(lv_keys) = get_entity_fields(
+      iv_entity      = iv_entity
+      it_permissions = VALUE #( )  "No permissions needed for key display
+      iv_only_keys   = abap_on ).
+
+    rv_json = |{ rv_json }{ lv_keys }|.
+
+    rv_json = |{ rv_json }      \}{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    ]{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }  \}|.
+
+  ENDMETHOD.
+
+
+  METHOD generate_execute_template.
+*   Generate EXECUTE (action) operation template
+    DATA: ls_entity TYPE cl_abap_behv_load=>t_entity,
+          ls_action TYPE cl_abap_behv_load=>t_action.
+
+    ls_entity = it_entities[ name = iv_entity ].
+
+*   Find first action for the entity
+    READ TABLE it_actions INTO ls_action WITH KEY owner_entity = iv_entity.
+    IF sy-subrc <> 0.
+      RETURN.  " No actions found
+    ENDIF.
+
+    rv_json = |  \{{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "op": "EXECUTE",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "entity": "{ ls_entity-ext_name }",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "sub_name": "{ ls_action-ext_name }",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "instances": [{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
+
+*   Add key fields to identify target entity
     DATA(lv_keys) = get_entity_fields(
       iv_entity      = iv_entity
       it_permissions = VALUE #( )  "No permissions needed for key display
@@ -398,6 +497,52 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
     ENDIF.
 
     rv_fields_json = |{ rv_fields_json }{ cl_abap_char_utilities=>newline }|.
+
+  ENDMETHOD.
+
+
+  METHOD generate_create_by_template.
+*   Generate CREATE_BY (Create-By-Association) operation template
+    DATA: ls_target_entity TYPE cl_abap_behv_load=>t_entity,
+          ls_source_entity TYPE cl_abap_behv_load=>t_entity,
+          ls_assoc         TYPE cl_abap_behv_load=>t_assoc.
+
+    ls_target_entity = it_entities[ name = iv_entity ].
+
+*   Find the association from parent
+    READ TABLE it_associations INTO ls_assoc
+      WITH KEY target_name = iv_entity.
+    IF sy-subrc <> 0.
+      RETURN.
+    ENDIF.
+
+    ls_source_entity = it_entities[ name = ls_assoc-source_name ].
+
+    rv_json = |  \{{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "op": "CREATE_BY",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "entity": "{ ls_source_entity-ext_name }",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "sub_name": "{ ls_assoc-ext_name }",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "_comment": "Use %CID_REF to reference parent created in same request",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "%CID_REF": "parent-cid-1",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "instances": [{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
+
+*   Add optional %CID field for child if it might have its own children
+    IF line_exists( it_associations[ source_name = iv_entity ] ).
+      rv_json = |{ rv_json }        "%CID": "child-cid-1",{ cl_abap_char_utilities=>newline }|.
+    ENDIF.
+
+*   Add child entity fields
+    DATA(lv_fields) = get_entity_fields(
+      iv_entity      = iv_entity
+      it_permissions = it_permissions
+      iv_only_keys   = COND #( WHEN iv_json_opt = '1' THEN abap_on ELSE abap_off ) ).
+
+    rv_json = |{ rv_json }{ lv_fields }|.
+
+    rv_json = |{ rv_json }      \}{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    ]{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }  \}|.
 
   ENDMETHOD.
 ENDCLASS.

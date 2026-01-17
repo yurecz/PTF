@@ -2,6 +2,8 @@
 
 This document describes the PTF MODIFY action JSON format and provides tested examples.
 
+**For comprehensive EML syntax reference, see [EML_SYNTAX_REFERENCE.md](EML_SYNTAX_REFERENCE.md)**
+
 ## Overview
 
 PTF MODIFY action directly maps to RAP's `MODIFY ENTITIES ... OPERATIONS` EML statement, accepting an operations array that specifies CREATE, UPDATE, DELETE, EXECUTE, and CREATE_BY operations.
@@ -35,8 +37,9 @@ PTF MODIFY action directly maps to RAP's `MODIFY ENTITIES ... OPERATIONS` EML st
 **CREATE_BY** (Create by Association)
 - Creates child entities via association
 - Requires `sub_name` field with association name
-- Use `%CID_REF` to reference parent created in same request
-- Use direct key fields to reference existing parent
+- Use `%CID_REF` **at operation level** to reference parent created in same request
+- Use direct key fields in instances to reference existing parent
+- Child instances go directly in `instances` array (no `%target` wrapper)
 
 **UPDATE**
 - Updates existing entity instances
@@ -70,10 +73,12 @@ PTF MODIFY action directly maps to RAP's `MODIFY ENTITIES ... OPERATIONS` EML st
 - Auto-generated if omitted
 - Required when child entities reference parent in same request
 
-**%CID_REF (Parent Reference):**
-- Used in CREATE_BY to reference parent's %CID
-- Only for parents created in same request
-- For existing parents, use direct key fields
+**%CID_REF (Content ID Reference):**
+- **CREATE_BY**: Place at **operation level** (outside instances) to reference parent entity created in same request
+- **UPDATE**: Place at **instance level** (inside each instance object) to update entity created in same request
+- **DELETE**: Not supported - use key fields only
+- **EXECUTE**: Place at **instance level** (inside each instance) to execute action on entity created in same request
+- When using %CID_REF, key fields can be omitted since the reference identifies the entity
 
 ### Shortcuts
 
@@ -146,10 +151,10 @@ Multi-level hierarchy creation (Route → Visit → Delivery → Item):
     "op": "CREATE_BY",
     "entity": "R_LstMiRouteTP",
     "sub_name": "_Visit",
+    "%CID_REF": "route-1",
     "instances": [
       { 
         "%CID": "visit-1", 
-        "%CID_REF": "route-1", 
         "LastMileRouteStopType": "...", 
         "LastMileRouteStopSequenceValue": "..." 
       }
@@ -159,10 +164,10 @@ Multi-level hierarchy creation (Route → Visit → Delivery → Item):
     "op": "CREATE_BY",
     "entity": "R_LstMiRteVisitTP",
     "sub_name": "_CustomerDelivery",
+    "%CID_REF": "visit-1",
     "instances": [
       { 
         "%CID": "dlv-1", 
-        "%CID_REF": "visit-1", 
         "LastMileRouteDocumentType": "...", 
         "DeliveryDocument": "..." 
       }
@@ -172,9 +177,9 @@ Multi-level hierarchy creation (Route → Visit → Delivery → Item):
     "op": "CREATE_BY",
     "entity": "R_LstMiRouteVisitCustDlvTP",
     "sub_name": "_Item",
+    "%CID_REF": "dlv-1",
     "instances": [
       { 
-        "%CID_REF": "dlv-1", 
         "DeliveryDocumentItem": "...", 
         "ProductID": "...", 
         "LastMileRoutePlannedQuantity": "..." 
@@ -185,7 +190,8 @@ Multi-level hierarchy creation (Route → Visit → Delivery → Item):
 ```
 
 **Key Points:**
-- Each child references its parent via `%CID_REF`
+- `%CID_REF` at operation level references parent from same request
+- Child instances go directly in `instances` array (no `%target` nesting)
 - Parent entities need `%CID` only if referenced by children
 - Leaf entities (no children) don't need `%CID`
 
@@ -198,16 +204,137 @@ Multi-level hierarchy creation (Route → Visit → Delivery → Item):
   "instances": [
     {
       "LastMileRouteUUID": "...",
-      "LastMileRouteDepartureLocation": "..."
+      "LastMileRouteType": "updated_value",
+      "LastMileRouteCategory": "updated_value"
+    }
+  ]
+}
+```
+
+**Note:** Key fields (`LastMileRouteUUID`) are specified for identification only. They are NOT marked for modification in `%control`.
+
+### Example 4: UPDATE with %CID_REF (Same Request)
+
+Update an instance created in the same MODIFY request:
+
+```json
+[
+  {
+    "op": "CREATE",
+    "entity": "R_LstMiRouteTP",
+    "instances": [
+      {
+        "%CID": "new-route",
+        "LastMileRouteType": "TYPE1",
+        "LastMileRouteCategory": "CAT1"
+      }
+    ]
+  },
+  {
+    "op": "UPDATE",
+    "entity": "R_LstMiRouteTP",
+    "instances": [
+      {
+        "%CID_REF": "new-route",
+        "LastMileRouteType": "TYPE2"
+      }
+    ]
+  }
+]
+```
+
+**Use Cases:**
+- Modify instance immediately after creation
+- Apply corrections based on CREATE results
+- Demonstrated in official SAP ABAP EML documentation
+
+### Example 5: DELETE
+
+Delete entity instances by key:
+
+```json
+{
+  "op": "DELETE",
+  "entity": "R_LstMiRouteTP",
+  "instances": [
+    {
+      "LastMileRouteUUID": "42010AEF83EE1FE0BCE4BDE0DDB24D36"
+    },
+    {
+      "LastMileRouteUUID": "52010AEF83EE1FE0BCE4BDE0DDB24D37"
     }
   ]
 }
 ```
 
 **Key Points:**
-- `LastMileRouteUUID` is the key field (for identification)
-- Key field NOT marked in `%control`
-- Only `LastMileRouteDepartureLocation` is updated
+- Only key fields required for identification
+- Modern EML syntax - keys directly in instance (no `%pky` wrapper)
+- No `%control` needed for DELETE
+- Can delete multiple instances in one operation
+- `%CID_REF` not supported - must use key fields
+
+---
+
+### Example 6: EXECUTE (Action)
+
+**Scenario:** Execute a RAP business object action (e.g., Approve, Cancel, Validate)
+
+**Option A: Execute on existing entity (by key)**
+```json
+{
+  "op": "EXECUTE",
+  "entity": "R_LastMileDeliveryTP",
+  "sub_name": "ConfirmDelivery",
+  "instances": [
+    {
+      "LastMileDeliveryUUID": "42010AEF83EE1FE0BCE4BDE0DDB24D36"
+    }
+  ]
+}
+```
+
+**Option B: Execute on newly created entity (by %CID_REF)**
+```json
+[
+  {
+    "op": "CREATE",
+    "entity": "R_LastMileDeliveryTP",
+    "instances": [
+      {
+        "%CID": "new-delivery",
+        "DeliveryNote": "123456"
+      }
+    ]
+  },
+  {
+    "op": "EXECUTE",
+    "entity": "R_LastMileDeliveryTP",
+    "sub_name": "ConfirmDelivery",
+    "instances": [
+      {
+        "%CID_REF": "new-delivery"
+      }
+    ]
+  }
+]
+```
+
+**Key Points:**
+- `sub_name`: Action name from BDEF (e.g., "ConfirmDelivery", "Cancel", "Approve")
+- Actions execute on entities identified by **key fields** OR **%CID_REF**
+- `%CID_REF`: Reference entity created in same request (instance-level)
+- Action parameters can be passed as additional fields in instances
+- Static actions: Execute on entity type (no key fields needed)
+- Instance actions: Execute on specific entity instances (key fields or %CID_REF required)
+
+**Action Types:**
+- **Instance actions**: Operate on specific entity instances (most common)
+- **Static actions**: Operate on entity type level (no instance keys)
+- **Factory actions**: Create new instances (like CREATE operation)
+- **Determine actions**: Execute draft determinations
+
+---
 
 ## EML Background
 

@@ -21,7 +21,9 @@ PTF can route step execution to different ABAP systems via RFC destinations (sid
 For planned extensions (JSON input for non-RAP BOs and RAP `MODIFY` support), see `docs/DEVELOPMENT_GOALS.md`.
 
 ## RAP EML reference
-For grounding ABAP syntax/platform topics (especially RAP EML like `MODIFY ... OPERATIONS` and `FAILED/REPORTED/MAPPED`), see `docs/ABAP_REFERENCE.md`.
+For comprehensive EML syntax and patterns (especially `MODIFY ... OPERATIONS` with %CID/%CID_REF), see `docs/EML_SYNTAX_REFERENCE.md`.
+
+For official ABAP documentation links, see `docs/ABAP_REFERENCE.md`.
 
 ## What files represent
 - `src/<name>.clas.abap`: ABAP source for a class.

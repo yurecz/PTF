@@ -2,6 +2,8 @@
 
 This document describes the internal architecture and execution flow of the Process Test Framework (PTF) to help LLMs understand the codebase faster.
 
+**For EML syntax and RAP MODIFY patterns, see [EML_SYNTAX_REFERENCE.md](EML_SYNTAX_REFERENCE.md)**
+
 ## Core Data Structures
 
 ### Step Data Structure (`cl_ptf_util=>gt_ptf_step`)

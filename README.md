@@ -29,6 +29,7 @@ Minimum software component requirement (from `.abapgit.xml`): `S4COREOP` `>= 110
 This repo includes lightweight guidance for LLM-based coding assistance:
 - `AGENTS.md` describes how to navigate/edit this abapGit repo safely.
 - `docs/LLM_CONTEXT.md` provides a short, repo-specific overview for prompting and onboarding.
+- `docs/EML_SYNTAX_REFERENCE.md` comprehensive EML syntax guide with %CID/%CID_REF patterns for RAP MODIFY operations.
 - `docs/AUNIT_EXECUTION.md` documents how PTF uses ABAP Unit sessions as an execution container for productive PTF runs.
 - `docs/MULTI_SYSTEM_LANDSCAPES.md` documents cross-system execution via RFC destinations (decentral/side-by-side landscapes).
 - `docs/DEVELOPMENT_GOALS.md` captures the current development goals (JSON step input expansion and RAP `MODIFY` support).
