@@ -266,6 +266,54 @@ ENDLOOP.
 - If MCP is unavailable, fall back to the CLI wrapper: `tools/abap_cli.sh fetch-class <name> --client 815`
 - See `tools/abap_artifacts/README.md` for CLI usage.
 
+## MCP authentication troubleshooting
+
+**When MCP returns 401 Unauthorized, follow this checklist:**
+
+1. **Check environment variables FIRST** (most common issue):
+   ```bash
+   env | grep -i abap
+   ```
+   - If `ABAP_PASSWORD` is set, it overrides keyring
+   - If password is wrong/truncated, unset it: `unset ABAP_PASSWORD`
+   - Example issue: `ABAP_PASSWORD=Mamont1982` (10 chars) vs keyring has `Mamont1982Mamont1982` (20 chars)
+
+2. **Verify keyring has correct password**:
+   ```bash
+   PYTHON_KEYRING_BACKEND=keyrings.alt.file.PlaintextKeyring python3 -c "
+   import keyring
+   pw = keyring.get_password('abap_artifacts::https://ldai1emo.wdf.sap.corp:44300::client::815', 'PETUKHIN')
+   print(f'Password length: {len(pw)}' if pw else 'No password found')
+   "
+   ```
+
+3. **Test authentication with curl** (bypasses Python entirely):
+   ```bash
+   curl -u "PETUKHIN:PASSWORD" -k "https://ldai1emo.wdf.sap.corp:44300/sap/bc/adt/repository/nodestructure?sap-client=815"
+   ```
+   - If curl works but MCP fails → environment variable issue
+   - If curl fails → password is wrong
+
+4. **Test MCP with explicit password** (bypass keyring):
+   ```bash
+   python3 -m abap_artifacts fetch-class CL_ABAP_STRUCTDESCR \
+     --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 \
+     --user PETUKHIN --password "PASSWORD" --no-keyring --insecure
+   ```
+   - If this works → keyring issue
+   - If this fails → password/network issue
+
+5. **Common causes** (in order of frequency):
+   - Stale `ABAP_PASSWORD` environment variable overriding keyring
+   - Missing `--client 815` parameter in curl tests
+   - Wrong username case (though usually works with both)
+   - Password actually expired/changed in ABAP system
+
+**Resolution:**
+- Remove or update `ABAP_PASSWORD` in shell configs (~/.bashrc, ~/.profile)
+- Update keyring password: `python3 -m abap_artifacts auth set-password --base-url ... --client 815 --user PETUKHIN`
+- Check password actually works in ABAP GUI before troubleshooting further
+
 ## Useful searches
 - Find a class: `rg -n \"^CLASS\\s+cl_\" src`
 - Find references: `rg -n \"cl_ptf_\" src`
