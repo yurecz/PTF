@@ -128,9 +128,9 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 *   Add CREATE_BY examples if entity has associations
     IF lt_associations IS NOT INITIAL.
-      LOOP AT lt_associations INTO DATA(ls_assoc) WHERE source_name = iv_entity.
-        IF ls_assoc-cardinality-n = cl_abap_behv_load=>c_cardinality_n
-          AND ls_assoc-properties-has_create_enabled = cl_abap_behv_load=>c_enabled.
+      LOOP AT lt_associations INTO DATA(ls_assoc) WHERE source_entity = iv_entity.
+        IF ls_assoc-properties-is_toChild = abap_on
+          AND ls_assoc-properties-has_create = cl_abap_behv_load=>c_enabled.
 
           IF ls_entity-properties-has_create = cl_abap_behv_load=>c_enabled
             OR ls_entity-properties-has_create = cl_abap_behv_load=>c_enabled_both.
@@ -138,7 +138,7 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
           ENDIF.
 
           DATA(lv_create_by_json) = generate_create_by_template(
-            iv_entity       = ls_assoc-target_name
+            iv_entity       = ls_assoc-target_entity
             it_entities     = lt_entities
             it_associations = lt_associations
             it_permissions  = lt_permissions
@@ -511,24 +511,24 @@ CLASS CL_PTF_RAP_MODIFY_TEMPLATE IMPLEMENTATION.
 
 *   Find the association from parent
     READ TABLE it_associations INTO ls_assoc
-      WITH KEY target_name = iv_entity.
+      WITH KEY target_entity = iv_entity.
     IF sy-subrc <> 0.
       RETURN.
     ENDIF.
 
-    ls_source_entity = it_entities[ name = ls_assoc-source_name ].
+    ls_source_entity = it_entities[ name = ls_assoc-source_entity ].
 
     rv_json = |  \{{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }    "op": "CREATE_BY",{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }    "entity": "{ ls_source_entity-ext_name }",{ cl_abap_char_utilities=>newline }|.
-    rv_json = |{ rv_json }    "sub_name": "{ ls_assoc-ext_name }",{ cl_abap_char_utilities=>newline }|.
+    rv_json = |{ rv_json }    "sub_name": "{ ls_assoc-alias }",{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }    "_comment": "Use %CID_REF to reference parent created in same request",{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }    "%CID_REF": "parent-cid-1",{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }    "instances": [{ cl_abap_char_utilities=>newline }|.
     rv_json = |{ rv_json }      \{{ cl_abap_char_utilities=>newline }|.
 
 *   Add optional %CID field for child if it might have its own children
-    IF line_exists( it_associations[ source_name = iv_entity ] ).
+    IF line_exists( it_associations[ source_entity = iv_entity ] ).
       rv_json = |{ rv_json }        "%CID": "child-cid-1",{ cl_abap_char_utilities=>newline }|.
     ENDIF.
 

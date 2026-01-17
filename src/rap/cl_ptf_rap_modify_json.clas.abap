@@ -43,7 +43,8 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
                    <fs_ref>           TYPE any,
                    <fs_parent_ref>    TYPE any,
                    <fs_key>           TYPE any,
-                   <fs_field>         TYPE any.
+                   <fs_field>         TYPE any,
+                   <fv_key_value>     TYPE any.
 
     CLEAR et_operations.
 
@@ -207,8 +208,7 @@ CLASS CL_PTF_RAP_MODIFY_JSON IMPLEMENTATION.
               p_op         = if_abap_behv=>op-m-create_ba
               p_name       = ls_operation-entity_name
               p_sub_name   = ls_operation-sub_name
-              p_structure  = abap_on
-              p_target     = abap_on ).
+              p_structure  = abap_on ).
 
             ASSIGN lr_child_line->* TO FIELD-SYMBOL(<fs_child_line>).
 
