@@ -1,0 +1,45 @@
+[
+  {"_comment": "JSON MODIFY Example for RAP BO I_NoteBasicTP - see docs/EML_MODIFY.md for full syntax"},
+  {
+    "op": "CREATE",
+    "entity": "I_NoteBasicTP",
+    "instances": [
+      {
+        "%CID": "new-1",
+        "NOTEBASICOBJECTNODETYPE": "",
+        "NOTEBASICOBJECT": "",
+        "NOTEBASICTYPE": "",
+        "NOTEBASICLANGUAGE": "",
+        "NOTEBASICTITLE": "",
+        "_comment": "...add more fields as needed"
+      }
+    ]
+  },
+  {
+    "op": "UPDATE",
+    "entity": "I_NoteBasicTP",
+    "instances": [
+      {
+        "NOTEBASICUUID": ""
+,
+        "NOTEBASICOBJECTNODETYPE": "",
+        "NOTEBASICOBJECT": "",
+        "NOTEBASICTYPE": "",
+        "NOTEBASICLANGUAGE": "",
+        "NOTEBASICTITLE": "",
+        "_comment": "...add more fields as needed"
+      }
+    ]
+  },
+  {
+    "op": "DELETE",
+    "entity": "I_NoteBasicTP",
+    "instances": [
+      {
+        "%pky": {
+        "NOTEBASICUUID": ""
+        }
+      }
+    ]
+  }
+]

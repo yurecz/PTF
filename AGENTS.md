@@ -2,6 +2,21 @@
 
 This repository is an **abapGit** export of the ABAP package **PTF** (Process Test Framework) and subpackages, originally extracted from **ERX/815**. Most work happens by changing objects in an ABAP system and letting abapGit serialize them into `src/`.
 
+## 🚫 BLOCKING RULE: NO CODE WITHOUT MCP VERIFICATION
+
+**IF you are about to write code using ANY ABAP class/interface/API that you have NOT fetched via MCP in this session:**
+
+1. **STOP** - Do not generate any code yet
+2. **FETCH** - Run MCP to get the actual API definition:
+   ```bash
+   tools/abap_cli.sh fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN
+   ```
+3. **READ** - Examine the output to find correct method names, parameters, factory patterns
+4. **DECLARE** - State in your response: "Verified via MCP: <CLASS> uses <PATTERN>"
+5. **THEN CODE** - Only now write the implementation
+
+**This applies to EVERY unfamiliar API - no exceptions.**
+
 ## ⚠️ MANDATORY PRE-FLIGHT CHECKLIST - READ THIS FIRST
 
 **BEFORE touching any code, you MUST complete these steps IN ORDER:**

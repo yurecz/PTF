@@ -1,0 +1,46 @@
+[
+  {
+    "_comment": "JSONMODIFYExampleforRAPBOI_NoteBasicTP-seedocs/EML_MODIFY.mdforfullsyntax"
+  },
+  {
+    "op": "CREATE",
+    "entity": "I_NoteBasicTP",
+    "instances": [
+      {
+        "%CID": "new-1",
+        "NoteBasicObjectNodeType": "",
+        "NoteBasicObject": "",
+        "NoteBasicType": "",
+        "NoteBasicLanguage": "",
+        "NoteBasicTitle": "",
+        "_comment": "...addmorefieldsasneeded"
+      }
+    ]
+  },
+  {
+    "op": "UPDATE",
+    "entity": "I_NoteBasicTP",
+    "instances": [
+      {
+        "NoteBasicUUID": "",
+        "NoteBasicObjectNodeType": "",
+        "NoteBasicObject": "",
+        "NoteBasicType": "",
+        "NoteBasicLanguage": "",
+        "NoteBasicTitle": "",
+        "_comment": "...addmorefieldsasneeded"
+      }
+    ]
+  },
+  {
+    "op": "DELETE",
+    "entity": "I_NoteBasicTP",
+    "instances": [
+      {
+        "%pky": {
+          "NoteBasicUUID": ""
+        }
+      }
+    ]
+  }
+]
