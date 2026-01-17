@@ -7,12 +7,18 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 **BEFORE touching any code, you MUST complete these steps IN ORDER:**
 
 - [ ] **Step 1: Search for existing patterns** - Use `grep_search` or `semantic_search` to find how the API is currently used in the codebase
-- [ ] **Step 2: VERIFY with MCP** - Use MCP tool to fetch the actual API definition from ERX/815:
+- [ ] **Step 2: MANDATORY MCP VERIFICATION** - Use MCP tool to fetch the actual API definition from ERX/815:
   ```bash
   tools/abap_cli.sh fetch-class <CLASS_NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN
   ```
+  **🛑 CRITICAL: If MCP authentication fails (401 error) or MCP is unavailable:**
+  - **STOP IMMEDIATELY** - Do NOT proceed with code changes
+  - **INFORM USER** - Explicitly state: "MCP authentication failed. Cannot verify API signatures. STOPPING."
+  - **NEVER ASSUME** - Do not guess API signatures, parameter names, or method names
+  - **WAIT FOR USER** - Let user resolve authentication or provide verified information
+  
 - [ ] **Step 3: Check docs/** - Review relevant documentation files for patterns and examples
-- [ ] **Step 4: Make changes** - Only now implement changes based on verified information
+- [ ] **Step 4: Make changes** - Only now implement changes based on VERIFIED information from MCP
 
 **AFTER making changes:**
 
@@ -22,9 +28,11 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - [ ] **Activate and verify** - Check compilation, run tests, verify functionality
 
 ❌ **NEVER:** Assume API signatures, guess parameter names, or skip MCP verification
+❌ **NEVER:** Proceed if MCP authentication fails - STOP and inform user
 ❌ **NEVER:** Fix only first occurrence when search shows multiple matches
 ❌ **NEVER:** Commit without running get_errors to verify no compilation errors
-✅ **ALWAYS:** Verify first, code second, deploy third
+✅ **ALWAYS:** Stop immediately if MCP unavailable - inform user explicitly
+✅ **ALWAYS:** Verify with MCP first, code second, deploy third
 ✅ **ALWAYS:** When search shows N matches, document and fix ALL N relevant matches
 
 ## 🔴 SYSTEMATIC FAILURE PREVENTION
@@ -206,12 +214,19 @@ ENDLOOP.
    - Use MCP tool to fetch class definition from ABAP system
    - If MCP is unavailable, fall back to CLI wrapper: `tools/abap_cli.sh fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN`
    - Raw CLI fallback: `PYTHON_KEYRING_BACKEND=keyrings.alt.file.PlaintextKeyring PYTHONPATH=tools/abap_artifacts python3 -m abap_artifacts fetch-class <NAME> --base-url https://ldai1emo.wdf.sap.corp:44300 --client 815 --user PETUKHIN`
+   - **🛑 CRITICAL: If MCP authentication fails (401 error) or MCP is unavailable:**
+     - **STOP IMMEDIATELY** - Do NOT proceed with code changes
+     - **INFORM USER** - Explicitly state: "MCP authentication failed. Cannot verify API signatures. STOPPING."
+     - **NEVER ASSUME** - Do not guess API signatures, parameter names, or method names
+     - **WAIT FOR USER** - Let user resolve authentication or provide verified information
    - **Case sensitivity matters:** When grepping ABAP source fails, try different case. Keywords are typically lowercase (`begin of`, `method`, `data`), names typically uppercase (`CL_CLASS`, `IF_INTERFACE`). If grep finds nothing, try the opposite case.
    - See `docs/MCP_SETUP.md` for MCP configuration
    - ❌ NEVER assume parameter names or API signatures without verification
+   - ❌ NEVER proceed if MCP authentication fails - STOP and inform user
    - ✅ ALWAYS verify with MCP before making code changes
+   - ✅ ALWAYS stop immediately if MCP unavailable - inform user explicitly
 3. **Check documentation** in `docs/` folder for patterns and examples
-4. **Only then make changes** based on verified information
+4. **Only then make changes** based on VERIFIED information from MCP
 
 **AFTER making code changes, MANDATORY:**
 5. **ALWAYS deploy and verify in ABAP system (ERX/815)**
