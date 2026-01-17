@@ -24,6 +24,8 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
     DATA mo_run_environment TYPE REF TO cl_ptf_run .
     DATA mo_eml TYPE REF TO if_ptf_bo_rap_generic_eml .
     DATA mo_operations TYPE REF TO if_ptf_rap_operations .
+    DATA mo_ptf_rap_json_ref_parser TYPE REF TO if_ptf_rap_json_ref_parser .
+    DATA mo_ptf_rap_metadata TYPE REF TO if_ptf_rap_metadata .
 
     METHODS collect_messages
       IMPORTING
@@ -45,6 +47,8 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
       IMPORTING
         iv_entity     TYPE abp_entity_name
         iv_json       TYPE string
+        iv_step_number TYPE i
+        it_reference_step TYPE ptf_step_count_t
       EXPORTING
         et_operations TYPE abp_behv_changes_tab
       RAISING
@@ -55,8 +59,26 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         iv_entity      TYPE abp_entity_name
         it_pid_mapped  TYPE if_ptf_bo_rap_generic_eml=>tt_pid_mapped
         it_mapped      TYPE abp_behv_response_tab
+        it_operations  TYPE abp_behv_changes_tab
       EXPORTING
         ev_document_id TYPE cl_ptf_util=>ty_vbeln_tab .
+
+    METHODS parse_instance_references
+      IMPORTING
+        iv_entity_name  TYPE abp_entity_name
+        iv_step_number  TYPE i
+      EXPORTING
+        ev_error        TYPE abap_bool
+      CHANGING
+        cs_instance     TYPE any .
+
+    METHODS check_ref_step_instance
+      IMPORTING
+        iv_entity_name  TYPE abp_entity_name
+        iv_step_number  TYPE i
+        it_reference_step TYPE ptf_step_count_t
+      CHANGING
+        cs_instance     TYPE any .
 ENDCLASS.
 
 
@@ -68,6 +90,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     me->mo_run_environment = io_run_environment.
     me->mo_eml = io_eml.
     me->mo_operations = io_operations.
+    me->mo_ptf_rap_json_ref_parser = NEW cl_ptf_rap_json_ref_parser( io_run_environment = io_run_environment ).
+    me->mo_ptf_rap_metadata = NEW cl_ptf_rap_metadata( ).
   ENDMETHOD.
 
 
@@ -97,6 +121,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           EXPORTING
             iv_entity     = ls_step_data-bus_obj
             iv_json       = ls_step_data-json_file
+            iv_step_number = iv_step_number
+            it_reference_step = ls_step_data-reference_step
           IMPORTING
             et_operations = lt_operations ).
 
@@ -188,6 +214,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           iv_entity      = ls_step_data-bus_obj
           it_pid_mapped  = lt_pid_mapped
           it_mapped      = lt_mapped
+          it_operations  = lt_operations
         IMPORTING
           ev_document_id = ev_document_id ).
 
@@ -541,7 +568,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
         DATA(lo_json_descr) = CAST cl_abap_structdescr(
           cl_abap_typedescr=>describe_by_data( <json_instance> ) ).
 
-*       Map each JSON field to corresponding EML structure field
+*       Map each JSON field to corresponding EML structure field (dereference JSON values)
 *       Performance: iterate through JSON fields (typically 5-10) instead of target fields (80-100)
         LOOP AT lo_json_descr->components INTO DATA(ls_json_comp).
           DATA(lv_field_name) = to_upper( ls_json_comp-name ).
@@ -563,18 +590,55 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *             Not a reference, use direct value (fallback for edge cases)
               <fs_field> = <fs_value>.
             ENDIF.
+          ENDIF.
+        ENDLOOP.
 
-*           Set %control field if present (skip key fields - they're for identification, not modification)
-            DATA(lv_is_key_field) = xsdbool( line_exists( lt_key_fields[ name = lv_field_name ] ) ).
-            IF lv_is_key_field = abap_off.
-              ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_control_struct>).
-              IF sy-subrc = 0.
+*       Parse JSON /Step[x]/ references in target structure (now with clean values)
+        me->parse_instance_references(
+          EXPORTING
+            iv_entity_name  = ls_operation-entity_name
+            iv_step_number  = iv_step_number
+          IMPORTING
+            ev_error        = DATA(lv_ref_error)
+          CHANGING
+            cs_instance     = <fs_target> ).
+
+        IF lv_ref_error = abap_on.
+          me->mo_run_environment->append_log( |Error parsing references, but continuing with instance| ).
+        ENDIF.
+
+*       Check ALV reference_step and overwrite keys if present
+        me->check_ref_step_instance(
+          EXPORTING
+            iv_entity_name    = ls_operation-entity_name
+            iv_step_number    = iv_step_number
+            it_reference_step = it_reference_step
+          CHANGING
+            cs_instance       = <fs_target> ).
+
+*       Set %control fields for non-key fields
+        LOOP AT lt_key_fields INTO DATA(ls_key_field).
+          DATA(lv_key_name) = to_upper( ls_key_field-name ).
+          
+          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_control_struct>).
+          IF sy-subrc = 0.
+            LOOP AT lo_json_descr->components INTO ls_json_comp.
+              lv_field_name = to_upper( ls_json_comp-name ).
+              
+*             Skip key fields - they're for identification, not modification
+              IF lv_field_name = lv_key_name.
+                CONTINUE.
+              ENDIF.
+              
+*             Check if field exists in target and was populated
+              ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_target> TO <fs_field>.
+              IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
                 ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_control_struct> TO FIELD-SYMBOL(<fs_control_field>).
                 IF sy-subrc = 0.
                   <fs_control_field> = if_abap_behv=>mk-on.
                 ENDIF.
               ENDIF.
-            ENDIF.
+            ENDLOOP.
           ENDIF.
         ENDLOOP.
 
@@ -611,89 +675,239 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 
 
   METHOD extract_document_ids.
-*   Extract document IDs from PID_MAPPED (real keys) or MAPPED (preliminary keys)
+*   Extract document IDs from PID_MAPPED (real keys) + MAPPED (preliminary keys) + operations
 *   Pattern follows cl_ptf_bo_rap_generic=>retr_doc_id_from_pid_mapped + retrieve_doc_id_from_mapped
 *
 *   Flow: MODIFY returns %PID -> COMMIT converts to real keys -> stored in PID_MAPPED
-*   Priority: PID_MAPPED (final keys) > MAPPED (preliminary/temporary keys)
+*   All sources are checked additively (no early returns) to capture all affected instances
     DATA: lv_ptf_key      TYPE ptfkey,
           lo_metadata     TYPE REF TO cl_ptf_rap_metadata.
 
     FIELD-SYMBOLS: <fs_entries>    TYPE STANDARD TABLE,
                    <fs_entry>      TYPE any,
                    <fs_field>      TYPE any,
-                   <fs_pid_mapped> TYPE if_ptf_bo_rap_generic_eml=>ts_pid_mapped.
+                   <fs_pid_mapped> TYPE if_ptf_bo_rap_generic_eml=>ts_pid_mapped,
+                   <fs_operation>  TYPE abp_behv_changes.
 
     CLEAR ev_document_id.
 
-*   Try to get document IDs from PID_MAPPED first (real keys after commit)
+*   Extract document IDs from PID_MAPPED (real keys after commit for CREATE operations)
     LOOP AT it_pid_mapped ASSIGNING <fs_pid_mapped> WHERE root_name = iv_entity.
       IF <fs_pid_mapped>-key IS NOT INITIAL.
         APPEND <fs_pid_mapped>-key TO ev_document_id.
+        me->mo_run_environment->append_log( |Extracted key from PID_MAPPED: { <fs_pid_mapped>-key }| ).
       ENDIF.
     ENDLOOP.
 
-*   If we got keys from PID_MAPPED, we're done
-    IF ev_document_id IS NOT INITIAL.
-      me->mo_run_environment->append_log( |Extracted { lines( ev_document_id ) } document ID(s) from PID_MAPPED (real keys)| ).
-      RETURN.
+*   Extract from MAPPED (for entities without late numbering - CREATE operations)
+    IF line_exists( it_mapped[ entity_name = iv_entity ] ).
+*     Get key field metadata
+      lo_metadata = NEW cl_ptf_rap_metadata( ).
+      DATA(lt_components) = lo_metadata->get_key_fields( iv_name = iv_entity ).
+
+      IF lt_components IS NOT INITIAL.
+*       Extract entries from MAPPED
+        DATA(lr_entries) = it_mapped[ entity_name = iv_entity ]-entries.
+        ASSIGN lr_entries->* TO <fs_entries>.
+
+        IF <fs_entries> IS ASSIGNED.
+*         Process each mapped entry (could be multiple creates)
+          LOOP AT <fs_entries> ASSIGNING <fs_entry>.
+            CLEAR lv_ptf_key.
+
+*           Build PTF key from key field values
+            LOOP AT lt_components ASSIGNING FIELD-SYMBOL(<fs_component>).
+              DATA(lv_tabix) = sy-tabix.
+
+              ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_entry> TO <fs_field>.
+              IF sy-subrc = 0.
+                IF lv_tabix = 1.
+                  lv_ptf_key = <fs_field>.
+                ELSE.
+*                 Concatenate with delimiter
+                  lv_ptf_key = |{ lv_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_field> }|.
+                ENDIF.
+              ENDIF.
+            ENDLOOP.
+
+*           Don't add temporary keys (ex. %00000000001) - indicated by $ or %
+            IF lv_ptf_key IS NOT INITIAL AND lv_ptf_key NA '$%'.
+              APPEND lv_ptf_key TO ev_document_id.
+              me->mo_run_environment->append_log( |Extracted key from MAPPED: { lv_ptf_key }| ).
+            ENDIF.
+          ENDLOOP.
+        ENDIF.
+      ENDIF.
     ENDIF.
 
-*   Fallback: Extract from MAPPED (for entities without late numbering)
-    me->mo_run_environment->append_log( |No PID_MAPPED entries, falling back to MAPPED table| ).
+*   Extract from UPDATE/DELETE operations (keys are in the instances)
+    
+    LOOP AT it_operations ASSIGNING <fs_operation>
+      WHERE entity_name = iv_entity
+        AND ( op = if_abap_behv=>op-m-update OR op = if_abap_behv=>op-m-delete ).
+      
+*     Get key field metadata if not already loaded
+      IF lo_metadata IS NOT BOUND.
+        lo_metadata = NEW cl_ptf_rap_metadata( ).
+        lt_components = lo_metadata->get_key_fields( iv_name = iv_entity ).
+      ENDIF.
 
-    IF NOT line_exists( it_mapped[ entity_name = iv_entity ] ).
-      me->mo_run_environment->append_log( |No MAPPED entries found for entity { iv_entity }| ).
-      RETURN.
-    ENDIF.
+      IF lt_components IS INITIAL.
+        me->mo_run_environment->append_log( |No key fields found for entity { iv_entity }| ).
+        CONTINUE.
+      ENDIF.
 
-*   Get key field metadata
-    lo_metadata = NEW cl_ptf_rap_metadata( ).
-    DATA(lt_components) = lo_metadata->get_key_fields( iv_name = iv_entity ).
+*     Access instances table
+      ASSIGN <fs_operation>-instances->* TO <fs_entries>.
+      IF <fs_entries> IS NOT ASSIGNED.
+        CONTINUE.
+      ENDIF.
 
-    IF lt_components IS INITIAL.
-      me->mo_run_environment->append_log( |No key fields found for entity { iv_entity }| ).
-      RETURN.
-    ENDIF.
+*     Extract keys from each instance
+      LOOP AT <fs_entries> ASSIGNING <fs_entry>.
+        CLEAR lv_ptf_key.
 
-*   Extract entries from MAPPED
-    DATA(lr_entries) = it_mapped[ entity_name = iv_entity ]-entries.
-    ASSIGN lr_entries->* TO <fs_entries>.
+*       Build PTF key from key field values in the instance
+        LOOP AT lt_components ASSIGNING <fs_component>.
+          lv_tabix = sy-tabix.
 
-    IF <fs_entries> IS NOT ASSIGNED.
-      me->mo_run_environment->append_log( |Could not access MAPPED entries for entity { iv_entity }| ).
-      RETURN.
-    ENDIF.
-
-*   Process each mapped entry (could be multiple creates)
-    LOOP AT <fs_entries> ASSIGNING <fs_entry>.
-      CLEAR lv_ptf_key.
-
-*     Build PTF key from key field values
-      LOOP AT lt_components ASSIGNING FIELD-SYMBOL(<fs_component>).
-        DATA(lv_tabix) = sy-tabix.
-
-        ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_entry> TO <fs_field>.
-        IF sy-subrc = 0.
-          IF lv_tabix = 1.
-            lv_ptf_key = <fs_field>.
-          ELSE.
-*           Concatenate with delimiter
-            lv_ptf_key = |{ lv_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_field> }|.
+          ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_entry> TO <fs_field>.
+          IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
+            IF lv_tabix = 1.
+              lv_ptf_key = <fs_field>.
+            ELSE.
+*             Concatenate with delimiter
+              lv_ptf_key = |{ lv_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_field> }|.
+            ENDIF.
           ENDIF.
+        ENDLOOP.
+
+        IF lv_ptf_key IS NOT INITIAL.
+          APPEND lv_ptf_key TO ev_document_id.
+          me->mo_run_environment->append_log( |Extracted key from { <fs_operation>-op } operation: { lv_ptf_key }| ).
         ENDIF.
       ENDLOOP.
-
-*     Don't add temporary keys (ex. %00000000001) - indicated by $ or %
-      IF lv_ptf_key IS NOT INITIAL AND lv_ptf_key NA '$%'.
-        APPEND lv_ptf_key TO ev_document_id.
-        me->mo_run_environment->append_log( |Extracted key from MAPPED: { lv_ptf_key }| ).
-      ENDIF.
     ENDLOOP.
 
+*   Log summary
     IF ev_document_id IS INITIAL.
-      me->mo_run_environment->append_log( |No valid keys found in MAPPED (only temporary keys like %PID or %00000001)| ).
+      me->mo_run_environment->append_log( |No document IDs could be extracted for entity { iv_entity }| ).
+    ELSE.
+      me->mo_run_environment->append_log( |Total extracted: { lines( ev_document_id ) } document ID(s) for entity { iv_entity }| ).
     ENDIF.
 
   ENDMETHOD.
+
+
+  METHOD parse_instance_references.
+*   Parse JSON /Step[x]/ references in an operation instance
+*   Delegates to cl_ptf_rap_json_ref_parser for each field
+    CLEAR ev_error.
+
+    TRY.
+        me->mo_ptf_rap_json_ref_parser->parse_references(
+          EXPORTING
+            iv_entity_name  = iv_entity_name
+            iv_step_number  = iv_step_number
+          IMPORTING
+            ev_error        = ev_error
+          CHANGING
+            cs_test_data    = cs_instance ).
+
+        IF ev_error = abap_on.
+          me->mo_run_environment->append_log( |Error parsing JSON references for entity { iv_entity_name }| ).
+        ENDIF.
+
+      CATCH cx_root INTO DATA(lx_error).
+        me->mo_run_environment->append_log( |Exception parsing references: { lx_error->get_text( ) }| ).
+        ev_error = abap_on.
+    ENDTRY.
+
+  ENDMETHOD.
+
+
+  METHOD check_ref_step_instance.
+*   Check ALV reference_step field and overwrite keys in instance
+*   Follows logic from cl_ptf_bo_rap_generic=>check_reference_step()
+    DATA: lv_ptf_key TYPE ptfkey.
+
+    FIELD-SYMBOLS: <fs_field>         TYPE any,
+                   <fs_component>     TYPE abap_componentdescr,
+                   <fs_ref_step>      TYPE any.
+
+*   Get key fields for this entity
+    DATA(lt_components) = me->mo_ptf_rap_metadata->get_key_fields( EXPORTING iv_name = iv_entity_name ).
+
+*   Check if we have a reference step
+    READ TABLE it_reference_step ASSIGNING <fs_ref_step> INDEX 1.
+    IF sy-subrc <> 0 OR <fs_ref_step> IS INITIAL.
+      RETURN. " No reference step
+    ENDIF.
+
+*   Issue warning if multiple reference steps
+    IF lines( it_reference_step ) > 1.
+      me->mo_run_environment->append_log( |Multiple reference steps mentioned, only the first one used: { <fs_ref_step> }| ).
+    ENDIF.
+
+*   Get keys from reference step
+    DATA(lt_ptf_keys) = me->mo_run_environment->get_keys_of_touch_doc_of_step( iv_step_number = <fs_ref_step> ).
+
+    TRY.
+        lv_ptf_key = lt_ptf_keys[ 1 ].
+
+*       Issue warning if multiple result IDs
+        IF lines( lt_ptf_keys ) > 1.
+          me->mo_run_environment->append_log( |Multiple ResultIDs provided by reference step { <fs_ref_step> }, only the first one used: { lv_ptf_key }| ).
+        ENDIF.
+
+        DATA(ls_ref_step_data) = me->mo_run_environment->get_step_data( iv_step_number = <fs_ref_step> ).
+
+*       Handle %PID case vs regular keys
+        CASE ls_ref_step_data-is_pid.
+          WHEN abap_off.
+*           Split compound keys and assign to key fields
+            SPLIT lv_ptf_key AT cl_ptf_util=>gc_key_field_delimiter INTO TABLE DATA(lt_ptf_key_components).
+
+            LOOP AT lt_components ASSIGNING <fs_component>.
+              DATA(lv_tabix) = sy-tabix.
+              READ TABLE lt_ptf_key_components ASSIGNING FIELD-SYMBOL(<fs_ptf_key_component>) INDEX lv_tabix.
+              IF sy-subrc = 0.
+                ASSIGN COMPONENT <fs_component>-name OF STRUCTURE cs_instance TO <fs_field>.
+                IF sy-subrc = 0.
+                  <fs_field> = <fs_ptf_key_component>.
+                ELSE.
+                  me->mo_run_environment->append_log( |Key field { <fs_component>-name } not found in instance structure| ).
+                ENDIF.
+              ENDIF.
+            ENDLOOP.
+
+            me->mo_run_environment->append_log( |Instance keys overwritten from reference step { <fs_ref_step> }| ).
+
+          WHEN abap_on.
+*           Assign %PID
+            ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-pid OF STRUCTURE cs_instance TO <fs_field>.
+            IF sy-subrc = 0.
+              <fs_field> = lv_ptf_key.
+              me->mo_run_environment->append_log( |Instance %PID filled from reference step { <fs_ref_step> }| ).
+
+*             Clear other key fields
+              LOOP AT lt_components ASSIGNING <fs_component>.
+                ASSIGN COMPONENT <fs_component>-name OF STRUCTURE cs_instance TO <fs_field>.
+                IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
+                  CLEAR <fs_field>.
+                ENDIF.
+              ENDLOOP.
+
+            ELSE.
+              me->mo_run_environment->append_log( 'Instance structure doesn''t have component %PID' ).
+            ENDIF.
+
+        ENDCASE.
+
+      CATCH cx_root INTO DATA(lx_error).
+        me->mo_run_environment->append_log( |Error in check_reference_step: { lx_error->get_text( ) }| ).
+    ENDTRY.
+
+  ENDMETHOD.
+
 ENDCLASS.
