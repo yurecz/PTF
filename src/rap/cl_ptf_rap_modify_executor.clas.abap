@@ -204,6 +204,14 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       RETURN.
     ENDIF.
 
+*   Validate: Check if entity names in JSON match PTF step Business Object
+    LOOP AT lt_operations INTO DATA(ls_check_op).
+      IF ls_check_op-entity_name <> ls_step_data-bus_obj.
+        me->mo_run_environment->append_log( |WARNING: JSON entity '{ ls_check_op-entity_name }' differs from PTF Business Object '{ ls_step_data-bus_obj }'| ).
+        me->mo_run_environment->append_log( |This may cause issues with COMMIT and document_id extraction| ).
+      ENDIF.
+    ENDLOOP.
+
 *   Execute EML MODIFY ENTITIES
     me->mo_eml->modify_entities(
       IMPORTING
