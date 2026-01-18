@@ -981,30 +981,34 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
         cs_instance       = cs_instance ).
 
 *   Set %control fields for non-key fields
-    LOOP AT it_key_fields INTO DATA(ls_key_field).
-      DATA(lv_key_name) = to_upper( ls_key_field-name ).
+    ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE cs_instance TO FIELD-SYMBOL(<fs_control_struct>).
+    IF sy-subrc = 0.
+      LOOP AT lo_json_descr->components INTO ls_json_comp.
+        lv_field_name = to_upper( ls_json_comp-name ).
 
-      ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE cs_instance TO FIELD-SYMBOL(<fs_control_struct>).
-      IF sy-subrc = 0.
-        LOOP AT lo_json_descr->components INTO ls_json_comp.
-          lv_field_name = to_upper( ls_json_comp-name ).
-
-*         Skip key fields - they're for identification, not modification
-          IF lv_field_name = lv_key_name.
-            CONTINUE.
-          ENDIF.
-
-*         Check if field exists in target and was populated
-          ASSIGN COMPONENT lv_field_name OF STRUCTURE cs_instance TO <fs_field>.
-          IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
-            ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_control_struct> TO FIELD-SYMBOL(<fs_control_field>).
-            IF sy-subrc = 0.
-              <fs_control_field> = if_abap_behv=>mk-on.
-            ENDIF.
+*       Skip key fields - they're for identification, not modification
+        DATA(lv_is_key) = abap_off.
+        LOOP AT it_key_fields INTO DATA(ls_key_field).
+          IF lv_field_name = to_upper( ls_key_field-name ).
+            lv_is_key = abap_on.
+            EXIT.
           ENDIF.
         ENDLOOP.
-      ENDIF.
-    ENDLOOP.
+
+        IF lv_is_key = abap_on.
+          CONTINUE.
+        ENDIF.
+
+*       Check if field exists in target and was populated
+        ASSIGN COMPONENT lv_field_name OF STRUCTURE cs_instance TO <fs_field>.
+        IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
+          ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_control_struct> TO FIELD-SYMBOL(<fs_control_field>).
+          IF sy-subrc = 0.
+            <fs_control_field> = if_abap_behv=>mk-on.
+          ENDIF.
+        ENDIF.
+      ENDLOOP.
+    ENDIF.
   ENDMETHOD.
 
   METHOD process_create.
@@ -1052,7 +1056,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       ENDIF.
     ENDLOOP.
 
-    me->mo_run_environment->append_log( |CREATE: Processed { sy-tabix } instances| ).
+    me->mo_run_environment->append_log( |CREATE: Processed { lines( it_json_instances ) } instances| ).
   ENDMETHOD.
 
   METHOD process_create_by.
@@ -1210,7 +1214,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           cs_instance       = <fs_target> ).
     ENDLOOP.
 
-    me->mo_run_environment->append_log( |UPDATE: Processed { sy-tabix } instances| ).
+    me->mo_run_environment->append_log( |UPDATE: Processed { lines( it_json_instances ) } instances| ).
   ENDMETHOD.
 
   METHOD process_delete.
@@ -1264,7 +1268,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       ENDLOOP.
     ENDLOOP.
 
-    me->mo_run_environment->append_log( |DELETE: Processed { sy-tabix } instances| ).
+    me->mo_run_environment->append_log( |DELETE: Processed { lines( it_json_instances ) } instances| ).
   ENDMETHOD.
 
   METHOD process_execute.
@@ -1305,7 +1309,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           cs_instance       = <fs_target> ).
     ENDLOOP.
 
-    me->mo_run_environment->append_log( |EXECUTE ({ is_operation-sub_name }): Processed { sy-tabix } instances| ).
+    me->mo_run_environment->append_log( |EXECUTE ({ is_operation-sub_name }): Processed { lines( it_json_instances ) } instances| ).
   ENDMETHOD.
 
 ENDCLASS.
