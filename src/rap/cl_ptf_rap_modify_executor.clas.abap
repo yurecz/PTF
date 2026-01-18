@@ -406,8 +406,6 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
                    <fs_instances>    TYPE any,
                    <ft_instances>    TYPE STANDARD TABLE,
                    <ft_target_table> TYPE STANDARD TABLE,
-                   <ft_target_ref>   TYPE any,
-                   <ft_target>       TYPE STANDARD TABLE,
                    <fs_instance>     TYPE any,
                    <fs_target>       TYPE any,
                    <fs_field>        TYPE any,
@@ -598,20 +596,11 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
         ENDIF.
 
 *       Create %target table for children
-        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_parent_line> TO FIELD-SYMBOL(<ft_target_ref>).
+        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_parent_line> TO FIELD-SYMBOL(<ft_target>).
         IF sy-subrc <> 0.
           me->mo_run_environment->append_log( |ERROR: Failed to find %TARGET component in CREATE_BY structure| ).
           CONTINUE.
         ENDIF.
-
-*       Dereference %TARGET (it's a REF TO data, not a direct table)
-        ASSIGN <ft_target_ref>->* TO <ft_target>.
-        IF sy-subrc <> 0.
-          me->mo_run_environment->append_log( |ERROR: Failed to dereference %TARGET table| ).
-          CONTINUE.
-        ENDIF.
-
-        me->mo_run_environment->append_log( |%TARGET table dereferenced successfully| ).
 
 *       Process each child instance and add to %target
         DATA(lv_child_counter) = 0.
