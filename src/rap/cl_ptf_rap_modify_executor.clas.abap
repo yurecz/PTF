@@ -273,6 +273,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *   Extract document IDs (only for successful operations)
 *   Priority: lt_pid_mapped (real keys after commit) > lt_mapped (preliminary keys)
     IF lv_error = abap_off.
+      me->mo_run_environment->append_log( |DEBUG: Calling extract_document_ids with entity='{ ls_step_data-bus_obj }', pid_mapped={ lines( lt_pid_mapped ) }, mapped={ lines( lt_mapped ) }, operations={ lines( lt_operations ) }| ).
       me->extract_document_ids(
         EXPORTING
           iv_entity      = ls_step_data-bus_obj
@@ -281,6 +282,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           it_operations  = lt_operations
         IMPORTING
           ev_document_id = ev_document_id ).
+
+      me->mo_run_environment->append_log( |DEBUG: extract_document_ids returned { lines( ev_document_id ) } document IDs| ).
 
 *     Log extracted document IDs
       IF ev_document_id IS NOT INITIAL.
