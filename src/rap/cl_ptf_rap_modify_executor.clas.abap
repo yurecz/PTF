@@ -91,6 +91,15 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
       CHANGING
         cs_instance       TYPE any .
 
+    METHODS validate_keys_required
+      IMPORTING
+        iv_entity_name   TYPE abp_entity_name
+        iv_operation     TYPE string
+        it_instances     TYPE REF TO data
+        it_key_fields    TYPE abap_component_tab
+      RAISING
+        cx_ptf_json .
+
     METHODS process_create
       IMPORTING
         iv_entity_name      TYPE abp_entity_name
@@ -123,15 +132,21 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         is_operation        TYPE abp_behv_changes
         it_json_instances   TYPE STANDARD TABLE
       EXPORTING
-        er_instances        TYPE REF TO data .
+        er_instances        TYPE REF TO data
+      RAISING
+        cx_ptf_json .
 
     METHODS process_delete
       IMPORTING
         iv_entity_name      TYPE abp_entity_name
+        iv_step_number      TYPE i
+        it_reference_step   TYPE ptf_step_count_t
         is_operation        TYPE abp_behv_changes
         it_json_instances   TYPE STANDARD TABLE
       EXPORTING
-        er_instances        TYPE REF TO data .
+        er_instances        TYPE REF TO data
+      RAISING
+        cx_ptf_json .
 
     METHODS process_execute
       IMPORTING
@@ -142,7 +157,9 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         is_operation        TYPE abp_behv_changes
         it_json_instances   TYPE STANDARD TABLE
       EXPORTING
-        er_instances        TYPE REF TO data .
+        er_instances        TYPE REF TO data
+      RAISING
+        cx_ptf_json .
 ENDCLASS.
 
 
@@ -193,26 +210,69 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       CATCH cx_ptf_json INTO DATA(lx_json).
         me->mo_run_environment->append_log( lx_json->get_text( ) ).
         ev_execution_status = abap_off.
-        ev_check_status = abap_off.
         RETURN.
     ENDTRY.
 
     IF lt_operations IS INITIAL.
       me->mo_run_environment->append_log( 'No operations found in JSON payload' ).
       ev_execution_status = abap_off.
-      ev_check_status = abap_off.
       RETURN.
     ENDIF.
 
-*   Validate: Check if entity names in JSON match PTF step Business Object
-    LOOP AT lt_operations INTO DATA(ls_check_op).
-      IF ls_check_op-entity_name <> ls_step_data-bus_obj.
-        me->mo_run_environment->append_log( |ERROR: JSON entity '{ ls_check_op-entity_name }' differs from PTF Business Object '{ ls_step_data-bus_obj }'| ).
-        me->mo_run_environment->append_log( |Please correct: either use '{ ls_step_data-bus_obj }' in JSON or change PTF Business Object setting| ).
-        ev_execution_status = abap_off.
-        ev_check_status = abap_off.
-        RETURN.
+*   Consolidate operations: EML deduplicates by (entity + op + sub_name)
+*   Merge instances from duplicate operations to ensure all instances execute
+    DATA: lt_consolidated_ops TYPE abp_behv_changes_tab,
+          lv_found            TYPE abap_bool.
+
+    FIELD-SYMBOLS: <ft_new_inst_cons>  TYPE STANDARD TABLE,
+                   <ft_exist_inst_cons> TYPE STANDARD TABLE,
+                   <fs_new_inst_cons>   TYPE any.
+
+    LOOP AT lt_operations INTO DATA(ls_op_cons).
+*     Check if operation with same entity+op+sub_name already exists
+      lv_found = abap_off.
+      LOOP AT lt_consolidated_ops ASSIGNING FIELD-SYMBOL(<fs_existing_op_cons>)
+        WHERE entity_name = ls_op_cons-entity_name
+          AND op = ls_op_cons-op
+          AND sub_name = ls_op_cons-sub_name.
+        lv_found = abap_on.
+        EXIT.
+      ENDLOOP.
+
+      IF lv_found = abap_on.
+*       Found duplicate - merge instances
+        IF ls_op_cons-instances IS BOUND AND <fs_existing_op_cons>-instances IS BOUND.
+          ASSIGN ls_op_cons-instances->* TO <ft_new_inst_cons>.
+          ASSIGN <fs_existing_op_cons>-instances->* TO <ft_exist_inst_cons>.
+
+          IF <ft_new_inst_cons> IS ASSIGNED AND <ft_exist_inst_cons> IS ASSIGNED.
+*           Append new instances to existing operation
+            LOOP AT <ft_new_inst_cons> ASSIGNING <fs_new_inst_cons>.
+              APPEND <fs_new_inst_cons> TO <ft_exist_inst_cons>.
+            ENDLOOP.
+            me->mo_run_environment->append_log( |Consolidated { lines( <ft_new_inst_cons> ) } instances into existing operation (entity={ ls_op_cons-entity_name }, op={ ls_op_cons-op })| ).
+          ENDIF.
+        ENDIF.
+      ELSE.
+*       New operation - add to consolidated list
+        APPEND ls_op_cons TO lt_consolidated_ops.
       ENDIF.
+    ENDLOOP.
+
+*   Replace with consolidated operations
+    lt_operations = lt_consolidated_ops.
+
+*   Diagnostic: Log operations before EML execution
+    me->mo_run_environment->append_log( |Operations passed to EML: { lines( lt_operations ) }| ).
+    LOOP AT lt_operations INTO DATA(ls_op_diag).
+      DATA(lv_inst_count) = 0.
+      IF ls_op_diag-instances IS BOUND.
+        ASSIGN ls_op_diag-instances->* TO FIELD-SYMBOL(<ft_instances_diag>).
+        IF sy-subrc = 0.
+          lv_inst_count = lines( <ft_instances_diag> ).
+        ENDIF.
+      ENDIF.
+      me->mo_run_environment->append_log( |Op { sy-tabix }: entity={ ls_op_diag-entity_name }, op={ ls_op_diag-op }, sub_name={ ls_op_diag-sub_name }, instances={ lv_inst_count }| ).
     ENDLOOP.
 
 *   Execute EML MODIFY ENTITIES
@@ -242,7 +302,6 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 
     IF lv_error = abap_on.
       ev_execution_status = abap_off.
-      ev_check_status = abap_off.
 
 *     Add messages to step attributes
       IF lt_messages IS NOT INITIAL.
@@ -253,10 +312,12 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       RETURN.
     ENDIF.
 
-*   Fill list of root entities for commit
-    IF NOT line_exists( lt_root_entities[ table_line = ls_step_data-bus_obj ] ).
-      INSERT ls_step_data-bus_obj INTO TABLE lt_root_entities.
-    ENDIF.
+*   Fill list of root entities for commit (collect all entities from operations)
+    LOOP AT lt_operations INTO DATA(ls_op_root).
+      IF NOT line_exists( lt_root_entities[ table_line = ls_op_root-entity_name ] ).
+        INSERT ls_op_root-entity_name INTO TABLE lt_root_entities.
+      ENDIF.
+    ENDLOOP.
 
 *   Execute COMMIT ENTITIES
     me->commit_entities(
@@ -284,19 +345,27 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *   Extract document IDs (only for successful operations)
 *   Priority: lt_pid_mapped (real keys after commit) > lt_mapped (preliminary keys)
     IF lv_error = abap_off.
-      me->extract_document_ids(
-        EXPORTING
-          iv_entity      = ls_step_data-bus_obj
-          it_pid_mapped  = lt_pid_mapped
-          it_mapped      = lt_mapped
-          it_operations  = lt_operations
-        IMPORTING
-          ev_document_id = ev_document_id ).
+*     Extract document IDs for all entities in operations
+      DATA(lt_doc_ids_temp) = VALUE cl_ptf_util=>ty_vbeln_tab( ).
+      LOOP AT lt_root_entities INTO DATA(lv_entity).
+        CLEAR lt_doc_ids_temp.
+        me->extract_document_ids(
+          EXPORTING
+            iv_entity      = lv_entity
+            it_pid_mapped  = lt_pid_mapped
+            it_mapped      = lt_mapped
+            it_operations  = lt_operations
+          IMPORTING
+            ev_document_id = lt_doc_ids_temp ).
+
+        APPEND LINES OF lt_doc_ids_temp TO ev_document_id.
+      ENDLOOP.
 
 *     Log extracted document IDs
       IF ev_document_id IS NOT INITIAL.
+        DATA(lv_doc_id_str) = VALUE string( ).
         LOOP AT ev_document_id ASSIGNING FIELD-SYMBOL(<lv_doc_id>).
-          DATA(lv_doc_id_str) = CONV string( <lv_doc_id> ).
+          lv_doc_id_str = CONV string( <lv_doc_id> ).
           me->mo_run_environment->append_log( |Extracted document ID: { lv_doc_id_str }| ).
         ENDLOOP.
       ELSE.
@@ -305,12 +374,12 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     ENDIF.
 
 *   Set return values
+*   MODIFY action executes CREATE/DELETE/UPDATE - these are NOT check actions
+*   check_status should remain empty (only set for CHECK/READ actions)
     IF lv_error = abap_off.
       ev_execution_status = abap_on.
-      ev_check_status = abap_on.
     ELSE.
       ev_execution_status = abap_off.
-      ev_check_status = abap_off.
     ENDIF.
 
   ENDMETHOD.
@@ -502,11 +571,29 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           data          = lr_json_data ).
 
     IF lr_json_data IS NOT BOUND.
+      me->mo_run_environment->append_log( 'JSON deserialization failed - no data created' ).
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
+
+*   Validate JSON structure (must be array of operations)
+    DATA(lo_type_descr) = cl_abap_typedescr=>describe_by_data( lr_json_data->* ).
+
+    IF lo_type_descr->kind <> cl_abap_typedescr=>kind_table.
+*     Common error: single operation object instead of array
+      me->mo_run_environment->append_log( '❌ MODIFY JSON format error' ).
+      me->mo_run_environment->append_log( |Found: JSON object (type kind { lo_type_descr->kind })| ).
+      me->mo_run_environment->append_log( 'Expected: JSON array of operations' ).
+      me->mo_run_environment->append_log( ' ' ).
+      me->mo_run_environment->append_log( '✅ Correct: [ { "op": "CREATE|UPDATE|DELETE|EXECUTE", "entity": "...", "instances": [...] } ]' ).
+      me->mo_run_environment->append_log( '❌ Wrong:   { "op": "CREATE|UPDATE|DELETE|EXECUTE", "entity": "...", "instances": [...] }' ).
+      me->mo_run_environment->append_log( ' ' ).
+      me->mo_run_environment->append_log( 'Wrap your operation in square brackets [ ] - MODIFY accepts array of operations' ).
       RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
     ENDIF.
 
     ASSIGN lr_json_data->* TO <ft_json_ops>.
     IF sy-subrc <> 0.
+      me->mo_run_environment->append_log( 'Failed to assign deserialized data to table field symbol' ).
       RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
     ENDIF.
 
@@ -643,6 +730,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
               me->process_delete(
                 EXPORTING
                   iv_entity_name    = ls_operation-entity_name
+                  iv_step_number    = iv_step_number
+                  it_reference_step = it_reference_step
                   is_operation      = ls_operation
                   it_json_instances = <ft_instances>
                 IMPORTING
@@ -700,10 +789,12 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     CLEAR ev_document_id.
 
 *   Extract document IDs from PID_MAPPED (real keys after commit for CREATE operations)
+    DATA(lv_pid_count) = REDUCE i( INIT cnt = 0 FOR <pid> IN it_pid_mapped WHERE ( root_name = iv_entity ) NEXT cnt = cnt + 1 ).
+    me->mo_run_environment->append_log( |PID_MAPPED for { iv_entity }: found { lv_pid_count } entries| ).
     LOOP AT it_pid_mapped ASSIGNING <fs_pid_mapped> WHERE root_name = iv_entity.
       IF <fs_pid_mapped>-key IS NOT INITIAL.
         APPEND <fs_pid_mapped>-key TO ev_document_id.
-        me->mo_run_environment->append_log( |Extracted key from PID_MAPPED: { <fs_pid_mapped>-key }| ).
+        me->mo_run_environment->append_log( |Extracted key from PID_MAPPED [{ sy-tabix }]: { <fs_pid_mapped>-key }| ).
       ENDIF.
     ENDLOOP.
 
@@ -719,9 +810,12 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
         ASSIGN lr_entries->* TO <fs_entries>.
 
         IF <fs_entries> IS ASSIGNED.
+          DATA(lv_entries_count) = lines( <fs_entries> ).
+          me->mo_run_environment->append_log( |MAPPED for { iv_entity }: found { lv_entries_count } entries| ).
 *         Process each mapped entry (could be multiple creates)
           LOOP AT <fs_entries> ASSIGNING <fs_entry>.
             CLEAR lv_ptf_key.
+            me->mo_run_environment->append_log( |Processing MAPPED entry { sy-tabix } of { lv_entries_count }| ).
 
 *           Build PTF key from key field values
             LOOP AT lt_components ASSIGNING FIELD-SYMBOL(<fs_component>).
@@ -1022,6 +1116,51 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     ENDIF.
   ENDMETHOD.
 
+  METHOD validate_keys_required.
+*   Common validation: operations that modify/delete existing entities need key fields
+*   Validates that at least one key field is populated in each instance
+    FIELD-SYMBOLS: <ft_instances> TYPE STANDARD TABLE,
+                   <fs_instance>   TYPE any,
+                   <fs_key_value>  TYPE any.
+
+    ASSIGN it_instances->* TO <ft_instances>.
+
+    DATA lv_has_empty_keys TYPE abap_bool VALUE abap_off.
+    LOOP AT <ft_instances> ASSIGNING <fs_instance>.
+      DATA lv_all_keys_empty TYPE abap_bool VALUE abap_on.
+      LOOP AT it_key_fields INTO DATA(ls_key).
+        ASSIGN COMPONENT ls_key-name OF STRUCTURE <fs_instance> TO <fs_key_value>.
+        IF sy-subrc = 0 AND <fs_key_value> IS NOT INITIAL.
+          lv_all_keys_empty = abap_off.
+          EXIT.
+        ENDIF.
+      ENDLOOP.
+      IF lv_all_keys_empty = abap_on.
+        lv_has_empty_keys = abap_on.
+        EXIT.
+      ENDIF.
+    ENDLOOP.
+
+    IF lv_has_empty_keys = abap_on.
+      me->mo_run_environment->append_log( |❌ { iv_operation } operation validation error| ).
+      me->mo_run_environment->append_log( |Entity { iv_entity_name } requires key fields for { iv_operation }| ).
+      me->mo_run_environment->append_log( 'Empty instance found: {}' ).
+      me->mo_run_environment->append_log( ' ' ).
+      me->mo_run_environment->append_log( 'Solutions:' ).
+      me->mo_run_environment->append_log( '1. Provide key fields in JSON instances:' ).
+      DATA(lv_key_example) = ''.
+      LOOP AT it_key_fields INTO ls_key.
+        IF sy-tabix > 1.
+          lv_key_example = lv_key_example && ', '.
+        ENDIF.
+        lv_key_example = lv_key_example && |"{ ls_key-name }": "value"|.
+      ENDLOOP.
+      me->mo_run_environment->append_log( |   "instances": [\{ { lv_key_example } \}]| ).
+      me->mo_run_environment->append_log( '2. OR set reference_step in PTF ALV to use keys from previous step' ).
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
+  ENDMETHOD.
+
   METHOD process_create.
 *   Process CREATE operation: simple instance processing with auto-CID
 
@@ -1101,10 +1240,10 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *   Get type of %TARGET field (child entity structure)
     DATA(lo_parent_descr) = CAST cl_abap_structdescr(
       CAST cl_abap_tabledescr( cl_abap_typedescr=>describe_by_data( <ft_target_table> ) )->get_table_line_type( ) ).
-    
+
     DATA(lo_target_comp) = lo_parent_descr->get_component_type( p_name = cl_abap_behv=>co_techfield_name-target ).
     DATA(lo_target_table_descr) = CAST cl_abap_tabledescr( lo_target_comp ).
-    
+
 *   Create temp children table with correct child entity type (not parent type)
     CREATE DATA lt_temp_children TYPE HANDLE lo_target_table_descr.
     ASSIGN lt_temp_children->* TO <ft_temp_children>.
@@ -1155,15 +1294,15 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *     We need to group by parent keys and create one parent row per unique parent
       DATA: lt_parent_keys TYPE string_table,
             lv_parent_key  TYPE string.
-      
+
       DATA(lo_parent_meta) = NEW cl_ptf_rap_metadata( ).
       DATA(lt_parent_key_fields) = lo_parent_meta->get_key_fields( iv_name = iv_entity_name ).
-      
+
 *     For simplicity, assuming all instances belong to same parent (common case)
 *     TODO: Handle multiple parents by grouping instances
       IF <ft_temp_children> IS NOT INITIAL.
         APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
-        
+
 *       Copy parent key fields from first child instance to parent row
         READ TABLE <ft_temp_children> INDEX 1 ASSIGNING FIELD-SYMBOL(<fs_first_child>).
         IF sy-subrc = 0.
@@ -1177,7 +1316,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
             ENDIF.
           ENDLOOP.
         ENDIF.
-        
+
 *       Move all children to %TARGET
         ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_target> TO <ft_target>.
         IF sy-subrc = 0.
@@ -1225,18 +1364,31 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           cs_instance       = <fs_target> ).
     ENDLOOP.
 
+*   Validate: UPDATE requires key fields
+    me->validate_keys_required(
+      EXPORTING
+        iv_entity_name = iv_entity_name
+        iv_operation   = 'UPDATE'
+        it_instances   = er_instances
+        it_key_fields  = it_key_fields ).
+
     me->mo_run_environment->append_log( |UPDATE: Processed { lines( it_json_instances ) } instances| ).
   ENDMETHOD.
 
   METHOD process_delete.
-*   Process DELETE operation: keys only, no field processing needed
+*   Process DELETE operation: keys from JSON or reference_step
 
-    FIELD-SYMBOLS: <ft_target_table> TYPE STANDARD TABLE,
-                   <fs_instance>     TYPE any,
-                   <fs_json_instance> TYPE any,
-                   <fs_target>       TYPE any,
-                   <fs_json_field>   TYPE any,
-                   <fs_target_field> TYPE any.
+    DATA: lo_json_descr   TYPE REF TO cl_abap_structdescr,
+          ls_json_comp    TYPE abap_compdescr,
+          lv_field_name   TYPE string,
+          lx_error        TYPE REF TO cx_root.
+
+    FIELD-SYMBOLS: <ft_target_table>   TYPE STANDARD TABLE,
+                   <fs_instance>       TYPE any,
+                   <fs_json_instance>  TYPE any,
+                   <fs_target>         TYPE any,
+                   <fs_json_field>     TYPE any,
+                   <fs_target_field>   TYPE any.
 
 *   Create typed target table
     er_instances = cl_abap_behvdescr=>create_data(
@@ -1246,40 +1398,63 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 
     ASSIGN er_instances->* TO <ft_target_table>.
 
-*   Process each JSON instance (simple key mapping)
+*   For each JSON instance, create a target row (reference_step will fill keys if JSON is empty)
     LOOP AT it_json_instances ASSIGNING <fs_instance>.
-      ASSIGN <fs_instance>->* TO <fs_json_instance>.
-      IF sy-subrc <> 0.
-        CONTINUE.
-      ENDIF.
-
+*     Always append row first (ensures reference_step can fill keys even if JSON parsing fails)
       APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
 
-*     Copy all fields from JSON to target (DELETE typically only has keys)
-      DATA(lo_json_descr) = CAST cl_abap_structdescr(
-        cl_abap_typedescr=>describe_by_data( <fs_json_instance> ) ).
+*     Try to copy explicit keys from JSON (if present)
+      TRY.
+          IF <fs_instance> IS BOUND.
+            ASSIGN <fs_instance>->* TO <fs_json_instance>.
+            IF <fs_json_instance> IS ASSIGNED.
+              lo_json_descr = CAST cl_abap_structdescr(
+                cl_abap_typedescr=>describe_by_data( <fs_json_instance> ) ).
 
-      LOOP AT lo_json_descr->components INTO DATA(ls_json_comp).
-        DATA(lv_field_name) = to_upper( ls_json_comp-name ).
+              LOOP AT lo_json_descr->components INTO ls_json_comp.
+                lv_field_name = to_upper( ls_json_comp-name ).
 
-        ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_json_instance> TO <fs_json_field>.
-        IF sy-subrc <> 0.
-          CONTINUE.
-        ENDIF.
+                ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_json_instance> TO <fs_json_field>.
+                IF sy-subrc = 0.
+                  ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_target> TO <fs_target_field>.
+                  IF sy-subrc = 0.
+*                   Dereference JSON value
+                    TRY.
+                        <fs_target_field> = <fs_json_field>->*.
+                      CATCH cx_root.
+                        <fs_target_field> = <fs_json_field>.
+                    ENDTRY.
+                  ENDIF.
+                ENDIF.
+              ENDLOOP.
+            ENDIF.
+          ENDIF.
+        CATCH cx_root INTO lx_error.
+          me->mo_run_environment->append_log( |Warning: Failed to parse JSON instance for DELETE: { lx_error->get_text( ) }| ).
+      ENDTRY.
 
-        ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_target> TO <fs_target_field>.
-        IF sy-subrc = 0.
-*         Dereference JSON value
-          TRY.
-              <fs_target_field> = <fs_json_field>->*.
-            CATCH cx_root.
-              <fs_target_field> = <fs_json_field>.
-          ENDTRY.
-        ENDIF.
-      ENDLOOP.
+*     Apply reference_step (fills keys from previous step, overwrites JSON keys if both provided)
+      me->check_ref_step_instance(
+        EXPORTING
+          iv_entity_name    = iv_entity_name
+          iv_step_number    = iv_step_number
+          it_reference_step = it_reference_step
+        CHANGING
+          cs_instance       = <fs_target> ).
     ENDLOOP.
 
-    me->mo_run_environment->append_log( |DELETE: Processed { lines( it_json_instances ) } instances| ).
+*   Validate: DELETE requires key fields
+    DATA(lo_metadata_del) = NEW cl_ptf_rap_metadata( ).
+    DATA(lt_key_fields_del) = lo_metadata_del->get_key_fields( iv_name = iv_entity_name ).
+    
+    me->validate_keys_required(
+      EXPORTING
+        iv_entity_name = iv_entity_name
+        iv_operation   = 'DELETE'
+        it_instances   = er_instances
+        it_key_fields  = lt_key_fields_del ).
+
+    me->mo_run_environment->append_log( |DELETE: Processed { lines( <ft_target_table> ) } instances| ).
   ENDMETHOD.
 
   METHOD process_execute.
@@ -1320,7 +1495,17 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           cs_instance       = <fs_target> ).
     ENDLOOP.
 
+*   Validate: EXECUTE (instance actions) requires key fields
+*   Note: Static actions don't need keys, but we validate anyway - static actions typically have empty instances array
+    me->validate_keys_required(
+      EXPORTING
+        iv_entity_name = iv_entity_name
+        iv_operation   = |EXECUTE ({ is_operation-sub_name })|
+        it_instances   = er_instances
+        it_key_fields  = it_key_fields ).
+
     me->mo_run_environment->append_log( |EXECUTE ({ is_operation-sub_name }): Processed { lines( it_json_instances ) } instances| ).
   ENDMETHOD.
 
 ENDCLASS.
+

@@ -98,6 +98,35 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 - Committing code with compilation errors
 - Discovering errors only after push
 
+## ABAP string template escaping rules
+
+**CRITICAL: String templates (`|...|`) have different escaping rules than regular strings:**
+
+1. **Double quotes DO NOT need backslash escaping:**
+   - ✅ Correct: `|"text"|` → outputs: `"text"`
+   - ❌ Wrong: `|\"text\"|` → outputs: `\"text\"` (with backslashes)
+
+2. **Curly braces need backslash escaping to be literal:**
+   - ✅ Correct: `|\{ text \}|` → outputs: `{ text }`
+   - ❌ Wrong: `|\\{ text }|` → outputs: `\{ text }` (backslash before opening brace only)
+   - Note: `{ var }` without backslashes is template expression substitution
+
+3. **Common mistake in error messages:**
+   ```abap
+   " ❌ WRONG - unnecessary escaping:
+   me->append_log( |   \"instances\": [\{ { lv_example } \}]| ).
+   " Outputs: \"instances\": [{ value }] with backslashes
+   
+   " ✅ CORRECT:
+   me->append_log( |   "instances": [\{ { lv_example } \}]| ).
+   " Outputs: "instances": [{ value }] clean JSON
+   ```
+
+4. **Rule summary:**
+   - In `|...|`: Only escape `{` and `}` with `\` when you want literal braces
+   - In `|...|`: Never escape `"` with `\` - use directly
+   - In `'...'`: Regular strings follow different rules (not used in this codebase)
+
 ## What to edit (and what not to)
 - Prefer editing `src/**/*.abap` (class/program sources) and let abapGit manage the adjacent `*.xml` metadata.
 - Avoid hand-editing generated `*.xml` unless you know the object format and the change is intentional.
