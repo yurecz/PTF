@@ -578,31 +578,24 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       DATA(lt_key_fields) = lo_metadata->get_key_fields( iv_name = ls_operation-entity_name ).
 
 *     Special handling for CREATE_BY with operation-level %CID_REF
+*     One parent row with %CID_REF, all JSON instances go into %TARGET
       IF ls_operation-op = if_abap_behv=>op-m-create_ba AND lv_operation_cid_ref IS NOT INITIAL.
-*       Create ONE parent row with %cid_ref and %target containing all children
-        DATA(lr_parent_line) = cl_abap_behvdescr=>create_data(
-          p_op         = if_abap_behv=>op-m-create_ba
-          p_name       = ls_operation-entity_name
-          p_sub_name   = ls_operation-sub_name
-          p_structure  = abap_on ).
+        APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
 
-        ASSIGN lr_parent_line->* TO FIELD-SYMBOL(<fs_parent_line>).
-
-*       Set %cid_ref on parent row
-        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_parent_line> TO FIELD-SYMBOL(<fv_cid_ref_parent>).
+*       Fill %CID_REF from operation level
+        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fv_cid_ref>).
         IF sy-subrc = 0.
-          <fv_cid_ref_parent> = lv_operation_cid_ref.
-          me->mo_run_environment->append_log( |Set %CID_REF on parent row: { <fv_cid_ref_parent> }| ).
+          <fv_cid_ref> = lv_operation_cid_ref.
         ENDIF.
 
-*       Create %target table for children
-        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_parent_line> TO FIELD-SYMBOL(<ft_target>).
+*       Get %TARGET table for children
+        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<ft_target>).
         IF sy-subrc <> 0.
-          me->mo_run_environment->append_log( |ERROR: Failed to find %TARGET component in CREATE_BY structure| ).
+          me->mo_run_environment->append_log( |ERROR: No %TARGET in CREATE_BY structure| ).
           CONTINUE.
         ENDIF.
 
-*       Process each child instance and add to %target
+*       Process each JSON instance as a child in %TARGET
         DATA(lv_child_counter) = 0.
         LOOP AT <ft_instances> ASSIGNING FIELD-SYMBOL(<fs_child_json>).
           lv_child_counter = lv_child_counter + 1.
@@ -613,42 +606,36 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
             CONTINUE.
           ENDIF.
 
-*         Create child line
-          DATA(lr_child_line) = cl_abap_behvdescr=>create_data(
-            p_op         = if_abap_behv=>op-m-create_ba
-            p_name       = ls_operation-entity_name
-            p_sub_name   = ls_operation-sub_name
-            p_structure  = abap_on ).
+          APPEND INITIAL LINE TO <ft_target> ASSIGNING FIELD-SYMBOL(<fs_child_target>).
 
-          ASSIGN lr_child_line->* TO FIELD-SYMBOL(<fs_child_line>).
-
-*         Map JSON fields to child structure
+*         Get structure components of JSON child instance
           DATA(lo_child_descr) = CAST cl_abap_structdescr(
             cl_abap_typedescr=>describe_by_data( <json_child_instance> ) ).
 
+*         Map each JSON field to child structure
           LOOP AT lo_child_descr->components INTO DATA(ls_child_comp).
             DATA(lv_child_field_name) = to_upper( ls_child_comp-name ).
 
 *           Get JSON field value
-            ASSIGN COMPONENT lv_child_field_name OF STRUCTURE <json_child_instance> TO FIELD-SYMBOL(<fs_child_value>).
+            ASSIGN COMPONENT lv_child_field_name OF STRUCTURE <json_child_instance> TO FIELD-SYMBOL(<fs_child_json_value>).
             IF sy-subrc <> 0.
               CONTINUE.
             ENDIF.
 
 *           Try to assign to target child structure
-            ASSIGN COMPONENT lv_child_field_name OF STRUCTURE <fs_child_line> TO FIELD-SYMBOL(<fs_child_field>).
+            ASSIGN COMPONENT lv_child_field_name OF STRUCTURE <fs_child_target> TO FIELD-SYMBOL(<fs_child_field>).
             IF sy-subrc = 0.
 *             Dereference field value
               TRY.
-                  ASSIGN <fs_child_value>->* TO FIELD-SYMBOL(<actual_child_value>).
+                  ASSIGN <fs_child_json_value>->* TO FIELD-SYMBOL(<actual_child_value>).
                   <fs_child_field> = <actual_child_value>.
                 CATCH cx_root.
-                  <fs_child_field> = <fs_child_value>.
+                  <fs_child_field> = <fs_child_json_value>.
               ENDTRY.
 
 *             Set %control for non-key fields
               IF NOT line_exists( lt_key_fields[ name = lv_child_field_name ] ) AND <fs_child_field> IS NOT INITIAL.
-                ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_child_line> TO FIELD-SYMBOL(<fs_child_control_struct>).
+                ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_child_target> TO FIELD-SYMBOL(<fs_child_control_struct>).
                 IF sy-subrc = 0.
                   ASSIGN COMPONENT lv_child_field_name OF STRUCTURE <fs_child_control_struct> TO FIELD-SYMBOL(<fs_child_control_field>).
                   IF sy-subrc = 0.
@@ -660,7 +647,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           ENDLOOP.
 
 *         Auto-generate %CID for child if not provided
-          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_child_line> TO FIELD-SYMBOL(<fv_child_cid>).
+          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_child_target> TO FIELD-SYMBOL(<fv_child_cid>).
           IF sy-subrc = 0 AND <fv_child_cid> IS INITIAL.
             <fv_child_cid> = |AUTO-{ sy-datum }{ sy-uzeit }-{ lv_child_counter }|.
           ENDIF.
@@ -673,7 +660,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
             IMPORTING
               ev_error        = DATA(lv_child_ref_error)
             CHANGING
-              cs_instance     = <fs_child_line> ).
+              cs_instance     = <fs_child_target> ).
 
 *         Check ALV reference_step for child
           me->check_ref_step_instance(
@@ -682,21 +669,15 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
               iv_step_number    = iv_step_number
               it_reference_step = it_reference_step
             CHANGING
-              cs_instance       = <fs_child_line> ).
-
-*         Add child to %target table
-          INSERT <fs_child_line> INTO TABLE <ft_target>.
+              cs_instance       = <fs_child_target> ).
         ENDLOOP.
 
-*       Insert the ONE parent row (with %cid_ref and %target) into result table
-        INSERT <fs_parent_line> INTO TABLE <ft_target_table>.
-        me->mo_run_environment->append_log( |CREATE_BY with %CID_REF: Added 1 parent row with { lv_child_counter } children in %TARGET| ).
+        me->mo_run_environment->append_log( |CREATE_BY: 1 row with %CID_REF, { lv_child_counter } children in %TARGET| ).
 
       ELSE.
-*       Standard processing for CREATE, UPDATE, DELETE, EXECUTE (one row per JSON instance)
-*       Also for CREATE_BY without %CID_REF (direct parent keys in instances)
-        DATA(lv_instance_counter) = 0.
-        LOOP AT <ft_instances> ASSIGNING <fs_instance>.
+*       Standard processing: one table row per JSON instance
+      DATA(lv_instance_counter) = 0.
+      LOOP AT <ft_instances> ASSIGNING <fs_instance>.
         lv_instance_counter = lv_instance_counter + 1.
 *       Dereference instance element (array element -> structure)
         ASSIGN <fs_instance>->* TO FIELD-SYMBOL(<json_instance>).
@@ -793,18 +774,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
             me->mo_run_environment->append_log( |Auto-generated %CID: { <fs_cid> }| ).
           ENDIF.
         ENDIF.
-
-*       Auto-fill %CID for CREATE_BY operations if not provided or initial
-        IF ls_operation-op = if_abap_behv=>op-m-create_ba.
-          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_target> TO <fs_cid>.
-          IF sy-subrc = 0 AND <fs_cid> IS INITIAL.
-*           Generate unique CID for child entity
-            <fs_cid> = |AUTO-{ sy-datum }{ sy-uzeit }-{ lv_instance_counter }|.
-            me->mo_run_environment->append_log( |Auto-generated %CID for CREATE_BY: { <fs_cid> }| ).
-          ENDIF.
-        ENDIF.
       ENDLOOP.
-      ENDIF. "End of CREATE_BY vs standard processing branch
+      ENDIF. "End of CREATE_BY special handling vs standard processing
 
 *     Store operation with instances
       ls_operation-instances = lr_instances.
