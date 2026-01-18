@@ -26,6 +26,7 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
     DATA mo_operations TYPE REF TO if_ptf_rap_operations .
     DATA mo_ptf_rap_json_ref_parser TYPE REF TO if_ptf_rap_json_ref_parser .
     DATA mo_ptf_rap_metadata TYPE REF TO if_ptf_rap_metadata .
+    DATA mv_global_cid_counter TYPE i .
 
     METHODS collect_messages
       IMPORTING
@@ -79,6 +80,69 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         it_reference_step TYPE ptf_step_count_t
       CHANGING
         cs_instance     TYPE any .
+
+    METHODS process_instances
+      IMPORTING
+        iv_entity_name    TYPE abp_entity_name
+        iv_step_number    TYPE i
+        it_reference_step TYPE ptf_step_count_t
+        it_key_fields     TYPE cl_ptf_rap_metadata=>tt_key_fields
+        is_json_instance  TYPE any
+      CHANGING
+        cs_instance       TYPE any .
+
+    METHODS process_create
+      IMPORTING
+        iv_entity_name      TYPE abp_entity_name
+        iv_step_number      TYPE i
+        it_reference_step   TYPE ptf_step_count_t
+        it_key_fields       TYPE cl_ptf_rap_metadata=>tt_key_fields
+        is_operation        TYPE abp_behv_changes
+        it_json_instances   TYPE STANDARD TABLE
+      EXPORTING
+        er_instances        TYPE REF TO data .
+
+    METHODS process_create_by
+      IMPORTING
+        iv_entity_name      TYPE abp_entity_name
+        iv_step_number      TYPE i
+        it_reference_step   TYPE ptf_step_count_t
+        it_key_fields       TYPE cl_ptf_rap_metadata=>tt_key_fields
+        is_operation        TYPE abp_behv_changes
+        it_json_instances   TYPE STANDARD TABLE
+        iv_operation_cid_ref TYPE string
+      EXPORTING
+        er_instances        TYPE REF TO data .
+
+    METHODS process_update
+      IMPORTING
+        iv_entity_name      TYPE abp_entity_name
+        iv_step_number      TYPE i
+        it_reference_step   TYPE ptf_step_count_t
+        it_key_fields       TYPE cl_ptf_rap_metadata=>tt_key_fields
+        is_operation        TYPE abp_behv_changes
+        it_json_instances   TYPE STANDARD TABLE
+      EXPORTING
+        er_instances        TYPE REF TO data .
+
+    METHODS process_delete
+      IMPORTING
+        iv_entity_name      TYPE abp_entity_name
+        is_operation        TYPE abp_behv_changes
+        it_json_instances   TYPE STANDARD TABLE
+      EXPORTING
+        er_instances        TYPE REF TO data .
+
+    METHODS process_execute
+      IMPORTING
+        iv_entity_name      TYPE abp_entity_name
+        iv_step_number      TYPE i
+        it_reference_step   TYPE ptf_step_count_t
+        it_key_fields       TYPE cl_ptf_rap_metadata=>tt_key_fields
+        is_operation        TYPE abp_behv_changes
+        it_json_instances   TYPE STANDARD TABLE
+      EXPORTING
+        er_instances        TYPE REF TO data .
 ENDCLASS.
 
 
@@ -461,21 +525,12 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       lv_op_code = to_upper( lv_op_code ).
       me->mo_run_environment->append_log( |Processing operation: { lv_op_code }| ).
 
-*     Map op code to EML constant
-      CASE lv_op_code.
-        WHEN 'CREATE'.
-          ls_operation-op = if_abap_behv=>op-m-create.
-        WHEN 'CREATE_BY'.
-          ls_operation-op = if_abap_behv=>op-m-create_ba.
-        WHEN 'UPDATE'.
-          ls_operation-op = if_abap_behv=>op-m-update.
-        WHEN 'DELETE'.
-          ls_operation-op = if_abap_behv=>op-m-delete.
-        WHEN 'EXECUTE'.
-          ls_operation-op = if_abap_behv=>op-m-action.
-        WHEN OTHERS.
-          CONTINUE. "Skip unknown operations
-      ENDCASE.
+*     Validate operation code (skip unknown operations)
+      IF lv_op_code <> 'CREATE' AND lv_op_code <> 'CREATE_BY' AND lv_op_code <> 'UPDATE'
+        AND lv_op_code <> 'DELETE' AND lv_op_code <> 'EXECUTE'.
+        me->mo_run_environment->append_log( |Unknown operation '{ lv_op_code }' - skipping| ).
+        CONTINUE.
+      ENDIF.
 
 *     Extract entity name (dereference value reference)
       ASSIGN COMPONENT 'ENTITY' OF STRUCTURE <json_op> TO <fs_entity>.
@@ -525,179 +580,90 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 *     Dereference instances array (component value is reference to table)
       ASSIGN <fs_instances>->* TO <ft_instances>.
 
-*     Create typed target table using cl_abap_behvdescr
-      TRY.
-          CASE ls_operation-op.
-            WHEN if_abap_behv=>op-m-create.
-              lr_instances = cl_abap_behvdescr=>create_data(
-                p_op       = if_abap_behv=>op-m-create
-                p_name     = ls_operation-entity_name
-                p_kind     = if_abap_behv=>typekind-import ).
-
-            WHEN if_abap_behv=>op-m-create_ba.
-              lr_instances = cl_abap_behvdescr=>create_data(
-                p_op       = if_abap_behv=>op-m-create_ba
-                p_name     = ls_operation-entity_name
-                p_sub_name = ls_operation-sub_name
-                p_kind     = if_abap_behv=>typekind-import ).
-
-            WHEN if_abap_behv=>op-m-update.
-              lr_instances = cl_abap_behvdescr=>create_data(
-                p_op       = if_abap_behv=>op-m-update
-                p_name     = ls_operation-entity_name
-                p_kind     = if_abap_behv=>typekind-import ).
-
-            WHEN if_abap_behv=>op-m-delete.
-              lr_instances = cl_abap_behvdescr=>create_data(
-                p_op       = if_abap_behv=>op-m-delete
-                p_name     = ls_operation-entity_name
-                p_kind     = if_abap_behv=>typekind-import ).
-
-            WHEN if_abap_behv=>op-m-action.
-              lr_instances = cl_abap_behvdescr=>create_data(
-                p_op       = if_abap_behv=>op-m-action
-                p_name     = ls_operation-entity_name
-                p_sub_name = ls_operation-sub_name
-                p_kind     = if_abap_behv=>typekind-import ).
-          ENDCASE.
-
-        CATCH cx_root INTO DATA(lx_error).
-          me->mo_run_environment->append_log( |Error creating data structure for { ls_operation-entity_name }: { lx_error->get_text( ) }| ).
-          CONTINUE.
-      ENDTRY.
-
-      IF lr_instances IS NOT BOUND.
-        me->mo_run_environment->append_log( |Failed to create data structure for entity { ls_operation-entity_name }| ).
-        CONTINUE.
-      ENDIF.
-
-      ASSIGN lr_instances->* TO <ft_target_table>.
-
 *     Get key fields for this entity (for %control filtering)
       DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
       DATA(lt_key_fields) = lo_metadata->get_key_fields( iv_name = ls_operation-entity_name ).
 
-*     Process each instance from JSON and map to typed EML structure
-      DATA(lv_instance_counter) = 0.
-      LOOP AT <ft_instances> ASSIGNING <fs_instance>.
-        lv_instance_counter = lv_instance_counter + 1.
-*       Dereference instance element (array element -> structure)
-        ASSIGN <fs_instance>->* TO FIELD-SYMBOL(<json_instance>).
-        IF sy-subrc <> 0.
-          CONTINUE. "Skip invalid instance elements
-        ENDIF.
+*     Delegate to operation-specific method
+      TRY.
+          CASE lv_op_code.
+            WHEN 'CREATE'.
+              ls_operation-op = if_abap_behv=>op-m-create.
+              me->process_create(
+                EXPORTING
+                  iv_entity_name    = ls_operation-entity_name
+                  iv_step_number    = iv_step_number
+                  it_reference_step = it_reference_step
+                  it_key_fields     = lt_key_fields
+                  is_operation      = ls_operation
+                  it_json_instances = <ft_instances>
+                IMPORTING
+                  er_instances      = lr_instances ).
 
-        APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+            WHEN 'CREATE_BY'.
+              ls_operation-op = if_abap_behv=>op-m-create_ba.
+              me->process_create_by(
+                EXPORTING
+                  iv_entity_name       = ls_operation-entity_name
+                  iv_step_number       = iv_step_number
+                  it_reference_step    = it_reference_step
+                  it_key_fields        = lt_key_fields
+                  is_operation         = ls_operation
+                  it_json_instances    = <ft_instances>
+                  iv_operation_cid_ref = lv_operation_cid_ref
+                IMPORTING
+                  er_instances         = lr_instances ).
 
-*       Get structure components of JSON instance (more efficient: iterate over fewer fields)
-        DATA(lo_json_descr) = CAST cl_abap_structdescr(
-          cl_abap_typedescr=>describe_by_data( <json_instance> ) ).
+            WHEN 'UPDATE'.
+              ls_operation-op = if_abap_behv=>op-m-update.
+              me->process_update(
+                EXPORTING
+                  iv_entity_name    = ls_operation-entity_name
+                  iv_step_number    = iv_step_number
+                  it_reference_step = it_reference_step
+                  it_key_fields     = lt_key_fields
+                  is_operation      = ls_operation
+                  it_json_instances = <ft_instances>
+                IMPORTING
+                  er_instances      = lr_instances ).
 
-*       Map each JSON field to corresponding EML structure field (dereference JSON values)
-*       Performance: iterate through JSON fields (typically 5-10) instead of target fields (80-100)
-        LOOP AT lo_json_descr->components INTO DATA(ls_json_comp).
-          DATA(lv_field_name) = to_upper( ls_json_comp-name ).
+            WHEN 'DELETE'.
+              ls_operation-op = if_abap_behv=>op-m-delete.
+              me->process_delete(
+                EXPORTING
+                  iv_entity_name    = ls_operation-entity_name
+                  is_operation      = ls_operation
+                  it_json_instances = <ft_instances>
+                IMPORTING
+                  er_instances      = lr_instances ).
 
-*         Get JSON field value
-          ASSIGN COMPONENT lv_field_name OF STRUCTURE <json_instance> TO <fs_value>.
-          IF sy-subrc <> 0.
-            CONTINUE.
-          ENDIF.
+            WHEN 'EXECUTE'.
+              ls_operation-op = if_abap_behv=>op-m-action.
+              me->process_execute(
+                EXPORTING
+                  iv_entity_name    = ls_operation-entity_name
+                  iv_step_number    = iv_step_number
+                  it_reference_step = it_reference_step
+                  it_key_fields     = lt_key_fields
+                  is_operation      = ls_operation
+                  it_json_instances = <ft_instances>
+                IMPORTING
+                  er_instances      = lr_instances ).
+          ENDCASE.
 
-*         Try to assign to target EML structure
-          ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_target> TO <fs_field>.
-          IF sy-subrc = 0.
-*           Dereference field value (component values are also references)
-            ASSIGN <fs_value>->* TO FIELD-SYMBOL(<actual_value>).
-            IF sy-subrc = 0.
-              <fs_field> = <actual_value>.
-            ELSE.
-*             Not a reference, use direct value (fallback for edge cases)
-              <fs_field> = <fs_value>.
-            ENDIF.
-          ENDIF.
-        ENDLOOP.
+        CATCH cx_root INTO DATA(lx_error).
+          me->mo_run_environment->append_log( |Error processing { lv_op_code } for { ls_operation-entity_name }: { lx_error->get_text( ) }| ).
+          CONTINUE.
+      ENDTRY.
 
-*       Parse JSON /Step[x]/ references in target structure (now with clean values)
-        me->parse_instance_references(
-          EXPORTING
-            iv_entity_name  = ls_operation-entity_name
-            iv_step_number  = iv_step_number
-          IMPORTING
-            ev_error        = DATA(lv_ref_error)
-          CHANGING
-            cs_instance     = <fs_target> ).
-
-        IF lv_ref_error = abap_on.
-          me->mo_run_environment->append_log( |Error parsing references, but continuing with instance| ).
-        ENDIF.
-
-*       Check ALV reference_step and overwrite keys if present
-        me->check_ref_step_instance(
-          EXPORTING
-            iv_entity_name    = ls_operation-entity_name
-            iv_step_number    = iv_step_number
-            it_reference_step = it_reference_step
-          CHANGING
-            cs_instance       = <fs_target> ).
-
-*       Set %control fields for non-key fields
-        LOOP AT lt_key_fields INTO DATA(ls_key_field).
-          DATA(lv_key_name) = to_upper( ls_key_field-name ).
-
-          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_control_struct>).
-          IF sy-subrc = 0.
-            LOOP AT lo_json_descr->components INTO ls_json_comp.
-              lv_field_name = to_upper( ls_json_comp-name ).
-
-*             Skip key fields - they're for identification, not modification
-              IF lv_field_name = lv_key_name.
-                CONTINUE.
-              ENDIF.
-
-*             Check if field exists in target and was populated
-              ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_target> TO <fs_field>.
-              IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
-                ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_control_struct> TO FIELD-SYMBOL(<fs_control_field>).
-                IF sy-subrc = 0.
-                  <fs_control_field> = if_abap_behv=>mk-on.
-                ENDIF.
-              ENDIF.
-            ENDLOOP.
-          ENDIF.
-        ENDLOOP.
-
-*       Auto-fill %CID for CREATE operations if not provided or initial
-        IF ls_operation-op = if_abap_behv=>op-m-create.
-          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_cid>).
-          IF sy-subrc = 0 AND <fs_cid> IS INITIAL.
-*           Generate unique CID: AUTO-{step}-{instance}
-            <fs_cid> = |AUTO-{ sy-datum }{ sy-uzeit }-{ lv_instance_counter }|.
-            me->mo_run_environment->append_log( |Auto-generated %CID: { <fs_cid> }| ).
-          ENDIF.
-        ENDIF.
-      ENDLOOP.
-
-*     Post-processing: For CREATE_BY with %CID_REF, move all rows into %TARGET of one parent row
-      IF ls_operation-op = if_abap_behv=>op-m-create_ba AND lv_operation_cid_ref IS NOT INITIAL.
-        DATA(lt_temp_children) = <ft_target_table>.
-        CLEAR <ft_target_table>.
-        APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
-        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fv_cid_ref>).
-        IF sy-subrc = 0.
-          <fv_cid_ref> = lv_operation_cid_ref.
-        ENDIF.
-        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<ft_target>).
-        IF sy-subrc = 0.
-          <ft_target> = lt_temp_children.
-        ENDIF.
-        me->mo_run_environment->append_log( |CREATE_BY: Moved { lines( lt_temp_children ) } rows to %TARGET| ).
+      IF lr_instances IS NOT BOUND.
+        me->mo_run_environment->append_log( |Failed to process { lv_op_code } for entity { ls_operation-entity_name }| ).
+        CONTINUE.
       ENDIF.
 
 *     Store operation with instances
       ls_operation-instances = lr_instances.
       APPEND ls_operation TO et_operations.
-      me->mo_run_environment->append_log( |Added operation for entity { ls_operation-entity_name } with { lines( <ft_target_table> ) } instances| ).
     ENDLOOP.
 
     me->mo_run_environment->append_log( |Total operations created: { lines( et_operations ) }| ).
@@ -939,6 +905,407 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
         me->mo_run_environment->append_log( |Error in check_reference_step: { lx_error->get_text( ) }| ).
     ENDTRY.
 
+  ENDMETHOD.
+
+  METHOD process_instances.
+*   Map each JSON field to corresponding EML structure field
+    DATA(lo_json_descr) = CAST cl_abap_structdescr(
+      cl_abap_typedescr=>describe_by_data( is_json_instance ) ).
+
+*   Performance: iterate through JSON fields (typically 5-10) instead of target fields (80-100)
+    LOOP AT lo_json_descr->components INTO DATA(ls_json_comp).
+      DATA(lv_field_name) = to_upper( ls_json_comp-name ).
+
+*     Get JSON field value
+      ASSIGN COMPONENT lv_field_name OF STRUCTURE is_json_instance TO FIELD-SYMBOL(<fs_value>).
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+
+*     Try to assign to target EML structure
+      ASSIGN COMPONENT lv_field_name OF STRUCTURE cs_instance TO FIELD-SYMBOL(<fs_field>).
+      IF sy-subrc = 0.
+*       Dereference field value (component values are also references)
+        ASSIGN <fs_value>->* TO FIELD-SYMBOL(<actual_value>).
+        IF sy-subrc = 0.
+          <fs_field> = <actual_value>.
+        ELSE.
+*         Not a reference, use direct value (fallback for edge cases)
+          <fs_field> = <fs_value>.
+        ENDIF.
+      ELSE.
+*       Fallback: Field not found, check if it's _CID/_CID_REF and map to %CID/%CID_REF
+        IF lv_field_name = '_CID'.
+          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE cs_instance TO <fs_field>.
+          IF sy-subrc = 0.
+            TRY.
+                <fs_field> = <fs_value>->*.
+              CATCH cx_root.
+                <fs_field> = <fs_value>.
+            ENDTRY.
+          ENDIF.
+        ELSEIF lv_field_name = '_CID_REF'.
+          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE cs_instance TO <fs_field>.
+          IF sy-subrc = 0.
+            TRY.
+                <fs_field> = <fs_value>->*.
+              CATCH cx_root.
+                <fs_field> = <fs_value>.
+            ENDTRY.
+          ENDIF.
+        ENDIF.
+      ENDIF.
+    ENDLOOP.
+
+*   Parse JSON /Step[x]/ references in target structure (now with clean values)
+    me->parse_instance_references(
+      EXPORTING
+        iv_entity_name  = iv_entity_name
+        iv_step_number  = iv_step_number
+      IMPORTING
+        ev_error        = DATA(lv_ref_error)
+      CHANGING
+        cs_instance     = cs_instance ).
+
+    IF lv_ref_error = abap_on.
+      me->mo_run_environment->append_log( |Error parsing references, but continuing with instance| ).
+    ENDIF.
+
+*   Check ALV reference_step and overwrite keys if present
+    me->check_ref_step_instance(
+      EXPORTING
+        iv_entity_name    = iv_entity_name
+        iv_step_number    = iv_step_number
+        it_reference_step = it_reference_step
+      CHANGING
+        cs_instance       = cs_instance ).
+
+*   Set %control fields for non-key fields
+    LOOP AT it_key_fields INTO DATA(ls_key_field).
+      DATA(lv_key_name) = to_upper( ls_key_field-name ).
+
+      ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE cs_instance TO FIELD-SYMBOL(<fs_control_struct>).
+      IF sy-subrc = 0.
+        LOOP AT lo_json_descr->components INTO ls_json_comp.
+          lv_field_name = to_upper( ls_json_comp-name ).
+
+*         Skip key fields - they're for identification, not modification
+          IF lv_field_name = lv_key_name.
+            CONTINUE.
+          ENDIF.
+
+*         Check if field exists in target and was populated
+          ASSIGN COMPONENT lv_field_name OF STRUCTURE cs_instance TO <fs_field>.
+          IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
+            ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_control_struct> TO FIELD-SYMBOL(<fs_control_field>).
+            IF sy-subrc = 0.
+              <fs_control_field> = if_abap_behv=>mk-on.
+            ENDIF.
+          ENDIF.
+        ENDLOOP.
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD process_create.
+*   Process CREATE operation: simple instance processing with auto-CID
+
+    FIELD-SYMBOLS: <ft_target_table> TYPE STANDARD TABLE,
+                   <fs_instance>     TYPE any,
+                   <fs_json_instance> TYPE any,
+                   <fs_target>       TYPE any,
+                   <fs_cid>          TYPE any.
+
+*   Create typed target table
+    er_instances = cl_abap_behvdescr=>create_data(
+      p_op   = if_abap_behv=>op-m-create
+      p_name = iv_entity_name
+      p_kind = if_abap_behv=>typekind-import ).
+
+    ASSIGN er_instances->* TO <ft_target_table>.
+
+*   Process each JSON instance
+    LOOP AT it_json_instances ASSIGNING <fs_instance>.
+      ASSIGN <fs_instance>->* TO <fs_json_instance>.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+
+      APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+
+*     Map fields and set %control
+      me->process_instances(
+        EXPORTING
+          iv_entity_name    = iv_entity_name
+          iv_step_number    = iv_step_number
+          it_reference_step = it_reference_step
+          it_key_fields     = it_key_fields
+          is_json_instance  = <fs_json_instance>
+        CHANGING
+          cs_instance       = <fs_target> ).
+
+*     Auto-fill %CID if not provided
+      ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_target> TO <fs_cid>.
+      IF sy-subrc = 0 AND <fs_cid> IS INITIAL.
+        me->mv_global_cid_counter = me->mv_global_cid_counter + 1.
+        <fs_cid> = |AUTO-{ sy-datum }{ sy-uzeit }-{ me->mv_global_cid_counter }|.
+      ENDIF.
+    ENDLOOP.
+
+    me->mo_run_environment->append_log( |CREATE: Processed { sy-tabix } instances| ).
+  ENDMETHOD.
+
+  METHOD process_create_by.
+*   Process CREATE_BY operation: Create children under parent
+*
+*   Structure hierarchy:
+*   Parent row: %CID_REF + %TARGET (NO %CONTROL at parent level)
+*   Child rows (inside %TARGET): %CID + %CONTROL + child fields
+*
+*   Note: %CONTROL exists only at child level, not parent level
+    DATA: lt_temp_children    TYPE REF TO data.
+
+    FIELD-SYMBOLS: <ft_target_table>  TYPE STANDARD TABLE,
+                   <ft_temp_children> TYPE STANDARD TABLE,
+                   <fs_instance>      TYPE any,
+                   <fs_json_instance> TYPE any,
+                   <fs_target>        TYPE any,
+                   <fs_cid>           TYPE any,
+                   <fs_cid_ref>       TYPE any,
+                   <ft_target>        TYPE any.
+
+*   Create typed target table
+    er_instances = cl_abap_behvdescr=>create_data(
+      p_op       = if_abap_behv=>op-m-create_ba
+      p_name     = iv_entity_name
+      p_sub_name = is_operation-sub_name
+      p_kind     = if_abap_behv=>typekind-import ).
+
+    ASSIGN er_instances->* TO <ft_target_table>.
+
+*   Get type of %TARGET field (child entity structure)
+    DATA(lo_parent_descr) = CAST cl_abap_structdescr(
+      CAST cl_abap_tabledescr( cl_abap_typedescr=>describe_by_data( <ft_target_table> ) )->get_table_line_type( ) ).
+    
+    DATA(lo_target_comp) = lo_parent_descr->get_component_type( p_name = cl_abap_behv=>co_techfield_name-target ).
+    DATA(lo_target_table_descr) = CAST cl_abap_tabledescr( lo_target_comp ).
+    
+*   Create temp children table with correct child entity type (not parent type)
+    CREATE DATA lt_temp_children TYPE HANDLE lo_target_table_descr.
+    ASSIGN lt_temp_children->* TO <ft_temp_children>.
+
+    LOOP AT it_json_instances ASSIGNING <fs_instance>.
+      ASSIGN <fs_instance>->* TO <fs_json_instance>.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+
+      APPEND INITIAL LINE TO <ft_temp_children> ASSIGNING <fs_target>.
+
+*     Map fields and set %control
+      me->process_instances(
+        EXPORTING
+          iv_entity_name    = iv_entity_name
+          iv_step_number    = iv_step_number
+          it_reference_step = it_reference_step
+          it_key_fields     = it_key_fields
+          is_json_instance  = <fs_json_instance>
+        CHANGING
+          cs_instance       = <fs_target> ).
+
+*     Auto-fill %CID if not provided (children also need CID)
+      ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_target> TO <fs_cid>.
+      IF sy-subrc = 0 AND <fs_cid> IS INITIAL.
+        me->mv_global_cid_counter = me->mv_global_cid_counter + 1.
+        <fs_cid> = |AUTO-{ sy-datum }{ sy-uzeit }-{ me->mv_global_cid_counter }|.
+      ENDIF.
+    ENDLOOP.
+
+*   Post-processing: Move children to %TARGET
+    IF iv_operation_cid_ref IS NOT INITIAL.
+*     Case 1: %CID_REF provided - create one parent row with reference
+      APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+      ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_target> TO <fs_cid_ref>.
+      IF sy-subrc = 0.
+        <fs_cid_ref> = iv_operation_cid_ref.
+      ENDIF.
+      ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_target> TO <ft_target>.
+      IF sy-subrc = 0.
+        <ft_target> = <ft_temp_children>.
+      ENDIF.
+      me->mo_run_environment->append_log( |CREATE_BY: Moved { lines( <ft_temp_children> ) } children to %TARGET under %CID_REF| ).
+    ELSE.
+*     Case 2: No %CID_REF - group children by parent keys and create parent rows
+*     Each JSON instance should have parent key fields + child fields
+*     We need to group by parent keys and create one parent row per unique parent
+      DATA: lt_parent_keys TYPE string_table,
+            lv_parent_key  TYPE string.
+      
+      DATA(lo_parent_meta) = NEW cl_ptf_rap_metadata( ).
+      DATA(lt_parent_key_fields) = lo_parent_meta->get_key_fields( iv_name = iv_entity_name ).
+      
+*     For simplicity, assuming all instances belong to same parent (common case)
+*     TODO: Handle multiple parents by grouping instances
+      IF <ft_temp_children> IS NOT INITIAL.
+        APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+        
+*       Copy parent key fields from first child instance to parent row
+        READ TABLE <ft_temp_children> INDEX 1 ASSIGNING FIELD-SYMBOL(<fs_first_child>).
+        IF sy-subrc = 0.
+          LOOP AT lt_parent_key_fields INTO DATA(ls_parent_key).
+            ASSIGN COMPONENT ls_parent_key-name OF STRUCTURE <fs_first_child> TO FIELD-SYMBOL(<fs_parent_key_value>).
+            IF sy-subrc = 0.
+              ASSIGN COMPONENT ls_parent_key-name OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fs_target_parent_key>).
+              IF sy-subrc = 0.
+                <fs_target_parent_key> = <fs_parent_key_value>.
+              ENDIF.
+            ENDIF.
+          ENDLOOP.
+        ENDIF.
+        
+*       Move all children to %TARGET
+        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_target> TO <ft_target>.
+        IF sy-subrc = 0.
+          <ft_target> = <ft_temp_children>.
+        ENDIF.
+        me->mo_run_environment->append_log( |CREATE_BY: Moved { lines( <ft_temp_children> ) } children to %TARGET with parent keys| ).
+      ENDIF.
+    ENDIF.
+  ENDMETHOD.
+
+  METHOD process_update.
+*   Process UPDATE operation: instance processing with %control for modifications
+
+    FIELD-SYMBOLS: <ft_target_table> TYPE STANDARD TABLE,
+                   <fs_instance>     TYPE any,
+                   <fs_json_instance> TYPE any,
+                   <fs_target>       TYPE any.
+
+*   Create typed target table
+    er_instances = cl_abap_behvdescr=>create_data(
+      p_op   = if_abap_behv=>op-m-update
+      p_name = iv_entity_name
+      p_kind = if_abap_behv=>typekind-import ).
+
+    ASSIGN er_instances->* TO <ft_target_table>.
+
+*   Process each JSON instance
+    LOOP AT it_json_instances ASSIGNING <fs_instance>.
+      ASSIGN <fs_instance>->* TO <fs_json_instance>.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+
+      APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+
+*     Map fields and set %control
+      me->process_instances(
+        EXPORTING
+          iv_entity_name    = iv_entity_name
+          iv_step_number    = iv_step_number
+          it_reference_step = it_reference_step
+          it_key_fields     = it_key_fields
+          is_json_instance  = <fs_json_instance>
+        CHANGING
+          cs_instance       = <fs_target> ).
+    ENDLOOP.
+
+    me->mo_run_environment->append_log( |UPDATE: Processed { sy-tabix } instances| ).
+  ENDMETHOD.
+
+  METHOD process_delete.
+*   Process DELETE operation: keys only, no field processing needed
+
+    FIELD-SYMBOLS: <ft_target_table> TYPE STANDARD TABLE,
+                   <fs_instance>     TYPE any,
+                   <fs_json_instance> TYPE any,
+                   <fs_target>       TYPE any,
+                   <fs_json_field>   TYPE any,
+                   <fs_target_field> TYPE any.
+
+*   Create typed target table
+    er_instances = cl_abap_behvdescr=>create_data(
+      p_op   = if_abap_behv=>op-m-delete
+      p_name = iv_entity_name
+      p_kind = if_abap_behv=>typekind-import ).
+
+    ASSIGN er_instances->* TO <ft_target_table>.
+
+*   Process each JSON instance (simple key mapping)
+    LOOP AT it_json_instances ASSIGNING <fs_instance>.
+      ASSIGN <fs_instance>->* TO <fs_json_instance>.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+
+      APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+
+*     Copy all fields from JSON to target (DELETE typically only has keys)
+      DATA(lo_json_descr) = CAST cl_abap_structdescr(
+        cl_abap_typedescr=>describe_by_data( <fs_json_instance> ) ).
+
+      LOOP AT lo_json_descr->components INTO DATA(ls_json_comp).
+        DATA(lv_field_name) = to_upper( ls_json_comp-name ).
+
+        ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_json_instance> TO <fs_json_field>.
+        IF sy-subrc <> 0.
+          CONTINUE.
+        ENDIF.
+
+        ASSIGN COMPONENT lv_field_name OF STRUCTURE <fs_target> TO <fs_target_field>.
+        IF sy-subrc = 0.
+*         Dereference JSON value
+          TRY.
+              <fs_target_field> = <fs_json_field>->*.
+            CATCH cx_root.
+              <fs_target_field> = <fs_json_field>.
+          ENDTRY.
+        ENDIF.
+      ENDLOOP.
+    ENDLOOP.
+
+    me->mo_run_environment->append_log( |DELETE: Processed { sy-tabix } instances| ).
+  ENDMETHOD.
+
+  METHOD process_execute.
+*   Process EXECUTE (action) operation: instance keys + action parameters
+
+    FIELD-SYMBOLS: <ft_target_table> TYPE STANDARD TABLE,
+                   <fs_instance>     TYPE any,
+                   <fs_json_instance> TYPE any,
+                   <fs_target>       TYPE any.
+
+*   Create typed target table
+    er_instances = cl_abap_behvdescr=>create_data(
+      p_op       = if_abap_behv=>op-m-action
+      p_name     = iv_entity_name
+      p_sub_name = is_operation-sub_name
+      p_kind     = if_abap_behv=>typekind-import ).
+
+    ASSIGN er_instances->* TO <ft_target_table>.
+
+*   Process each JSON instance
+    LOOP AT it_json_instances ASSIGNING <fs_instance>.
+      ASSIGN <fs_instance>->* TO <fs_json_instance>.
+      IF sy-subrc <> 0.
+        CONTINUE.
+      ENDIF.
+
+      APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+
+*     Map fields (keys + action parameters)
+      me->process_instances(
+        EXPORTING
+          iv_entity_name    = iv_entity_name
+          iv_step_number    = iv_step_number
+          it_reference_step = it_reference_step
+          it_key_fields     = it_key_fields
+          is_json_instance  = <fs_json_instance>
+        CHANGING
+          cs_instance       = <fs_target> ).
+    ENDLOOP.
+
+    me->mo_run_environment->append_log( |EXECUTE ({ is_operation-sub_name }): Processed { sy-tabix } instances| ).
   ENDMETHOD.
 
 ENDCLASS.

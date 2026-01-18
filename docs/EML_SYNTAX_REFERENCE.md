@@ -176,8 +176,11 @@ MODIFY ENTITIES OF i_salesordertp
 
 **Key Points:**
 - %CID_REF at **operation level** (outside instances array)
-- PTF deserializer creates proper two-level ABAP structure internally
+- PTF deserializer creates proper two-level ABAP structure internally:
+  - **Parent level**: `%CID_REF` + `%TARGET` (NO `%CONTROL`)
+  - **Child level** (inside `%TARGET`): `%CID` + `%CONTROL` + child fields
 - Parent key fields omitted when using %CID_REF
+- `%CONTROL` exists **only at child level**, controlling which child fields are modified
 - Child %CID auto-generated if omitted
 - Composite keys: Parent key part identifies association, child key part may be auto-generated
 
@@ -439,10 +442,13 @@ ENDLOOP.
 **Output:** Typed operation table for `MODIFY ENTITIES ... OPERATIONS`
 
 **Special Handling:**
-- CREATE_BY: Converts single-level JSON to two-level ABAP structure with %target
+- CREATE_BY: Converts single-level JSON to two-level ABAP structure:
+  - Parent row: `%CID_REF` + `%TARGET` (no `%CONTROL` at this level)
+  - Child rows (in `%TARGET`): `%CID` + `%CONTROL` + child fields
 - %CID auto-generation: Generates unique IDs when not provided
 - %CID_REF extraction: Operation-level for CREATE_BY, instance-level for UPDATE/EXECUTE
 - Field name mapping: Internal ABAP names → External CDS names (via DD03ND)
+- %CONTROL population: Only at entity instance level (not at CREATE_BY parent level)
 
 ### cl_ptf_rap_modify_template Class
 

@@ -125,10 +125,16 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 
 ### Modern EML syntax and %CID_REF support
 - **CREATE**: Uses `%CID` (instance-level) to assign content ID for later reference
+  - Structure: `%CID` + `%CONTROL` + entity fields
 - **CREATE_BY (existing parent)**: Parent keys directly in instance: `{"ParentID": "123", "ChildField": "value"}`
 - **CREATE_BY (new parent)**: Use `%CID_REF` at **operation level** to reference parent created in same request
+  - Parent structure: `%CID_REF` + `%TARGET` (NO `%CONTROL` at parent level)
+  - Child structure (inside `%TARGET`): `%CID` + `%CONTROL` + child entity fields
+  - `%CONTROL` exists **only at child level**, not parent level
 - **UPDATE with %CID_REF**: Use `%CID_REF` at **instance level** to update entity created in same request
+  - Structure: `%CID_REF` + `%CONTROL` + modified fields
 - **DELETE**: Keys directly in instance - `%CID_REF` not supported (delete by key only)
+  - Structure: Key fields only (no `%CONTROL`)
 - **EXECUTE (actions)**: Executes RAP business object actions
   - `sub_name` field contains action name from BDEF
   - Instance actions: Require key fields OR `%CID_REF` to identify target entity
