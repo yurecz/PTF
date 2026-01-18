@@ -86,7 +86,7 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         iv_entity_name    TYPE abp_entity_name
         iv_step_number    TYPE i
         it_reference_step TYPE ptf_step_count_t
-        it_key_fields     TYPE cl_ptf_rap_metadata=>tt_key_fields
+        it_key_fields     TYPE abap_component_tab
         is_json_instance  TYPE any
       CHANGING
         cs_instance       TYPE any .
@@ -96,7 +96,7 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         iv_entity_name      TYPE abp_entity_name
         iv_step_number      TYPE i
         it_reference_step   TYPE ptf_step_count_t
-        it_key_fields       TYPE cl_ptf_rap_metadata=>tt_key_fields
+        it_key_fields       TYPE abap_component_tab
         is_operation        TYPE abp_behv_changes
         it_json_instances   TYPE STANDARD TABLE
       EXPORTING
@@ -107,7 +107,7 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         iv_entity_name      TYPE abp_entity_name
         iv_step_number      TYPE i
         it_reference_step   TYPE ptf_step_count_t
-        it_key_fields       TYPE cl_ptf_rap_metadata=>tt_key_fields
+        it_key_fields       TYPE abap_component_tab
         is_operation        TYPE abp_behv_changes
         it_json_instances   TYPE STANDARD TABLE
         iv_operation_cid_ref TYPE string
@@ -119,7 +119,7 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         iv_entity_name      TYPE abp_entity_name
         iv_step_number      TYPE i
         it_reference_step   TYPE ptf_step_count_t
-        it_key_fields       TYPE cl_ptf_rap_metadata=>tt_key_fields
+        it_key_fields       TYPE abap_component_tab
         is_operation        TYPE abp_behv_changes
         it_json_instances   TYPE STANDARD TABLE
       EXPORTING
@@ -138,7 +138,7 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         iv_entity_name      TYPE abp_entity_name
         iv_step_number      TYPE i
         it_reference_step   TYPE ptf_step_count_t
-        it_key_fields       TYPE cl_ptf_rap_metadata=>tt_key_fields
+        it_key_fields       TYPE abap_component_tab
         is_operation        TYPE abp_behv_changes
         it_json_instances   TYPE STANDARD TABLE
       EXPORTING
