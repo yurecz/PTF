@@ -205,10 +205,12 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     ENDIF.
 
 *   Validate: Check if entity names in JSON match PTF step Business Object
+    DATA(lv_has_mismatch) = abap_off.
     LOOP AT lt_operations INTO DATA(ls_check_op).
       IF ls_check_op-entity_name <> ls_step_data-bus_obj.
         me->mo_run_environment->append_log( |WARNING: JSON entity '{ ls_check_op-entity_name }' differs from PTF Business Object '{ ls_step_data-bus_obj }'| ).
-        me->mo_run_environment->append_log( |This may cause issues with COMMIT and document_id extraction| ).
+        me->mo_run_environment->append_log( |Will use actual entity from JSON for COMMIT and document_id extraction| ).
+        lv_has_mismatch = abap_on.
       ENDIF.
     ENDLOOP.
 
@@ -250,10 +252,14 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       RETURN.
     ENDIF.
 
-*   Fill list of root entities for commit
-    IF NOT line_exists( lt_root_entities[ table_line = ls_step_data-bus_obj ] ).
-      INSERT ls_step_data-bus_obj INTO TABLE lt_root_entities.
-    ENDIF.
+*   Fill list of root entities for commit - use entities from operations, not bus_obj
+*   This ensures COMMIT works even when JSON entity differs from PTF Business Object setting
+    LOOP AT lt_operations INTO DATA(ls_op).
+      IF NOT line_exists( lt_root_entities[ table_line = ls_op-entity_name ] ).
+        INSERT ls_op-entity_name INTO TABLE lt_root_entities.
+        me->mo_run_environment->append_log( |Added '{ ls_op-entity_name }' to COMMIT root entities| ).
+      ENDIF.
+    ENDLOOP.
 
 *   Execute COMMIT ENTITIES
     me->commit_entities(
@@ -280,15 +286,25 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 
 *   Extract document IDs (only for successful operations)
 *   Priority: lt_pid_mapped (real keys after commit) > lt_mapped (preliminary keys)
+*   Extract for ALL entities from operations (not just bus_obj)
     IF lv_error = abap_off.
-      me->extract_document_ids(
-        EXPORTING
-          iv_entity      = ls_step_data-bus_obj
-          it_pid_mapped  = lt_pid_mapped
-          it_mapped      = lt_mapped
-          it_operations  = lt_operations
-        IMPORTING
-          ev_document_id = ev_document_id ).
+      LOOP AT lt_operations INTO ls_op.
+        DATA(lv_entity_for_extract) = ls_op-entity_name.
+        
+        me->extract_document_ids(
+          EXPORTING
+            iv_entity      = lv_entity_for_extract
+            it_pid_mapped  = lt_pid_mapped
+            it_mapped      = lt_mapped
+            it_operations  = lt_operations
+          IMPORTING
+            ev_document_id = DATA(lt_entity_doc_ids) ).
+
+*       Append to main document_id list
+        IF lt_entity_doc_ids IS NOT INITIAL.
+          APPEND LINES OF lt_entity_doc_ids TO ev_document_id.
+        ENDIF.
+      ENDLOOP.
 
 *     Log extracted document IDs
       IF ev_document_id IS NOT INITIAL.
