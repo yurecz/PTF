@@ -577,105 +577,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
       DATA(lt_key_fields) = lo_metadata->get_key_fields( iv_name = ls_operation-entity_name ).
 
-*     Special handling for CREATE_BY with operation-level %CID_REF
-*     One parent row with %CID_REF, all JSON instances go into %TARGET
-      IF ls_operation-op = if_abap_behv=>op-m-create_ba AND lv_operation_cid_ref IS NOT INITIAL.
-        APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
-
-*       Fill %CID_REF from operation level
-        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fv_cid_ref>).
-        IF sy-subrc = 0.
-          <fv_cid_ref> = lv_operation_cid_ref.
-        ENDIF.
-
-*       Get %TARGET table for children
-        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<ft_target>).
-        IF sy-subrc <> 0.
-          me->mo_run_environment->append_log( |ERROR: No %TARGET in CREATE_BY structure| ).
-          CONTINUE.
-        ENDIF.
-
-*       Process each JSON instance as a child in %TARGET
-        DATA(lv_child_counter) = 0.
-        LOOP AT <ft_instances> ASSIGNING FIELD-SYMBOL(<fs_child_json>).
-          lv_child_counter = lv_child_counter + 1.
-
-*         Dereference child instance
-          ASSIGN <fs_child_json>->* TO FIELD-SYMBOL(<json_child_instance>).
-          IF sy-subrc <> 0.
-            CONTINUE.
-          ENDIF.
-
-          APPEND INITIAL LINE TO <ft_target> ASSIGNING FIELD-SYMBOL(<fs_child_target>).
-
-*         Get structure components of JSON child instance
-          DATA(lo_child_descr) = CAST cl_abap_structdescr(
-            cl_abap_typedescr=>describe_by_data( <json_child_instance> ) ).
-
-*         Map each JSON field to child structure
-          LOOP AT lo_child_descr->components INTO DATA(ls_child_comp).
-            DATA(lv_child_field_name) = to_upper( ls_child_comp-name ).
-
-*           Get JSON field value
-            ASSIGN COMPONENT lv_child_field_name OF STRUCTURE <json_child_instance> TO FIELD-SYMBOL(<fs_child_json_value>).
-            IF sy-subrc <> 0.
-              CONTINUE.
-            ENDIF.
-
-*           Try to assign to target child structure
-            ASSIGN COMPONENT lv_child_field_name OF STRUCTURE <fs_child_target> TO FIELD-SYMBOL(<fs_child_field>).
-            IF sy-subrc = 0.
-*             Dereference field value
-              TRY.
-                  ASSIGN <fs_child_json_value>->* TO FIELD-SYMBOL(<actual_child_value>).
-                  <fs_child_field> = <actual_child_value>.
-                CATCH cx_root.
-                  <fs_child_field> = <fs_child_json_value>.
-              ENDTRY.
-
-*             Set %control for non-key fields
-              IF NOT line_exists( lt_key_fields[ name = lv_child_field_name ] ) AND <fs_child_field> IS NOT INITIAL.
-                ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE <fs_child_target> TO FIELD-SYMBOL(<fs_child_control_struct>).
-                IF sy-subrc = 0.
-                  ASSIGN COMPONENT lv_child_field_name OF STRUCTURE <fs_child_control_struct> TO FIELD-SYMBOL(<fs_child_control_field>).
-                  IF sy-subrc = 0.
-                    <fs_child_control_field> = if_abap_behv=>mk-on.
-                  ENDIF.
-                ENDIF.
-              ENDIF.
-            ENDIF.
-          ENDLOOP.
-
-*         Auto-generate %CID for child if not provided
-          ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid OF STRUCTURE <fs_child_target> TO FIELD-SYMBOL(<fv_child_cid>).
-          IF sy-subrc = 0 AND <fv_child_cid> IS INITIAL.
-            <fv_child_cid> = |AUTO-{ sy-datum }{ sy-uzeit }-{ lv_child_counter }|.
-          ENDIF.
-
-*         Parse JSON references in child instance
-          me->parse_instance_references(
-            EXPORTING
-              iv_entity_name  = ls_operation-entity_name
-              iv_step_number  = iv_step_number
-            IMPORTING
-              ev_error        = DATA(lv_child_ref_error)
-            CHANGING
-              cs_instance     = <fs_child_target> ).
-
-*         Check ALV reference_step for child
-          me->check_ref_step_instance(
-            EXPORTING
-              iv_entity_name    = ls_operation-entity_name
-              iv_step_number    = iv_step_number
-              it_reference_step = it_reference_step
-            CHANGING
-              cs_instance       = <fs_child_target> ).
-        ENDLOOP.
-
-        me->mo_run_environment->append_log( |CREATE_BY: 1 row with %CID_REF, { lv_child_counter } children in %TARGET| ).
-
-      ELSE.
-*       Standard processing: one table row per JSON instance
+*     Process each instance from JSON and map to typed EML structure
       DATA(lv_instance_counter) = 0.
       LOOP AT <ft_instances> ASSIGNING <fs_instance>.
         lv_instance_counter = lv_instance_counter + 1.
@@ -775,7 +677,22 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
           ENDIF.
         ENDIF.
       ENDLOOP.
-      ENDIF. "End of CREATE_BY special handling vs standard processing
+
+*     Post-processing: For CREATE_BY with %CID_REF, move all rows into %TARGET of one parent row
+      IF ls_operation-op = if_abap_behv=>op-m-create_ba AND lv_operation_cid_ref IS NOT INITIAL.
+        DATA(lt_temp_children) = <ft_target_table>.
+        CLEAR <ft_target_table>.
+        APPEND INITIAL LINE TO <ft_target_table> ASSIGNING <fs_target>.
+        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-cid_ref OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<fv_cid_ref>).
+        IF sy-subrc = 0.
+          <fv_cid_ref> = lv_operation_cid_ref.
+        ENDIF.
+        ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-target OF STRUCTURE <fs_target> TO FIELD-SYMBOL(<ft_target>).
+        IF sy-subrc = 0.
+          <ft_target> = lt_temp_children.
+        ENDIF.
+        me->mo_run_environment->append_log( |CREATE_BY: Moved { lines( lt_temp_children ) } rows to %TARGET| ).
+      ENDIF.
 
 *     Store operation with instances
       ls_operation-instances = lr_instances.
