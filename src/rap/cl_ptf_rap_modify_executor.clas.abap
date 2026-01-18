@@ -689,7 +689,6 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     CLEAR ev_document_id.
 
 *   Extract document IDs from PID_MAPPED (real keys after commit for CREATE operations)
-    me->mo_run_environment->append_log( |PID_MAPPED entries: { lines( it_pid_mapped ) }, searching for root_name='{ iv_entity }'| ).
     LOOP AT it_pid_mapped ASSIGNING <fs_pid_mapped> WHERE root_name = iv_entity.
       IF <fs_pid_mapped>-key IS NOT INITIAL.
         APPEND <fs_pid_mapped>-key TO ev_document_id.
@@ -698,13 +697,10 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     ENDLOOP.
 
 *   Extract from MAPPED (for entities without late numbering - CREATE operations)
-    me->mo_run_environment->append_log( |MAPPED entries: { lines( it_mapped ) }, searching for entity_name='{ iv_entity }'| ).
     IF line_exists( it_mapped[ entity_name = iv_entity ] ).
 *     Get key field metadata
       lo_metadata = NEW cl_ptf_rap_metadata( ).
       DATA(lt_components) = lo_metadata->get_key_fields( iv_name = iv_entity ).
-
-      me->mo_run_environment->append_log( |Key fields for '{ iv_entity }': { lines( lt_components ) } fields| ).
 
       IF lt_components IS NOT INITIAL.
 *       Extract entries from MAPPED
@@ -731,15 +727,10 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
               ENDIF.
             ENDLOOP.
 
-*           Log extracted key before filtering
-            me->mo_run_environment->append_log( |Built key from MAPPED entry: '{ lv_ptf_key }'| ).
-
 *           Don't add temporary keys (ex. %00000000001) - indicated by $ or %
             IF lv_ptf_key IS NOT INITIAL AND lv_ptf_key NA '$%'.
               APPEND lv_ptf_key TO ev_document_id.
               me->mo_run_environment->append_log( |Extracted key from MAPPED: { lv_ptf_key }| ).
-            ELSE.
-              me->mo_run_environment->append_log( |Skipped temporary/empty key: '{ lv_ptf_key }'| ).
             ENDIF.
           ENDLOOP.
         ENDIF.
