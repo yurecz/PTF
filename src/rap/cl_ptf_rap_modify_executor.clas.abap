@@ -140,7 +140,9 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         is_operation        TYPE abp_behv_changes
         it_json_instances   TYPE STANDARD TABLE
       EXPORTING
-        er_instances        TYPE REF TO data .
+        er_instances        TYPE REF TO data
+      RAISING
+        cx_ptf_json .
 
     METHODS process_create_by
       IMPORTING
@@ -152,7 +154,9 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
         it_json_instances   TYPE STANDARD TABLE
         iv_operation_cid_ref TYPE string
       EXPORTING
-        er_instances        TYPE REF TO data .
+        er_instances        TYPE REF TO data
+      RAISING
+        cx_ptf_json .
 
     METHODS process_update
       IMPORTING
