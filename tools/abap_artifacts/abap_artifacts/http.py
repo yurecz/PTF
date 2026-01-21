@@ -43,3 +43,26 @@ def fetch_text(
     resp.encoding = resp.apparent_encoding or resp.encoding
     return FetchResult(url=url, status_code=resp.status_code, content_type=content_type, text=resp.text)
 
+
+def post_text(
+    *,
+    url: str,
+    data: str,
+    creds: Optional[Credentials] = None,
+    timeout_s: int = 30,
+    verify_tls: bool = True,
+    content_type: str = "text/plain",
+    accept: str = "application/xml, text/plain, */*;q=0.1",
+) -> FetchResult:
+    headers = {"Content-Type": content_type, "Accept": accept}
+    auth = None
+    if creds is not None:
+        if not _same_origin(url, creds.base_url):
+            raise ValueError(f"Refusing to send credentials to different origin: {url}")
+        auth = (creds.user, creds.password)
+
+    resp = requests.post(url, data=data.encode("utf-8"), headers=headers, auth=auth, timeout=timeout_s, verify=verify_tls)
+    content_type = resp.headers.get("content-type", "")
+    resp.encoding = resp.apparent_encoding or resp.encoding
+    return FetchResult(url=url, status_code=resp.status_code, content_type=content_type, text=resp.text)
+

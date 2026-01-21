@@ -152,18 +152,57 @@ This repository is an **abapGit** export of the ABAP package **PTF** (Process Te
 
 **For comprehensive EML syntax, operation types, and %CID/%CID_REF patterns, see [docs/EML_SYNTAX_REFERENCE.md](docs/EML_SYNTAX_REFERENCE.md)**
 
+### 🚨 CRITICAL: MODIFY JSON MUST BE AN ARRAY
+
+**ALWAYS wrap MODIFY operations in square brackets `[]` - even for single operations!**
+
+```json
+✅ CORRECT (array of operations):
+[
+  {
+    "op": "CREATE",
+    "entity": "I_SalesOrder",
+    "instances": [{"SalesOrderType": "OR"}]
+  }
+]
+
+❌ WRONG (single object without array wrapper):
+{
+  "op": "CREATE",
+  "entity": "I_SalesOrder",
+  "instances": [{"SalesOrderType": "OR"}]
+}
+```
+
+**Why?** MODIFY executes multiple operations in sequence, so JSON format is always an array. Single operation = array with 1 element.
+
+**Common mistakes:**
+- ❌ Providing single operation object without `[]` wrapper
+- ❌ Copying examples from other PTF actions (READ/CREATE/UPDATE use different format)
+- ❌ Forgetting to wrap when converting from old PTF CHANGE format
+
+**Validation:** Code checks `lo_type_descr->kind = cl_abap_typedescr=>kind_table` and rejects objects.
+
+### PTF JSON simplification - %CONTROL and %CID auto-generation
+**⚠️ CRITICAL: Users NEVER specify %CONTROL or %CID in JSON**
+- PTF automatically generates `%CONTROL` structures internally based on fields present
+- PTF auto-generates `%CID` if not provided (format: `cid_1`, `cid_2`, etc.)
+- Users only provide business data fields - PTF handles all EML technicalities
+- Internal structure generation (not visible in user JSON):
+  - CREATE: `%CID` + `%CONTROL` + entity fields
+  - CREATE_BY parent level: `%CID_REF` + `%TARGET` (NO `%CONTROL`)
+  - CREATE_BY child level: `%CID` + `%CONTROL` + child fields
+  - UPDATE: Keys/`%CID_REF` + `%CONTROL` + modified fields
+  - DELETE: Key fields only (no `%CONTROL`)
+
 ### Modern EML syntax and %CID_REF support
-- **CREATE**: Uses `%CID` (instance-level) to assign content ID for later reference
-  - Structure: `%CID` + `%CONTROL` + entity fields
+- **CREATE**: Optional `%CID` in JSON for later reference (auto-generated if omitted)
 - **CREATE_BY (existing parent)**: Parent keys directly in instance: `{"ParentID": "123", "ChildField": "value"}`
 - **CREATE_BY (new parent)**: Use `%CID_REF` at **operation level** to reference parent created in same request
-  - Parent structure: `%CID_REF` + `%TARGET` (NO `%CONTROL` at parent level)
-  - Child structure (inside `%TARGET`): `%CID` + `%CONTROL` + child entity fields
-  - `%CONTROL` exists **only at child level**, not parent level
+  - `%CID_REF` placement: Operation level (outside instances array)
+  - Child instances get auto-generated `%CID` if needed for further references
 - **UPDATE with %CID_REF**: Use `%CID_REF` at **instance level** to update entity created in same request
-  - Structure: `%CID_REF` + `%CONTROL` + modified fields
 - **DELETE**: Keys directly in instance - `%CID_REF` not supported (delete by key only)
-  - Structure: Key fields only (no `%CONTROL`)
 - **EXECUTE (actions)**: Executes RAP business object actions
   - `sub_name` field contains action name from BDEF
   - Instance actions: Require key fields OR `%CID_REF` to identify target entity
@@ -358,6 +397,27 @@ ENDLOOP.
 - MCP is configured in `.vscode/settings.json` to launch the wrapper script `.vscode/abap_mcp.sh`, which runs `python3 -m abap_artifacts_mcp` with the required environment.
 - Use `tools/sync_mcp_config.sh` to sync repo MCP settings into the global WSL MCP config (`~/.vscode-server/data/User/mcp.json`).
 - MCP setup details: `docs/MCP_SETUP.md`.
+
+## MCP server capabilities
+
+The MCP server (`tools/abap_artifacts_mcp`) provides the following ABAP development tools:
+
+**Artifact Fetching:**
+- `abap.fetchClass` - Fetch ABAP class source
+- `abap.fetchInterface` - Fetch ABAP interface source
+- `abap.fetchBdef` - Fetch behavior definition (BDEF) source
+- `abap.fetchCds` - Fetch CDS DDL source
+- `abap.fetchTable` - Fetch DDIC table source
+- `abap.fetchStructure` - Fetch DDIC structure source
+- `abap.fetchDataElement` - Fetch DDIC data element source
+- `abap.fetchDomain` - Fetch DDIC domain source
+- `abap.fetchFunctionGroup` - Fetch function group source
+- `abap.fetchFunctionModule` - Fetch function module source
+- `abap.fetchClassInclude` - Fetch class include (definitions/implementations/testclasses/macros)
+
+**Documentation:**
+- `abap.fetchDocu` - Fetch ABAP Keyword Documentation (no auth required)
+- `abap.fetchUrl` - Fetch any URL with optional authentication
 
 ## MCP server limitations
 - **GitHub Copilot Chat cannot access MCP servers** in this environment (blocked by administrator settings).

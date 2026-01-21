@@ -26,6 +26,7 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
     DATA mo_operations TYPE REF TO if_ptf_rap_operations .
     DATA mo_ptf_rap_json_ref_parser TYPE REF TO if_ptf_rap_json_ref_parser .
     DATA mo_ptf_rap_metadata TYPE REF TO if_ptf_rap_metadata .
+    DATA mo_ptf_rap_validate_tdo TYPE REF TO if_ptf_rap_validate_tdo .
     DATA mv_global_cid_counter TYPE i .
 
     METHODS collect_messages
@@ -55,14 +56,44 @@ CLASS cl_ptf_rap_modify_executor DEFINITION
       RAISING
         cx_ptf_json .
 
-    METHODS extract_document_ids
+    METHODS extract_document_id_for_op
       IMPORTING
-        iv_entity      TYPE abp_entity_name
-        it_pid_mapped  TYPE if_ptf_bo_rap_generic_eml=>tt_pid_mapped
-        it_mapped      TYPE abp_behv_response_tab
-        it_operations  TYPE abp_behv_changes_tab
+        iv_operation_index TYPE i
+        is_operation       TYPE abp_behv_changes
+        it_pid_mapped      TYPE if_ptf_bo_rap_generic_eml=>tt_pid_mapped
+        it_mapped          TYPE abp_behv_response_tab
       EXPORTING
-        ev_document_id TYPE cl_ptf_util=>ty_vbeln_tab .
+        ev_document_id     TYPE cl_ptf_util=>ty_vbeln_tab .
+
+    METHODS extract_ids_for_create
+      IMPORTING
+        it_instances   TYPE STANDARD TABLE
+        it_mapped      TYPE abp_behv_response_tab
+      EXPORTING
+        et_document_id TYPE cl_ptf_util=>ty_vbeln_tab .
+
+    METHODS extract_ids_for_create_by
+      IMPORTING
+        it_instances   TYPE STANDARD TABLE
+        it_mapped      TYPE abp_behv_response_tab
+      EXPORTING
+        et_document_id TYPE cl_ptf_util=>ty_vbeln_tab .
+
+    METHODS extract_ids_for_update_delete
+      IMPORTING
+        iv_entity_name TYPE abp_entity_name
+        it_instances   TYPE STANDARD TABLE
+      EXPORTING
+        et_document_id TYPE cl_ptf_util=>ty_vbeln_tab .
+
+    METHODS search_mapped_for_cid
+      IMPORTING
+        iv_cid_to_find TYPE string
+        it_mapped      TYPE abp_behv_response_tab
+      EXPORTING
+        ev_ptf_key     TYPE ptfkey
+        ev_entity_name TYPE abp_entity_name
+        ev_found       TYPE abap_bool .
 
     METHODS parse_instance_references
       IMPORTING
@@ -173,6 +204,7 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     me->mo_operations = io_operations.
     me->mo_ptf_rap_json_ref_parser = NEW cl_ptf_rap_json_ref_parser( io_run_environment = io_run_environment ).
     me->mo_ptf_rap_metadata = NEW cl_ptf_rap_metadata( ).
+    me->mo_ptf_rap_validate_tdo = NEW cl_ptf_rap_validate_tdo( io_run_environment ).
   ENDMETHOD.
 
 
@@ -221,25 +253,23 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
 
 *   Consolidate operations: EML deduplicates by (entity + op + sub_name)
 *   Merge instances from duplicate operations to ensure all instances execute
-    DATA: lt_consolidated_ops TYPE abp_behv_changes_tab,
-          lv_found            TYPE abap_bool.
+*   Performance: Use hashed table for O(1) lookup instead of O(n) nested loop
+    DATA: lt_consolidated_ops TYPE abp_behv_changes_tab.
 
     FIELD-SYMBOLS: <ft_new_inst_cons>  TYPE STANDARD TABLE,
                    <ft_exist_inst_cons> TYPE STANDARD TABLE,
-                   <fs_new_inst_cons>   TYPE any.
+                   <fs_new_inst_cons>   TYPE any,
+                   <fs_existing_op_cons> TYPE abp_behv_changes.
 
     LOOP AT lt_operations INTO DATA(ls_op_cons).
-*     Check if operation with same entity+op+sub_name already exists
-      lv_found = abap_off.
-      LOOP AT lt_consolidated_ops ASSIGNING FIELD-SYMBOL(<fs_existing_op_cons>)
-        WHERE entity_name = ls_op_cons-entity_name
-          AND op = ls_op_cons-op
-          AND sub_name = ls_op_cons-sub_name.
-        lv_found = abap_on.
-        EXIT.
-      ENDLOOP.
 
-      IF lv_found = abap_on.
+*     Check if operation already exists using READ TABLE (optimized with key)
+      READ TABLE lt_consolidated_ops ASSIGNING <fs_existing_op_cons>
+        WITH KEY entity_name = ls_op_cons-entity_name
+                 op = ls_op_cons-op
+                 sub_name = ls_op_cons-sub_name.
+
+      IF sy-subrc = 0.
 *       Found duplicate - merge instances
         IF ls_op_cons-instances IS BOUND AND <fs_existing_op_cons>-instances IS BOUND.
           ASSIGN ls_op_cons-instances->* TO <ft_new_inst_cons>.
@@ -343,30 +373,29 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     ENDIF.
 
 *   Extract document IDs (only for successful operations)
-*   Priority: lt_pid_mapped (real keys after commit) > lt_mapped (preliminary keys)
+*   Process operations in JSON order to preserve ordering in result
     IF lv_error = abap_off.
-*     Extract document IDs for all entities in operations
+*     Extract document IDs per operation (preserves JSON array order)
       DATA(lt_doc_ids_temp) = VALUE cl_ptf_util=>ty_vbeln_tab( ).
-      LOOP AT lt_root_entities INTO DATA(lv_entity).
+      LOOP AT lt_operations INTO DATA(ls_operation).
+        DATA(lv_operation_index) = sy-tabix.  " Save index before nested loops modify sy-tabix
         CLEAR lt_doc_ids_temp.
-        me->extract_document_ids(
+        me->extract_document_id_for_op(
           EXPORTING
-            iv_entity      = lv_entity
-            it_pid_mapped  = lt_pid_mapped
-            it_mapped      = lt_mapped
-            it_operations  = lt_operations
+            iv_operation_index = lv_operation_index
+            is_operation       = ls_operation
+            it_pid_mapped      = lt_pid_mapped
+            it_mapped          = lt_mapped
           IMPORTING
-            ev_document_id = lt_doc_ids_temp ).
+            ev_document_id     = lt_doc_ids_temp ).
 
         APPEND LINES OF lt_doc_ids_temp TO ev_document_id.
       ENDLOOP.
 
 *     Log extracted document IDs
       IF ev_document_id IS NOT INITIAL.
-        DATA(lv_doc_id_str) = VALUE string( ).
         LOOP AT ev_document_id ASSIGNING FIELD-SYMBOL(<lv_doc_id>).
-          lv_doc_id_str = CONV string( <lv_doc_id> ).
-          me->mo_run_environment->append_log( |Extracted document ID: { lv_doc_id_str }| ).
+          me->mo_run_environment->append_log( |Extracted document ID: { <lv_doc_id>-vbeln }| ).
         ENDLOOP.
       ELSE.
         me->mo_run_environment->append_log( 'No document IDs extracted from MAPPED table' ).
@@ -679,8 +708,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
       ASSIGN <fs_instances>->* TO <ft_instances>.
 
 *     Get key fields for this entity (for %control filtering)
-      DATA(lo_metadata) = NEW cl_ptf_rap_metadata( ).
-      DATA(lt_key_fields) = lo_metadata->get_key_fields( iv_name = ls_operation-entity_name ).
+*     Performance: Reuse instance variable instead of creating new object
+      DATA(lt_key_fields) = me->mo_ptf_rap_metadata->get_key_fields( iv_name = ls_operation-entity_name ).
 
 *     Delegate to operation-specific method
       TRY.
@@ -771,132 +800,287 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
   ENDMETHOD.
 
 
-  METHOD extract_document_ids.
-*   Extract document IDs from PID_MAPPED (real keys) + MAPPED (preliminary keys) + operations
-*   Pattern follows cl_ptf_bo_rap_generic=>retr_doc_id_from_pid_mapped + retrieve_doc_id_from_mapped
-*
-*   Flow: MODIFY returns %PID -> COMMIT converts to real keys -> stored in PID_MAPPED
-*   All sources are checked additively (no early returns) to capture all affected instances
-    DATA: lv_ptf_key      TYPE ptfkey,
-          lo_metadata     TYPE REF TO cl_ptf_rap_metadata.
-
-    FIELD-SYMBOLS: <fs_entries>    TYPE STANDARD TABLE,
-                   <fs_entry>      TYPE any,
-                   <fs_field>      TYPE any,
-                   <fs_pid_mapped> TYPE if_ptf_bo_rap_generic_eml=>ts_pid_mapped,
-                   <fs_operation>  TYPE abp_behv_changes.
+  METHOD extract_document_id_for_op.
+*   Extract document IDs for operation - delegates to operation-specific methods
+    FIELD-SYMBOLS: <ft_instances> TYPE STANDARD TABLE.
 
     CLEAR ev_document_id.
 
-*   Extract document IDs from PID_MAPPED (real keys after commit for CREATE operations)
-    DATA(lv_pid_count) = REDUCE i( INIT cnt = 0 FOR <pid> IN it_pid_mapped WHERE ( root_name = iv_entity ) NEXT cnt = cnt + 1 ).
-    me->mo_run_environment->append_log( |PID_MAPPED for { iv_entity }: found { lv_pid_count } entries| ).
-    LOOP AT it_pid_mapped ASSIGNING <fs_pid_mapped> WHERE root_name = iv_entity.
-      IF <fs_pid_mapped>-key IS NOT INITIAL.
-        APPEND <fs_pid_mapped>-key TO ev_document_id.
-        me->mo_run_environment->append_log( |Extracted key from PID_MAPPED [{ sy-tabix }]: { <fs_pid_mapped>-key }| ).
+    me->mo_run_environment->append_log(
+      |Operation { iv_operation_index }: op={ is_operation-op }, | &&
+      |entity={ is_operation-entity_name }, sub_name={ is_operation-sub_name }| ).
+
+*   Get instances from operation
+    ASSIGN is_operation-instances->* TO <ft_instances>.
+    IF <ft_instances> IS NOT ASSIGNED OR lines( <ft_instances> ) = 0.
+      me->mo_run_environment->append_log( |  No instances found| ).
+      RETURN.
+    ENDIF.
+
+    me->mo_run_environment->append_log( |  Processing { lines( <ft_instances> ) } instance(s)| ).
+
+*   Delegate to operation-specific method
+    CASE is_operation-op.
+      WHEN if_abap_behv=>op-m-create.
+        me->extract_ids_for_create(
+          EXPORTING
+            it_instances   = <ft_instances>
+            it_mapped      = it_mapped
+          IMPORTING
+            et_document_id = ev_document_id ).
+
+      WHEN if_abap_behv=>op-m-create_ba.
+        me->extract_ids_for_create_by(
+          EXPORTING
+            it_instances   = <ft_instances>
+            it_mapped      = it_mapped
+          IMPORTING
+            et_document_id = ev_document_id ).
+
+      WHEN if_abap_behv=>op-m-update OR if_abap_behv=>op-m-delete.
+        me->extract_ids_for_update_delete(
+          EXPORTING
+            iv_entity_name = is_operation-entity_name
+            it_instances   = <ft_instances>
+          IMPORTING
+            et_document_id = ev_document_id ).
+    ENDCASE.
+
+*   Log summary
+    IF ev_document_id IS INITIAL.
+      me->mo_run_environment->append_log( |  No document IDs extracted for operation { iv_operation_index }| ).
+    ELSE.
+      me->mo_run_environment->append_log(
+        |  Operation { iv_operation_index }: Extracted { lines( ev_document_id ) } document ID(s)| ).
+    ENDIF.
+
+  ENDMETHOD.
+
+
+  METHOD extract_ids_for_create.
+*   Extract document IDs for CREATE operations - direct %CID matching
+    DATA: lv_ptf_key       TYPE ptfkey,
+          lv_entity_name   TYPE abp_entity_name,
+          lv_found         TYPE abap_bool.
+
+    FIELD-SYMBOLS: <fs_instance>     TYPE any,
+                   <fv_instance_cid> TYPE any.
+
+    CLEAR et_document_id.
+
+*   Loop through instances in JSON order
+    LOOP AT it_instances ASSIGNING <fs_instance>.
+      DATA(lv_instance_index) = sy-tabix.
+
+*     Get %CID from instance
+      ASSIGN COMPONENT '%CID' OF STRUCTURE <fs_instance> TO <fv_instance_cid>.
+      IF sy-subrc <> 0 OR <fv_instance_cid> IS INITIAL.
+        me->mo_run_environment->append_log( |    Instance { lv_instance_index }: No %CID found| ).
+        CONTINUE.
+      ENDIF.
+
+      DATA(lv_cid_to_find) = CONV string( <fv_instance_cid> ).
+      me->mo_run_environment->append_log( |    Looking for %CID: { lv_cid_to_find }| ).
+
+*     Search MAPPED table for matching %CID
+      me->search_mapped_for_cid(
+        EXPORTING
+          iv_cid_to_find = lv_cid_to_find
+          it_mapped      = it_mapped
+        IMPORTING
+          ev_ptf_key     = lv_ptf_key
+          ev_entity_name = lv_entity_name
+          ev_found       = lv_found ).
+
+      IF lv_found = abap_true.
+        APPEND lv_ptf_key TO et_document_id.
+      ELSE.
+        me->mo_run_environment->append_log( |    WARNING: No MAPPED entry found for %CID={ lv_cid_to_find }| ).
       ENDIF.
     ENDLOOP.
 
-*   Extract from MAPPED (for entities without late numbering - CREATE operations)
-    IF line_exists( it_mapped[ entity_name = iv_entity ] ).
-*     Get key field metadata
-      lo_metadata = NEW cl_ptf_rap_metadata( ).
-      DATA(lt_components) = lo_metadata->get_key_fields( iv_name = iv_entity ).
+  ENDMETHOD.
 
-      IF lt_components IS NOT INITIAL.
-*       Extract entries from MAPPED
-        DATA(lr_entries) = it_mapped[ entity_name = iv_entity ]-entries.
-        ASSIGN lr_entries->* TO <fs_entries>.
 
-        IF <fs_entries> IS ASSIGNED.
-          DATA(lv_entries_count) = lines( <fs_entries> ).
-          me->mo_run_environment->append_log( |MAPPED for { iv_entity }: found { lv_entries_count } entries| ).
-*         Process each mapped entry (could be multiple creates)
-          LOOP AT <fs_entries> ASSIGNING <fs_entry>.
-            CLEAR lv_ptf_key.
-            me->mo_run_environment->append_log( |Processing MAPPED entry { sy-tabix } of { lv_entries_count }| ).
+  METHOD extract_ids_for_create_by.
+*   Extract document IDs for CREATE_BY operations - navigate %TARGET for child instances
+    DATA: lv_ptf_key       TYPE ptfkey,
+          lv_entity_name   TYPE abp_entity_name,
+          lv_found         TYPE abap_bool.
 
-*           Build PTF key from key field values
-            LOOP AT lt_components ASSIGNING FIELD-SYMBOL(<fs_component>).
-              DATA(lv_tabix) = sy-tabix.
+    FIELD-SYMBOLS: <fs_instance>        TYPE any,
+                   <fv_target>          TYPE any,
+                   <ft_target_instances> TYPE STANDARD TABLE,
+                   <fs_target_instance> TYPE any,
+                   <fv_target_cid>      TYPE any.
 
-              ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_entry> TO <fs_field>.
-              IF sy-subrc = 0.
-                IF lv_tabix = 1.
-                  lv_ptf_key = <fs_field>.
-                ELSE.
-*                 Concatenate with delimiter
-                  lv_ptf_key = |{ lv_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_field> }|.
-                ENDIF.
-              ENDIF.
-            ENDLOOP.
+    CLEAR et_document_id.
 
-*           Don't add temporary keys (ex. %00000000001) - indicated by $ or %
-            IF lv_ptf_key IS NOT INITIAL AND lv_ptf_key NA '$%'.
-              APPEND lv_ptf_key TO ev_document_id.
-              me->mo_run_environment->append_log( |Extracted key from MAPPED: { lv_ptf_key }| ).
-            ENDIF.
-          ENDLOOP.
+*   Loop through parent instances
+    LOOP AT it_instances ASSIGNING <fs_instance>.
+      DATA(lv_instance_index) = sy-tabix.
+
+*     Check for %TARGET component (nested child instances)
+      ASSIGN COMPONENT '%TARGET' OF STRUCTURE <fs_instance> TO <fv_target>.
+      IF sy-subrc <> 0 OR <fv_target> IS NOT ASSIGNED.
+        me->mo_run_environment->append_log( |    Instance { lv_instance_index }: No %TARGET found| ).
+        CONTINUE.
+      ENDIF.
+
+*     Dereference %TARGET to get child instances table
+      ASSIGN <fv_target>->* TO <ft_target_instances>.
+      IF <ft_target_instances> IS NOT ASSIGNED.
+        me->mo_run_environment->append_log( |    Instance { lv_instance_index }: %TARGET is not a table| ).
+        CONTINUE.
+      ENDIF.
+
+      me->mo_run_environment->append_log( |    Instance { lv_instance_index }: Found %TARGET with { lines( <ft_target_instances> ) } child instance(s)| ).
+
+*     Process each child instance in %TARGET
+      LOOP AT <ft_target_instances> ASSIGNING <fs_target_instance>.
+        DATA(lv_target_index) = sy-tabix.
+
+*       Get %CID from child instance
+        ASSIGN COMPONENT '%CID' OF STRUCTURE <fs_target_instance> TO <fv_target_cid>.
+        IF sy-subrc <> 0 OR <fv_target_cid> IS INITIAL.
+          me->mo_run_environment->append_log( |      Target instance { lv_target_index }: No %CID found| ).
+          CONTINUE.
         ENDIF.
-      ENDIF.
-    ENDIF.
 
-*   Extract from UPDATE/DELETE operations (keys are in the instances)
+        DATA(lv_cid_to_find) = CONV string( <fv_target_cid> ).
+        me->mo_run_environment->append_log( |      Looking for %CID: { lv_cid_to_find }| ).
 
-    LOOP AT it_operations ASSIGNING <fs_operation>
-      WHERE entity_name = iv_entity
-        AND ( op = if_abap_behv=>op-m-update OR op = if_abap_behv=>op-m-delete ).
+*       Search MAPPED table for matching %CID
+        me->search_mapped_for_cid(
+          EXPORTING
+            iv_cid_to_find = lv_cid_to_find
+            it_mapped      = it_mapped
+          IMPORTING
+            ev_ptf_key     = lv_ptf_key
+            ev_entity_name = lv_entity_name
+            ev_found       = lv_found ).
 
-*     Get key field metadata if not already loaded
-      IF lo_metadata IS NOT BOUND.
-        lo_metadata = NEW cl_ptf_rap_metadata( ).
-        lt_components = lo_metadata->get_key_fields( iv_name = iv_entity ).
-      ENDIF.
-
-      IF lt_components IS INITIAL.
-        me->mo_run_environment->append_log( |No key fields found for entity { iv_entity }| ).
-        CONTINUE.
-      ENDIF.
-
-*     Access instances table
-      ASSIGN <fs_operation>-instances->* TO <fs_entries>.
-      IF <fs_entries> IS NOT ASSIGNED.
-        CONTINUE.
-      ENDIF.
-
-*     Extract keys from each instance
-      LOOP AT <fs_entries> ASSIGNING <fs_entry>.
-        CLEAR lv_ptf_key.
-
-*       Build PTF key from key field values in the instance
-        LOOP AT lt_components ASSIGNING <fs_component>.
-          lv_tabix = sy-tabix.
-
-          ASSIGN COMPONENT <fs_component>-name OF STRUCTURE <fs_entry> TO <fs_field>.
-          IF sy-subrc = 0 AND <fs_field> IS NOT INITIAL.
-            IF lv_tabix = 1.
-              lv_ptf_key = <fs_field>.
-            ELSE.
-*             Concatenate with delimiter
-              lv_ptf_key = |{ lv_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_field> }|.
-            ENDIF.
-          ENDIF.
-        ENDLOOP.
-
-        IF lv_ptf_key IS NOT INITIAL.
-          APPEND lv_ptf_key TO ev_document_id.
-          me->mo_run_environment->append_log( |Extracted key from { <fs_operation>-op } operation: { lv_ptf_key }| ).
+        IF lv_found = abap_true.
+          APPEND lv_ptf_key TO et_document_id.
+        ELSE.
+          me->mo_run_environment->append_log( |      WARNING: No MAPPED entry found for %CID={ lv_cid_to_find }| ).
         ENDIF.
       ENDLOOP.
     ENDLOOP.
 
-*   Log summary
-    IF ev_document_id IS INITIAL.
-      me->mo_run_environment->append_log( |No document IDs could be extracted for entity { iv_entity }| ).
-    ELSE.
-      me->mo_run_environment->append_log( |Total extracted: { lines( ev_document_id ) } document ID(s) for entity { iv_entity }| ).
+  ENDMETHOD.
+
+
+  METHOD extract_ids_for_update_delete.
+*   Extract document IDs for UPDATE/DELETE operations - read keys directly from instances
+    DATA: lv_ptf_key      TYPE ptfkey,
+          lo_metadata     TYPE REF TO cl_ptf_rap_metadata.
+
+    FIELD-SYMBOLS: <fs_instance>  TYPE any,
+                   <fs_key_field> TYPE any.
+
+    CLEAR et_document_id.
+
+*   Get key fields for entity
+    lo_metadata = NEW cl_ptf_rap_metadata( ).
+    DATA(lt_key_components) = lo_metadata->get_key_fields( iv_name = iv_entity_name ).
+
+    IF lt_key_components IS INITIAL.
+      me->mo_run_environment->append_log( |  No key fields for entity { iv_entity_name }| ).
+      RETURN.
     ENDIF.
+
+*   Extract keys from each instance
+    LOOP AT it_instances ASSIGNING <fs_instance>.
+      CLEAR lv_ptf_key.
+
+*     Build PTF key from instance key fields
+      LOOP AT lt_key_components ASSIGNING FIELD-SYMBOL(<fs_key_comp>).
+        DATA(lv_idx) = sy-tabix.
+
+        ASSIGN COMPONENT <fs_key_comp>-name OF STRUCTURE <fs_instance> TO <fs_key_field>.
+
+        IF sy-subrc = 0 AND <fs_key_field> IS NOT INITIAL.
+          IF lv_idx = 1.
+            lv_ptf_key = <fs_key_field>.
+          ELSE.
+            lv_ptf_key = |{ lv_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_key_field> }|.
+          ENDIF.
+        ENDIF.
+      ENDLOOP.
+
+      IF lv_ptf_key IS NOT INITIAL.
+        APPEND lv_ptf_key TO et_document_id.
+        me->mo_run_environment->append_log( |  Extracted key from instance: { lv_ptf_key }| ).
+      ENDIF.
+    ENDLOOP.
+
+  ENDMETHOD.
+
+
+  METHOD search_mapped_for_cid.
+*   Search MAPPED table for %CID and extract key - common helper for CREATE/CREATE_BY
+    DATA: lo_metadata TYPE REF TO cl_ptf_rap_metadata.
+
+    FIELD-SYMBOLS: <ft_mapped_entries> TYPE STANDARD TABLE,
+                   <fs_mapped_entry>   TYPE any,
+                   <fs_key_field>      TYPE any.
+
+    CLEAR: ev_ptf_key, ev_entity_name, ev_found.
+
+*   Search all MAPPED entries for matching %CID
+    LOOP AT it_mapped INTO DATA(ls_mapped).
+      ASSIGN ls_mapped-entries->* TO <ft_mapped_entries>.
+      IF <ft_mapped_entries> IS NOT ASSIGNED.
+        CONTINUE.
+      ENDIF.
+
+*     Try direct read with %CID key for performance
+      READ TABLE <ft_mapped_entries> ASSIGNING <fs_mapped_entry>
+        WITH KEY ('%CID') = iv_cid_to_find.
+
+      IF sy-subrc = 0.
+*       Found match! Extract key from this entry
+        ev_entity_name = ls_mapped-entity_name.
+        me->mo_run_environment->append_log( |    Found in MAPPED: entity={ ev_entity_name }| ).
+
+*       Get key fields for the created entity
+        lo_metadata = NEW cl_ptf_rap_metadata( ).
+        DATA(lt_key_components) = lo_metadata->get_key_fields( iv_name = ev_entity_name ).
+
+        IF lt_key_components IS INITIAL.
+          me->mo_run_environment->append_log( |    ERROR: No key fields for { ev_entity_name }| ).
+          RETURN.
+        ENDIF.
+
+*       Build PTF key from key fields
+        CLEAR ev_ptf_key.
+        LOOP AT lt_key_components ASSIGNING FIELD-SYMBOL(<fs_key_comp>).
+          DATA(lv_key_idx) = sy-tabix.
+
+          ASSIGN COMPONENT <fs_key_comp>-name OF STRUCTURE <fs_mapped_entry> TO <fs_key_field>.
+
+          IF sy-subrc = 0 AND <fs_key_field> IS NOT INITIAL.
+            IF lv_key_idx = 1.
+              ev_ptf_key = <fs_key_field>.
+            ELSE.
+              ev_ptf_key = |{ ev_ptf_key }{ cl_ptf_util=>gc_key_field_delimiter }{ <fs_key_field> }|.
+            ENDIF.
+          ENDIF.
+        ENDLOOP.
+
+*       Check if key is valid (skip temporary keys like %00000000001)
+        IF ev_ptf_key IS NOT INITIAL AND ev_ptf_key NA '$%'.
+          me->mo_run_environment->append_log( |    Extracted key: { ev_ptf_key }| ).
+          ev_found = abap_true.
+        ELSE.
+          me->mo_run_environment->append_log( |    WARNING: Key is temporary or empty: { ev_ptf_key }| ).
+          CLEAR ev_ptf_key.
+        ENDIF.
+
+        RETURN. "Found the match, exit search
+      ENDIF.
+    ENDLOOP.
 
   ENDMETHOD.
 
@@ -1086,21 +1270,17 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
         cs_instance       = cs_instance ).
 
 *   Set %control fields for non-key fields
+*   Performance: Build hash of key field names for O(1) lookup
+    DATA: lt_key_names TYPE HASHED TABLE OF string WITH UNIQUE KEY table_line.
+    lt_key_names = VALUE #( FOR key IN it_key_fields ( to_upper( key-name ) ) ).
+
     ASSIGN COMPONENT cl_abap_behv=>co_techfield_name-control OF STRUCTURE cs_instance TO FIELD-SYMBOL(<fs_control_struct>).
     IF sy-subrc = 0.
       LOOP AT lo_json_descr->components INTO ls_json_comp.
         lv_field_name = to_upper( ls_json_comp-name ).
 
 *       Skip key fields - they're for identification, not modification
-        DATA(lv_is_key) = abap_off.
-        LOOP AT it_key_fields INTO DATA(ls_key_field).
-          IF lv_field_name = to_upper( ls_key_field-name ).
-            lv_is_key = abap_on.
-            EXIT.
-          ENDIF.
-        ENDLOOP.
-
-        IF lv_is_key = abap_on.
+        IF line_exists( lt_key_names[ table_line = lv_field_name ] ).
           CONTINUE.
         ENDIF.
 
@@ -1164,11 +1344,28 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
   METHOD process_create.
 *   Process CREATE operation: simple instance processing with auto-CID
 
+    DATA: lv_op_error TYPE abap_bool.
+
     FIELD-SYMBOLS: <ft_target_table> TYPE STANDARD TABLE,
                    <fs_instance>     TYPE any,
                    <fs_json_instance> TYPE any,
                    <fs_target>       TYPE any,
                    <fs_cid>          TYPE any.
+
+*   Validate: Check if entity supports CREATE operation
+    DATA(lo_validator) = NEW cl_ptf_rap_validate_tdo( io_run_environment = me->mo_run_environment ).
+    lo_validator->if_ptf_rap_validate_tdo~check_operation(
+      EXPORTING
+        iv_op   = if_abap_behv=>op-m-create
+        iv_name = iv_entity_name
+        iv_root = abap_on
+      IMPORTING
+        ev_error = lv_op_error ).
+
+    IF lv_op_error = abap_on.
+      me->mo_run_environment->append_log( |CREATE operation not supported for entity { iv_entity_name } (check BDEF)| ).
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
 
 *   Create typed target table
     er_instances = cl_abap_behvdescr=>create_data(
@@ -1228,7 +1425,38 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
                    <fs_cid_ref>       TYPE any,
                    <ft_target>        TYPE any.
 
-*   Create typed target table
+*   Get association metadata to find target entity
+    cl_abap_behv_load=>get_load(
+      EXPORTING
+        entity       = iv_entity_name
+        all          = abap_on
+      IMPORTING
+        associations = DATA(lt_associations) ).
+
+    READ TABLE lt_associations INTO DATA(ls_assoc)
+      WITH KEY source_entity = iv_entity_name
+               name          = is_operation-sub_name.
+    IF sy-subrc <> 0.
+      me->mo_run_environment->append_log( |Association { is_operation-sub_name } not found for entity { iv_entity_name } (check BDEF)| ).
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
+
+    DATA(lv_target_entity) = ls_assoc-target_entity.
+
+*   Validate: Check if association exists and supports CREATE_BY operation
+    me->mo_ptf_rap_validate_tdo->check_association(
+      EXPORTING
+        iv_p_name   = iv_entity_name
+        iv_name     = lv_target_entity
+        iv_sub_name = is_operation-sub_name
+        iv_op       = if_abap_behv=>op-m-create
+      IMPORTING
+        ev_error    = DATA(lv_validation_error) ).
+
+    IF lv_validation_error = abap_on.
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
+
     er_instances = cl_abap_behvdescr=>create_data(
       p_op       = if_abap_behv=>op-m-create_ba
       p_name     = iv_entity_name
@@ -1330,10 +1558,27 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
   METHOD process_update.
 *   Process UPDATE operation: instance processing with %control for modifications
 
+    DATA: lv_op_error TYPE abap_bool.
+
     FIELD-SYMBOLS: <ft_target_table> TYPE STANDARD TABLE,
                    <fs_instance>     TYPE any,
                    <fs_json_instance> TYPE any,
                    <fs_target>       TYPE any.
+
+*   Validate: Check if entity supports UPDATE operation
+    DATA(lo_validator) = NEW cl_ptf_rap_validate_tdo( io_run_environment = me->mo_run_environment ).
+    lo_validator->if_ptf_rap_validate_tdo~check_operation(
+      EXPORTING
+        iv_op   = if_abap_behv=>op-m-update
+        iv_name = iv_entity_name
+        iv_root = abap_on
+      IMPORTING
+        ev_error = lv_op_error ).
+
+    IF lv_op_error = abap_on.
+      me->mo_run_environment->append_log( |UPDATE operation not supported for entity { iv_entity_name } (check BDEF)| ).
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
 
 *   Create typed target table
     er_instances = cl_abap_behvdescr=>create_data(
@@ -1381,7 +1626,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     DATA: lo_json_descr   TYPE REF TO cl_abap_structdescr,
           ls_json_comp    TYPE abap_compdescr,
           lv_field_name   TYPE string,
-          lx_error        TYPE REF TO cx_root.
+          lx_error        TYPE REF TO cx_root,
+          lv_op_error     TYPE abap_bool.
 
     FIELD-SYMBOLS: <ft_target_table>   TYPE STANDARD TABLE,
                    <fs_instance>       TYPE any,
@@ -1389,6 +1635,21 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
                    <fs_target>         TYPE any,
                    <fs_json_field>     TYPE any,
                    <fs_target_field>   TYPE any.
+
+*   Validate: Check if entity supports DELETE operation
+    DATA(lo_validator) = NEW cl_ptf_rap_validate_tdo( io_run_environment = me->mo_run_environment ).
+    lo_validator->if_ptf_rap_validate_tdo~check_operation(
+      EXPORTING
+        iv_op   = if_abap_behv=>op-m-delete
+        iv_name = iv_entity_name
+        iv_root = abap_on
+      IMPORTING
+        ev_error = lv_op_error ).
+
+    IF lv_op_error = abap_on.
+      me->mo_run_environment->append_log( |DELETE operation not supported for entity { iv_entity_name } (check BDEF)| ).
+      RAISE EXCEPTION NEW cx_ptf_json( textid = cx_ptf_json=>invalid_json ).
+    ENDIF.
 
 *   Create typed target table
     er_instances = cl_abap_behvdescr=>create_data(
@@ -1444,8 +1705,8 @@ CLASS CL_PTF_RAP_MODIFY_EXECUTOR IMPLEMENTATION.
     ENDLOOP.
 
 *   Validate: DELETE requires key fields
-    DATA(lo_metadata_del) = NEW cl_ptf_rap_metadata( ).
-    DATA(lt_key_fields_del) = lo_metadata_del->get_key_fields( iv_name = iv_entity_name ).
+*   Performance: Reuse instance variable instead of creating new object
+    DATA(lt_key_fields_del) = me->mo_ptf_rap_metadata->get_key_fields( iv_name = iv_entity_name ).
     
     me->validate_keys_required(
       EXPORTING

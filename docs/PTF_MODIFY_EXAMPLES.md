@@ -8,6 +8,11 @@ This document describes the PTF MODIFY action JSON format and provides tested ex
 
 PTF MODIFY action directly maps to RAP's `MODIFY ENTITIES ... OPERATIONS` EML statement, accepting an operations array that specifies CREATE, UPDATE, DELETE, EXECUTE, and CREATE_BY operations.
 
+**⚠️ CRITICAL: %CONTROL is NEVER in JSON**
+- PTF automatically generates `%CONTROL` structures based on fields present in instances
+- Users NEVER specify `%CONTROL` in JSON
+- PTF marks all non-key fields with `%CONTROL` value `"01"` internally
+
 ## JSON Format
 
 ```json

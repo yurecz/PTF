@@ -28,8 +28,18 @@ From repo root:
 - `abap.fetchDocu` (no auth): fetch ABAP Keyword Docu page by `object` id.
 - `abap.fetchUrl` (optional auth): fetch any URL (auth only if requested and same-origin).
 - `abap.fetchBdef`: fetch BDEF source via ADT.
+- `abap.fetchCds`: fetch CDS DDL source via ADT.
 - `abap.fetchClass`: fetch ABAP class main source via ADT.
 - `abap.fetchClassInclude`: fetch ABAP class include via ADT.
+- `abap.fetchInterface`: fetch ABAP interface source via ADT.
+- `abap.fetchFunctionGroup`: fetch function group main source via ADT.
+- `abap.fetchFunctionGroupInclude`: fetch function group include source via ADT.
+- `abap.fetchFunctionModule`: fetch function module source via ADT.
+- `abap.fetchTable`: fetch DDIC table source via ADT.
+- `abap.fetchStructure`: fetch DDIC structure source via ADT.
+- `abap.fetchDataElement`: fetch DDIC data element source via ADT.
+- `abap.fetchDomain`: fetch DDIC domain source via ADT.
+- `abap.checkSyntax`: check ABAP syntax via ADT parser API (returns syntax errors/warnings).
 
 ## MCP client configuration
 Add this server to your MCP client (Codex / IDE integration) as a stdio server command that runs the module above.
