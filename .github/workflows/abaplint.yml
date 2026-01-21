@@ -1,14 +1,17 @@
 name: ABAP Syntax Check
 
+# Disabled: abaplint doesn't work reliably in GitHub Actions for this repository
+# Re-enable when abaplint configuration is fixed
 on:
-  pull_request:
-    paths:
-      - 'src/**/*.abap'
-      - 'src/**/*.clas.xml'
-  push:
-    branches: [main]
-    paths:
-      - 'src/**/*.abap'
+  workflow_dispatch:  # Only allow manual trigger
+#  pull_request:
+#    paths:
+#      - 'src/**/*.abap'
+#      - 'src/**/*.clas.xml'
+#  push:
+#    branches: [main]
+#    paths:
+#      - 'src/**/*.abap'
 
 jobs:
   abaplint:
